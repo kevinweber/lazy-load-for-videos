@@ -3,7 +3,7 @@ Contributors: kevinweber
 Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
 Requires at least: 3.0
-Tested up to: 3.8
+Tested up to: 3.9
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -81,7 +81,7 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 == Changelog ==
 
-= 1.x =
+= 1.4 =
 * New feature: Display video titles on preview images (for Youtube and Vimeo)
 * New feature: Admins can add Custom CSS via options panel
 
