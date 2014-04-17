@@ -17,6 +17,7 @@ By loading the videos only when the user clicks on the preview image – using j
 
 = New features: =
 * Display video titles on preview images
+* Add Custom CSS via plugin’s options panel
 
 = Future features: =
 * Choose between several "Play" buttons

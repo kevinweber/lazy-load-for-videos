@@ -1,0 +1,1 @@
+!function(n,o,i){o(document).ready(function(n){n("#tabs").tabs()})}(window.incom=window.incom||{},jQuery);
