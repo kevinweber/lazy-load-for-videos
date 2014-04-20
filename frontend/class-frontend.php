@@ -5,18 +5,10 @@
 class LAZYLOAD_Frontend {
 
 	function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'lazyload_enqueue_jquery' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_lazyload_style') );
 		add_action( 'wp_head', array( $this, 'load_lazyload_custom_css') );
 		add_filter('oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3);
 		add_action('wp_head', array( $this, 'enable_lazyload_js' ) );
-	}
-
-	/**
-	 * Enable jQuery (comes with WordPress)
-	 */
-	function lazyload_enqueue_jquery() {
-    	wp_enqueue_script('jquery');
 	}
 
 	/**
