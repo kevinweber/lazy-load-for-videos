@@ -7,7 +7,6 @@ class LAZYLOAD_Frontend {
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_lazyload_style') );
 		add_action( 'wp_head', array( $this, 'load_lazyload_custom_css') );
-		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
 	}
 
 	/**
@@ -29,8 +28,6 @@ class LAZYLOAD_Frontend {
 		</style>
 	<?php
 	}
-
-	function enable_lazyload_js() {}
 
 }
 

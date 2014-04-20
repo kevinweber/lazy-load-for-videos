@@ -2,10 +2,10 @@
 /**
  * @package Lazyload Youtube
  */
-class LAZYLOAD_youtube extends LAZYLOAD_Frontend {
+class LAZYLOAD_youtube {
 
 	function __construct() {
-		parent::__construct();
+		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
 	}
 
 	/**
