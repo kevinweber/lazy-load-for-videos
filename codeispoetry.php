@@ -28,12 +28,11 @@ function lazyload_frontend_init() {
 	// }
 }
 
-if ( is_admin() ) {
+
 	add_action( 'plugins_loaded', 'lazyload_admin_init', 15 );
-}
-else {
+
 	add_action( 'plugins_loaded', 'lazyload_frontend_init', 15 );
-}
+
 
 
 /***** Plugin by Kevin Weber || kevinw.de *****/

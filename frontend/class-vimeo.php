@@ -18,7 +18,7 @@ class LAZYLOAD_vimeo {
 	 * http://vimeo.com/48851874/
 	 */
 	function enable_lazyload_js() {
-		wp_enqueue_script( 'script', plugins_url( '../js/min/lazyload-vimeo-ck.js' , __FILE__ ), array( 'jquery' ) );
+		wp_enqueue_script( 'script', plugins_url( '../js/min/lazyload-vimeo-ck.js' , __FILE__ ) );
 	}  
 
 	function enable_lazyload_vimeo() { ?>
