@@ -5,7 +5,7 @@
 
 var $lly = jQuery.noConflict();
 $lly(document).ready(function() {
-
+  
   function doload_lly() {
 
     $lly("a.lazy-load-youtube").each(function(index) {
