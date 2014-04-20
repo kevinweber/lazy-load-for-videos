@@ -8,6 +8,7 @@ class LAZYLOAD_Admin {
 
 	function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_filter( 'oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3 );
 		add_action( 'admin_menu', array( $this, 'lazyload_create_menu' ) );
 	}
 
@@ -17,6 +18,52 @@ class LAZYLOAD_Admin {
 			$this->lazyload_admin_js();
 		}
 		$this->register_lazyload_settings();
+	}
+
+	/**
+	 * Replace embedded Youtube and Vimeo videos with a special piece of code.
+	 * Thanks to Otto's comment on StackExchange (See http://wordpress.stackexchange.com/a/19533)
+	 */
+	function lazyload_replace_video($return, $data, $url) {
+
+		// Youtube support
+	    if ( (! is_feed()) && ($data->provider_name == 'YouTube') 
+				&& (get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated
+	    	) {
+	    	// Test: Display Youtube title
+	    	if ( (get_option('lly_opt_title') == true) ) {
+	    		$titletxt = $data->title;
+	    	}
+	    	else {
+	    		$titletxt = '&ensp;';
+	    	}
+
+       		$preview_url = '<a class="lazy-load-youtube preview-youtube" href="' . $url . '" title="Play Video &quot;' . $data->title . '&quot;">'
+	       		. $titletxt .
+	       		'</a>';
+       		return $preview_url;
+	    }
+
+	    // Vimeo support
+	    elseif ( (! is_feed()) && ($data->provider_name == 'Vimeo') 
+				&& (get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
+	    	) {
+
+			$spliturl = explode("/", $url);
+			foreach($spliturl as $key=>$value)
+			{
+			    if ( empty( $value ) )
+			        unset($spliturl[$key]);
+			};
+			$vimeoid = end($spliturl);
+
+			$preview_url = '<div id="' . $vimeoid . '" class="lazy-load-vimeo preview-vimeo" title="Play Video &quot;' . $data->title . '&quot;">
+					
+				</div>';
+       		return $preview_url;
+	    }
+
+	    else return $return;
 	}
 
 	function lazyload_create_menu() {
