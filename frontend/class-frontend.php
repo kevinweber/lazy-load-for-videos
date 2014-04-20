@@ -7,8 +7,10 @@ class LAZYLOAD_Frontend {
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_lazyload_style') );
 		add_action( 'wp_head', array( $this, 'load_lazyload_custom_css') );
-		add_filter( 'oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3 );
+		//add_filter( 'oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3 );
 		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
+		add_filter( 'embed_oembed_html', array( $this, 'lazyload_replace_video_oembed_html'), 10, 3 );
+
 	}
 
 	/**
@@ -29,6 +31,39 @@ class LAZYLOAD_Frontend {
 			<?php } ?>
 		</style>
 	<?php
+	}
+
+	function lazyload_replace_video_oembed_html( $html, $url, $attr ) {
+
+		$provider = parse_url( $url ); 
+
+		// Youtube support
+	    if ( 	( strpos($provider['host'], 'youtube') == true ) &&
+	    		(! is_feed()) &&
+				(get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated
+	    	) {
+       		$preview_url = '<a class="lazy-load-youtube preview-youtube" href="' . $url . '" title="Play Video">&ensp;</a>';
+       		return $preview_url;
+	    }
+
+	    // Vimeo support
+	    elseif ( 	( strpos($provider['host'], 'vimeo') == true ) &&
+	    			(! is_feed()) &&
+					(get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
+	    	) {
+
+			$spliturl = explode("/", $url);
+			foreach($spliturl as $key=>$value)
+			{
+			    if ( empty( $value ) )
+			        unset($spliturl[$key]);
+			};
+			$vimeoid = end($spliturl);
+
+			$preview_url = '<div id="' . $vimeoid . '" class="lazy-load-vimeo preview-vimeo" title="Play Video"></div>';
+       		return $preview_url;
+	    }
+	    else return $html;
 	}
 
 	/**
