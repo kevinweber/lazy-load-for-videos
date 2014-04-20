@@ -19,21 +19,12 @@ function lazyload_admin_init() {
 
 function lazyload_frontend_init() {
 	require_once( LL_PATH . 'frontend/class-frontend.php' );
-
-	// TODO -- if ( get_option("select_...") === "...name..." ) {
-		require_once( LL_PATH . 'frontend/class-youtube.php' );
-	// }
-	// else {
-		require_once( LL_PATH . 'frontend/class-vimeo.php' );
-	// }
+	require_once( LL_PATH . 'frontend/class-youtube.php' );
+	require_once( LL_PATH . 'frontend/class-vimeo.php' );
 }
 
-
-	add_action( 'plugins_loaded', 'lazyload_admin_init', 15 );
-
-	add_action( 'plugins_loaded', 'lazyload_frontend_init', 15 );
-
-
+add_action( 'plugins_loaded', 'lazyload_admin_init', 15 );
+add_action( 'plugins_loaded', 'lazyload_frontend_init', 15 );
 
 /***** Plugin by Kevin Weber || kevinw.de *****/
 ?>
