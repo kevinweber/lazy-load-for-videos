@@ -28,13 +28,15 @@ class LAZYLOAD_Frontend {
 	/**
 	 * Add Custom CSS
 	 */
-	function load_lazyload_custom_css() { ?>
-		<style type="text/css">	
-			<?php if (stripslashes(get_option('ll_opt_customcss')) != '') { ?>
-				<?php echo stripslashes(get_option('ll_opt_customcss')); ?>
-			<?php } ?>
-		</style>
-	<?php
+	function load_lazyload_custom_css() {
+		echo '<style type="text/css">';
+			if (stripslashes(get_option('ll_opt_customcss')) != '') {
+				echo stripslashes(get_option('ll_opt_customcss'));
+			}
+	    	if ( (get_option('ll_opt_thumbnail_size') == 'cover') ) {
+	    		echo 'a.lazy-load-youtube, .lazy-load-vimeo { background-size: cover !important; }';
+	    	}
+		echo '</style>';
 	}
 
 }

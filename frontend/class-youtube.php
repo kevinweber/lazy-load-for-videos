@@ -17,17 +17,6 @@ class LAZYLOAD_youtube {
 		wp_enqueue_script( 'lazyload_youtube_js', plugins_url( '../js/min/lazyload-youtube-ck.js' , __FILE__ ) );
 	}
 
-	/**
-	 * Add Custom CSS
-	 */
-	function load_lazyload_custom_css() {
-		echo '<style type="text/css">';
-	    	if ( (get_option('llv_opt_title') == true) ) {
-	    		//
-	    	}
-		echo '</style>';
-	}
-
 }
 
 function initialize_lazyload_youtube() {

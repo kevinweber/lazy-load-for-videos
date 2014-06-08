@@ -77,6 +77,7 @@ class LAZYLOAD_Admin {
 			'lly_opt',
 			'lly_opt_title',
 			'lly_opt_support_for_widgets',
+			'll_opt_thumbnail_size',
 
 			// Vimeo
 			'llv_opt',
@@ -99,7 +100,7 @@ class LAZYLOAD_Admin {
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Youtube</a></li>
 		    	<li><a href="#tabs-2">Vimeo</a></li>
-		        <li><a href="#tabs-3">Other</a></li>
+		        <li><a href="#tabs-3">Styling/Other</a></li>
 		    </ul>
 			
 			<form method="post" action="options.php">
@@ -121,7 +122,7 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Display Youtube title <span class="newred">New!</span></label></th>
+						        <th scope="row"><label>Display Youtube Title <span class="newred">New!</span></label></th>
 						        <td>
 									<input name="lly_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_title' ) ); ?> /> <label>If checked, the Youtube video title will be displayed on preview image.</label>
 						        </td>
@@ -151,7 +152,7 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Display Vimeo title <span class="newred">New!</span></label></th>
+						        <th scope="row"><label>Display Vimeo Title <span class="newred">New!</span></label></th>
 						        <td>
 									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label>If checked, the Vimeo video title will be displayed on preview image.</label>
 						        </td>
@@ -164,10 +165,19 @@ class LAZYLOAD_Admin {
 
 				<div id="tabs-3">
 
-					<h3>Other</h3>
+					<h3>Styling/Other</h3>
 
 					<table class="form-table">
 						<tbody>
+					        <tr valign="top">
+					        	<th scope="row"><label>Thumbnail Size <span class="newred">New!</span></label></th>
+						        <td>
+									<select class="select" typle="select" name="ll_opt_thumbnail_size">
+										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>>Standard</option>
+										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>>Cover</option>
+									</select>
+						        </td>
+					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><label>Custom CSS</label></th>
 					        	<td>
