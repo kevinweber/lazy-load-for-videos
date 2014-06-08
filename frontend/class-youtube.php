@@ -21,7 +21,9 @@ class LAZYLOAD_youtube {
 
 			$ind(document).ready(function() {
 				setOptions({
-					theme: '<?php if (get_option("select_bubble_style") == "") { echo "dark"; } else { echo get_option("lly_opt_player_colour"); } ?>',
+					theme: '<?php if (get_option("lly_opt_player_colour") == "") { echo "dark"; } else { echo get_option("lly_opt_player_colour"); } ?>',
+					controls: <?php if (get_option("lly_opt_player_controls") == "1") { echo "false"; } else { echo "true"; } ?>,
+					//background: '<?php if (get_option("set_bgcolour") == "") { echo "#fff"; } else { echo get_option("set_bgcolour"); } ?>',
 				});
 			});
 		</script>

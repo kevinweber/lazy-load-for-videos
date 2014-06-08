@@ -21,6 +21,7 @@ By loading the videos only when the user clicks on the preview image – using j
 * Support for Widgets (Youtube only)
 * Choose thumbnail size (standard or cover)
 * Choose between two colours for Youtube player (dark or light)
+* Hide controls from Youtube player
 
 = Future features: =
 * Choose between several "Play" buttons
@@ -85,10 +86,11 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 == Changelog ==
 
-= 1.4.5 =
+= 1.4.6 =
 * New feature: Choose between two colours for Youtube player (dark or light)
 * New feature: Support for widgets (Youtube only)
 * New feature: Choose thumbnail size (standard or cover)
+* New feature: Hide controls from Youtube player
 
 = 1.4.2 =
 * Important bugfix: Plugin v1.4 has not worked for new and updated posts
