@@ -18,6 +18,7 @@ By loading the videos only when the user clicks on the preview image – using j
 = New features: =
 * Display video titles on preview images
 * Add Custom CSS via plugin’s options panel
+* Support for Widgets (Youtube only)
 
 = Future features: =
 * Choose between several "Play" buttons
@@ -81,6 +82,9 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 
 == Changelog ==
+
+= 1.4.3 =
+* New feature: Support for Widgets (Youtube only)
 
 = 1.4.2 =
 * Important bugfix: Plugin v1.4 has not worked for new and updated posts

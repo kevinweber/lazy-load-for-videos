@@ -76,6 +76,7 @@ class LAZYLOAD_Admin {
 			// Youtube
 			'lly_opt',
 			'lly_opt_title',
+			'lly_opt_support_for_widgets',
 
 			// Vimeo
 			'llv_opt',
@@ -123,6 +124,12 @@ class LAZYLOAD_Admin {
 						        <th scope="row"><label>Display Youtube title <span class="newred">New!</span></label></th>
 						        <td>
 									<input name="lly_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_title' ) ); ?> /> <label>If checked, the Youtube video title will be displayed on preview image.</label>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+						        <th scope="row"><label>Support for Widgets <span class="newred">New!</span></label></th>
+						        <td>
+									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label>If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.</label>
 						        </td>
 					        </tr>
 					        <p class="notice"><span style="color:#f60;">Important:</span> Changes will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
