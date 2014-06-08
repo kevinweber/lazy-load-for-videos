@@ -78,6 +78,7 @@ class LAZYLOAD_Admin {
 			'lly_opt_title',
 			'lly_opt_support_for_widgets',
 			'lly_opt_player_colour',
+			'lly_opt_player_colour_progress',
 			'lly_opt_player_relations',
 			'lly_opt_player_controls',
 			'll_opt_thumbnail_size',
@@ -134,8 +135,17 @@ class LAZYLOAD_Admin {
 					        	<th scope="row"><label>Player colour <span class="newred">New!</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_player_colour">
-										<option value="dark"<?php if (get_option('lly_opt_player_colour') === 'dark') { echo ' selected="selected"'; } ?>>Dark (standard)</option>
+										<option value="dark"<?php if (get_option('lly_opt_player_colour') === 'dark') { echo ' selected="selected"'; } ?>>Dark (default)</option>
 										<option value="light"<?php if (get_option('lly_opt_player_colour') === 'light') { echo ' selected="selected"'; } ?>>Light</option>
+									</select>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Colour of progress bar <span class="newred">New!</span></label></th>
+						        <td>
+									<select class="select" typle="select" name="lly_opt_player_colour_progress">
+										<option value="red"<?php if (get_option('lly_opt_player_colour_progress') === 'red') { echo ' selected="selected"'; } ?>>Red (default)</option>
+										<option value="white"<?php if (get_option('lly_opt_player_colour_progress') === 'white') { echo ' selected="selected"'; } ?>>White</option>
 									</select>
 						        </td>
 					        </tr>
@@ -146,7 +156,7 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Don't dipslay player controls <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Don't display player controls <span class="newred">New!</span></label></th>
 						        <td>
 									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_controls' ) ); ?> /> <label>If checked, Youtube player controls will not be displayed.</label>
 						        </td>
