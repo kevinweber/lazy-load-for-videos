@@ -93,7 +93,7 @@ class LAZYLOAD_Admin {
 	function lazyload_settings_page()	{ ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2>Lazy Load for Videos</h2>
+			<h2>Lazy Load for Videos <span class="subtitle">by <a href="http://kevinw.de/ll" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo LL_VERSION; ?>)</span></h2>
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Youtube</a></li>
@@ -175,6 +175,8 @@ class LAZYLOAD_Admin {
 
 			    <?php submit_button(); ?>
 			</form>
+
+			<?php require_once( 'inc/signup.php' ); ?>
 
 		    <table class="form-table">
 		        <tr valign="top">

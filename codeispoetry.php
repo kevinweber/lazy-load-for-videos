@@ -10,11 +10,20 @@
  * Text Domain: lazy-load-videos
 */
 
+define( 'LL_VERSION', '1.4.2' );
+
+if ( !defined( 'LL_FILE' ) ) {
+	define( 'LL_FILE', __FILE__ );
+}
+
 if ( !defined( 'LL_PATH' ) )
 	define( 'LL_PATH', plugin_dir_path( __FILE__ ) );
 
+require_once( LL_PATH . 'admin/inc/signup_define.php' );
+require_once( LL_PATH . 'admin/class-register.php' );
+
 function lazyload_admin_init() {
-	require_once( LL_PATH . 'admin/class-admin.php' );
+	require_once( LL_PATH . 'admin/class-admin-options.php' );
 }
 
 function lazyload_frontend_init() {

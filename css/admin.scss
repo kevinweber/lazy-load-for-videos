@@ -34,6 +34,7 @@ p.notice {
 	padding: 4px 14px 6px;
 	text-decoration: none;
 	margin: 0 6px -1px 0;
+	outline: none;
 	-moz-border-radius: 5px 5px 0 0;
 	-webkit-border-top-left-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
@@ -41,6 +42,9 @@ p.notice {
 	-khtml-border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+	&:hover {
+		color: #464646;
+	}
 }
 
 .ui-tabs-nav li.ui-tabs-selected a,
@@ -83,8 +87,9 @@ tr {
 }
 
 form {
-	width:720px;
-	float:left;
+	width: 720px;
+	max-width: 100%;
+	float: left;
 }
 
 th label {
@@ -161,6 +166,15 @@ div#informations div#text li.center {
 }
 .newred.grey{
 	color:#999;
+}
+
+#mc_embed_signup label {
+	color: green;
+	line-height: 2.5em;
+}
+.mc-field-group.updated {
+	padding: 1.5em;
+	margin: 0 0 1.5em;
 }
 
 .pickerstyle{
