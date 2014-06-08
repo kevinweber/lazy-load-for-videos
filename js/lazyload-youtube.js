@@ -10,6 +10,7 @@ var setOptions = function( options ) {
   o = $lly.extend( {
       theme: 'dark',  // possible: dark, light
       controls: true,
+      relations: true,
     },
   options);
 };
@@ -45,11 +46,15 @@ $lly(document).ready(function() {
       $lly(this).attr("id", youid+index);
       $lly(this).attr("href", "http://www.youtube.com/watch?v="+youid+(start ? "#t="+start+"s" : ""));
       var emu = 'http://www.youtube.com/embed/'+embedparms;
+      var relations = '';
+      if(!o.relations) {
+        relations = '&rel=0';
+      }
       var controls = '';
       if(!o.controls) {
         controls = '&controls=0';
       }
-      emu += ((emu.indexOf("?")===-1) ? "?" : "&") + "autoplay=1" + "&theme="+o.theme + controls;
+      emu += ((emu.indexOf("?")===-1) ? "?" : "&") + "autoplay=1" + "&theme="+o.theme + controls + relations;
       var videoFrame = '<iframe width="'+parseInt($lly(this).css("width"))+'" height="'+parseInt($lly(this).css("height"))+'" style="vertical-align:top;" src="'+emu+'" frameborder="0" allowfullscreen></iframe>';
       $lly(this).attr("onclick", "$lly('#"+youid+index+"').replaceWith('"+videoFrame+"');return false;");
     });

@@ -78,6 +78,7 @@ class LAZYLOAD_Admin {
 			'lly_opt_title',
 			'lly_opt_support_for_widgets',
 			'lly_opt_player_colour',
+			'lly_opt_player_relations',
 			'lly_opt_player_controls',
 			'll_opt_thumbnail_size',
 
@@ -124,13 +125,13 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Display Youtube Title <span class="newred">New!</span></label></th>
+						        <th scope="row"><label>Display Youtube title <span class="newred">New!</span></label></th>
 						        <td>
 									<input name="lly_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_title' ) ); ?> /> <label>If checked, the Youtube video title will be displayed on preview image.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Player Colour <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Player colour <span class="newred">New!</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_player_colour">
 										<option value="dark"<?php if (get_option('lly_opt_player_colour') === 'dark') { echo ' selected="selected"'; } ?>>Dark (standard)</option>
@@ -139,18 +140,24 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Hide Player Controls <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Don't display related videos <span class="newred">New!</span></label></th>
 						        <td>
-									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_controls' ) ); ?> /> <label>If checked, the Youtube player's controls will not be displayed.</label>
+									<input name="lly_opt_player_relations" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_relations' ) ); ?> /> <label>If checked, related videos at the end of your videos will not be displayed.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Support for Widgets <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Don't dipslay player controls <span class="newred">New!</span></label></th>
+						        <td>
+									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_controls' ) ); ?> /> <label>If checked, Youtube player controls will not be displayed.</label>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+						        <th scope="row"><label>Support for widgets <span class="newred">New!</span></label></th>
 						        <td>
 									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label>If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.</label>
 						        </td>
 					        </tr>
-					        <p class="notice"><span style="color:#f60;">Important:</span> Most changes will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
+					        <p class="notice"><span style="color:#f60;">Important:</span> Enabling/disabling Lazy Load for Vimeo will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
 			        	</tbody>
 		        	</table>
 		        </div>
@@ -169,12 +176,12 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Display Vimeo Title <span class="newred">New!</span></label></th>
+						        <th scope="row"><label>Display Vimeo title <span class="newred">New!</span></label></th>
 						        <td>
 									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label>If checked, the Vimeo video title will be displayed on preview image.</label>
 						        </td>
 					        </tr>
-					        <p class="notice"><span style="color:#f60;">Important:</span> Most changes will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
+					        <p class="notice"><span style="color:#f60;">Important:</span> Enabling/disabling Lazy Load for Youtube will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
 			        	</tbody>
 		        	</table>
 		        </div>

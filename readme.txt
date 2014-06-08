@@ -22,6 +22,7 @@ By loading the videos only when the user clicks on the preview image – using j
 * Choose thumbnail size (standard or cover)
 * Choose between two colours for Youtube player (dark or light)
 * Hide controls from Youtube player
+* Don’t display related videos at the end of your videos
 
 = Future features: =
 * Choose between several "Play" buttons
@@ -86,10 +87,11 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 == Changelog ==
 
-= 1.4.6 =
+= 1.4.7 =
 * New feature: Choose between two colours for Youtube player (dark or light)
 * New feature: Support for widgets (Youtube only)
 * New feature: Choose thumbnail size (standard or cover)
+* New feature: Don’t display related videos at the end of your videos
 * New feature: Hide controls from Youtube player
 
 = 1.4.2 =
