@@ -6,7 +6,6 @@ class LAZYLOAD_youtube {
 
 	function __construct() {
 		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
-		add_action( 'wp_head', array( $this, 'load_lazyload_custom_css') );
 	}
 
 	/**
@@ -15,6 +14,18 @@ class LAZYLOAD_youtube {
 	 */
 	function enable_lazyload_js() {
 		wp_enqueue_script( 'lazyload_youtube_js', plugins_url( '../js/min/lazyload-youtube-ck.js' , __FILE__ ) );
+
+		?>
+		<script>
+			var $ind = jQuery.noConflict();
+
+			$ind(document).ready(function() {
+				setOptions({
+					theme: '<?php if (get_option("select_bubble_style") == "") { echo "dark"; } else { echo get_option("lly_opt_player_colour"); } ?>',
+				});
+			});
+		</script>
+		<?php
 	}
 
 }

@@ -7,7 +7,6 @@ class LAZYLOAD_vimeo {
 	function __construct() {
 		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
 		add_action( 'wp_head', array( $this, 'enable_lazyload_vimeo' ) );
-		add_action( 'wp_head', array( $this, 'load_lazyload_custom_css') );
 	}
 
 	/**
@@ -34,17 +33,6 @@ class LAZYLOAD_vimeo {
         };
 	    </script>
 	<?php }
-
-	/**
-	 * Add Custom CSS
-	 */
-	function load_lazyload_custom_css() {
-		echo '<style type="text/css">';
-	    	if ( (get_option('lly_opt_title') == true) ) {
-	    		//
-	    	}
-		echo '</style>';
-	}
 
 }
 

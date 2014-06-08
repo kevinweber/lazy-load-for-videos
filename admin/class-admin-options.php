@@ -78,6 +78,7 @@ class LAZYLOAD_Admin {
 			'lly_opt_title',
 			'lly_opt_support_for_widgets',
 			'll_opt_thumbnail_size',
+			'lly_opt_player_colour',
 
 			// Vimeo
 			'llv_opt',
@@ -131,6 +132,15 @@ class LAZYLOAD_Admin {
 						        <th scope="row"><label>Support for Widgets <span class="newred">New!</span></label></th>
 						        <td>
 									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label>If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.</label>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Player Colour<span class="newred">New!</span></label></th>
+						        <td>
+									<select class="select" typle="select" name="lly_opt_player_colour">
+										<option value="dark"<?php if (get_option('lly_opt_player_colour') === 'dark') { echo ' selected="selected"'; } ?>>Dark (standard)</option>
+										<option value="light"<?php if (get_option('lly_opt_player_colour') === 'light') { echo ' selected="selected"'; } ?>>Light</option>
+									</select>
 						        </td>
 					        </tr>
 					        <p class="notice"><span style="color:#f60;">Important:</span> Changes will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
