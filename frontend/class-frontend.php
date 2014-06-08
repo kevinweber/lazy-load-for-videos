@@ -28,7 +28,7 @@ class LAZYLOAD_Frontend {
 	/**
 	 * Add Custom CSS
 	 */
-	function load_lazyload_custom_css(){ ?>
+	function load_lazyload_custom_css() { ?>
 		<style type="text/css">	
 			<?php if (stripslashes(get_option('ll_opt_customcss')) != '') { ?>
 				<?php echo stripslashes(get_option('ll_opt_customcss')); ?>
@@ -39,8 +39,4 @@ class LAZYLOAD_Frontend {
 
 }
 
-
-function initialize_lazyload_frontend() {
-	$lazyload_frontend = new LAZYLOAD_Frontend();
-}
-add_action( 'init', 'initialize_lazyload_frontend' );
+$lazyload_frontend = new LAZYLOAD_Frontend();
