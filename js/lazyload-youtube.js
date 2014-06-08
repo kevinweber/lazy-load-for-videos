@@ -9,7 +9,7 @@ var o;
 var setOptions = function( options ) {
   o = $lly.extend( {
       theme: 'dark',  // possible: dark, light
-      colour: 'white',  // possible: red, white
+      colour: 'red',  // possible: red, white
       controls: true,
       relations: true,
     },

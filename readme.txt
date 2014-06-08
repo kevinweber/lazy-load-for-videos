@@ -26,8 +26,8 @@ By loading the videos only when the user clicks on the preview image – using j
 * Don’t display related videos at the end of your videos
 
 = Future features: =
+* Choose custom colour for your Vimeo player
 * Choose between several "Play" buttons
-* Choose between several colours for your player
 * Upload your own "Play" button
 * (Optional) video preview image for feeds
 * What you suggest
@@ -88,12 +88,12 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 == Changelog ==
 
-= 1.4.8 =
+= 1.5 =
 * New feature: Choose between two colours for Youtube player (dark or light)
 * New feature: Support for widgets (Youtube only)
 * New feature: Choose thumbnail size (standard or cover)
-* New feature: Don’t display related videos at the end of your videos
-* New feature: Hide controls from Youtube player
+* New feature: Don’t display related videos at the end of your videos (Youtube only)
+* New feature: Hide controls from Youtube player (Youtube only)
 * New feature: Choose between two colours for Youtube player’s video progress bar to highlight the amount of the video that the viewer has already seen (red or white)
 
 = 1.4.2 =
