@@ -132,4 +132,4 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 == Screenshots ==
 
 1. Preview image and play button are displayed.
-2. Options panel for admins (since version 1.3).
+2. Options panel for admins (version 1.5).
