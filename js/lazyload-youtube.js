@@ -43,10 +43,10 @@ $lly(document).ready(function() {
       else
         {$lly(this).html('<div class="lazy-load-youtube-info"><span class="titletext youtube">' + $lly(this).html() + '</div></div>');}
       $lly(this).prepend('<div style="height:'+(parseInt($lly(this).css("height"))-4)+'px;width:'+(parseInt($lly(this).css("width"))-4)+'px;" class="lazy-load-youtube-div"></div>');
-      $lly(this).css("background", "#000 url(http://i2.ytimg.com/vi/"+youid+"/0.jpg) center center no-repeat");
+      $lly(this).css("background", "#000 url(//i2.ytimg.com/vi/"+youid+"/0.jpg) center center no-repeat");
       $lly(this).attr("id", youid+index);
-      $lly(this).attr("href", "http://www.youtube.com/watch?v="+youid+(start ? "#t="+start+"s" : ""));
-      var emu = 'http://www.youtube.com/embed/'+embedparms;
+      $lly(this).attr("href", "//www.youtube.com/watch?v="+youid+(start ? "#t="+start+"s" : ""));
+      var emu = '//www.youtube.com/embed/'+embedparms;
       var relations = '';
       if(!o.relations) {
         relations = '&rel=0';

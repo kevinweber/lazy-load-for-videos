@@ -21,7 +21,7 @@ $llv(document).ready(function() {
     $llv( classPreviewVimeoDot ).on('click', function()
       {
         var vid = getAttrId( this );
-        $llv(this).html('<iframe src="http://player.vimeo.com/video/' + vid + '?autoplay=1" style="height:'+(parseInt($llv("#"+vid).css("height")))+'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
+        $llv(this).html('<iframe src="//player.vimeo.com/video/' + vid + '?autoplay=1" style="height:'+(parseInt($llv("#"+vid).css("height")))+'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
       }
     );
   };
@@ -34,7 +34,7 @@ $llv(document).ready(function() {
   };
 
   var vimeoLoadingThumb = function( id ){
-    var url = "http://vimeo.com/api/v2/video/" + id + ".json?callback=showThumb";
+    var url = "//vimeo.com/api/v2/video/" + id + ".json?callback=showThumb";
       
     var script = document.createElement( 'script' );
     script.type = 'text/javascript';
