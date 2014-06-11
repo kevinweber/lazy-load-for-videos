@@ -6,7 +6,7 @@
  * Author: Kevin Weber
  * Version: 1.5
  * Author URI: http://kevinw.de/
- * License: GPL2+
+ * License: GPL v3
  * Text Domain: lazy-load-videos
 */
 
