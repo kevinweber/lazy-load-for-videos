@@ -16,10 +16,15 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 }
 .lazy-load-youtube-div, .lazy-load-vimeo-div, .lazy-load-youtube-info {
 	max-width: 100%;
-	position: absolute;
 	opacity: 0.8;
 	z-index: 5;
 	color: #fff;
+}
+.lazy-load-youtube-div, .lazy-load-vimeo-div {
+	position: absolute;
+} 
+.lazy-load-youtube-info {
+	position: relative;
 }
 .lazy-load-youtube-div:hover, .lazy-load-vimeo-div:hover, .lazy-load-youtube:hover > div {
 	opacity: 1;
@@ -32,7 +37,9 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 }
 .titletext {
 	padding-left: 15px;
+	padding-right: 15px;
 	position: relative;
 	top: 7px;
 	text-shadow: none;
+	float: left;
 }
