@@ -39,6 +39,7 @@ class LAZYLOAD_Admin {
 	    	}
 
 	    	$a_class = 'lazy-load-youtube preview-youtube';
+	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
        		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" title="Play Video &quot;' . $data->title . '&quot;">'
 	       		. $titletxt .
@@ -59,7 +60,8 @@ class LAZYLOAD_Admin {
 			};
 			$vimeoid = end($spliturl);
 
-			$a_class = 'lazy-load-vimeo preview-vimeo';
+	    	$a_class = 'lazy-load-vimeo preview-vimeo';
+	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
 			$preview_url = '<div id="' . $vimeoid . '" class="' . $a_class . '" title="Play Video &quot;' . $data->title . '&quot;">
 					
