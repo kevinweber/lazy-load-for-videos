@@ -110,6 +110,7 @@ class LAZYLOAD_Admin {
 		        <li><a href="#tabs-1">Youtube</a></li>
 		    	<li><a href="#tabs-2">Vimeo</a></li>
 		        <li><a href="#tabs-3">Styling/Other</a></li>
+		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 			
 			<form method="post" action="options.php">
@@ -177,7 +178,6 @@ class LAZYLOAD_Admin {
 		        	</table>
 		        </div>
 
-
 				<div id="tabs-2">
 
 					<h3>Lazy Load for Vimeo</h3>
@@ -228,6 +228,7 @@ class LAZYLOAD_Admin {
 
 			    </div>
 
+				<?php do_action( 'lazyload_settings_page_tabs_after' ); ?>
 
 			    <?php submit_button(); ?>
 			</form>
