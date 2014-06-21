@@ -3,7 +3,6 @@
  * Create options panel (http://codex.wordpress.org/Creating_Options_Pages)
  * @package Admin
  */
-
 class LAZYLOAD_Admin {
 
 	function __construct() {
@@ -39,10 +38,12 @@ class LAZYLOAD_Admin {
 	    		$titletxt = '&ensp;';
 	    	}
 
-       		$preview_url = '<a class="lazy-load-youtube preview-youtube" href="' . $url . '" title="Play Video &quot;' . $data->title . '&quot;">'
+	    	$a_class = 'lazy-load-youtube preview-youtube';
+
+       		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" title="Play Video &quot;' . $data->title . '&quot;">'
 	       		. $titletxt .
 	       		'</a>';
-       		return $preview_url;
+       		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
 
 	    // Vimeo support
@@ -58,10 +59,12 @@ class LAZYLOAD_Admin {
 			};
 			$vimeoid = end($spliturl);
 
-			$preview_url = '<div id="' . $vimeoid . '" class="lazy-load-vimeo preview-vimeo" title="Play Video &quot;' . $data->title . '&quot;">
+			$a_class = 'lazy-load-vimeo preview-vimeo';
+
+			$preview_url = '<div id="' . $vimeoid . '" class="' . $a_class . '" title="Play Video &quot;' . $data->title . '&quot;">
 					
 				</div>';
-       		return $preview_url;
+			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
 	    }
 
 	    else return $return;

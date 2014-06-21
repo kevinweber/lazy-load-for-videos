@@ -84,6 +84,7 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 * "YouTube" (http://wordpress.org/extend/plugins/youtube-embed-plus/)
 * "Shortcode Embeds" extension within Jetpack, see answer above (http://jetpack.me/support/shortcode-embeds/)
 * "BuddyPress" (http://wordpress.org/plugins/buddypress/)
+* Thumbnails from Vimeo videos in "Privacy Mode" are not supported because Vimeo’s API doesn’t deliver thumbnails for those videos.
 * [???]
 
 
