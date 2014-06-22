@@ -39,6 +39,7 @@ class LAZYLOAD_Frontend {
 	 */
 	function test_if_scripts_should_be_loaded() {
 		return
+			( get_option('lly_opt_support_for_widgets') == true ) ||	// Option "Support for Widgets (Youtube only)" is checked
 			( is_singular() && ($this->test_if_post_or_page_has_embed()) ) ||	// Pages/posts with oembedded media
 			( !is_singular() )	// Everything else (except for pages/posts without oembedded media)
 		? true : false;
