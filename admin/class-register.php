@@ -6,7 +6,9 @@
 
 register_activation_hook( LL_FILE, 'lazyload_plugin_activation' );
 register_deactivation_hook( LL_FILE, 'lazyload_plugin_deactivation' );
+
 function lazyload_plugin_activation() {
+	lazyload_update_posts_with_oembed();
 
 	$signup = '<div id="mc_embed_signup">
 			<form action="'.LL_NEWS_ACTION_URL.'" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -34,9 +36,24 @@ function lazyload_plugin_activation() {
 }
 
 function lazyload_plugin_deactivation() {
-	delete_option( 'lazyload_deferred_admin_notices' ); 
+	lazyload_update_posts_with_oembed();
+	delete_option( 'lazyload_deferred_admin_notices' );
 }
 
+/**
+ * Update all posts that have an oembedded medium
+ */
+function lazyload_update_posts_with_oembed(){
+		$lazyload_general = new LAZYLOAD_General();
+
+	    $arr_posts = get_posts( array( 'post_type' => 'post', 'posts_per_page' => -1 ) );
+
+	    foreach ( $arr_posts as $post ):
+	    	if ( $lazyload_general->test_if_post_or_page_has_embed( $post->ID ) ) {
+	    		wp_update_post( $post );
+	    	}
+	    endforeach;
+}
 
 class lazyload_Register {
 
