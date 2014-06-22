@@ -17,7 +17,18 @@ class LAZYLOAD_Admin {
 			$this->lazyload_admin_css();
 			$this->lazyload_admin_js();
 		}
+		$plugin = plugin_basename( LL_FILE ); 
+		add_filter("plugin_action_links_$plugin", array( $this, 'lazyload_settings_link' ) );
 		$this->register_lazyload_settings();
+	}
+
+	/**
+	 * Add settings link on plugin page
+	 */
+	function lazyload_settings_link($links) { 
+	  $settings_link = '<a href="options-general.php?page=lazyload.php">Settings</a>'; 
+	  array_unshift($links, $settings_link); 
+	  return $links; 
 	}
 
 	/**
