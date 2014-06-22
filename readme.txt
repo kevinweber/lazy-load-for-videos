@@ -93,7 +93,8 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 == Changelog ==
 
 = 1.5.2 =
-* Improvement: When user activates or deactivates this plugin, all posts that have an oembedded medium will be updated once automatically
+* New feature: When user activates or deactivates this plugin, all posts that have an oembedded medium will be updated once automatically
+* New feature: Users can update all existing posts manually
 * Improvement: Only load CSS/JS files on pages/posts when necessary
 
 = 1.5 =
