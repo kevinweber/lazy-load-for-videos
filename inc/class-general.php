@@ -1,0 +1,29 @@
+<?php
+/**
+ * @package General (needed for both: admin and frontend)
+ */
+class LAZYLOAD_General {
+	/**
+	 * Thanks to http://t31os.wordpress.com/2010/05/24/post-has-embed/ for a nicer solution than mine
+	 */
+	function test_if_post_or_page_has_embed( $post_id = false ) {
+	    if( !$post_id )
+	        $post_id = get_the_ID();
+	    else
+	        $post_id = absint( $post_id );
+	    if( !$post_id )
+	        return false;
+
+	 	// Get meta keys for current post
+	    $post_meta = get_post_custom_keys( $post_id );
+	 
+	 	// Search for the first meta_key [$value] that begins with the oembed string [$string]
+		// After the first hits: continue to return true
+	    foreach( $post_meta as $meta ) {
+	        if( '_oembed' != substr( trim( $meta ) , 0 , 7 ) )
+	            continue;
+	        return true;
+	    }
+	    return false;
+	}
+}

@@ -18,11 +18,11 @@ By loading the videos only when the user clicks on the preview image – using j
 = Some additional features: =
 * Display video titles on preview images
 * Add Custom CSS via plugin’s options panel
+* Hide controls from Youtube player
 * Support for videos in text widget (Youtube only)
 * Choose thumbnail size (standard or cover)
 * Choose between two colours for Youtube player (dark or light)
 * Choose between two colours for Youtube player’s video progress bar to highlight the amount of the video that the viewer has already seen (red or white)
-* Hide controls from Youtube player
 * Don’t display related videos at the end of your videos
 
 = Future features: =

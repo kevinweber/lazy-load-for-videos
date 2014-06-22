@@ -5,6 +5,8 @@
 class LAZYLOAD_Frontend {
 
 	function __construct() {
+		require_once( LL_PATH . 'frontend/class-youtube.php' );
+		require_once( LL_PATH . 'frontend/class-vimeo.php' );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_lazyload_style') );
 		add_action( 'wp_head', array( $this, 'load_lazyload_custom_css') );
 	}
@@ -38,35 +40,13 @@ class LAZYLOAD_Frontend {
 	 * Don't load scripts on specific circumstances
 	 */
 	function test_if_scripts_should_be_loaded() {
+		$lazyload_general = new LAZYLOAD_General();
+
 		return
 			( get_option('lly_opt_support_for_widgets') == true ) ||	// Option "Support for Widgets (Youtube only)" is checked
-			( is_singular() && ($this->test_if_post_or_page_has_embed()) ) ||	// Pages/posts with oembedded media
+			( is_singular() && ($lazyload_general->test_if_post_or_page_has_embed()) ) ||	// Pages/posts with oembedded media
 			( !is_singular() )	// Everything else (except for pages/posts without oembedded media)
 		? true : false;
-	}		
-
-	/**
-	 * Thanks to http://t31os.wordpress.com/2010/05/24/post-has-embed/ for a nicer solution than mine
-	 */
-	function test_if_post_or_page_has_embed( $post_id = false ) {
-	    if( !$post_id )
-	        $post_id = get_the_ID();
-	    else
-	        $post_id = absint( $post_id );
-	    if( !$post_id )
-	        return false;
-
-	 	// Get meta keys for current post
-	    $post_meta = get_post_custom_keys( $post_id );
-	 
-	 	// Search for the first meta_key [$value] that begins with the oembed string [$string]
-		// After the first hits: continue to return true
-	    foreach( $post_meta as $meta ) {
-	        if( '_oembed' != substr( trim( $meta ) , 0 , 7 ) )
-	            continue;
-	        return true;
-	    }
-	    return false;
 	}
 
 }

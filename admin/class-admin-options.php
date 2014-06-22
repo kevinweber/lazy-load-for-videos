@@ -72,6 +72,18 @@ class LAZYLOAD_Admin {
 	    else return $return;
 	}
 
+	// function update_all_posts_with_embed(){
+
+	//     $all_posts = get_posts( array('post_type' => 'post' ) );
+
+	//     foreach ( $all_posts as $all_post ):
+
+	//     wp_update_post( $all_post );
+
+	//     endforeach;
+	// }
+
+
 	function lazyload_create_menu() {
 		add_options_page('Lazy Load for Videos', 'Lazy Load for Videos', 'manage_options', 'lazyload.php', array( $this, 'lazyload_settings_page' ));
 	}
