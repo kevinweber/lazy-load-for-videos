@@ -5,7 +5,7 @@
  */
 
 if ( !defined( 'LL_NOTICE' ) )
-	define( 'LL_NOTICE', '<p class="notice"><span style="color:#f60;">Important:</span> Updates on <u>underlined options</u> will only affect new posts and posts you update afterwards. To apply changes on all existing posts, you have to <a href="options-general.php?page=lazyload.php&update_posts=with_oembed">update all posts by calling this link</a>.</p>' );
+	define( 'LL_NOTICE', '<p class="notice"><span style="color:#f60;">Important:</span> Updates on <u>underlined options</u> will only affect new posts and posts you update afterwards. To apply changes on all existing posts, save your changes and then <a href="options-general.php?page=lazyload.php&update_posts=with_oembed">update all posts by calling this link</a> once.</p>' );
 
 class LAZYLOAD_Admin {
 
@@ -148,13 +148,13 @@ class LAZYLOAD_Admin {
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label>Do NOT use Lazy Load for Youtube</label></th>
+						        <th scope="row"><label><u>Do NOT use Lazy Load for Youtube</u></label></th>
 						        <td>
 									<input name="lly_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Youtube</b> videos.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Display Youtube title</label></th>
+						        <th scope="row"><label><u>Display Youtube title</u></label></th>
 						        <td>
 									<input name="lly_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_title' ) ); ?> /> <label>If checked, the Youtube video title will be displayed on preview image.</label>
 						        </td>
@@ -207,13 +207,13 @@ class LAZYLOAD_Admin {
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label>Do NOT use Lazy Load for Vimeo</label></th>
+						        <th scope="row"><label><u>Do NOT use Lazy Load for Vimeo</u></label></th>
 						        <td>
 									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Vimeo</b> videos.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Display Vimeo title</label></th>
+						        <th scope="row"><label><u>Display Vimeo title</u></label></th>
 						        <td>
 									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label>If checked, the Vimeo video title will be displayed on preview image.</label>
 						        </td>
