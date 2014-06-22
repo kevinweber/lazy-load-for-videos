@@ -3,10 +3,6 @@
  * Create options panel (http://codex.wordpress.org/Creating_Options_Pages)
  * @package Admin
  */
-
-if ( !defined( 'LL_NOTICE' ) )
-	define( 'LL_NOTICE', '<p class="notice"><span style="color:#f60;">Important:</span> Updates on <u>underlined options</u> will only affect new posts and posts you update afterwards. To apply changes on all existing posts, save your changes and then <a href="options-general.php?page='. LL_ADMIN_URL .'&update_posts=with_oembed">update all posts by calling this link</a> once.</p>' );
-
 class LAZYLOAD_Admin {
 
 	function __construct() {
@@ -261,10 +257,10 @@ class LAZYLOAD_Admin {
 			        	I'm the developer of this plugin. I hope you enjoy it!</p>
 			        </td>
 			        <td>
-						<p><b>It's free!</b> Support me with <a href="http://kevinw.de/donate/LazyLoadVideos/" title="Pay him something to eat" target="_blank">a delicious lunch</a> and give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/lazy-load-for-videos?filter=5" title="Vote for Lazy Load for Videos" target="_blank">on WordPress.org</a>.</p>
+						<p>Another great plugin: <a href="http://kevinw.de/ll-ind" title="Inline Comments" target="_blank">Inline Comments</a>.</p>
 			        </td>
 			        <td>
-						<p>Another great plugin: <a href="http://kevinw.de/ll-ind" title="Inline Comments" target="_blank">Inline Comments</a>.</p>
+						<p><b>It's free!</b> Support me with <a href="http://kevinw.de/donate/LazyLoadVideos/" title="Pay him something to eat" target="_blank">a delicious lunch</a> and give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/lazy-load-for-videos?filter=5" title="Vote for Lazy Load for Videos" target="_blank">on WordPress.org</a>.</p>
 			        </td>
 		        </tr>
 		    </table>
