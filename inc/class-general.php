@@ -19,11 +19,15 @@ class LAZYLOAD_General {
 	 
 	 	// Search for the first meta_key [$value] that begins with the oembed string [$string]
 		// After the first hits: continue to return true
-	    foreach( $post_meta as $meta ) {
-	        if( '_oembed' != substr( trim( $meta ) , 0 , 7 ) )
-	            continue;
-	        return true;
+		if ( is_array( $post_meta ) || $post_meta instanceof Traversable ) {
+		    foreach( $post_meta as $meta ) {
+		        if( '_oembed' != substr( trim( $meta ) , 0 , 7 ) )
+		            continue;
+		        return true;
+		    }
+		    return false;
+		} else {
+			return false;
 	    }
-	    return false;
 	}
 }
