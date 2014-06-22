@@ -15,10 +15,10 @@ Speed up your site by replacing embedded Youtube and Vimeo videos with a clickab
 This plugin improves page load times and increases your Google PageSpeed Score. It replaces embedded Youtube and Vimeo videos with a clickable preview image.
 By loading the videos only when the user clicks on the preview image – using jQuery –, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy.
 
-= New features: =
+= Some additional features: =
 * Display video titles on preview images
 * Add Custom CSS via plugin’s options panel
-* Support for Widgets (Youtube only)
+* Support for videos in text widget (Youtube only)
 * Choose thumbnail size (standard or cover)
 * Choose between two colours for Youtube player (dark or light)
 * Choose between two colours for Youtube player’s video progress bar to highlight the amount of the video that the viewer has already seen (red or white)
@@ -89,6 +89,9 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 
 == Changelog ==
+
+= 1.5.1 =
+* Improvement: Only load CSS/JS files on pages/posts when necessary
 
 = 1.5 =
 * New feature: Choose between two colours for Youtube player (dark or light)
