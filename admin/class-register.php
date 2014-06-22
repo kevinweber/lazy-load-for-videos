@@ -29,7 +29,7 @@ function lazyload_plugin_activation() {
 
 	$notices = get_option( 'lazyload_deferred_admin_notices', array() );
 	$notices[] = $signup . '<br>Edit your plugin settings: <strong>
-					<a href="options-general.php?page=lazyload.php">Lazy Load for Videos</a>
+					<a href="options-general.php?page='. LL_ADMIN_URL .'">Lazy Load for Videos</a>
 					</strong>';
 				;
 	update_option( 'lazyload_deferred_admin_notices', $notices );

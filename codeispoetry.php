@@ -19,7 +19,7 @@ if ( !defined( 'LL_FILE' ) ) {
 if ( !defined( 'LL_PATH' ) )
 	define( 'LL_PATH', plugin_dir_path( __FILE__ ) );
 
-require_once( LL_PATH . 'admin/inc/signup_define.php' );
+require_once( LL_PATH . 'admin/inc/define.php' );
 require_once( LL_PATH . 'admin/class-register.php' );
 require_once( LL_PATH . 'inc/class-general.php' );
 

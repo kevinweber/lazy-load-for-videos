@@ -5,7 +5,7 @@
  */
 
 if ( !defined( 'LL_NOTICE' ) )
-	define( 'LL_NOTICE', '<p class="notice"><span style="color:#f60;">Important:</span> Updates on <u>underlined options</u> will only affect new posts and posts you update afterwards. To apply changes on all existing posts, save your changes and then <a href="options-general.php?page=lazyload.php&update_posts=with_oembed">update all posts by calling this link</a> once.</p>' );
+	define( 'LL_NOTICE', '<p class="notice"><span style="color:#f60;">Important:</span> Updates on <u>underlined options</u> will only affect new posts and posts you update afterwards. To apply changes on all existing posts, save your changes and then <a href="options-general.php?page='. LL_ADMIN_URL .'&update_posts=with_oembed">update all posts by calling this link</a> once.</p>' );
 
 class LAZYLOAD_Admin {
 
@@ -17,7 +17,7 @@ class LAZYLOAD_Admin {
 	}
 
 	function admin_init() {
-		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'lazyload.php') ) {
+		if ( isset( $_GET['page'] ) && ( $_GET['page'] == LL_ADMIN_URL ) ) {
 			if ( isset( $_GET['update_posts'] ) && $_GET['update_posts'] == 'with_oembed' ) {
 				lazyload_update_posts_with_embed();
 			}
@@ -33,13 +33,9 @@ class LAZYLOAD_Admin {
 	 * Add settings link on plugin page
 	 */
 	function lazyload_settings_link($links) { 
-	  $settings_link = '<a href="options-general.php?page=lazyload.php">Settings</a>'; 
+	  $settings_link = '<a href="options-general.php?page='. LL_ADMIN_URL .'">Settings</a>'; 
 	  array_unshift($links, $settings_link); 
 	  return $links; 
-	}
-
-	function lazyload_update_posts_with_embed() {
-
 	}
 
 	/**
@@ -95,7 +91,7 @@ class LAZYLOAD_Admin {
 	}
 
 	function lazyload_create_menu() {
-		add_options_page('Lazy Load for Videos', 'Lazy Load for Videos', 'manage_options', 'lazyload.php', array( $this, 'lazyload_settings_page' ));
+		add_options_page('Lazy Load for Videos', 'Lazy Load for Videos', 'manage_options', LL_ADMIN_URL, array( $this, 'lazyload_settings_page' ));
 	}
 
 	function register_lazyload_settings() {
