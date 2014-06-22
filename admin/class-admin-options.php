@@ -3,6 +3,10 @@
  * Create options panel (http://codex.wordpress.org/Creating_Options_Pages)
  * @package Admin
  */
+
+if ( !defined( 'LL_NOTICE' ) )
+	define( 'LL_NOTICE', '<p class="notice"><span style="color:#f60;">Important:</span> Updates on <u>underlined options</u> will only affect new posts and posts you update afterwards. To apply changes on all existing posts, you have to <a href="options-general.php?page=lazyload.php&update_posts=with_oembed">update all posts by calling this link</a>.</p>' );
+
 class LAZYLOAD_Admin {
 
 	function __construct() {
@@ -14,6 +18,9 @@ class LAZYLOAD_Admin {
 
 	function admin_init() {
 		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'lazyload.php') ) {
+			if ( isset( $_GET['update_posts'] ) && $_GET['update_posts'] == 'with_oembed' ) {
+				lazyload_update_posts_with_embed();
+			}
 			$this->lazyload_admin_css();
 			$this->lazyload_admin_js();
 		}
@@ -29,6 +36,10 @@ class LAZYLOAD_Admin {
 	  $settings_link = '<a href="options-general.php?page=lazyload.php">Settings</a>'; 
 	  array_unshift($links, $settings_link); 
 	  return $links; 
+	}
+
+	function lazyload_update_posts_with_embed() {
+
 	}
 
 	/**
@@ -184,7 +195,7 @@ class LAZYLOAD_Admin {
 									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.</label>
 						        </td>
 					        </tr>
-					        <p class="notice"><span style="color:#f60;">Important:</span> Enabling/disabling Lazy Load for Youtube will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
+					        <?php echo LL_NOTICE; ?>
 			        	</tbody>
 		        	</table>
 		        </div>
@@ -207,7 +218,7 @@ class LAZYLOAD_Admin {
 									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label>If checked, the Vimeo video title will be displayed on preview image.</label>
 						        </td>
 					        </tr>
-					        <p class="notice"><span style="color:#f60;">Important:</span> Enabling/disabling Lazy Load for Vimeo will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
+					       	<?php echo LL_NOTICE; ?>
 			        	</tbody>
 		        	</table>
 		        </div>
