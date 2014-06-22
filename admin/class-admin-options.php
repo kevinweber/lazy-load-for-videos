@@ -184,7 +184,7 @@ class LAZYLOAD_Admin {
 									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.</label>
 						        </td>
 					        </tr>
-					        <p class="notice"><span style="color:#f60;">Important:</span> Enabling/disabling Lazy Load for Vimeo will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
+					        <p class="notice"><span style="color:#f60;">Important:</span> Enabling/disabling Lazy Load for Youtube will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
 			        	</tbody>
 		        	</table>
 		        </div>
@@ -207,7 +207,7 @@ class LAZYLOAD_Admin {
 									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label>If checked, the Vimeo video title will be displayed on preview image.</label>
 						        </td>
 					        </tr>
-					        <p class="notice"><span style="color:#f60;">Important:</span> Enabling/disabling Lazy Load for Youtube will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
+					        <p class="notice"><span style="color:#f60;">Important:</span> Enabling/disabling Lazy Load for Vimeo will only affect new posts and posts you update afterwards. (Open the post editor and update/save your post again.)</p>
 			        	</tbody>
 		        	</table>
 		        </div>
