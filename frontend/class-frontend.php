@@ -5,10 +5,10 @@
 class LAZYLOAD_Frontend {
 
 	function __construct() {
-		require_once( LL_PATH . 'frontend/class-youtube.php' );
-		require_once( LL_PATH . 'frontend/class-vimeo.php' );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_lazyload_style') );
 		add_action( 'wp_head', array( $this, 'load_lazyload_custom_css') );
+		require_once( LL_PATH . 'frontend/class-youtube.php' );
+		require_once( LL_PATH . 'frontend/class-vimeo.php' );
 	}
 
 	/**
@@ -16,9 +16,9 @@ class LAZYLOAD_Frontend {
 	 */
 	function load_lazyload_style() {
 		if ( $this->test_if_scripts_should_be_loaded() ) {
-			wp_enqueue_script( 'jquery' ); // Enable jQuery (comes with WordPress)
 			wp_register_style( 'lazyload-style', plugins_url('css/min/style-lazyload.css', plugin_dir_path( __FILE__ )) );
 			wp_enqueue_style( 'lazyload-style' );
+			wp_enqueue_script( 'jquery' ); // Enable jQuery (comes with WordPress)
 		}
 	}
 
