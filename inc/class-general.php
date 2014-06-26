@@ -21,7 +21,7 @@ class LAZYLOAD_General {
 		// After the first hits: continue to return true
 		if ( is_array( $post_meta ) || $post_meta instanceof Traversable ) {
 		    foreach( $post_meta as $meta ) {
-		        if( '_oembed' != substr( trim( $meta ) , 0 , 7 ) )
+		        if( ('oembed_' || '_oembed') != substr( trim( $meta ) , 0 , 7 ) )
 		            continue;
 		        return true;
 		    }
