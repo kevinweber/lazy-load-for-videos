@@ -21,7 +21,7 @@ class LAZYLOAD_General {
 		// After the first hits: continue to return true
 		if ( is_array( $post_meta ) || $post_meta instanceof Traversable ) {
 		    foreach( $post_meta as $meta ) {
-		        if( ('oembed_' || '_oembed') != substr( trim( $meta ) , 0 , 7 ) )
+		        if( ('oembed_' || '_oembed') != substr( trim( $meta ) , 0 , 7 ) )	// '_oembed' is used by WordPress standardly; 'oembed_' is used by some plugins and themes
 		            continue;
 		        return true;
 		    }
