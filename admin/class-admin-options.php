@@ -107,12 +107,14 @@ class LAZYLOAD_Admin {
 			'llv_opt_title',
 
 			//Other
-			'll_opt_customcss'
+			'll_opt_customcss',
+			'll_opt_support_for_tablepress'
 		);
 
 		foreach ( $arr as $i ) {
 			register_setting( 'll-settings-group', $i );
 		}
+		do_action( 'lazyload_register_settings_after' );
 	}
 
 	function lazyload_settings_page()	{ ?>
@@ -123,7 +125,7 @@ class LAZYLOAD_Admin {
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Youtube</a></li>
 		    	<li><a href="#tabs-2">Vimeo</a></li>
-		        <li><a href="#tabs-3">Styling/Other</a></li>
+		        <li><a href="#tabs-3">General/Styling/Other</a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 			
@@ -152,7 +154,7 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Player colour <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Player colour</label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_player_colour">
 										<option value="dark"<?php if (get_option('lly_opt_player_colour') === 'dark') { echo ' selected="selected"'; } ?>>Dark (default)</option>
@@ -161,7 +163,7 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Colour of progress bar <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Colour of progress bar</label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_player_colour_progress">
 										<option value="red"<?php if (get_option('lly_opt_player_colour_progress') === 'red') { echo ' selected="selected"'; } ?>>Red (default)</option>
@@ -170,19 +172,19 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Don't display related videos <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Don't display related videos</label></th>
 						        <td>
 									<input name="lly_opt_player_relations" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_relations' ) ); ?> /> <label>If checked, related videos at the end of your videos will not be displayed.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Don't display player controls <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Don't display player controls</label></th>
 						        <td>
 									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_controls' ) ); ?> /> <label>If checked, Youtube player controls will not be displayed.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Support for widgets <span class="newred">New!</span></label></th>
+						        <th scope="row"><label>Support for widgets</label></th>
 						        <td>
 									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.</label>
 						        </td>
@@ -218,12 +220,12 @@ class LAZYLOAD_Admin {
 
 				<div id="tabs-3">
 
-					<h3>Styling/Other</h3>
+					<h3>General/Styling/Other</h3>
 
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-					        	<th scope="row"><label>Thumbnail Size <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Thumbnail Size</label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_thumbnail_size">
 										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>>Standard</option>
@@ -236,6 +238,12 @@ class LAZYLOAD_Admin {
 					        	<td>
 					        		<textarea rows="14" cols="70" type="text" name="ll_opt_customcss"><?php echo get_option('ll_opt_customcss'); ?></textarea>
 					        	</td>
+					        </tr>
+					        <tr valign="top">
+						        <th scope="row"><label>Support for TablePress <span class="newred">New!</span></label></th>
+						        <td>
+									<input name="ll_opt_support_for_tablepress" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_support_for_tablepress' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube or Vimeo URL into tables that are created with TablePress and it will be lazy loaded.</label>
+						        </td>
 					        </tr>
 					    </tbody>
 				    </table>

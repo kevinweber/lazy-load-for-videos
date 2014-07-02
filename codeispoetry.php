@@ -32,6 +32,10 @@ function lazyload_init_plugins_loaded() {
 if ( (get_option('lly_opt_support_for_widgets') == true) && !is_admin() ) {
 	require_once( LL_PATH . 'frontend/inc/support_for_widgets.php');
 }
+// Feature: Support for Plugin "TablePress"
+if ( (get_option('ll_opt_support_for_tablepress') == true) && !is_admin() ) {
+	require_once( LL_PATH . 'frontend/inc/support_for_tablepress.php');
+}
 
 add_action( 'plugins_loaded', 'lazyload_init_plugins_loaded', 15 );
 
