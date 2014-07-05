@@ -1,3 +1,21 @@
+/*
+ * Variables
+ */
+$white: #fff;
+$z-index-base: 2;
+
+/*
+ * Mixins
+ */
+// @mixin vendor-prefix($property, $value) {
+//   -webkit-#{$property}: #{$value};
+//   -moz-#{$property}: #{$value};
+//   -os-#{$property}: #{$value};
+//   -o-#{$property}: #{$value};
+//   #{$property}: #{$value};
+// }
+//    @include vendor-prefix( border-radius, 50% );
+
 a.lazy-load-youtube, .lazy-load-vimeo {
 	background: #000;
 	height: 315px;
@@ -17,7 +35,7 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 .lazy-load-youtube-div, .lazy-load-vimeo-div, .lazy-load-youtube-info {
 	max-width: 100%;
 	opacity: 0.8;
-	z-index: 1;
+	z-index: $z-index-base;
 	color: #fff;
 }
 .lazy-load-youtube-div, .lazy-load-vimeo-div {
@@ -42,4 +60,27 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	top: 7px;
 	text-shadow: none;
 	float: left;
+}
+.lazyload-info-icon {
+    width: 19px;
+    height: 0;
+    line-height: 19px;
+    display: block;
+    text-align: center;
+    opacity: 0.8;
+    margin: 1px 8px 1px auto;
+    color: $white;
+    font-family: Times, 'Times New Roman', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    z-index: $z-index-base + 1;
+    text-shadow: none;
+    position: relative;
+    top: 11px;
+    &:hover {
+      opacity: 1;
+      color: $white;
+      text-decoration: none;
+    }
 }

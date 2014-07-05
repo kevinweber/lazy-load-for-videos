@@ -27,6 +27,7 @@ class LAZYLOAD_youtube extends LAZYLOAD_Frontend {
 						relations: <?php if (get_option("lly_opt_player_relations") == "1") { echo "false"; } else { echo "true"; } ?>,
 						controls: <?php if (get_option("lly_opt_player_controls") == "1") { echo "false"; } else { echo "true"; } ?>,
 						playlist: '<?php if (get_option("lly_opt_player_playlist") == "") { echo ""; } else { echo get_option("lly_opt_player_playlist"); } ?>',
+						//displayBranding: ...,
 					});
 				});
 			</script>
