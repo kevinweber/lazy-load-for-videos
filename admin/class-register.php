@@ -8,8 +8,6 @@ register_activation_hook( LL_FILE, 'lazyload_plugin_activation' );
 register_deactivation_hook( LL_FILE, 'lazyload_plugin_deactivation' );
 
 function lazyload_plugin_activation() {
-	lazyload_update_posts_with_embed();
-
 	$signup = '<div id="mc_embed_signup">
 			<form action="'.LL_NEWS_ACTION_URL.'" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 				<div class="mc-field-group">
@@ -36,8 +34,8 @@ function lazyload_plugin_activation() {
 }
 
 function lazyload_plugin_deactivation() {
-	lazyload_update_posts_with_embed();
 	delete_option( 'lazyload_deferred_admin_notices' );
+	lazyload_update_posts_with_embed();
 }
 
 function lazyload_update_posts_with_embed() {
