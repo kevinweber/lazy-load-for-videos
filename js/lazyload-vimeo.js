@@ -4,6 +4,14 @@
  */
 
 var $llv = jQuery.noConflict();
+var o;
+var setOptions = function( options ) {
+  o = $llv.extend( {
+      playercolour: '',
+    },
+  options);
+};
+
 $llv(document).ready(function() {
 
   var classPreviewVimeo = 'preview-vimeo';
@@ -21,9 +29,22 @@ $llv(document).ready(function() {
     $llv( classPreviewVimeoDot ).on('click', function()
       {
         var vid = getAttrId( this );
-        $llv(this).html('<iframe src="//player.vimeo.com/video/' + vid + '?autoplay=1" style="height:'+(parseInt($llv("#"+vid).css("height")))+'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
+
+        var playercolour = '';
+        if(o.playercolour !== playercolour ) {
+          o.playercolour = filterDotHash( o.playercolour );
+          playercolour = '&color='+o.playercolour;
+        }
+
+        $llv(this).html('<iframe src="//player.vimeo.com/video/' + vid + '?autoplay=1' + playercolour + '" style="height:'+(parseInt($llv("#"+vid).css("height")))+'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
       }
     );
+  };
+
+  // Remove dots and hashs from a string
+  var filterDotHash = function( variable ) {
+    var filterdothash = variable.toString().replace(/[.#]/g, "");
+    return filterdothash;
   };
 
   var vimeoCreateThumbProcess = function() {

@@ -22,7 +22,13 @@ class LAZYLOAD_vimeo extends LAZYLOAD_Frontend {
 			
 			?>
 		    <script type='text/javascript'>
-	        var $llv = jQuery.noConflict();
+ 			var $llv = jQuery.noConflict();
+
+			$llv(document).ready(function() {	
+				setOptions({
+					playercolour: '<?php if (get_option("llv_opt_player_colour") == "") { echo ""; } else { echo get_option("llv_opt_player_colour"); } ?>',
+				});
+			});
 
 	        function showThumb(data){
 				$llv("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");

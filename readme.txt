@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 1.5.2.1
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,7 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 = 1.5.3 =
 * New feature: Support for Youtube and Vimeo URLs in tables created with plugin TablePress
+* New feature: With a colour picker the user can choose a colour of the video controls (Vimeo only)
 * Fix: Do NOT update all posts that have an oembedded medium when user activates the plugin anymore
 
 = 1.5.2 =

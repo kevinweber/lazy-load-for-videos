@@ -3,7 +3,6 @@
  * by Kevin Weber
  */
 
-
 var $lly = jQuery.noConflict();
 var o;
 var setOptions = function( options ) {
@@ -12,6 +11,7 @@ var setOptions = function( options ) {
       colour: 'red',  // possible: red, white
       controls: true,
       relations: true,
+      playlist: '',
     },
   options);
 };
@@ -55,7 +55,11 @@ $lly(document).ready(function() {
       if(!o.controls) {
         controls = '&controls=0';
       }
-      emu += ((emu.indexOf("?")===-1) ? "?" : "&") + "autoplay=1" + "&theme="+o.theme + "&color="+o.colour + controls + relations;
+      var playlist = '';
+      if(o.playlist !== '' ) {
+        playlist = '&playlist='+o.playlist;
+      }
+      emu += ((emu.indexOf("?")===-1) ? "?" : "&") + "autoplay=1" + "&theme="+o.theme + "&color="+o.colour + controls + relations + playlist;
       var videoFrame = '<iframe width="'+parseInt($lly(this).css("width"))+'" height="'+parseInt($lly(this).css("height"))+'" style="vertical-align:top;" src="'+emu+'" frameborder="0" allowfullscreen></iframe>';
       $lly(this).attr("onclick", "$lly('#"+youid+index+"').replaceWith('"+videoFrame+"');return false;");
     });

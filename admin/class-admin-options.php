@@ -100,11 +100,13 @@ class LAZYLOAD_Admin {
 			'lly_opt_player_colour_progress',
 			'lly_opt_player_relations',
 			'lly_opt_player_controls',
+			'lly_opt_player_playlist',
 			'll_opt_thumbnail_size',
 
 			// Vimeo
 			'llv_opt',
 			'llv_opt_title',
+			'llv_opt_player_colour',
 
 			//Other
 			'll_opt_customcss',
@@ -123,9 +125,9 @@ class LAZYLOAD_Admin {
 			<h2>Lazy Load for Videos <span class="subtitle">by <a href="http://kevinw.de/ll" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo LL_VERSION; ?>)</span></h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#tabs-1">Youtube</a></li>
-		    	<li><a href="#tabs-2">Vimeo</a></li>
-		        <li><a href="#tabs-3">General/Styling/Other</a></li>
+		        <li><a href="#tab-youtube">Youtube</a></li>
+		    	<li><a href="#tab-vimeo">Vimeo</a></li>
+		        <li><a href="#tab-other">General/Styling/Other</a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 			
@@ -135,7 +137,7 @@ class LAZYLOAD_Admin {
 		   		do_settings_sections( 'll-settings-group' );
 		   	?>
 
-				<div id="tabs-1">
+				<div id="tab-youtube">
 
 					<h3>Lazy Load for Youtube</h3>
 
@@ -172,16 +174,22 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Don't display related videos</label></th>
+					        	<th scope="row"><label>Hide related videos</label></th>
 						        <td>
 									<input name="lly_opt_player_relations" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_relations' ) ); ?> /> <label>If checked, related videos at the end of your videos will not be displayed.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Don't display player controls</label></th>
+					        	<th scope="row"><label>Hide player controls</label></th>
 						        <td>
 									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_controls' ) ); ?> /> <label>If checked, Youtube player controls will not be displayed.</label>
 						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Playlist (branding, video ads) <span class="newred">New!</span><span class="description thin"><br>&hellip; sell advertising space!</label></th>
+					        	<td>
+					        		<input type="text" name="lly_opt_player_playlist" placeholder="" value="<?php echo get_option('lly_opt_player_playlist'); ?>" /><br><label>Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisment at the end of every video. You have to insert the plain <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label><br><br><label>&raquo;I'm very proud of this feature because it gives you a new space to promote your brand or sell advertisements! An advertiser might pay to play his video following every video on your site. Isn't this an amazing opportunity?&laquo;<br>&ndash; <a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a>, digital marketer and developer of this plugin</label>
+					        	</td>
 					        </tr>
 					        <tr valign="top">
 						        <th scope="row"><label>Support for widgets</label></th>
@@ -194,7 +202,7 @@ class LAZYLOAD_Admin {
 		        	</table>
 		        </div>
 
-				<div id="tabs-2">
+				<div id="tab-vimeo">
 
 					<h3>Lazy Load for Vimeo</h3>
 
@@ -212,13 +220,20 @@ class LAZYLOAD_Admin {
 									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label>If checked, the Vimeo video title will be displayed on preview image.</label>
 						        </td>
 					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Colour of the video controls <span class="newred">New!</span></label></th>
+					        	<td>
+					        		<input id="llv_picker_input_player_colour" class="picker-input" type="text" name="llv_opt_player_colour" placeholder="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo get_option("llv_opt_player_colour"); } ?>" />
+					        		<div id="llv_picker_player_colour" class="picker-style"></div>
+					        	</td>
+					        </tr>
 					       	<?php echo LL_NOTICE; ?>
 			        	</tbody>
 		        	</table>
 		        </div>
 
 
-				<div id="tabs-3">
+				<div id="tab-other">
 
 					<h3>General/Styling/Other</h3>
 
@@ -277,11 +292,12 @@ class LAZYLOAD_Admin {
 	}
 
 	function lazyload_admin_js() {
-	    wp_enqueue_script( 'lazyload_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array('jquery', 'jquery-ui-tabs') );
+	    wp_enqueue_script( 'lazyload_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array('jquery', 'jquery-ui-tabs', 'farbtastic' ) );
 	}
 
 	function lazyload_admin_css() {
 		wp_enqueue_style( 'lazyload_admin_css', plugins_url('../css/min/admin.css', __FILE__) );
+		wp_enqueue_style( 'farbtastic' );	// Required for colour picker
 	}
 
 }
