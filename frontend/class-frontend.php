@@ -57,6 +57,7 @@ class LAZYLOAD_Frontend {
 	 * Add CSS to hide Video titles
 	 */
 	function load_lazyload_css_video_titles() {
+		// Hide Youtube titles with CSS
     	if ( get_option('lly_opt_title') == false ) {
     		echo '.titletext.youtube { display: none; }';
     	}
