@@ -93,9 +93,10 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 == Changelog ==
 
 = 1.5.3 =
-* New feature: Support for Youtube and Vimeo URLs in tables created with plugin TablePress
 * New feature: With a colour picker the user can choose a colour of the video controls (Vimeo only)
+* New feature: Support for Youtube and Vimeo URLs in tables created with plugin TablePress
 * Fix: Do NOT update all posts that have an oembedded medium when user activates the plugin anymore
+* Improvement: User must not update articles anymore when he changes setting 'Display Youtube title'
 
 = 1.5.2 =
 * New feature: When user -activates- or deactivates this plugin, all posts that have an oembedded medium will be updated once automatically
