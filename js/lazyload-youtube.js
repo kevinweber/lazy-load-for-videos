@@ -4,9 +4,9 @@
  */
 
 var $lly = jQuery.noConflict();
-var o;
-var setOptions = function( options ) {
-  o = $lly.extend( {
+var $lly_o;
+var setOptionsYoutube = function( options ) {
+  $lly_o = $lly.extend( {
       theme: 'dark',  // possible: dark, light
       colour: 'red',  // possible: red, white
       controls: true,
@@ -48,18 +48,18 @@ $lly(document).ready(function() {
       $lly(this).attr("href", "//www.youtube.com/watch?v="+youid+(start ? "#t="+start+"s" : ""));
       var emu = '//www.youtube.com/embed/'+embedparms;
       var relations = '';
-      if(!o.relations) {
+      if(!$lly_o.relations) {
         relations = '&rel=0';
       }
       var controls = '';
-      if(!o.controls) {
+      if(!$lly_o.controls) {
         controls = '&controls=0';
       }
       var playlist = '';
-      if(o.playlist !== '' ) {
-        playlist = '&playlist='+o.playlist;
+      if( $lly_o.playlist !== playlist && $lly_o.playlist !== undefined ) {
+        playlist = '&playlist='+$lly_o.playlist;
       }
-      emu += ((emu.indexOf("?")===-1) ? "?" : "&") + "autoplay=1" + "&theme="+o.theme + "&color="+o.colour + controls + relations + playlist;
+      emu += ((emu.indexOf("?")===-1) ? "?" : "&") + "autoplay=1" + "&theme="+$lly_o.theme + "&color="+$lly_o.colour + controls + relations + playlist;
       var videoFrame = '<iframe width="'+parseInt($lly(this).css("width"))+'" height="'+parseInt($lly(this).css("height"))+'" style="vertical-align:top;" src="'+emu+'" frameborder="0" allowfullscreen></iframe>';
       $lly(this).attr("onclick", "$lly('#"+youid+index+"').replaceWith('"+videoFrame+"');return false;");
     });

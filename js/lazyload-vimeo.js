@@ -4,9 +4,9 @@
  */
 
 var $llv = jQuery.noConflict();
-var o;
-var setOptions = function( options ) {
-  o = $llv.extend( {
+var $llv_o;
+var setOptionsVimeo = function( options ) {
+  $llv_o = $llv.extend( {
       playercolour: '',
     },
   options);
@@ -31,9 +31,9 @@ $llv(document).ready(function() {
         var vid = getAttrId( this );
 
         var playercolour = '';
-        if(o.playercolour !== playercolour ) {
-          o.playercolour = filterDotHash( o.playercolour );
-          playercolour = '&color='+o.playercolour;
+        if($llv_o.playercolour !== playercolour ) {
+          $llv_o.playercolour = filterDotHash( $llv_o.playercolour );
+          playercolour = '&color='+$llv_o.playercolour;
         }
 
         $llv(this).html('<iframe src="//player.vimeo.com/video/' + vid + '?autoplay=1' + playercolour + '" style="height:'+(parseInt($llv("#"+vid).css("height")))+'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
