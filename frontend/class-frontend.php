@@ -6,7 +6,7 @@ class LAZYLOAD_Frontend {
 
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_lazyload_style') );
-		add_action( 'wp_head', array( $this, 'load_lazyload_custom_css') );
+		add_action( 'wp_head', array( $this, 'load_lazyload_css') );
 		require_once( LL_PATH . 'frontend/class-youtube.php' );
 		require_once( LL_PATH . 'frontend/class-vimeo.php' );
 	}
@@ -23,17 +23,43 @@ class LAZYLOAD_Frontend {
 	}
 
 	/**
+	 * Add CSS
+	 */
+	function load_lazyload_css() {
+		echo '<style type="text/css">';
+
+		$this->load_lazyload_css_custom();
+		$this->load_lazyload_css_thumbnail_size();
+		$this->load_lazyload_css_video_titles();
+
+		echo '</style>';
+	}
+
+	/**
 	 * Add Custom CSS
 	 */
-	function load_lazyload_custom_css() {
-		echo '<style type="text/css">';
-			if (stripslashes(get_option('ll_opt_customcss')) != '') {
-				echo stripslashes(get_option('ll_opt_customcss'));
-			}
-	    	if ( (get_option('ll_opt_thumbnail_size') == 'cover') ) {
-	    		echo 'a.lazy-load-youtube, .lazy-load-vimeo { background-size: cover !important; }';
-	    	}
-		echo '</style>';
+	function load_lazyload_css_custom() {
+		if (stripslashes(get_option('ll_opt_customcss')) != '') {
+			echo stripslashes(get_option('ll_opt_customcss'));
+		}
+	}
+
+	/**
+	 * Add CSS for thumbnails
+	 */
+	function load_lazyload_css_thumbnail_size() {
+    	if ( (get_option('ll_opt_thumbnail_size') == 'cover') ) {
+    		echo 'a.lazy-load-youtube, .lazy-load-vimeo { background-size: cover !important; }';
+    	}
+	}
+
+	/**
+	 * Add CSS to hide Video titles
+	 */
+	function load_lazyload_css_video_titles() {
+    	if ( get_option('lly_opt_title') == false ) {
+    		echo '.titletext.youtube { display: none; }';
+    	}
 	}
 
 	/**

@@ -44,20 +44,11 @@ class LAZYLOAD_Admin {
 	    if ( (! is_feed()) && ($data->provider_name == 'YouTube') 
 				&& (get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated
 	    	) {
-	    	// Test: Display Youtube title
-	    	if ( (get_option('lly_opt_title') == true) ) {
-	    		$titletxt = $data->title;
-	    	}
-	    	else {
-	    		$titletxt = '&ensp;';
-	    	}
 
 	    	$a_class = 'lazy-load-youtube preview-youtube';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
-       		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" title="Play Video &quot;' . $data->title . '&quot;">'
-	       		. $titletxt .
-	       		'</a>';
+       		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;">&ensp;</a>';
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
 
@@ -150,7 +141,7 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label><u>Display Youtube title</u></label></th>
+						        <th scope="row"><label>Display Youtube title</label></th>
 						        <td>
 									<input name="lly_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_title' ) ); ?> /> <label>If checked, the Youtube video title will be displayed on preview image.</label>
 						        </td>

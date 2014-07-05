@@ -5,7 +5,7 @@
 class LAZYLOAD_youtube extends LAZYLOAD_Frontend {
 
 	function __construct() {
-		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );	
+		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
 	}
 
 	/**
