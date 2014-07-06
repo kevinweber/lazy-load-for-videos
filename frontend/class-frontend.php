@@ -49,7 +49,7 @@ class LAZYLOAD_Frontend {
 	 */
 	function load_lazyload_css_thumbnail_size() {
     	if ( (get_option('ll_opt_thumbnail_size') == 'cover') ) {
-    		echo 'a.lazy-load-youtube, .lazy-load-vimeo { background-size: cover !important; }';
+    		echo '.entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo { background-size: cover !important; }';
     	}
 	}
 
