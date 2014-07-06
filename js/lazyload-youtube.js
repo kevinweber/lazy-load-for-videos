@@ -73,6 +73,17 @@ $lly(document).ready(function() {
 
       createPluginInfo();
 
+      var videoTitle = function() {
+        if ( $lly(that).attr('video-title') !== undefined ) {
+          return $lly(that).attr("video-title");
+        }
+        else if ( $lly(this).html() !== '' && $lly(this).html() !== undefined ) {
+          return $lly(this).html();
+        }
+        else {
+          return "";
+        }
+      };
 
       embedparms = embedparms.split("#")[0];
       if (start && embedparms.indexOf("start=") === -1) {
@@ -81,8 +92,9 @@ $lly(document).ready(function() {
       if (embedparms.indexOf("showinfo=0") !== -1) {
         $lly(this).html('');
       } else {
-        $lly(this).html('<div class="lazy-load-youtube-info"><span class="titletext youtube">' + $lly(this).attr("video-title") + '</span></div>');
+        $lly(this).html('<div class="lazy-load-youtube-info"><span class="titletext youtube">' + videoTitle() + '</span></div>');
       }
+
       $lly(this).prepend('<div style="height:' + (parseInt($lly(this).css("height")) - 4) + 'px;width:' + (parseInt($lly(this).css("width")) - 4) + 'px;" class="lazy-load-youtube-div"></div>');
       $lly(this).css("background", "#000 url(//i2.ytimg.com/vi/" + youid + "/0.jpg) center center no-repeat");
       $lly(this).attr("id", youid + index);
