@@ -4,6 +4,14 @@
  */
 
 var $llv = jQuery.noConflict();
+
+// Classes
+var classPreviewVimeo = 'preview-vimeo';
+  var classPreviewVimeoDot = '.' + classPreviewVimeo;
+var classBranding = 'lazyload-info-icon';
+  var classBrandingDot = '.' + classBranding;
+
+
 var $llv_o;
 var setOptionsVimeo = function(options) {
   $llv_o = $llv.extend({
@@ -14,16 +22,35 @@ var setOptionsVimeo = function(options) {
 
 $llv(document).ready(function() {
 
-  var classPreviewVimeo = 'preview-vimeo';
-  var classPreviewVimeoDot = '.' + classPreviewVimeo;
-
 
   function doload_llv() {
     vimeoCreateThumbProcess();
 
+    createPluginInfo();
+
     // Replace thumbnail with iframe
     vimeoCreatePlayer();
   }
+
+      /*
+       * Load plugin info
+       */
+      var loadPluginInfo = function() {
+        return '<a class="' + classBranding + '" href="http://kevinw.de/lazyloadvideos" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
+      };
+
+      /*
+       * Create info element
+       */
+      var createPluginInfo = function() {
+        // source = Video
+        var source = $llv( classPreviewVimeoDot );
+        // element = Plugin info element
+        var element = $llv( loadPluginInfo() );
+        // Prepend element to source
+        source.before( element );
+      };
+
 
   var vimeoCreatePlayer = function() {
     $llv(classPreviewVimeoDot).on('click', function() {
@@ -67,8 +94,24 @@ $llv(document).ready(function() {
     return vid;
   };
 
+  /*
+   * Use ajaxStop function to prevent plugin from breaking when another plugin uses Ajax
+   */
   $llv(document).ready(doload_llv()).ajaxStop(function() {
     doload_llv();
   });
+
+  /*
+   * Prevent users from removing branding // YOU'RE NOT ALLOWED TO EDIT THE FOLLOWING LINES OF CODE
+   */
+  var displayBranding = function() {
+    if ($llv_o.displayBranding !== false) {
+      $llv(classBrandingDot).css({
+        'display': 'block',
+        'visibility': 'visible',
+      });
+    }
+  };
+  displayBranding();
 
 });

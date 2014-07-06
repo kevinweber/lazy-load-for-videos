@@ -60,8 +60,10 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	top: 7px;
 	text-shadow: none;
 	float: left;
+	text-transform: none;
+	font-weight: normal;
 }
-.lazyload-info-icon {
+p a.lazyload-info-icon, .lazyload-info-icon {
     width: 19px;
     height: 0;
     line-height: 19px;
@@ -78,6 +80,10 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
     text-shadow: none;
     position: relative;
     top: 11px;
+    text-transform: none;
+	border: 0;
+	vertical-align: baseline;
+	word-break: break-word;
     &:hover {
       opacity: 1;
       color: $white;

@@ -27,6 +27,7 @@ class LAZYLOAD_vimeo extends LAZYLOAD_Frontend {
 			$llv_class(document).ready(function() {	
 				setOptionsVimeo({
 					playercolour: '<?php if (get_option("llv_opt_player_colour") == "") { echo ""; } else { echo get_option("llv_opt_player_colour"); } ?>',
+					<?php do_action( 'llv_set_options' ); ?>
 				});
 			});
 

@@ -142,7 +142,6 @@ $lly(document).ready(function() {
     doload_lly();
   });
 
-
   /*
    * Prevent users from removing branding // YOU'RE NOT ALLOWED TO EDIT THE FOLLOWING LINES OF CODE
    */
