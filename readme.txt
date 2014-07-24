@@ -19,7 +19,9 @@ Demo on the developer’s website: [kevinw.de/lazyloadvideos](http://kevinw.de/l
 
 = Some additional features: =
 * Display video titles on preview images
+* Great for branding and video ads: Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every video.
 * Add Custom CSS via plugin’s options panel
+* Choose custom colour for your Vimeo player
 * Hide controls from Youtube player
 * Support for videos in text widget (Youtube only)
 * Choose thumbnail size (standard or cover)
@@ -28,9 +30,10 @@ Demo on the developer’s website: [kevinw.de/lazyloadvideos](http://kevinw.de/l
 * Don’t display related videos at the end of your videos
 
 = Future features: =
-* Choose custom colour for your Vimeo player
 * Choose between several "Play" buttons
 * Upload your own "Play" button
+* (Better) support with specific plugins
+* Support for new/other formats, like SoundCloud, SlideShare and Spotify 
 * (Optional) video preview image for feeds
 * What you suggest
 
@@ -92,11 +95,14 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 == Changelog ==
 
-= 1.5.3 =
+= 1.5.4 =
+* New feature: Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisment at the end of every video.
 * New feature: With a colour picker the user can choose a colour of the video controls (Vimeo only)
 * New feature: Support for Youtube and Vimeo URLs in tables created with plugin TablePress
-* Fix: Do NOT update all posts that have an oembedded medium when user activates the plugin anymore
 * Improvement: User must not update articles anymore when he changes setting 'Display Youtube title'
+
+= 1.5.2.1 =
+* Fix: Do NOT update all posts that have an oembedded medium when user activates the plugin anymore
 
 = 1.5.2 =
 * New feature: When user -activates- or deactivates this plugin, all posts that have an oembedded medium will be updated once automatically

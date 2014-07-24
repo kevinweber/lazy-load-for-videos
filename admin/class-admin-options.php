@@ -92,7 +92,6 @@ class LAZYLOAD_Admin {
 			'lly_opt_player_relations',
 			'lly_opt_player_controls',
 			'lly_opt_player_playlist',
-			'll_opt_thumbnail_size',
 
 			// Vimeo
 			'llv_opt',
@@ -100,6 +99,8 @@ class LAZYLOAD_Admin {
 			'llv_opt_player_colour',
 
 			//Other
+			'll_remove_branding',
+			'll_opt_thumbnail_size',
 			'll_opt_customcss',
 			'll_opt_support_for_tablepress'
 		);
@@ -116,9 +117,9 @@ class LAZYLOAD_Admin {
 			<h2>Lazy Load for Videos <span class="subtitle">by <a href="http://kevinw.de/ll" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo LL_VERSION; ?>)</span></h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#tab-youtube">Youtube</a></li>
-		    	<li><a href="#tab-vimeo">Vimeo</a></li>
-		        <li><a href="#tab-other">General/Styling/Other</a></li>
+		        <li><a href="#tab-youtube">Youtube <span class="newred_dot">&bull;</span></a></li>
+		    	<li><a href="#tab-vimeo">Vimeo <span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#tab-other">General/Styling/Other <span class="newred_dot">&bull;</span></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 			
@@ -179,7 +180,7 @@ class LAZYLOAD_Admin {
 					        <tr valign="top">
 					        	<th scope="row"><label>Playlist (branding, video ads) <span class="newred">New!</span><span class="description thin"><br>&hellip; sell advertising space!</label></th>
 					        	<td>
-					        		<input type="text" name="lly_opt_player_playlist" placeholder="" value="<?php echo get_option('lly_opt_player_playlist'); ?>" /><br><label>Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisment at the end of every video. You have to insert the plain <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label><br><br><label>&raquo;I'm very proud of this feature because it gives you a new space to promote your brand or sell advertisements! An advertiser might pay to play his video following every video on your site. Isn't this an amazing opportunity?&laquo;<br>&ndash; <a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a>, digital marketer and developer of this plugin</label>
+					        		<input type="text" name="lly_opt_player_playlist" placeholder="" value="<?php echo get_option('lly_opt_player_playlist'); ?>" /><br><label>Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every video. You have to insert the plain <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label><br><br><label>&raquo;I'm very proud of this feature because it gives you a new space to promote your brand or sell advertisements! An advertiser might pay to play his video following every video on your site. Isn't this an amazing opportunity?&laquo;<br>&ndash; <a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a>, digital marketer and developer of this plugin</label>
 					        	</td>
 					        </tr>
 					        <tr valign="top">
@@ -212,7 +213,7 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Colour of the video controls <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Colour of the vimeo controls <span class="newred">New!</span></label></th>
 					        	<td>
 					        		<input id="llv_picker_input_player_colour" class="picker-input" type="text" name="llv_opt_player_colour" placeholder="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo get_option("llv_opt_player_colour"); } ?>" />
 					        		<div id="llv_picker_player_colour" class="picker-style"></div>
@@ -230,6 +231,12 @@ class LAZYLOAD_Admin {
 
 					<table class="form-table">
 						<tbody>
+					        <tr valign="top">
+						        <th scope="row"><label>Remove Branding <span class="newred">New!</span></label></th>
+						        <td>
+									<input name="ll_remove_branding" type="checkbox" value="1" <?php checked( '1', get_option( 'll_remove_branding' ) ); ?> /> <label>Remove branding. That simple.</label>
+						        </td>
+					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><label>Thumbnail Size</label></th>
 						        <td>

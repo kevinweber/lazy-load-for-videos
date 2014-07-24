@@ -9,6 +9,7 @@ class LAZYLOAD_Frontend {
 		add_action( 'wp_head', array( $this, 'load_lazyload_css') );
 		require_once( LL_PATH . 'frontend/class-youtube.php' );
 		require_once( LL_PATH . 'frontend/class-vimeo.php' );
+		$this->remove_branding();
 	}
 
 	/**
@@ -74,6 +75,15 @@ class LAZYLOAD_Frontend {
 			( is_singular() && ($lazyload_general->test_if_post_or_page_has_embed()) ) ||	// Pages/posts with oembedded media
 			( !is_singular() )	// Everything else (except for pages/posts without oembedded media)
 		? true : false;
+	}
+
+	/**
+	 * Remove branding
+	 */
+	function remove_branding() {
+		if ( get_option('ll_remove_branding') == true ) {
+			require_once( LL_PATH . 'frontend/inc/remove_branding.php');
+		}
 	}
 
 }
