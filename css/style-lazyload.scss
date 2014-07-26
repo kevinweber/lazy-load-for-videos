@@ -30,30 +30,20 @@ $z-index-base: 2;
 }
 
 .lazy-load-youtube-div {
+	display: table;
 	&:before, &::before {
-		// Button v1
 		content: "\25B6";
 		font-size: 50px;
 		font-family: Arial, sans-serif;
-		left: 47%;
-
-		// Button v2
-		// font-size: 0;
-		// $var_border: 50px;
-		// border-top: $var_border * 5/8 solid transparent;
-		// border-bottom: $var_border * 5/8 solid transparent;
-		// border-left: $var_border solid $white;
-		// margin-left: -$var_border * 0.5;
-		// content: "\00a0";
-		// left: 50%;
-
-		// General styling
 		color: $white;
+
 		opacity: 0.7;
-		position: relative;
-		top: 38%;
 		z-index: $z-index-base + 1;
 		text-shadow: 0px 0px 60px rgba(0,0,0,0.8);
+
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
 	}
 	&:hover:before {
 		opacity: 0.9;
@@ -61,6 +51,7 @@ $z-index-base: 2;
 	}
 }
 .lazy-load-vimeo {
+	display: table;
 	&:after, &::after {
 		@extend .lazy-load-youtube-div:before;
 	}
