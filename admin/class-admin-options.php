@@ -49,6 +49,8 @@ class LAZYLOAD_Admin {
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
        		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;">&ensp;</a>';
+ 			// Wrap container around $preview_url
+       		$preview_url = '<div class="container-youtube">' . $preview_url . '</div>';
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
 
@@ -71,6 +73,8 @@ class LAZYLOAD_Admin {
 			$preview_url = '<div id="' . $vimeoid . '" class="' . $a_class . '" title="Play Video &quot;' . $data->title . '&quot;">
 					
 				</div>';
+			// Wrap container around $preview_url
+			$preview_url = '<div class="container-vimeo">' . $preview_url . '</div>';
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
 	    }
 
