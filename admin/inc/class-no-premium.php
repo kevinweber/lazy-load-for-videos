@@ -40,7 +40,7 @@ class LAZYLOAD_No_Premium_Admin_Options {
 	function register_no_premium_settings_after() {
 		$arr = array(
 			'll_remove_branding',
-			'll_video_seo',
+			'll_video_seo', // Google: "Make sure that your video and schema.org markup are visible without executing any JavaScript or Flash." --> Video is not working with Lazy Load
 			'lly_opt_player_playlist',
 		);
 		foreach ( $arr as $i ) {
@@ -66,16 +66,16 @@ class LAZYLOAD_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
-				        <th scope="row"><label><u>Video SEO</u> <span class="newred">Beta</span></label></th>
-				        <td>
-							<input name="ll_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_video_seo' ) ); ?> /> <label>Add schema to your videos for better visibility in search engines.</label>
-				        </td>
-			        </tr>
-			        <tr valign="top">
 			        	<th scope="row"><label>Playlist (branding, video ads)<span class="description thin"><br>&hellip; sell advertising space!</label></th>
 			        	<td>
 			        		<input type="text" name="lly_opt_player_playlist" placeholder="" value="<?php echo get_option('lly_opt_player_playlist'); ?>" /><br><label>Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every Youtube video. You have to insert the plain Youtube <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label><br><br><label>&raquo;I'm very proud of this feature because it gives you a new space to promote your brand or sell advertisements! An advertiser might pay to play his video following every video on your site. Isn't this an amazing opportunity?&laquo;<br>&ndash; <a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a>, digital marketer and developer of this plugin</label>
 			        	</td>
+			        </tr>
+			        <tr valign="top">
+				        <th scope="row"><label><u>Schema.org Markup</u> <span class="newred">Beta</span></label></th>
+				        <td>
+							<input name="ll_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_video_seo' ) ); ?> /> <label>Add schema.org markup to your Youtube and Vimeo videos. Those changes don't seem to affect your search ranking because videos and schema.org markup <a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">should be visible</a> without JavaScript (but that cannot be the case when videos are lazy loaded).</label>
+				        </td>
 			        </tr>
 			        <tr valign="top">
 			        	<th scope="row"><label>More to come.</label></th>

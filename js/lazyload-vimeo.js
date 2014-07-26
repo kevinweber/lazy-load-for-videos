@@ -109,6 +109,9 @@ $llv(document).ready(function() {
         $llv("#" + id).append('<meta itemprop="contentLocation" content="' + data[0].url +'" />');
         $llv("#" + id).append('<meta itemprop="embedUrl" content="' + vimeoUrl(id) +'" />');
         $llv("#" + id).append('<meta itemprop="thumbnail" content="'+ data[0].thumbnail_large +'" />');
+        $llv("#" + id).append('<meta itemprop="datePublished" content="'+ data[0].upload_date +'" />');
+        $llv("#" + id).append('<meta itemprop="duration" content="'+ data[0].duration +'" />');
+        $llv("#" + id).append('<meta itemprop="aggregateRating" content="'+ data.data.rating +'" />');
         // TODO: Retrieve and use even more data for Video SEO. Possible data: https://developer.vimeo.com/apis/simple#response-data
       
       });
