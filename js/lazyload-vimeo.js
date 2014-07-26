@@ -16,6 +16,7 @@ var $llv_o;
 var setOptionsVimeo = function(options) {
   $llv_o = $llv.extend({
       playercolour: '',
+      videoseo: false,
     },
     options);
 };
@@ -62,8 +63,12 @@ $llv(document).ready(function() {
         playercolour = '&color=' + $llv_o.playercolour;
       }
 
-      $llv(this).html('<iframe src="//player.vimeo.com/video/' + vid + '?autoplay=1' + playercolour + '" style="height:' + (parseInt($llv("#" + vid).css("height"))) + 'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
+      $llv(this).html('<iframe src="' + vimeoUrl() + '?autoplay=1' + playercolour + '" style="height:' + (parseInt($llv("#" + vid).css("height"))) + 'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
     });
+  };
+
+  var vimeoUrl = function( id ) {
+    return '//player.vimeo.com/video/' + id;
   };
 
   // Remove dots and hashs from a string
@@ -80,13 +85,39 @@ $llv(document).ready(function() {
   };
 
   var vimeoLoadingThumb = function(id) {
-    var url = "//vimeo.com/api/v2/video/" + id + ".json?callback=showThumb";
+    var url = vimeoCallbackUrl(id) + ".json?callback=showThumb";
 
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = url;
 
-    $llv("#" + id).prepend(script).prepend('<div style="height:' + (parseInt($llv("#" + id).css("height"))) + 'px;width:' + (parseInt($llv("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div"><span class="titletext vimeo"></span></div>');
+    var itemprop_name = '';
+    if ($llv_o.videoseo === true ) {
+      itemprop_name = ' itemprop="name"';
+    }
+
+    $llv("#" + id).prepend(script).prepend('<div style="height:' + (parseInt($llv("#" + id).css("height"))) + 'px;width:' + (parseInt($llv("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div"><span class="titletext vimeo"'+itemprop_name+'></span></div>');
+
+    vimeoVideoSeo( id );
+  };
+
+  var vimeoVideoSeo = function( id ) {
+    if ($llv_o.videoseo === true) {
+
+      $llv.getJSON( vimeoCallbackUrl( id ) + '?callback=?', {format: "json"}, function(data) {
+
+        $llv("#" + id).append('<meta itemprop="contentLocation" content="' + data[0].url +'" />');
+        $llv("#" + id).append('<meta itemprop="embedUrl" content="' + vimeoUrl(id) +'" />');
+        $llv("#" + id).append('<meta itemprop="thumbnail" content="'+ data[0].thumbnail_large +'" />');
+        // TODO: Retrieve and use even more data for Video SEO. Possible data: https://developer.vimeo.com/apis/simple#response-data
+      
+      });
+
+    }
+  };
+
+  var vimeoCallbackUrl = function( id ) {
+    return '//vimeo.com/api/v2/video/' + id + '.json';
   };
 
   var getAttrId = function(element) {

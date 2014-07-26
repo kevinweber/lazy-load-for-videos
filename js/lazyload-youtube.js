@@ -18,6 +18,7 @@ var setOptionsYoutube = function(options) {
       controls: true,
       relations: true,
       playlist: '',
+      videoseo: false,
     },
     options);
 };
@@ -51,6 +52,8 @@ $lly(document).ready(function() {
           }
         }
       }
+      var lly_url = "//i2.ytimg.com/vi/" + youid + "/0.jpg";
+      var emu = '//www.youtube.com/embed/' + embedparms;
 
       /*
        * Load plugin info
@@ -85,21 +88,37 @@ $lly(document).ready(function() {
         }
       };
 
+      var youtubeUrl = function( id ) {
+        return '//www.youtube.com/watch?v=' + id;
+      };
+
       embedparms = embedparms.split("#")[0];
       if (start && embedparms.indexOf("start=") === -1) {
         embedparms += ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
       }
+
+      var itemprop_name = '';
+      if ($lly_o.videoseo === true ) {
+        itemprop_name = ' itemprop="name"';
+      }
+
       if (embedparms.indexOf("showinfo=0") !== -1) {
         $lly(this).html('');
       } else {
-        $lly(this).html('<div class="lazy-load-youtube-info"><span class="titletext youtube">' + videoTitle() + '</span></div>');
+        $lly(this).html('<div class="lazy-load-youtube-info"><span class="titletext youtube"'+itemprop_name+'>' + videoTitle() + '</span></div>');
       }
 
       $lly(this).prepend('<div style="height:' + (parseInt($lly(this).css("height")) - 4) + 'px;width:' + (parseInt($lly(this).css("width")) - 4) + 'px;" class="lazy-load-youtube-div"></div>');
-      $lly(this).css("background", "#000 url(//i2.ytimg.com/vi/" + youid + "/0.jpg) center center no-repeat");
+      $lly(this).css("background", "#000 url(" + lly_url + ") center center no-repeat");
+      
+      if ($lly_o.videoseo === true) {
+        $lly(this).append('<meta itemprop="contentLocation" content="'+ youtubeUrl( youid ) +'" />');
+        $lly(this).append('<meta itemprop="embedUrl" content="'+ emu +'" />');
+        $lly(this).append('<meta itemprop="thumbnail" content="'+ lly_url +'" />');
+      }
+
       $lly(this).attr("id", youid + index);
-      $lly(this).attr("href", "//www.youtube.com/watch?v=" + youid + (start ? "#t=" + start + "s" : ""));
-      var emu = '//www.youtube.com/embed/' + embedparms;
+      $lly(this).attr("href", youtubeUrl( youid ) + (start ? "#t=" + start + "s" : ""));
 
       /*
        * Configure URL parameters

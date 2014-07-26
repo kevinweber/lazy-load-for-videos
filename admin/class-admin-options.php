@@ -5,7 +5,10 @@
  */
 class LAZYLOAD_Admin {
 
+	private $schema_prop_video = '';
+
 	function __construct() {
+		$this->set_schema_prop_video();
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		// The 'oembed_dataparse' filter should be called on backend AND on frontend, not only on backend [is_admin()]. Otherwise, on some websites occur errors.
 		add_filter( 'oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3 );
@@ -35,6 +38,18 @@ class LAZYLOAD_Admin {
 	}
 
 	/**
+	 * Handle schema for Video SEO
+	 */
+	function set_schema_prop_video() {
+		if ( get_option('ll_video_seo') == true ) {
+			$this->schema_prop_video = ' itemprop="video" itemscope itemtype="http://schema.org/VideoObject"';
+		}
+	}
+	function get_schema_prop_video() {
+		return $this->schema_prop_video;
+	}
+
+	/**
 	 * Replace embedded Youtube and Vimeo videos with a special piece of code.
 	 * Thanks to Otto's comment on StackExchange (See http://wordpress.stackexchange.com/a/19533)
 	 */
@@ -49,8 +64,9 @@ class LAZYLOAD_Admin {
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
        		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;">&ensp;</a>';
+ 			
  			// Wrap container around $preview_url
-       		$preview_url = '<div class="container-youtube">' . $preview_url . '</div>';
+       		$preview_url = '<div class="container-youtube"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
 
@@ -74,7 +90,7 @@ class LAZYLOAD_Admin {
 					
 				</div>';
 			// Wrap container around $preview_url
-			$preview_url = '<div class="container-vimeo">' . $preview_url . '</div>';
+			$preview_url = '<div class="container-vimeo"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
 	    }
 
