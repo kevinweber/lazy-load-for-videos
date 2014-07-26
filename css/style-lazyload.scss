@@ -67,11 +67,11 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 .lazy-load-youtube-div, .lazy-load-vimeo-div, .lazy-load-youtube-info {
 	max-width: 100%;
 	opacity: 0.8;
-	z-index: $z-index-base;
 	color: #fff;
 }
 .lazy-load-youtube-div, .lazy-load-vimeo-div {
 	position: absolute;
+	z-index: $z-index-base + 1;
 } 
 .lazy-load-youtube-info {
 	position: relative;
@@ -103,7 +103,7 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
     font-weight: bold;
     font-size: 14px;
     text-decoration: none;
-    z-index: $z-index-base + 1;
+    z-index: $z-index-base + 2;
     text-shadow: none;
     position: relative;
     top: 11px;
