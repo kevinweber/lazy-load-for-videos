@@ -160,18 +160,20 @@ div#informations div#text li.center {
 }
 
 .newred{
-	color:red;
-	float:right;
-	margin-top: 2px;
+	color: red;
+	float: right;
 }
 .newred.grey{
-	color:#999;
+	color: #999;
 }
 .newred_dot{
 	color: red;
 	position: relative;
 	left: 3px;
 	top: 1px;
+}
+.orange {
+	color: #f90;
 }
 
 #mc_embed_signup label {
@@ -186,4 +188,21 @@ div#informations div#text li.center {
 .pickerstyle{
 	display:inline-block;
 	float:left;
+}
+
+.label-radio {
+	margin-right: 20px;
+}
+
+.ui-tabs-nav li {
+	a.tab-green {
+		color: #91bd09;
+	}
+	a.tab-orange {
+		color: #f90;
+	}
+	&.ui-state-hover a.tab-green, &.ui-state-active a.tab-green,
+	&.ui-state-hover a.tab-orange, &.ui-state-active a.tab-orange {
+		color: #464646;
+	}
 }

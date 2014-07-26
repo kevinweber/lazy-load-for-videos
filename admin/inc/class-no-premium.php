@@ -3,70 +3,58 @@
  * @package Admin
  */
 
-class INCOM_No_Premium_Admin_Options {
+class LAZYLOAD_No_Premium_Admin_Options {
 
 	function __construct() {
-		$this->register_incom_no_premium_settings();
+		$this->register_no_premium_settings();
 	}
 
 	/**
 	 * Add content and settings to options page
 	 */
-	function register_incom_no_premium_settings() {
-		add_filter( 'register_incom_settings_after', array( $this, 'register_incom_no_premium_settings_after' ) );
-		add_filter( 'incom_settings_page_tabs_link_after', array( $this, 'add_incom_admin_tab_link' ) );
-		add_filter( 'incom_settings_page_tabs_after', array( $this, 'add_incom_admin_tab' ) );
+	function register_no_premium_settings() {
+		add_filter( 'lazyload_register_settings_after', array( $this, 'register_no_premium_settings_after' ) );
+		add_filter( 'lazyload_settings_page_tabs_link_after', array( $this, 'add_admin_tab_link' ) );
+		add_filter( 'lazyload_settings_page_tabs_after', array( $this, 'add_admin_tab' ) );
 	}
 	// Step 1
-	function register_incom_no_premium_settings_after() {
+	function register_no_premium_settings_after() {
 		$arr = array(
-			'displayBranding',
-			'displayAvatars'
+			'll_remove_branding',
+			'lly_opt_player_playlist',
 		);
 		foreach ( $arr as $i ) {
-			register_setting( 'incom-settings-group', $i );
+			register_setting( 'll-settings-group', $i );
 		}
 	}
 	// Step 2
-	function add_incom_admin_tab_link() {
-		echo '<li><a href="#tab-no-premium" class="tab-orange tab-premium">Premium</a></li>';
+	function add_admin_tab_link() {
+		echo '<li><a href="#tab-no-premium" class="tab-green tab-premium">FREE Premium <span class="newred_dot">&bull;</span></a></li>';
 	}
 	// Step 3
-	function add_incom_admin_tab() { ?>
+	function add_admin_tab() { ?>
 		<div id="tab-no-premium">
 
-			<h3>Get Premium and &hellip;</h3>
+			<h3>Premium features &ndash; for free</h3>
 
 			<table class="form-table">
 				<tbody>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; remove branding</th>
+				        <th scope="row"><label>Remove Branding <span class="newred">New!</span></label></th>
 				        <td>
-							<span>The <i>Premium Extension</i> automatically removes the branding link from Inline Comments.</span>
+							<input name="ll_remove_branding" type="checkbox" value="1" <?php checked( '1', get_option( 'll_remove_branding' ) ); ?> /> <label>Remove the info link ("i") that is displayed on every video.</label>
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; display avatars<br><span class="description thin">next to each comment</span></th>
-				        <td>
-							<span>Display photos/avatars from commentators next to each comment.</span>
-				        </td>
+			        	<th scope="row"><label>Playlist (branding, video ads) <span class="newred">New!</span><span class="description thin"><br>&hellip; sell advertising space!</label></th>
+			        	<td>
+			        		<input type="text" name="lly_opt_player_playlist" placeholder="" value="<?php echo get_option('lly_opt_player_playlist'); ?>" /><br><label>Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every Youtube video. You have to insert the plain Youtube <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label><br><br><label>&raquo;I'm very proud of this feature because it gives you a new space to promote your brand or sell advertisements! An advertiser might pay to play his video following every video on your site. Isn't this an amazing opportunity?&laquo;<br>&ndash; <a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a>, digital marketer and developer of this plugin</label>
+			        	</td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; get preferred support<br><span class="description thin">to setup and style Inline Comments</span></th>
+			        	<th scope="row"><label>More to come.</label></th>
 				        <td>
-							<span>I help you to choose the correct selectors and assist you to make Inline Comments good-looking on your site.</span>
-				        </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row">&hellip; enjoy coming features</th>
-				        <td>
-							<span>Here is so much more to come!<br>What do you think of social logins (Twitter, Facebook) and the possibility to reply to specific inline comments?</span>
-				        </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row"><span style="color:#f90;font-size:1.25em;font-weight:normal">44€</span><br><span class="description thin">starting in August</span></th>
-				        <td>
-							<span><b>55% introductory offer</b>: The first <b>55 people who contact me</b> in July get a lifetime license for merely <span style="color:#009000;font-size:1.25em"><b>19,80€</b></span>! <a href="http://kevinw.de/kontakt" target="_blank">Click here to contact me right now</a>.</span>
+							<span>Wait&hellip; why are the above features available for free? Because I want to say <b>THANK YOU for more than 10.000 downloads</b> of this plugin! I plan to improve support for well-known plugins like BuddyPress and even want to lazy load other formats, like SoundCloud, SlideShare and Spotify.</span>
 				        </td>
 			        </tr>
 			    </tbody>
@@ -77,8 +65,8 @@ class INCOM_No_Premium_Admin_Options {
 
 }
 
-function initialize_incom_no_premium_admin_options() {
-	$incom_no_premium_admin_options = new INCOM_No_Premium_Admin_Options();
+function initialize_lazyload_no_premium_admin_options() {
+	$lazyload_no_premium_admin_options = new LAZYLOAD_No_Premium_Admin_Options();
 }
-add_action( 'init', 'initialize_incom_no_premium_admin_options' );
+add_action( 'init', 'initialize_lazyload_no_premium_admin_options' );
 ?>

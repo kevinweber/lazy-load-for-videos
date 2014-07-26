@@ -4,9 +4,9 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 1.5.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 1.6
+License: GPL v3
+License URI: http://www.gnu.org/copyleft/gpl.html
 
 Speed up your site by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
 
@@ -19,22 +19,24 @@ Demo on the developer’s website: [kevinw.de/lazyloadvideos](http://kevinw.de/l
 
 = Some additional features: =
 * Display video titles on preview images
-* Great for branding and video ads: Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every video.
+* Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every video. (Great for branding and video ads!)
 * Add Custom CSS via plugin’s options panel
 * Choose custom colour for your Vimeo player
 * Hide controls from Youtube player
 * Support for videos in text widget (Youtube only)
 * Choose thumbnail size (standard or cover)
+* Choose from several "Play" buttons
 * Choose between two colours for Youtube player (dark or light)
 * Choose between two colours for Youtube player’s video progress bar to highlight the amount of the video that the viewer has already seen (red or white)
 * Don’t display related videos at the end of your videos
 
 = Future features: =
-* Choose between several "Play" buttons
-* Upload your own "Play" button
 * (Better) support with specific plugins
 * Support for new/other formats, like SoundCloud, SlideShare and Spotify 
-* (Optional) video preview image for feeds
+* Create a custom "Play" button with a colour picker
+* New "Play" button styles
+* Video preview image for feeds
+* Track how often the videos have been loaded with Google Analytics
 * What you suggest
 
 
@@ -95,11 +97,14 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 == Changelog ==
 
-= 1.5.4 =
-* New feature: Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisment at the end of every video.
+= 1.6 =
+* New feature: Choose from three play buttons (CSS-only white, CSS-only black, Youtube button image)
+* New premium feature: Convert videos into a playlist and automatically add your corporate video, product teaser or another video advertisment at the end of every video
+* New premium feature: Remove branding
 * New feature: With a colour picker the user can choose a colour of the video controls (Vimeo only)
 * New feature: Support for Youtube and Vimeo URLs in tables created with plugin TablePress
 * Improvement: User must not update articles anymore when he changes setting 'Display Youtube title'
+* Fix/new feature: Users can activate an option to only load CSS/JS files on pages/posts when necessary. (It can happen that – when this option is activated – videos on pages do not lazy load although they should.)
 
 = 1.5.2.1 =
 * Fix: Do NOT update all posts that have an oembedded medium when user activates the plugin anymore
@@ -142,6 +147,9 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 
 == Upgrade Notice ==
+
+= 1.6 =
+* This update implies some changes to the video styling. Please check and update the plugin settings.
 
 = 1.2 =
 * Plugin should now work on many more sites correctly.

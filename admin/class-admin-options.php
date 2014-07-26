@@ -83,6 +83,13 @@ class LAZYLOAD_Admin {
 
 	function register_lazyload_settings() {
 		$arr = array(
+			//General/Styling
+			'll_opt_load_scripts',
+			'll_opt_button_style',
+			'll_opt_thumbnail_size',
+			'll_opt_customcss',
+			'll_opt_support_for_tablepress',
+
 			// Youtube
 			'lly_opt',
 			'lly_opt_title',
@@ -91,18 +98,11 @@ class LAZYLOAD_Admin {
 			'lly_opt_player_colour_progress',
 			'lly_opt_player_relations',
 			'lly_opt_player_controls',
-			'lly_opt_player_playlist',
 
 			// Vimeo
 			'llv_opt',
 			'llv_opt_title',
 			'llv_opt_player_colour',
-
-			//Other
-			'll_remove_branding',
-			'll_opt_thumbnail_size',
-			'll_opt_customcss',
-			'll_opt_support_for_tablepress'
 		);
 
 		foreach ( $arr as $i ) {
@@ -117,9 +117,9 @@ class LAZYLOAD_Admin {
 			<h2>Lazy Load for Videos <span class="subtitle">by <a href="http://kevinw.de/ll" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo LL_VERSION; ?>)</span></h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#tab-youtube">Youtube <span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#tab-general">General/Styling <span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#tab-youtube">Youtube</a></li>
 		    	<li><a href="#tab-vimeo">Vimeo <span class="newred_dot">&bull;</span></a></li>
-		        <li><a href="#tab-other">General/Styling/Other <span class="newred_dot">&bull;</span></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 			
@@ -128,6 +128,55 @@ class LAZYLOAD_Admin {
 			    settings_fields( 'll-settings-group' );
 		   		do_settings_sections( 'll-settings-group' );
 		   	?>
+
+
+				<div id="tab-general">
+
+					<h3>General/Styling</h3>
+
+					<table class="form-table">
+						<tbody>
+					        <tr valign="top">
+						        <th scope="row"><label>Only load CSS/JS when needed <span class="newred">New!</span><br><span class="description thin">to improve performance</span></label></th>
+						        <td>
+									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label>It can happen that &ndash; when this option is checked &ndash; videos on pages do not lazy load although they should. It works on most sites. Simply test it on your site.</label>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Play Button <span class="newred">New!</span></label></th>
+						        <td>
+									<select class="select" typle="select" name="ll_opt_button_style">
+										<option value="default"<?php if (get_option('ll_opt_button_style') === 'default') { echo ' selected="selected"'; } ?>>White (CSS-only)</option>
+										<option value="css_black"<?php if (get_option('ll_opt_button_style') === 'css_black') { echo ' selected="selected"'; } ?>>Black (CSS-only)</option>
+										<option value="youtube_button_image"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image') { echo ' selected="selected"'; } ?>>Youtube button image</option>
+									</select>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Thumbnail Size</label></th>
+						        <td>
+									<select class="select" typle="select" name="ll_opt_thumbnail_size">
+										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>>Standard</option>
+										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>>Cover</option>
+									</select>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Custom CSS</label></th>
+					        	<td>
+					        		<textarea rows="14" cols="70" type="text" name="ll_opt_customcss"><?php echo get_option('ll_opt_customcss'); ?></textarea>
+					        	</td>
+					        </tr>
+					        <tr valign="top">
+						        <th scope="row"><label>Support for TablePress <span class="newred">New!</span></label></th>
+						        <td>
+									<input name="ll_opt_support_for_tablepress" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_support_for_tablepress' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance). If checked, you can paste a Youtube or Vimeo URL into tables that are created with TablePress and it will be lazy loaded.</label>
+						        </td>
+					        </tr>
+					    </tbody>
+				    </table>
+
+				</div>
 
 				<div id="tab-youtube">
 
@@ -178,12 +227,6 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Playlist (branding, video ads) <span class="newred">New!</span><span class="description thin"><br>&hellip; sell advertising space!</label></th>
-					        	<td>
-					        		<input type="text" name="lly_opt_player_playlist" placeholder="" value="<?php echo get_option('lly_opt_player_playlist'); ?>" /><br><label>Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every video. You have to insert the plain <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label><br><br><label>&raquo;I'm very proud of this feature because it gives you a new space to promote your brand or sell advertisements! An advertiser might pay to play his video following every video on your site. Isn't this an amazing opportunity?&laquo;<br>&ndash; <a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a>, digital marketer and developer of this plugin</label>
-					        	</td>
-					        </tr>
-					        <tr valign="top">
 						        <th scope="row"><label>Support for widgets</label></th>
 						        <td>
 									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.</label>
@@ -223,45 +266,6 @@ class LAZYLOAD_Admin {
 			        	</tbody>
 		        	</table>
 		        </div>
-
-
-				<div id="tab-other">
-
-					<h3>General/Styling/Other</h3>
-
-					<table class="form-table">
-						<tbody>
-					        <tr valign="top">
-						        <th scope="row"><label>Remove Branding <span class="newred">New!</span></label></th>
-						        <td>
-									<input name="ll_remove_branding" type="checkbox" value="1" <?php checked( '1', get_option( 'll_remove_branding' ) ); ?> /> <label>Remove branding. That simple.</label>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row"><label>Thumbnail Size</label></th>
-						        <td>
-									<select class="select" typle="select" name="ll_opt_thumbnail_size">
-										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>>Standard</option>
-										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>>Cover</option>
-									</select>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row"><label>Custom CSS</label></th>
-					        	<td>
-					        		<textarea rows="14" cols="70" type="text" name="ll_opt_customcss"><?php echo get_option('ll_opt_customcss'); ?></textarea>
-					        	</td>
-					        </tr>
-					        <tr valign="top">
-						        <th scope="row"><label>Support for TablePress <span class="newred">New!</span></label></th>
-						        <td>
-									<input name="ll_opt_support_for_tablepress" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_support_for_tablepress' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube or Vimeo URL into tables that are created with TablePress and it will be lazy loaded.</label>
-						        </td>
-					        </tr>
-					    </tbody>
-				    </table>
-
-			    </div>
 
 				<?php do_action( 'lazyload_settings_page_tabs_after' ); ?>
 
@@ -304,4 +308,3 @@ function initialize_lazyload_admin() {
 	$lazyload_admin = new LAZYLOAD_Admin();
 }
 add_action( 'init', 'initialize_lazyload_admin' );
-?>

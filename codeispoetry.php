@@ -4,16 +4,37 @@
  * Plugin URI: http://kevinw.de/lazyloadvideos
  * Description: Lazy Load for Videos speeds up your site by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
  * Author: Kevin Weber
- * Version: 1.5.3
+ * Version: 1.6
  * Author URI: http://kevinw.de/
  * License: GPL v3
  * Text Domain: lazy-load-videos
 */
 
-define( 'LL_VERSION', '1.5.3' );
+/*
+	Copyright (C) 2014 Kevin Weber>
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+define( 'LL_VERSION', '1.6' );
 
 if ( !defined( 'LL_FILE' ) ) {
 	define( 'LL_FILE', __FILE__ );
+}
+
+if ( !defined( 'LL_ESSENTIAL' ) ) {
+	define( 'LL_ESSENTIAL', true );	// Should be false if this is the 'Premium' version
 }
 
 if ( !defined( 'LL_PATH' ) )
@@ -26,6 +47,9 @@ require_once( LL_PATH . 'inc/class-general.php' );
 function lazyload_init_plugins_loaded() {
 	require_once( LL_PATH . 'admin/class-admin-options.php' );
 	require_once( LL_PATH . 'frontend/class-frontend.php' );
+	if ( LL_ESSENTIAL ) {
+		require_once( LL_PATH . 'admin/inc/class-no-premium.php'); 
+	}
 }
 
 // Feature: Support for Widgets (Youtube only)
