@@ -10,11 +10,15 @@ $z-index-base: 2;
 // @mixin vendor-prefix($property, $value) {
 //   -webkit-#{$property}: #{$value};
 //   -moz-#{$property}: #{$value};
-//   -os-#{$property}: #{$value};
+//   -ms-#{$property}: #{$value};
 //   -o-#{$property}: #{$value};
 //   #{$property}: #{$value};
 // }
 //    @include vendor-prefix( border-radius, 50% );
+
+.container-youtube, .container-vimeo {
+	font-size: 0;
+}
 
 .entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo {
 	background: #000;
