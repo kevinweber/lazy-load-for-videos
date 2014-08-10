@@ -6,8 +6,10 @@
 var $lly = jQuery.noConflict();
 
 // Classes
+var classPreviewYoutube = 'preview-youtube';
+  //var classPreviewYoutubeDot = '.' + classPreviewYoutube;
 var classBranding = 'lazyload-info-icon';
-var classBrandingDot = '.' + classBranding;
+  var classBrandingDot = '.' + classBranding;
 
 
 var $lly_o;
@@ -167,10 +169,21 @@ $lly(document).ready(function() {
        * Register "onclick" event handler
        */
       $lly( this ).on( "click", function() {
-        $lly( this ).prev( classBrandingDot ).remove();
+
+        removePlayerControls(this);
+        removeBranding(this);
+
         $lly('#' + youid + index).replaceWith( videoFrame );
         return false;
       });
+
+      var removePlayerControls = function( element ) {
+        $lly(element).removeClass(classPreviewYoutube);
+      };
+      var removeBranding = function( element ) {
+        $lly(element).prev( classBrandingDot ).remove();
+      };
+
     });
 
   };

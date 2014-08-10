@@ -74,7 +74,7 @@ $llv(document).ready(function() {
       $llv(element).removeClass(classPreviewVimeo);
   };
   var removeBranding = function( element ) {
-    $llv(element).siblings(classBrandingDot).remove();
+    $llv(element).prev(classBrandingDot).remove();
   };
 
   var vimeoUrl = function( id ) {
