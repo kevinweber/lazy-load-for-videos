@@ -98,7 +98,8 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 == Changelog ==
 
 = 1.6.2 =
-* New feature: Apply schema.org markup to videos. 
+* Fix: The new CSS play buttons caused some errors that have been fixed with this update.
+* New feature (beta): Apply schema.org markup to videos.
 
 = 1.6.1 =
 * Wrapped videos into a <div> container.
