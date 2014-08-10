@@ -35,7 +35,6 @@ class lazyload_Update_Posts {
 	    foreach ( $arr_posts as $post ):
 	    	$wp_embed->delete_oembed_caches( $post->ID );
 	    endforeach;
-
 	}
 
 }

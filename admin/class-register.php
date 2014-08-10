@@ -31,6 +31,8 @@ function lazyload_plugin_activation() {
 					</strong>';
 				;
 	update_option( 'lazyload_deferred_admin_notices', $notices );
+
+	lazyload_update_posts_with_embed();
 }
 
 function lazyload_plugin_deactivation() {
