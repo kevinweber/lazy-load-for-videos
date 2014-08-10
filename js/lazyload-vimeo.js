@@ -44,12 +44,14 @@ $llv(document).ready(function() {
        * Create info element
        */
       var createPluginInfo = function() {
-        // source = Video
-        var source = $llv( classPreviewVimeoDot );
-        // element = Plugin info element
-        var element = $llv( loadPluginInfo() );
-        // Prepend element to source
-        source.before( element );
+        if ($llv_o.displayBranding !== false) {
+          // source = Video
+          var source = $llv( classPreviewVimeoDot );
+          // element = Plugin info element
+          var element = $llv( loadPluginInfo() );
+          // Prepend element to source
+          source.before( element );
+        }
       };
 
 

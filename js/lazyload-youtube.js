@@ -68,12 +68,14 @@ $lly(document).ready(function() {
        * Create info element
        */
       var createPluginInfo = function() {
-        // source = Video
-        var source = $lly(that);
-        // element = Plugin info element
-        var element = $lly( loadPluginInfo() );
-        // Prepend element to source
-        source.before( element );
+        if ($lly_o.displayBranding !== false) {
+          // source = Video
+          var source = $lly(that);
+          // element = Plugin info element
+          var element = $lly( loadPluginInfo() );
+          // Prepend element to source
+          source.before( element );
+        }
       };
 
       createPluginInfo();
