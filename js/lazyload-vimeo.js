@@ -17,6 +17,7 @@ var setOptionsVimeo = function(options) {
   $llv_o = $llv.extend({
       playercolour: '',
       videoseo: false,
+      responsive: true,
     },
     options);
 };
@@ -69,6 +70,9 @@ $llv(document).ready(function() {
       }
 
       $llv(this).html('<iframe src="' + vimeoUrl( vid ) + '?autoplay=1' + playercolour + '" style="height:' + (parseInt($llv("#" + vid).css("height"))) + 'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
+      if (typeof responsiveVideos.resize === 'function' && $llv_o.responsive === true) { 
+        responsiveVideos.resize(); 
+      }
     });
   };
 
@@ -159,5 +163,48 @@ $llv(document).ready(function() {
     }
   };
   displayBranding();
+
+
+
+  /*
+   * The following code bases on "Responsive Video Embeds" by Kevin Leary, www.kevinleary.net, WordPress development in Boston, MA
+   */
+  var responsiveVideos = {
+
+    config: {
+      container: $llv( '.container-lazyload' ),
+      selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-youtube-div, .lazy-load-vimeo-div'
+    },
+
+    init: function( config ) {
+      if ( responsiveVideos.config.container.length > 0 ) {
+        $llv( window ).on( 'resize load', responsiveVideos.resize );
+      }
+    },
+
+    resize: function() {
+      $llv( responsiveVideos.config.selector, responsiveVideos.config.container ).each( function () {
+
+        var $this = $llv( this );
+        var width = $this.parent().width();
+        var height = Math.round( width * 0.5625 );
+
+        $this.attr( 'height', height );
+        $this.attr( 'width', width );
+        $this.css({
+            'height': height,
+            'width': width,
+          });
+
+      });
+    },
+
+  };
+
+  if (typeof responsiveVideos.init === 'function' && $llv_o.responsive === true ) { 
+    responsiveVideos.init();
+  }
+
+
 
 });

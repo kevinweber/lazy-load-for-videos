@@ -66,13 +66,13 @@ class LAZYLOAD_Admin {
 				&& (get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated
 	    	) {
 
-	    	$a_class = 'lazy-load-youtube preview-youtube';
+	    	$a_class = 'lazy-load-youtube preview-lazyload preview-youtube';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
        		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;">&ensp;</a>';
  			
  			// Wrap container around $preview_url
-       		$preview_url = '<div class="container-lazyload container-youtube"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
+       		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
 
@@ -89,7 +89,7 @@ class LAZYLOAD_Admin {
 			};
 			$vimeoid = end($spliturl);
 
-	    	$a_class = 'lazy-load-vimeo preview-vimeo';
+	    	$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
 			$preview_url = '<div id="' . $vimeoid . '" class="' . $a_class . '" title="Play Video &quot;' . $data->title . '&quot;">

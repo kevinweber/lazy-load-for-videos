@@ -21,6 +21,7 @@ var setOptionsYoutube = function(options) {
       relations: true,
       playlist: '',
       videoseo: false,
+      responsive: true,
     },
     options);
 };
@@ -176,6 +177,9 @@ $lly(document).ready(function() {
         removeBranding(this);
 
         $lly('#' + youid + index).replaceWith( videoFrame );
+        if (typeof responsiveVideos.resize === 'function' && $lly_o.responsive === true) { 
+          responsiveVideos.resize(); 
+        }
         return false;
       });
 
@@ -209,5 +213,47 @@ $lly(document).ready(function() {
     }
   };
   displayBranding();
+
+
+  /*
+   * The following code bases on "Responsive Video Embeds" by Kevin Leary, www.kevinleary.net, WordPress development in Boston, MA
+   */
+  var responsiveVideos = {
+
+    config: {
+      container: $lly( '.container-lazyload' ),
+      selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-youtube-div, .lazy-load-vimeo-div'
+    },
+
+    init: function( config ) {
+      if ( responsiveVideos.config.container.length > 0 ) {
+        $lly( window ).on( 'resize load', responsiveVideos.resize );
+      }
+    },
+
+    resize: function() {
+      $lly( responsiveVideos.config.selector, responsiveVideos.config.container ).each( function () {
+
+        var $this = $lly( this );
+        var width = $this.parent().width();
+        var height = Math.round( width * 0.5625 );
+
+        $this.attr( 'height', height );
+        $this.attr( 'width', width );
+        $this.css({
+            'height': height,
+            'width': width,
+          });
+
+      });
+    },
+
+  };
+
+  if (typeof responsiveVideos.init === 'function' && $lly_o.responsive === true ) { 
+    responsiveVideos.init();
+  }
+
+
 
 });
