@@ -17,6 +17,9 @@ class LAZYLOAD_General {
 	 	// Get meta keys for current post
 	    $post_meta = get_post_custom_keys( $post_id );
 	 
+		if ( empty($post_meta) )
+			return false;
+
 	 	// Search for the first meta_key [$value] that begins with the oembed string [$string]
 		// After the first hits: continue to return true
 		if ( is_array( $post_meta ) || $post_meta instanceof Traversable ) {

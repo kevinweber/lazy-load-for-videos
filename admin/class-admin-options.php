@@ -54,6 +54,7 @@ class LAZYLOAD_Admin {
 	 * Thanks to Otto's comment on StackExchange (See http://wordpress.stackexchange.com/a/19533)
 	 */
 	function lazyload_replace_video($return, $data, $url) {
+		if (is_admin()) return $return;
 
 		// Youtube support
 	    if ( (! is_feed()) && ($data->provider_name == 'YouTube') 
