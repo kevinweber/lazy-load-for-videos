@@ -57,6 +57,9 @@ $llv(document).ready(function() {
     $llv(classPreviewVimeoDot).on('click', function() {
       var vid = getAttrId(this);
 
+      removePlayerControls(this);
+      removeBranding(this);
+      
       var playercolour = '';
       if ($llv_o.playercolour !== playercolour) {
         $llv_o.playercolour = filterDotHash($llv_o.playercolour);
@@ -65,6 +68,13 @@ $llv(document).ready(function() {
 
       $llv(this).html('<iframe src="' + vimeoUrl() + '?autoplay=1' + playercolour + '" style="height:' + (parseInt($llv("#" + vid).css("height"))) + 'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
     });
+  };
+
+  var removePlayerControls = function( element ) {
+      $llv(element).removeClass(classPreviewVimeo);
+  };
+  var removeBranding = function( element ) {
+    $llv(element).siblings(classBrandingDot).remove();
   };
 
   var vimeoUrl = function( id ) {
