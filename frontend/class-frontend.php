@@ -71,7 +71,7 @@ class LAZYLOAD_Frontend {
 	function load_lazyload_css_button_style() {
     	if ( get_option('ll_opt_button_style') == 'youtube_button_image' ) {
     		// Display youtube button image
-    		echo '.lazy-load-youtube-div, .lazy-load-vimeo-div { background: url('.plugin_dir_url( __FILE__ ).'../images/play-youtube.png) center center no-repeat; }';	
+    		echo '.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div { background: url('.plugin_dir_url( __FILE__ ).'../images/play-youtube.png) center center no-repeat; }';	
     		// ... and remove CSS-only content
     		echo $this->load_css_button_selectors() . ' { content: ""; }';
     	}
@@ -86,10 +86,10 @@ class LAZYLOAD_Frontend {
 	 */
 	private function load_css_button_selectors( $add = '' ) {
 		return '
-			.lazy-load-youtube-div'.$add.':before,
-			.lazy-load-youtube-div'.$add.'::before,
-			.lazy-load-vimeo'.$add.':after,
-			.lazy-load-vimeo'.$add.'::after
+			.preview-youtube .lazy-load-youtube-div'.$add.':before,
+			.preview-youtube .lazy-load-youtube-div'.$add.'::before,
+			.preview-vimeo'.$add.':after,
+			.preview-vimeo'.$add.'::after
 			';
 	}
 
