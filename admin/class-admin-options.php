@@ -72,7 +72,7 @@ class LAZYLOAD_Admin {
        		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;">&ensp;</a>';
  			
  			// Wrap container around $preview_url
-       		$preview_url = '<div class="container-youtube"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
+       		$preview_url = '<div class="container-lazyload container-youtube"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
 
@@ -96,7 +96,7 @@ class LAZYLOAD_Admin {
 					
 				</div>';
 			// Wrap container around $preview_url
-			$preview_url = '<div class="container-vimeo"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
+			$preview_url = '<div class="container-lazyload container-vimeo"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
 	    }
 
