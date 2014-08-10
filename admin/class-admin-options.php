@@ -54,6 +54,11 @@ class LAZYLOAD_Admin {
 	 * Thanks to Otto's comment on StackExchange (See http://wordpress.stackexchange.com/a/19533)
 	 */
 	function lazyload_replace_video($return, $data, $url) {
+		/**
+		 * Because of WordPress 4.0 video preview in editor feature:
+		 * Only go on when user is not on an admin page
+		 * @since 1.6.2
+		 */
 		if (is_admin()) return $return;
 
 		// Youtube support
