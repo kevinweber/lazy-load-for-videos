@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.6.2
+Stable tag: 1.7
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -96,6 +96,9 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 
 == Changelog ==
+
+= 1.7 =
+* New feature: Youtube and Vimeo videos are responsive now! The video height automatically adjusts to its width
 
 = 1.6.2 =
 * New feature (beta): Apply schema.org markup to videos

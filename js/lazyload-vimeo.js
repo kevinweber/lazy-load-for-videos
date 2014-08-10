@@ -11,6 +11,9 @@ var classPreviewVimeo = 'preview-vimeo';
 var classBranding = 'lazyload-info-icon';
   var classBrandingDot = '.' + classBranding;
 
+// Helpers
+var videoratio = 0.5625;
+
 
 var $llv_o;
 var setOptionsVimeo = function(options) {
@@ -187,7 +190,7 @@ $llv(document).ready(function() {
 
         var $this = $llv( this );
         var width = $this.parent().width();
-        var height = Math.round( width * 0.5625 );
+        var height = Math.round( width * videoratio );
 
         $this.attr( 'height', height );
         $this.attr( 'width', width );

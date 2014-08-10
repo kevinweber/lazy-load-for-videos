@@ -11,6 +11,9 @@ var classPreviewYoutube = 'preview-youtube';
 var classBranding = 'lazyload-info-icon';
   var classBrandingDot = '.' + classBranding;
 
+// Helpers
+var videoratio = 0.5625;
+
 
 var $lly_o;
 var setOptionsYoutube = function(options) {
@@ -97,6 +100,28 @@ $lly(document).ready(function() {
         return '//www.youtube.com/watch?v=' + id;
       };
 
+      /*
+       * Helpers to calculate dimensions
+       */
+      var getHeightFromWidth = function() {
+
+      };
+      var getWidth = function( element ) {
+        var calc = (parseInt(element.css("width")) - 4);
+        return calc;   
+      };
+      var getHeight = function( element ) {
+        var calc = 0;
+        if ( $lly_o.responsive === false ) {
+          calc = (parseInt(element.css("height")) - 4);
+        }
+        else {
+          var width = getWidth( element );
+          calc = Math.round( width * videoratio );
+        }
+        return calc; 
+      };
+
       embedparms = embedparms.split("#")[0];
       if (start && embedparms.indexOf("start=") === -1) {
         embedparms += ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
@@ -113,7 +138,9 @@ $lly(document).ready(function() {
         $lly(this).html('<div class="lazy-load-youtube-info"><span class="titletext youtube"'+itemprop_name+'>' + videoTitle() + '</span></div>');
       }
 
-      $lly(this).prepend('<div style="height:' + (parseInt($lly(this).css("height")) - 4) + 'px;width:' + (parseInt($lly(this).css("width")) - 4) + 'px;" class="lazy-load-youtube-div"></div>');
+      $lly(this).prepend('<div style="height:' + getHeight($lly(this)) + 'px;width:' + getWidth($lly(this)) + 'px;" class="lazy-load-youtube-div"></div>');
+
+
       $lly(this).css("background", "#000 url(" + lly_url + ") center center no-repeat");
 
       if ($lly_o.videoseo === true) {
@@ -236,7 +263,7 @@ $lly(document).ready(function() {
 
         var $this = $lly( this );
         var width = $this.parent().width();
-        var height = Math.round( width * 0.5625 );
+        var height = Math.round( width * videoratio );
 
         $this.attr( 'height', height );
         $this.attr( 'width', width );
