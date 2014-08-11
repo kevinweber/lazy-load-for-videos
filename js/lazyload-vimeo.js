@@ -170,6 +170,26 @@ $llv(document).ready(function() {
 
 
   /*
+   * Ensure that a handler is run before any other registered handlers,
+   * independent of the order in which they were bound
+   * As seen on http://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
+   * and on https://gist.github.com/infostreams/6540654
+   */
+  $llv.fn.bindFirst = function(which, handler) {
+        // ensures a handler is run before any other registered handlers, 
+        // independent of the order in which they were bound
+        var $el = $llv(this);
+        $el.unbind(which, handler);
+        $el.bind(which, handler);
+   
+        var events = $llv._data($el[0]).events;
+        var registered = events[which];
+        registered.unshift(registered.pop());
+   
+        events[which] = registered;
+      };
+
+  /*
    * The following code bases on "Responsive Video Embeds" by Kevin Leary, www.kevinleary.net, WordPress development in Boston, MA
    */
   var responsiveVideos = {
@@ -181,7 +201,9 @@ $llv(document).ready(function() {
 
     init: function( config ) {
       if ( responsiveVideos.config.container.length > 0 ) {
-        $llv( window ).on( 'resize load', responsiveVideos.resize );
+        $llv( window ).on( 'resize', responsiveVideos.resize );
+        // Use bindFirst() to ensure that other plugins like Inline Comments work correctly (in case they depend on the video heights)
+        $llv( window ).bindFirst( 'load', function() { responsiveVideos.resize(); } );
       }
     },
 

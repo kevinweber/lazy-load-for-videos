@@ -103,9 +103,6 @@ $lly(document).ready(function() {
       /*
        * Helpers to calculate dimensions
        */
-      var getHeightFromWidth = function() {
-
-      };
       var getWidth = function( element ) {
         var calc = (parseInt(element.css("width")) - 4);
         return calc;   
@@ -139,7 +136,6 @@ $lly(document).ready(function() {
       }
 
       $lly(this).prepend('<div style="height:' + getHeight($lly(this)) + 'px;width:' + getWidth($lly(this)) + 'px;" class="lazy-load-youtube-div"></div>');
-
 
       $lly(this).css("background", "#000 url(" + lly_url + ") center center no-repeat");
 
@@ -242,6 +238,27 @@ $lly(document).ready(function() {
   displayBranding();
 
 
+
+  /*
+   * Ensure that a handler is run before any other registered handlers,
+   * independent of the order in which they were bound
+   * As seen on http://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
+   * and on https://gist.github.com/infostreams/6540654
+   */
+  $lly.fn.bindFirst = function(which, handler) {
+        // ensures a handler is run before any other registered handlers, 
+        // independent of the order in which they were bound
+        var $el = $lly(this);
+        $el.unbind(which, handler);
+        $el.bind(which, handler);
+   
+        var events = $lly._data($el[0]).events;
+        var registered = events[which];
+        registered.unshift(registered.pop());
+   
+        events[which] = registered;
+      };
+
   /*
    * The following code bases on "Responsive Video Embeds" by Kevin Leary, www.kevinleary.net, WordPress development in Boston, MA
    */
@@ -254,7 +271,9 @@ $lly(document).ready(function() {
 
     init: function( config ) {
       if ( responsiveVideos.config.container.length > 0 ) {
-        $lly( window ).on( 'resize load', responsiveVideos.resize );
+        $lly( window ).on( 'resize', responsiveVideos.resize );
+        // Use bindFirst() to ensure that other plugins like Inline Comments work correctly (in case they depend on the video heights)
+        $lly( window ).bindFirst( 'load', function() { responsiveVideos.resize(); } );
       }
     },
 
