@@ -117,10 +117,12 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	border: 0;
 	vertical-align: baseline;
 	word-break: break-word;
+	background: transparent;
     &:hover {
-      opacity: 1;
-      color: $white;
-      text-decoration: none;
+    	opacity: 1;
+    	color: $white;
+    	text-decoration: none;
+		border-bottom-width: 0;
     }
 }
 
