@@ -100,10 +100,10 @@ class LAZYLOAD_Frontend {
 		$lazyload_general = new LAZYLOAD_General();
 
 		return
-			( get_option('ll_opt_load_scripts') != true ) ||	// Option "Support for Widgets (Youtube only)" is checked
+			( get_option('ll_opt_load_scripts') != '1' ) ||	// Option "Support for Widgets (Youtube only)" is checked
 			( get_option('lly_opt_support_for_widgets') == true ) ||	// Option "Support for Widgets (Youtube only)" is checked
-			( is_singular() && ($lazyload_general->test_if_post_or_page_has_embed()) ) ||	// Pages/posts with oembedded media
-			( !is_singular() )	// Everything else (except for pages/posts without oembedded media)
+			( is_singular() && ($lazyload_general->test_if_post_or_page_has_embed()) )	// Pages/posts with oembedded media
+			//|| ( !is_singular() )	// Everything else (except for pages/posts without oembedded media)
 		? true : false;
 	}
 
