@@ -27,14 +27,16 @@ class LAZYLOAD_Frontend {
 	 * Add CSS
 	 */
 	function load_lazyload_css() {
-		echo '<style type="text/css">';
+		if ( $this->test_if_scripts_should_be_loaded() ) {
+			echo '<style type="text/css">';
 
-		$this->load_lazyload_css_thumbnail_size();
-		$this->load_lazyload_css_video_titles();
-		$this->load_lazyload_css_button_style();
-		$this->load_lazyload_css_custom();
+			$this->load_lazyload_css_thumbnail_size();
+			$this->load_lazyload_css_video_titles();
+			$this->load_lazyload_css_button_style();
+			$this->load_lazyload_css_custom();
 
-		echo '</style>';
+			echo '</style>';
+		}
 	}
 
 	/**
