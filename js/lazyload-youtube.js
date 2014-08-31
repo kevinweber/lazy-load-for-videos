@@ -13,6 +13,7 @@ var classBranding = 'lazyload-info-icon';
 
 // Helpers
 var videoratio = 0.5625;
+var thumbnailurl = '';
 
 
 var $lly_o;
@@ -60,60 +61,6 @@ $lly(document).ready(function() {
         }
       }
 
-
-      var getThumbnailUrl = function( youid ) {
-
-        // $lly_o.thumbnailquality = 'maxresdefault';
-
-        // $lly.getJSON('http://gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc',function( data ){
-        //   data.data.thumbnail.
-        // });
-
-
-// var image_url = $('#something').css('background-image'),
-//     image;
-
-// // Remove url() or in case of Chrome url("")
-// image_url = image_url.match(/^url\("?(.+?)"?\)$/);
-
-// if (image_url[1]) {
-//     image_url = image_url[1];
-//     image = new Image();
-
-//     // just in case it is not already loaded
-//     $(image).load(function () {
-//         alert(image.width + 'x' + image.height);
-//     });
-
-//     image.src = image_url;
-// }
-
-        // var $images = json_decode(file_get_contents("http://gdata.youtube.com/feeds/api/videos/".youid."?v=2&alt=json"), true);
-        // $images = $images['entry']['media$group']['media$thumbnail'];
-        // var $image  = $images[count($images)-4]['url'];
-
-        // var $maxurl = "//i2.ytimg.com/vi/" + youid + "/" + $lly_o.thumbnailquality + ".jpg";
-        // var $max = get_headers($maxurl);
-
-        // if (substr($max[0], 9, 3) !== '404') {
-        //   $image = $maxurl;   
-        // }
-
-// $('#imglegend').load(function(){
-//    var w =    $(this).width();
-//    var h =    $(this).height();
-//    alert(w); alert(h);
-// }).error(function (){
-//    $(this).remove();//remove image if it fails to load// or what ever u want
-// })
-
-        var $url = "//i2.ytimg.com/vi/" + youid + "/" + $lly_o.thumbnailquality + ".jpg";
-
-        return $url;
-
-      };
-
-      var lly_url = getThumbnailUrl(youid);
       var emu = '//www.youtube.com/embed/' + embedparms;
 
       /*
@@ -192,12 +139,30 @@ $lly(document).ready(function() {
 
       $lly(this).prepend('<div style="height:' + getHeight($lly(this)) + 'px;width:' + getWidth($lly(this)) + 'px;" class="lazy-load-youtube-div"></div>');
 
-      $lly(this).css("background", "#000 url(" + lly_url + ") center center no-repeat");
+
+      /*
+       * Set thumbnail URL
+       */
+      var setThumbnailUrl = function( youid ) {
+        var $url = "//i2.ytimg.com/vi/" + youid + "/" + $lly_o.thumbnailquality + ".jpg";
+        
+        thumbnailurl = $url;
+      };   
+      setThumbnailUrl(youid);
+      
+      /*
+       * Get thumbnail URL
+       */
+      var getThumbnailUrl = function() {
+        return thumbnailurl;
+      };
+
+      $lly(this).css("background", "#000 url(" + getThumbnailUrl() + ") center center no-repeat");
 
       if ($lly_o.videoseo === true) {
         $lly(that).append('<meta itemprop="contentLocation" content="'+ youtubeUrl( youid ) +'" />');
         $lly(that).append('<meta itemprop="embedUrl" content="'+ emu +'" />');
-        $lly(this).append('<meta itemprop="thumbnail" content="'+ lly_url +'" />');
+        $lly(this).append('<meta itemprop="thumbnail" content="'+ getThumbnailUrl() +'" />');
  
         $lly.getJSON('http://gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc&callback=?',function( data ){
             $lly(that).append('<meta itemprop="datePublished" content="'+ data.data.uploaded +'" />');
