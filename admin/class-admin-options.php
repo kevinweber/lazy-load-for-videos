@@ -121,6 +121,7 @@ class LAZYLOAD_Admin {
 			'lly_opt',
 			'lly_opt_title',
 			'lly_opt_support_for_widgets',
+			'lly_opt_thumbnail_quality',
 			'lly_opt_player_colour',
 			'lly_opt_player_colour_progress',
 			'lly_opt_player_relations',
@@ -145,7 +146,7 @@ class LAZYLOAD_Admin {
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tab-general">General/Styling <span class="newred_dot">&bull;</span></a></li>
-		        <li><a href="#tab-youtube">Youtube</a></li>
+		        <li><a href="#tab-youtube">Youtube <span class="newred_dot">&bull;</span></a></li>
 		    	<li><a href="#tab-vimeo">Vimeo</a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
@@ -227,6 +228,16 @@ class LAZYLOAD_Admin {
 						        <th scope="row"><label>Display Youtube title</label></th>
 						        <td>
 									<input name="lly_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_title' ) ); ?> /> <label>If checked, the Youtube video title will be displayed on preview image.</label>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Thumbnail quality <span class="newred">New!</span></label></th>
+						        <td>
+									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
+										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>>HQ (default)</option>
+										<option value="maxresdefault"<?php if (get_option('lly_opt_thumbnail_quality') === 'maxresdefault') { echo ' selected="selected"'; } ?>>Max Resolution</option>
+									</select>
+									<p>Some videos don't have a thumbnail with maximum resolution. In this case, the HQ (default) thumbnail will be displayed instead.</p>
 						        </td>
 					        </tr>
 					        <tr valign="top">

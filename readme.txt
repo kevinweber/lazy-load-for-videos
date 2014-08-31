@@ -99,6 +99,7 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 = 1.7 =
 * New feature: Youtube and Vimeo videos are responsive now! The video height automatically adjusts to its width
+* New feature: Thumbnail quality. Choose between default and maximum resolution.
 
 = 1.6.2 =
 * New feature (beta): Apply schema.org markup to videos

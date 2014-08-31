@@ -28,6 +28,7 @@ class LAZYLOAD_youtube extends LAZYLOAD_Frontend {
 						controls: <?php if (get_option("lly_opt_player_controls") == "1") { echo "false"; } else { echo "true"; } ?>,
 						playlist: '<?php if (get_option("lly_opt_player_playlist") == "") { echo ""; } else { echo get_option("lly_opt_player_playlist"); } ?>',
 						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "false"; } else { echo "true"; } ?>,
+						thumbnailquality: '<?php if (get_option("lly_opt_thumbnail_quality") == "") { echo "0"; } else { echo get_option("lly_opt_thumbnail_quality"); } ?>',
 						<?php do_action( 'lly_set_options' ); ?>
 					});
 				});

@@ -25,6 +25,7 @@ var setOptionsYoutube = function(options) {
       playlist: '',
       videoseo: false,
       responsive: true,
+      thumbnailquality: '0',
     },
     options);
 };
@@ -58,7 +59,61 @@ $lly(document).ready(function() {
           }
         }
       }
-      var lly_url = "//i2.ytimg.com/vi/" + youid + "/0.jpg";
+
+
+      var getThumbnailUrl = function( youid ) {
+
+        // $lly_o.thumbnailquality = 'maxresdefault';
+
+        // $lly.getJSON('http://gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc',function( data ){
+        //   data.data.thumbnail.
+        // });
+
+
+// var image_url = $('#something').css('background-image'),
+//     image;
+
+// // Remove url() or in case of Chrome url("")
+// image_url = image_url.match(/^url\("?(.+?)"?\)$/);
+
+// if (image_url[1]) {
+//     image_url = image_url[1];
+//     image = new Image();
+
+//     // just in case it is not already loaded
+//     $(image).load(function () {
+//         alert(image.width + 'x' + image.height);
+//     });
+
+//     image.src = image_url;
+// }
+
+        // var $images = json_decode(file_get_contents("http://gdata.youtube.com/feeds/api/videos/".youid."?v=2&alt=json"), true);
+        // $images = $images['entry']['media$group']['media$thumbnail'];
+        // var $image  = $images[count($images)-4]['url'];
+
+        // var $maxurl = "//i2.ytimg.com/vi/" + youid + "/" + $lly_o.thumbnailquality + ".jpg";
+        // var $max = get_headers($maxurl);
+
+        // if (substr($max[0], 9, 3) !== '404') {
+        //   $image = $maxurl;   
+        // }
+
+// $('#imglegend').load(function(){
+//    var w =    $(this).width();
+//    var h =    $(this).height();
+//    alert(w); alert(h);
+// }).error(function (){
+//    $(this).remove();//remove image if it fails to load// or what ever u want
+// })
+
+        var $url = "//i2.ytimg.com/vi/" + youid + "/" + $lly_o.thumbnailquality + ".jpg";
+
+        return $url;
+
+      };
+
+      var lly_url = getThumbnailUrl(youid);
       var emu = '//www.youtube.com/embed/' + embedparms;
 
       /*
