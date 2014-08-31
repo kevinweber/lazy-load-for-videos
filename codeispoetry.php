@@ -11,7 +11,7 @@
 */
 
 /*
-	Copyright (C) 2014 Kevin Weber>
+	Copyright (C) 2014 Kevin Weber
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -73,7 +73,7 @@ if ( is_admin() ) {
 	add_action( 'plugins_loaded', 'admin_init', 16 );
 }
 else {
-	add_action( 'plugins_loaded', 'frontend_init', 14 );
+	add_action( 'plugins_loaded', 'frontend_init', 16 );
 }
 
 

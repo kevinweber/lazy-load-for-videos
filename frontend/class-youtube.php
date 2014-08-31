@@ -28,7 +28,7 @@ class Lazyload_Youtube extends Lazyload_Frontend {
 						controls: <?php if (get_option("lly_opt_player_controls") == "1") { echo "false"; } else { echo "true"; } ?>,
 						playlist: '<?php if (get_option("lly_opt_player_playlist") == "") { echo ""; } else { echo get_option("lly_opt_player_playlist"); } ?>',
 						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "false"; } else { echo "true"; } ?>,
-						thumbnailquality: '<?php if (get_option("lly_opt_thumbnail_quality") == "") { echo "0"; } else { echo get_option("lly_opt_thumbnail_quality"); } ?>',
+						thumbnailquality: '<?= $this->thumbnailquality(); ?>',
 						<?php do_action( 'lly_set_options' ); ?>
 					});
 				});
@@ -36,6 +36,39 @@ class Lazyload_Youtube extends Lazyload_Frontend {
 			<?php
 		}
 	}
+
+// if (get_option("lly_opt_thumbnail_quality") == "") { echo "0"; } else { echo get_option("lly_opt_thumbnail_quality"); },
+
+ 	/**
+ 	 * Test which thumbnail quality should be used
+ 	 */
+ 	function thumbnailquality() {
+		global $post;
+		$thumbnailquality_default = '0';
+		$thumbnailquality = $thumbnailquality_default;
+
+		if (!isset($post->ID)) {
+			$id = null;
+		}
+		else {
+			$id = $post->ID;
+		}
+		
+		// When the individual status for a page/post is '0', all the other setting don't matter.
+		if (
+			( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) && get_post_meta( $id, 'lazyload_thumbnail_quality', true ) === '0' )
+			) {
+			return $thumbnailquality;
+		}
+		elseif (
+			( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) && get_post_meta( $id, 'lazyload_thumbnail_quality', true ) === 'max' )
+			|| ( ( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) !== '0' ) && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
+			) {
+			$thumbnailquality = 'maxresdefault';
+		}
+
+		return $thumbnailquality;
+ 	}
 
 }
 

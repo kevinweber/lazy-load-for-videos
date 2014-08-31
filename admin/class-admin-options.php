@@ -234,10 +234,13 @@ class Lazyload_Admin {
 					        	<th scope="row"><label>Default thumbnail quality <span class="newred">New!</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
-										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>>HQ</option>
-										<option value="maxresdefault"<?php if (get_option('lly_opt_thumbnail_quality') === 'maxresdefault') { echo ' selected="selected"'; } ?>>Max Resolution</option>
+										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>>Standard quality</option>
+										<option value="max"<?php if (get_option('lly_opt_thumbnail_quality') === 'max') { echo ' selected="selected"'; } ?>>Max resolution</option>
 									</select>
-									<p>Define which thumbnail quality should be used by default. <span style="color:#f90;">Important:</span> Some videos don't have a thumbnail with maximum resolution. In this case, a pixelated placeholder image will be displayed and error messages might appear in your browser's log. You can override the default setting on every post and page individually.</p>
+									<p>
+										Define which thumbnail quality should be used by default.<br>
+										<span style="color:#f90;">Important:</span> Some videos don't have a thumbnail with maximum resolution. In this case, a pixelated placeholder image will be displayed and error messages might appear in your browser's log. You can override the default setting on every post and page individually.
+									</p>
 						        </td>
 					        </tr>
 					        <tr valign="top">
