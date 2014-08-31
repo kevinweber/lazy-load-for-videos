@@ -47,21 +47,35 @@ require_once( LL_PATH . 'inc/class-general.php' );
 function lazyload_init_plugins_loaded() {
 	require_once( LL_PATH . 'admin/class-admin-options.php' );
 	require_once( LL_PATH . 'frontend/class-frontend.php' );
+}
+add_action( 'plugins_loaded', 'lazyload_init_plugins_loaded', 15 );
+
+
+
+function admin_init() {
 	if ( LL_ESSENTIAL ) {
 		require_once( LL_PATH . 'admin/inc/class-no-premium.php'); 
 	}
+	require_once( LL_PATH . 'admin/class-meta.php' );
+}
+function frontend_init() {
+	// Feature: Support for Widgets (Youtube only)
+	if ( (get_option('lly_opt_support_for_widgets') == true) ) {
+		require_once( LL_PATH . 'frontend/inc/support_for_widgets.php');
+	}
+	// Feature: Support for Plugin "TablePress"
+	if ( (get_option('ll_opt_support_for_tablepress') == true) ) {
+		require_once( LL_PATH . 'frontend/inc/support_for_tablepress.php');
+	}
 }
 
-// Feature: Support for Widgets (Youtube only)
-if ( (get_option('lly_opt_support_for_widgets') == true) && !is_admin() ) {
-	require_once( LL_PATH . 'frontend/inc/support_for_widgets.php');
+if ( is_admin() ) {
+	add_action( 'plugins_loaded', 'admin_init', 16 );
 }
-// Feature: Support for Plugin "TablePress"
-if ( (get_option('ll_opt_support_for_tablepress') == true) && !is_admin() ) {
-	require_once( LL_PATH . 'frontend/inc/support_for_tablepress.php');
+else {
+	add_action( 'plugins_loaded', 'frontend_init', 14 );
 }
 
-add_action( 'plugins_loaded', 'lazyload_init_plugins_loaded', 15 );
 
 /***** Plugin by Kevin Weber || kevinw.de *****/
 ?>
