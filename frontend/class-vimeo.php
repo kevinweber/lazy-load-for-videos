@@ -2,7 +2,7 @@
 /**
  * @package Lazyload Vimeo
  */
-class LAZYLOAD_vimeo extends LAZYLOAD_Frontend {
+class Lazyload_Vimeo extends Lazyload_Frontend {
 
 	function __construct() {
 		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
@@ -46,6 +46,6 @@ class LAZYLOAD_vimeo extends LAZYLOAD_Frontend {
 }
 
 function initialize_lazyload_vimeo() {
-	$lazyload_vimeo = new LAZYLOAD_vimeo();
+	$lazyload_vimeo = new Lazyload_Vimeo();
 }
 add_action( 'init', 'initialize_lazyload_vimeo' );

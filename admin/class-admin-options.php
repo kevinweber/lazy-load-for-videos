@@ -3,7 +3,7 @@
  * Create options panel (http://codex.wordpress.org/Creating_Options_Pages)
  * @package Admin
  */
-class LAZYLOAD_Admin {
+class Lazyload_Admin {
 
 	private $schema_prop_video = '';
 
@@ -231,13 +231,13 @@ class LAZYLOAD_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Thumbnail quality <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Default thumbnail quality <span class="newred">New!</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
-										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>>HQ (default)</option>
+										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>>HQ</option>
 										<option value="maxresdefault"<?php if (get_option('lly_opt_thumbnail_quality') === 'maxresdefault') { echo ' selected="selected"'; } ?>>Max Resolution</option>
 									</select>
-									<p>Some videos don't have a thumbnail with maximum resolution. In this case, the HQ (default) thumbnail will be displayed instead.</p>
+									<p>Define which thumbnail quality should be used by default. <span style="color:#f90;">Important:</span> Some videos don't have a thumbnail with maximum resolution. In this case, a pixelated placeholder image will be displayed and error messages might appear in your browser's log. You can override the default setting on every post and page individually.</p>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -349,6 +349,6 @@ class LAZYLOAD_Admin {
 }
 
 function initialize_lazyload_admin() {
-	$lazyload_admin = new LAZYLOAD_Admin();
+	$lazyload_admin = new Lazyload_Admin();
 }
 add_action( 'init', 'initialize_lazyload_admin' );

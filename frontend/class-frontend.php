@@ -2,7 +2,7 @@
 /**
  * @package Frontend
  */
-class LAZYLOAD_Frontend {
+class Lazyload_Frontend {
 
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_lazyload_style') );
@@ -120,4 +120,4 @@ class LAZYLOAD_Frontend {
 
 }
 
-$lazyload_frontend = new LAZYLOAD_Frontend();
+$lazyload_frontend = new Lazyload_Frontend();

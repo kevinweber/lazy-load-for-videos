@@ -46,7 +46,7 @@ function lazyload_update_posts_with_embed() {
 	$lazyload_admin->lazyload_update_posts_with_oembed();
 }
 
-class lazyload_Register {
+class Lazyload_Register {
 
 	function __construct() {
 		add_action( 'admin_notices', array( $this, 'lazyload_plugin_notice_activation' ) );
@@ -67,6 +67,6 @@ class lazyload_Register {
 }
 
 function initialize_lazyload_register() {
-	$lazyload_admin = new lazyload_Register();
+	$lazyload_admin = new Lazyload_Register();
 }
 add_action( 'init', 'initialize_lazyload_register' );
