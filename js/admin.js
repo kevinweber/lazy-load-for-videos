@@ -7,6 +7,13 @@
   var init = function() {
     $( "#tabs" ).tabs();
     addColourPicker();
+    toggle();
+  };
+
+  var toggle = function() {
+    $( '.toggle' ).on( 'click', function(e) {
+      $( e.target ).siblings( '.toggle-me' ).toggle();
+    });
   };
 
   var addColourPicker = function() {
