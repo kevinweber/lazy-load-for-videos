@@ -7,14 +7,32 @@ $z-index-base: 2;
 /*
  * Mixins
  */
-// @mixin vendor-prefix($property, $value) {
-//   -webkit-#{$property}: #{$value};
-//   -moz-#{$property}: #{$value};
-//   -ms-#{$property}: #{$value};
-//   -o-#{$property}: #{$value};
-//   #{$property}: #{$value};
-// }
-//    @include vendor-prefix( border-radius, 50% );
+@mixin vendor-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value};
+}
+
+@mixin keyframes($name){
+	@-webkit-keyframes $name {
+		@content;
+	}
+	@-moz-keyframes $name {
+		@content;
+	}
+	@-ms-keyframes $name {
+		@content;
+	}
+	@-o-keyframes $name {
+		@content;
+	}
+	@keyframes $name {
+		@content;
+	}
+}
+
 
 .container-youtube, .container-vimeo {
 	font-size: 0;
@@ -62,6 +80,14 @@ $z-index-base: 2;
 	}
 	&:hover:before {
 		@extend .preview-vimeo:hover:after;
+	}
+}
+
+.css_white_pulse, .css_black_pulse {
+	&.preview-vimeo:after, &.preview-vimeo::after,
+	&.preview-youtube .lazy-load-youtube-div:before, &.preview-youtube .lazy-load-youtube-div::before {
+	    font-size: 70px;
+	    @include vendor-prefix( animation, pulse 3s infinite linear );
 	}
 }
 
@@ -131,3 +157,11 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 a.lazy-load-youtube, .lazy-load-vimeo {
 	margin-bottom: 5px!important;
 }
+
+
+@include keyframes( pulse ) {
+	0% { -webkit-transform: scale(1); }
+	35% { -webkit-transform: scale(1.1); }
+	60% { -webkit-transform: scale(1.05); }
+	100% { -webkit-transform: scale(1); }
+};

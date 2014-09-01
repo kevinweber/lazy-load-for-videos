@@ -23,6 +23,7 @@ var setOptionsYoutube = function(options) {
       colour: 'red', // possible: red, white
       controls: true,
       relations: true,
+      buttonstyle: '',
       playlist: '',
       videoseo: false,
       responsive: true,
@@ -137,7 +138,7 @@ $lly(document).ready(function() {
         $lly(this).html('<div class="lazy-load-youtube-info"><span class="titletext youtube"'+itemprop_name+'>' + videoTitle() + '</span></div>');
       }
 
-      $lly(this).prepend('<div style="height:' + getHeight($lly(this)) + 'px;width:' + getWidth($lly(this)) + 'px;" class="lazy-load-youtube-div"></div>');
+      $lly(this).prepend('<div style="height:' + getHeight($lly(this)) + 'px;width:' + getWidth($lly(this)) + 'px;" class="lazy-load-youtube-div"></div>').addClass($lly_o.buttonstyle);
 
 
       /*

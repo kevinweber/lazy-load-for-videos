@@ -177,11 +177,13 @@ class Lazyload_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Play Button</label></th>
+					        	<th scope="row"><label>Play Button <span class="newred">New styles!</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_button_style">
 										<option value="default"<?php if (get_option('ll_opt_button_style') === 'default') { echo ' selected="selected"'; } ?>>White (CSS-only)</option>
+										<option value="css_white_pulse"<?php if (get_option('ll_opt_button_style') === 'css_white_pulse') { echo ' selected="selected"'; } ?>>White Pulse</option>
 										<option value="css_black"<?php if (get_option('ll_opt_button_style') === 'css_black') { echo ' selected="selected"'; } ?>>Black (CSS-only)</option>
+										<option value="css_black_pulse"<?php if (get_option('ll_opt_button_style') === 'css_black_pulse') { echo ' selected="selected"'; } ?>>Black Pulse</option>
 										<option value="youtube_button_image"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image') { echo ' selected="selected"'; } ?>>Youtube button image</option>
 									</select>
 						        </td>
@@ -202,7 +204,7 @@ class Lazyload_Admin {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Support for TablePress <span class="newred">New!</span></label></th>
+						        <th scope="row"><label>Support for TablePress</label></th>
 						        <td>
 									<input name="ll_opt_support_for_tablepress" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_support_for_tablepress' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance). If checked, you can paste a Youtube or Vimeo URL into tables that are created with TablePress and it will be lazy loaded.</label>
 						        </td>

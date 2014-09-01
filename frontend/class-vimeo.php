@@ -26,6 +26,7 @@ class Lazyload_Vimeo extends Lazyload_Frontend {
 
 			$llv_class(document).ready(function() {	
 				setOptionsVimeo({
+					buttonstyle: '<?php if (get_option("ll_opt_button_style") == "") { echo ""; } else { echo get_option("ll_opt_button_style"); } ?>',
 					playercolour: '<?php if (get_option("llv_opt_player_colour") == "") { echo ""; } else { echo get_option("llv_opt_player_colour"); } ?>',
 					responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "false"; } else { echo "true"; } ?>,
 					<?php do_action( 'llv_set_options' ); ?>

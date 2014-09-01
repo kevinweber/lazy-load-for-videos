@@ -77,7 +77,10 @@ class Lazyload_Frontend {
     		// ... and remove CSS-only content
     		echo $this->load_css_button_selectors() . ' { content: ""; }';
     	}
-    	else if ( get_option('ll_opt_button_style') == 'css_black' ) {
+    	else if (
+    			get_option('ll_opt_button_style') == 'css_black'
+    			|| get_option('ll_opt_button_style') == 'css_black_pulse'
+    		) {
     		echo $this->load_css_button_selectors() . ' { color: #000; text-shadow: none; }';
     		echo $this->load_css_button_selectors(':hover') . ' { text-shadow: none; }';
     	}

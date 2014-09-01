@@ -34,7 +34,7 @@ Demo on the developer’s website: [kevinw.de/lazyloadvideos](http://kevinw.de/l
 * (Better) support with specific plugins
 * Support for new/other formats, like SoundCloud, SlideShare and Spotify 
 * Create a custom "Play" button with a colour picker
-* New "Play" button styles
+* More "Play" button styles
 * Video preview image for feeds
 * Track how often the videos have been loaded with Google Analytics
 * What you suggest
@@ -100,6 +100,7 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 = 1.7 =
 * New feature: Youtube and Vimeo videos are responsive now! The video height automatically adjusts to its width
 * New feature: Default thumbnail quality. Choose between standard and maximum resolution. You can override the default setting on every post and page individually.
+* Added two new styles for the play button: "White Pulse" and "Black Pulse".
 
 = 1.6.2 =
 * New feature (beta): Apply schema.org markup to videos

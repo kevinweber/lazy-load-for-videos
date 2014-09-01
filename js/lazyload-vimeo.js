@@ -18,6 +18,7 @@ var videoratio = 0.5625;
 var $llv_o;
 var setOptionsVimeo = function(options) {
   $llv_o = $llv.extend({
+      buttonstyle: '',
       playercolour: '',
       videoseo: false,
       responsive: true,
@@ -115,7 +116,7 @@ $llv(document).ready(function() {
       itemprop_name = ' itemprop="name"';
     }
 
-    $llv("#" + id).prepend(script).prepend('<div style="height:' + (parseInt($llv("#" + id).css("height"))) + 'px;width:' + (parseInt($llv("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div"><span class="titletext vimeo"'+itemprop_name+'></span></div>');
+    $llv("#" + id).prepend(script).prepend('<div style="height:' + (parseInt($llv("#" + id).css("height"))) + 'px;width:' + (parseInt($llv("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div"><span class="titletext vimeo"'+itemprop_name+'></span></div>').addClass($llv_o.buttonstyle);
 
     vimeoVideoSeo( id );
   };
