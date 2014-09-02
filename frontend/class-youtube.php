@@ -28,7 +28,7 @@ class Lazyload_Youtube extends Lazyload_Frontend {
 						buttonstyle: '<?php if (get_option("ll_opt_button_style") == "") { echo ""; } else { echo get_option("ll_opt_button_style"); } ?>',
 						controls: <?php if (get_option("lly_opt_player_controls") == "1") { echo "false"; } else { echo "true"; } ?>,
 						playlist: '<?php if (get_option("lly_opt_player_playlist") == "") { echo ""; } else { echo get_option("lly_opt_player_playlist"); } ?>',
-						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "false"; } else { echo "true"; } ?>,
+						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
 						thumbnailquality: '<?= $this->thumbnailquality(); ?>',
 						<?php do_action( 'lly_set_options' ); ?>
 					});

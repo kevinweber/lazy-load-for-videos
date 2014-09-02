@@ -39,6 +39,7 @@ class LAZYLOAD_No_Premium_Admin_Options {
 	// Step 1
 	function register_no_premium_settings_after() {
 		$arr = array(
+			'll_opt_load_responsive',
 			'll_remove_branding',
 			'll_video_seo', // Google: "Make sure that your video and schema.org markup are visible without executing any JavaScript or Flash." --> Video is not working with Lazy Load
 			'lly_opt_player_playlist',
@@ -65,6 +66,12 @@ class LAZYLOAD_No_Premium_Admin_Options {
 							<input name="ll_remove_branding" type="checkbox" value="1" <?php checked( '1', get_option( 'll_remove_branding' ) ); ?> /> <label>Remove the info link ("i") that is displayed on every video.</label>
 				        </td>
 			        </tr>
+			        	<tr valign="top">
+					        <th scope="row"><label>Activate Responsive Mode <span class="newred">New!</span></label></th>
+					        <td>
+								<input name="ll_opt_load_responsive" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_responsive' ) ); ?> /> <label>Check this to improve responsiveness.</label>
+					        </td>
+				        </tr>
 			        <tr valign="top">
 			        	<th scope="row"><label>Playlist (branding, video ads)<span class="description thin"><br>&hellip; sell advertising space!</label></th>
 			        	<td>

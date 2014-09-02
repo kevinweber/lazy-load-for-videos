@@ -60,6 +60,9 @@ p.notice {
 		margin-left: 0;
 	}
 }
+.updated p {
+	@extend .update-posts.updated;
+}
 
 .ui-tabs-nav {
 	border-bottom: 1px solid #ccc;

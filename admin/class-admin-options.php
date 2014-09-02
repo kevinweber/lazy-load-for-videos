@@ -111,7 +111,6 @@ class Lazyload_Admin {
 		$arr = array(
 			//General/Styling
 			'll_opt_load_scripts',
-			'll_opt_load_responsive',
 			'll_opt_button_style',
 			'll_opt_thumbnail_size',
 			'll_opt_customcss',
@@ -172,12 +171,6 @@ class Lazyload_Admin {
 						        <th scope="row"><label>Only load CSS/JS when needed<br><span class="description thin">to improve performance</span></label></th>
 						        <td>
 									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label>It can happen that &ndash; when this option is checked &ndash; videos on pages do not lazy load although they should. It works on most sites. Simply test it on your site.</label>
-						        </td>
-					        </tr>
-				        	<tr valign="top">
-						        <th scope="row"><label>Deactivate Responsive Mode <span class="newred">New!</span></label></th>
-						        <td>
-									<input name="ll_opt_load_responsive" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_responsive' ) ); ?> /> <label>Check this only if you want to disable JavaScript that is used to improve responsiveness.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
