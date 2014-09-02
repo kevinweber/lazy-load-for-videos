@@ -18,7 +18,7 @@ class Lazyload_Vimeo extends Lazyload_Frontend {
 	 */
 	function enable_lazyload_js() {
 		if ( parent::test_if_scripts_should_be_loaded() ) {
-			wp_enqueue_script( 'script', plugins_url( '../js/min/lazyload-vimeo-ck.js' , __FILE__ ) );
+			wp_enqueue_script( 'lazyload_vimeo_js', plugins_url( '../js/min/lazyload-vimeo-ck.js' , __FILE__ ) );
 			
 			?>
 		    <script type='text/javascript'>
