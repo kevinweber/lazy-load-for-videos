@@ -44,9 +44,11 @@ Demo on the developer’s website: [kevinw.de/lazyloadvideos](http://kevinw.de/l
 
 Easily upload Lazy Load for Videos into you plugin directory (/wp-content/plugins/) and activate the plugin through the 'Plugins' menu in WordPress.
 
+When you had already published videos before you have activated Lazy Load for Videos, update all posts by clicking the "Update Posts" button below the "Save Changes" button.
+
 You may have to clean the website's and browser's cache.
 
-If you don't see a preview image instead of the Youtube video, open the post editor and update/save the post again. This should help.
+If you don't see a preview image instead of the Youtube/Vimeo video, open the post editor and update/save the post again or even update all posts using the above mentioned "Update Posts" button.
 
 
 == Frequently Asked Questions ==
