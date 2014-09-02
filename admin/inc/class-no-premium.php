@@ -72,9 +72,9 @@ class LAZYLOAD_No_Premium_Admin_Options {
 			        	</td>
 			        </tr>
 			        <tr valign="top">
-				        <th scope="row"><label><u>Schema.org Markup</u> <span class="newred">Beta</span></label></th>
+				        <th scope="row"><label>Schema.org Markup <span class="newred">Beta</span></label></th>
 				        <td>
-							<input name="ll_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_video_seo' ) ); ?> /> <label>Add schema.org markup to your Youtube and Vimeo videos. Those changes don't seem to affect your search ranking because videos and schema.org markup <a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">should be visible</a> without JavaScript (but that cannot be the case when videos are lazy loaded).</label>
+							<input name="ll_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_video_seo' ) ); ?> /> <label>Add schema.org markup to your Youtube and Vimeo videos. Those changes don't seem to affect your search ranking because videos and schema.org markup <a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">should be visible</a> without JavaScript (but that cannot be the case when videos are lazy loaded).</label> <label><span style="color:#f60;">Important:</span> Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.</label>
 				        </td>
 			        </tr>
 			        <tr valign="top">
@@ -83,7 +83,6 @@ class LAZYLOAD_No_Premium_Admin_Options {
 							<span>Wait&hellip; why are the above features available for free? Because I want to say <b>THANK YOU for more than 10.000 downloads</b> of this plugin! I plan to improve support for well-known plugins like BuddyPress and even want to lazy load other formats, like SoundCloud, SlideShare and Spotify.</span>
 				        </td>
 			        </tr>
-			        <?php echo LL_NOTICE; ?>
 			    </tbody>
 		    </table>
 

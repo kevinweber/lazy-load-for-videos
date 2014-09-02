@@ -17,7 +17,7 @@ class Lazyload_Admin {
 
 	function admin_init() {
 		if ( isset( $_GET['page'] ) && ( $_GET['page'] == LL_ADMIN_URL ) ) {
-			if ( isset( $_GET['update_posts'] ) && $_GET['update_posts'] == 'with_oembed' ) {
+			if ( isset( $_POST['update_posts'] ) && $_POST['update_posts'] == 'with_oembed' ) {
 				lazyload_update_posts_with_embed();
 			}
 			$this->lazyload_admin_css();
@@ -141,16 +141,20 @@ class Lazyload_Admin {
 
 	function lazyload_settings_page()	{ ?>
 
+		<?php if ( isset( $_POST['update_posts'] ) && $_POST['update_posts'] == 'with_oembed' ) { ?>
+			<div class="update-posts updated"><p>Your posts have been updated successfully. YEAH!</p></div>
+		<?php } ?>
+
 		<div id="tabs" class="ui-tabs">
 			<h2>Lazy Load for Videos <span class="subtitle">by <a href="http://kevinw.de/ll" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo LL_VERSION; ?>)</span></h2>
-
+	
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tab-general">General/Styling <span class="newred_dot">&bull;</span></a></li>
 		        <li><a href="#tab-youtube">Youtube <span class="newred_dot">&bull;</span></a></li>
 		    	<li><a href="#tab-vimeo">Vimeo</a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
-			
+
 			<form method="post" action="options.php">
 			<?php
 			    settings_fields( 'll-settings-group' );
@@ -221,9 +225,9 @@ class Lazyload_Admin {
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label><u>Do NOT use Lazy Load for Youtube</u></label></th>
+						        <th scope="row"><label>Do NOT use Lazy Load for Youtube</label></th>
 						        <td>
-									<input name="lly_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Youtube</b> videos.</label>
+									<input name="lly_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Youtube</b> videos.</label> <label><span style="color:#f60;">Important:</span> Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -281,7 +285,6 @@ class Lazyload_Admin {
 									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.</label>
 						        </td>
 					        </tr>
-					        <?php echo LL_NOTICE; ?>
 			        	</tbody>
 		        	</table>
 		        </div>
@@ -293,9 +296,9 @@ class Lazyload_Admin {
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label><u>Do NOT use Lazy Load for Vimeo</u></label></th>
+						        <th scope="row"><label>Do NOT use Lazy Load for Vimeo</label></th>
 						        <td>
-									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Vimeo</b> videos.</label>
+									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Vimeo</b> videos.</label> <label><span style="color:#f60;">Important:</span> Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -305,13 +308,12 @@ class Lazyload_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Colour of the vimeo controls <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Colour of the vimeo controls</label></th>
 					        	<td>
 					        		<input id="llv_picker_input_player_colour" class="picker-input" type="text" name="llv_opt_player_colour" placeholder="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo get_option("llv_opt_player_colour"); } ?>" />
 					        		<div id="llv_picker_player_colour" class="picker-style"></div>
 					        	</td>
 					        </tr>
-					       	<?php echo LL_NOTICE; ?>
 			        	</tbody>
 		        	</table>
 		        </div>
@@ -320,6 +322,16 @@ class Lazyload_Admin {
 
 			    <?php submit_button(); ?>
 			</form>
+
+	 		<div class="update-posts notice clear-both">
+				<form action="options-general.php?page=<?= LL_ADMIN_URL; ?>" method="post">
+				   <input type="hidden" name="update_posts" value="with_oembed" />
+				   <input class="button update-posts" type="submit" value="Update Posts" />
+				</form>
+				<div class="help">
+					<span class="tooltip-right info-icon" data-tooltip="Save changes first.">?</span> <span>Update posts to setup your plugin for the first time or when recommended somewhere.
+				</div>
+			</div>
 
 			<?php require_once( 'inc/signup.php' ); ?>
 
@@ -348,6 +360,7 @@ class Lazyload_Admin {
 
 	function lazyload_admin_css() {
 		wp_enqueue_style( 'lazyload_admin_css', plugins_url('../css/min/admin.css', __FILE__) );
+		wp_enqueue_style( 'lazyload_admin_css_tooltips', plugins_url('../css/min/admin-tooltips.css', __FILE__) );
 		wp_enqueue_style( 'farbtastic' );	// Required for colour picker
 	}
 

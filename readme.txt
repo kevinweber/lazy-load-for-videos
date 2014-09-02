@@ -99,8 +99,9 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 = 1.7 =
 * New feature: Youtube and Vimeo videos are responsive now! The video height automatically adjusts to its width
-* New feature: Default thumbnail quality. Choose between standard and maximum resolution. You can override the default setting on every post and page individually.
-* Added two new styles for the play button: "White Pulse" and "Black Pulse".
+* New feature: Set default thumbnail quality. Choose between standard and maximum resolution. You can override the default setting on every post and page individually.
+* Two new styles for the play button: "White Pulse" and "Black Pulse".
+* Improvement: Use POST method to update all posts/pages.
 
 = 1.6.2 =
 * New feature (beta): Apply schema.org markup to videos

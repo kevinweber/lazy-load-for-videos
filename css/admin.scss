@@ -1,3 +1,20 @@
+/*
+ * Colours
+ */
+$grey_light: #ccc;
+$grey_medium: #999;
+
+/*
+ * Mixins
+ */
+@mixin vendor-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value};
+}
+
 h2 {
 	font-size: 23px;
 	line-height: 29px;
@@ -7,11 +24,49 @@ p.notice {
 	padding: 0 10px;
 }
 
+.update-posts {
+	&.notice {
+		position: relative;
+		top: -14px;
+		form {
+			display: inline;
+			float: left;
+			width: initial;
+		}
+		.help {
+			float: left;
+			.info-icon {
+				@include vendor-prefix( border-radius, 50% );
+				border: 1px solid $grey_light;
+				width: 16px;
+				height: 16px;
+				line-height: 16px;
+				display: inline-block;
+				text-align: center;
+				font-weight: normal;
+				color: $grey_light;
+				font-size: 13px;
+				margin: 5px 0 5px 10px;
+				padding-left: 1px;
+				&:hover {
+					border-color: $grey_medium;
+					color: $grey_medium;
+				}
+			}
+		}
+	}
+	&.updated {
+		margin-top: 20px;
+		margin-left: 0;
+	}
+}
+
 .ui-tabs-nav {
 	border-bottom: 1px solid #ccc;
 	height: 27px;
 	margin: 20px 0;
 	padding: 0;
+	clear: left;
 }
 
 .ui-tabs-nav li {
@@ -90,6 +145,11 @@ form {
 	width: 720px;
 	max-width: 100%;
 	float: left;
+	clear: both;
+}
+
+.button {
+	min-width: 110px;
 }
 
 th label {
@@ -205,4 +265,8 @@ div#informations div#text li.center {
 	&.ui-state-hover a.tab-orange, &.ui-state-active a.tab-orange {
 		color: #464646;
 	}
+}
+
+.clear-both {
+	clear: both;
 }
