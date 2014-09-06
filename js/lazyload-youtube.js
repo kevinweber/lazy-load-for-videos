@@ -29,8 +29,6 @@
       responsiveVideos.init();
     }
 
-    displayBranding();
-
   };
 
   var $_o;
@@ -316,7 +314,7 @@
       selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-youtube-div, .lazy-load-vimeo-div'
     },
 
-    init: function( config ) {
+    init: function() {
       if ( responsiveVideos.config.container.length > 0 ) {
         $( window ).on( 'resize', responsiveVideos.resize );
         // Use bindFirst() to ensure that other plugins like Inline Comments work correctly (in case they depend on the video heights)
@@ -341,33 +339,6 @@
       });
     },
 
-  };
-
-  /*
-   * Prevent users from removing branding // YOU'RE NOT ALLOWED TO EDIT THE FOLLOWING LINES OF CODE
-   */
-  var displayBranding = function() {
-
-    // DON'T BE EVIL - IS THIS ACTUALLY WORTH THE EFFORT?
-
-    if ($_o.displayBranding !== false) {
-
-      $( classBrandingDot ).css({
-        'display': 'block',
-        'visibility': 'visible',
-      });
-
-      // Get colour
-      var color = $( classBrandingDot ).css('color');
-      // Remove spaces
-      color = color.replace(/\s/g, '');
-      // Convert to lowercase
-      color = color.toLowerCase();
-      // When transparent: make it white
-      if (color === 'transparent' || color === 'rgba(0,0,0,0)' ) {
-        $( classBrandingDot ).css("cssText", "color: white!important;");
-      } 
-    }
   };
 
 }( window.lazyload_youtube = window.lazyload_youtube || {}, jQuery ));

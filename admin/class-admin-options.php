@@ -225,7 +225,7 @@ class Lazyload_Admin {
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label>Do NOT use Lazy Load for Youtube</label></th>
+						        <th scope="row"><label>Disable Lazy Load for Youtube</label></th>
 						        <td>
 									<input name="lly_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Youtube</b> videos.</label> <label><span style="color:#f60;">Important:</span> Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.</label>
 						        </td>
@@ -296,7 +296,7 @@ class Lazyload_Admin {
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label>Do NOT use Lazy Load for Vimeo</label></th>
+						        <th scope="row"><label>Disable Lazy Load for Vimeo</label></th>
 						        <td>
 									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Vimeo</b> videos.</label> <label><span style="color:#f60;">Important:</span> Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.</label>
 						        </td>

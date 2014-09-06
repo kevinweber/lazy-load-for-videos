@@ -11,6 +11,27 @@ class Lazyload_Frontend {
 		require_once( LL_PATH . 'frontend/class-vimeo.php' );
 	}
 
+	function enable_lazyload_js_init() {
+		$lazyload_frontend = new Lazyload_Frontend();
+		add_action( 'wp_head', array( $lazyload_frontend, 'enable_lazyload_js' ) );
+	}
+	function enable_lazyload_js() {
+		wp_enqueue_script( 'lazyload-video-js', plugins_url( '../js/min/lazyload-video-ck.js' , __FILE__ ) );
+		?>
+		<script>
+
+		var $lazyload_video = jQuery.noConflict();
+
+		$lazyload_video(window).on( "load", function() {
+			lazyload_video.init({
+				displayBranding: 'true',
+				<?php do_action( 'lly_set_options' ); ?>
+			});
+		});
+		</script>
+		<?php
+	}
+
 	/**
 	 * Add stylesheet
 	 */

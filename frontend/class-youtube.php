@@ -6,6 +6,7 @@ class Lazyload_Youtube extends Lazyload_Frontend {
 
 	function __construct() {
 		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
+		parent::enable_lazyload_js_init();
 	}
 
 	/**
@@ -15,31 +16,26 @@ class Lazyload_Youtube extends Lazyload_Frontend {
 	function enable_lazyload_js() {
 		if ( parent::test_if_scripts_should_be_loaded() && (get_option('lly_opt') !== '1') ) {
 			wp_enqueue_script( 'lazyload_youtube_js', plugins_url( '../js/min/lazyload-youtube-ck.js' , __FILE__ ) );
-			//wp_enqueue_script( 'lazyload_video_js', plugins_url( '../js/min/__lazyload-video-responsive-ck.js' , __FILE__ ) );
-
-
 			?>
 			<script>
-				var $lly_class = jQuery.noConflict();
+			var $lly = jQuery.noConflict();
 
-				$lly_class(document).ready(function() {
-					setOptionsYoutube({
-						theme: '<?php if (get_option("lly_opt_player_colour") == "") { echo "dark"; } else { echo get_option("lly_opt_player_colour"); } ?>',
-						colour: '<?php if (get_option("lly_opt_player_colour_progress") == "") { echo "red"; } else { echo get_option("lly_opt_player_colour_progress"); } ?>',
-						relations: <?php if (get_option("lly_opt_player_relations") == "1") { echo "false"; } else { echo "true"; } ?>,
-						buttonstyle: '<?php if (get_option("ll_opt_button_style") == "") { echo ""; } else { echo get_option("ll_opt_button_style"); } ?>',
-						controls: <?php if (get_option("lly_opt_player_controls") == "1") { echo "false"; } else { echo "true"; } ?>,
-						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
-						thumbnailquality: '<?= $this->thumbnailquality(); ?>',
-						<?php do_action( 'lly_set_options' ); ?>
-					});
+			$lly(document).ready(function() {
+				lazyload_youtube.init({
+					theme: '<?php if (get_option("lly_opt_player_colour") == "") { echo "dark"; } else { echo get_option("lly_opt_player_colour"); } ?>',
+					colour: '<?php if (get_option("lly_opt_player_colour_progress") == "") { echo "red"; } else { echo get_option("lly_opt_player_colour_progress"); } ?>',
+					relations: <?php if (get_option("lly_opt_player_relations") == "1") { echo "false"; } else { echo "true"; } ?>,
+					buttonstyle: '<?php if (get_option("ll_opt_button_style") == "") { echo ""; } else { echo get_option("ll_opt_button_style"); } ?>',
+					controls: <?php if (get_option("lly_opt_player_controls") == "1") { echo "false"; } else { echo "true"; } ?>,
+					responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
+					thumbnailquality: '<?= $this->thumbnailquality(); ?>',
+					<?php do_action( 'lly_set_options' ); ?>
 				});
+			});
 			</script>
 			<?php
 		}
 	}
-
-// if (get_option("lly_opt_thumbnail_quality") == "") { echo "0"; } else { echo get_option("lly_opt_thumbnail_quality"); },
 
  	/**
  	 * Test which thumbnail quality should be used

@@ -6,6 +6,7 @@ class Lazyload_Vimeo extends Lazyload_Frontend {
 
 	function __construct() {
 		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
+		parent::enable_lazyload_js_init();
 	}
 
 	/**
@@ -19,7 +20,6 @@ class Lazyload_Vimeo extends Lazyload_Frontend {
 	function enable_lazyload_js() {
 		if ( parent::test_if_scripts_should_be_loaded() && (get_option('llv_opt') !== '1') ) {
 			wp_enqueue_script( 'lazyload_vimeo_js', plugins_url( '../js/min/lazyload-vimeo-ck.js' , __FILE__ ) );
-			
 			?>
 		    <script type='text/javascript'>
  			var $llv_class = jQuery.noConflict();
