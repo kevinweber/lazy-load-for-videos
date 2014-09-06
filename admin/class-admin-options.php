@@ -329,7 +329,7 @@ class Lazyload_Admin {
 				   <input class="button update-posts" type="submit" value="Update Posts" />
 				</form>
 				<div class="help">
-					<span class="tooltip-right info-icon" data-tooltip="Save changes first.">?</span> <span>Update posts only to setup your plugin for the first time or when recommended somewhere.
+					<span class="tooltip-right info-icon" data-tooltip="Save changes first.">?</span> <span>Update posts to setup your plugin for the first time or when recommended somewhere.
 				</div>
 			</div>
 

@@ -3,6 +3,8 @@
  * by Kevin Weber (kevinw.de)
  */
 
+ var $lazyload_video = jQuery.noConflict();
+
 ( function( lazyload_video, $, undefined ){
 
   // Classes
@@ -51,4 +53,4 @@
     }
   };
 
-}( window.lazyload_video = window.lazyload_video || {}, jQuery ));
+}( window.lazyload_video = window.lazyload_video || {}, $lazyload_video ));
