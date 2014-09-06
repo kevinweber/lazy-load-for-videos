@@ -281,6 +281,9 @@ $lly(document).ready(function() {
    * Prevent users from removing branding // YOU'RE NOT ALLOWED TO EDIT THE FOLLOWING LINES OF CODE
    */
   var displayBranding = function() {
+
+    // DON'T BE EVIL - IS THIS ACTUALLY WORTH THE EFFORT?
+
     if ($lly_o.displayBranding !== false) {
 
       $lly( classBrandingDot ).css({

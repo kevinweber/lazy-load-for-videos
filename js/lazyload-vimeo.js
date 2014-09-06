@@ -159,6 +159,9 @@ $llv(document).ready(function() {
    * Prevent users from removing branding // YOU'RE NOT ALLOWED TO EDIT THE FOLLOWING LINES OF CODE
    */
   var displayBranding = function() {
+
+    // DON'T BE EVIL - IS THIS ACTUALLY WORTH THE EFFORT?
+    
     if ($llv_o.displayBranding !== false) {
       $llv(classBrandingDot).css({
         'display': 'block',

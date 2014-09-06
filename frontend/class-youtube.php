@@ -15,7 +15,7 @@ class Lazyload_Youtube extends Lazyload_Frontend {
 	function enable_lazyload_js() {
 		if ( parent::test_if_scripts_should_be_loaded() && (get_option('lly_opt') !== '1') ) {
 			wp_enqueue_script( 'lazyload_youtube_js', plugins_url( '../js/min/lazyload-youtube-ck.js' , __FILE__ ) );
-			wp_enqueue_script( 'lazyload_video_js', plugins_url( '../js/min/__lazyload-video-responsive-ck.js' , __FILE__ ) );
+			//wp_enqueue_script( 'lazyload_video_js', plugins_url( '../js/min/__lazyload-video-responsive-ck.js' , __FILE__ ) );
 
 
 			?>

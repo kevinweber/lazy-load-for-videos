@@ -54,7 +54,7 @@ add_action( 'plugins_loaded', 'lazyload_init_plugins_loaded', 15 );
 
 function admin_init() {
 	if ( LL_ESSENTIAL ) {
-		require_once( LL_PATH . 'admin/inc/class-no-premium.php'); 
+		include_once( LL_PATH . 'admin/inc/class-no-premium.php'); 
 	}
 	require_once( LL_PATH . 'admin/class-meta.php' );
 }

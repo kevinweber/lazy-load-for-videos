@@ -3,6 +3,8 @@
  * by Kevin Weber (kevinw.de)
  */
 
+//var jtest = jQuery.noConflict();
+
 ( function( $ ){
 
   // Helpers
