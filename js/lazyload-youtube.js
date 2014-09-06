@@ -68,7 +68,7 @@ $lly(document).ready(function() {
        * Load plugin info
        */
       var loadPluginInfo = function() {
-        return '<a class="' + classBranding + '" href="http://kevinw.de/lazyloadvideos" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
+        return '<a class="' + classBranding + '" href="http://kevinw.de/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
       };
 
       /*
