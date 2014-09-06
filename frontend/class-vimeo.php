@@ -17,7 +17,7 @@ class Lazyload_Vimeo extends Lazyload_Frontend {
 	 * http://vimeo.com/48851874/
 	 */
 	function enable_lazyload_js() {
-		if ( parent::test_if_scripts_should_be_loaded() ) {
+		if ( parent::test_if_scripts_should_be_loaded() && (get_option('llv_opt') !== '1') ) {
 			wp_enqueue_script( 'lazyload_vimeo_js', plugins_url( '../js/min/lazyload-vimeo-ck.js' , __FILE__ ) );
 			
 			?>

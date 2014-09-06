@@ -13,8 +13,10 @@ class Lazyload_Youtube extends Lazyload_Frontend {
 	 * Thanks to »Lazy loading of youtube videos by MS-potilas 2012« (see http://yabtb.blogspot.com/2012/02/youtube-videos-lazy-load-improved-style.html)
 	 */
 	function enable_lazyload_js() {
-		if ( parent::test_if_scripts_should_be_loaded() ) {
+		if ( parent::test_if_scripts_should_be_loaded() && (get_option('lly_opt') !== '1') ) {
 			wp_enqueue_script( 'lazyload_youtube_js', plugins_url( '../js/min/lazyload-youtube-ck.js' , __FILE__ ) );
+			wp_enqueue_script( 'lazyload_video_js', plugins_url( '../js/min/__lazyload-video-responsive-ck.js' , __FILE__ ) );
+
 
 			?>
 			<script>
@@ -27,7 +29,6 @@ class Lazyload_Youtube extends Lazyload_Frontend {
 						relations: <?php if (get_option("lly_opt_player_relations") == "1") { echo "false"; } else { echo "true"; } ?>,
 						buttonstyle: '<?php if (get_option("ll_opt_button_style") == "") { echo ""; } else { echo get_option("ll_opt_button_style"); } ?>',
 						controls: <?php if (get_option("lly_opt_player_controls") == "1") { echo "false"; } else { echo "true"; } ?>,
-						playlist: '<?php if (get_option("lly_opt_player_playlist") == "") { echo ""; } else { echo get_option("lly_opt_player_playlist"); } ?>',
 						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
 						thumbnailquality: '<?= $this->thumbnailquality(); ?>',
 						<?php do_action( 'lly_set_options' ); ?>
