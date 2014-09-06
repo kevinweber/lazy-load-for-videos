@@ -3,8 +3,7 @@
  * by Kevin Weber (kevinw.de)
  */
 
-var $lly = jQuery.noConflict();
-
+jQuery.noConflict();
 (function( lazyload_youtube, $, undefined ) {
 
   // Classes
@@ -343,4 +342,4 @@ var $lly = jQuery.noConflict();
 
   };
 
-}( window.lazyload_youtube = window.lazyload_youtube || {}, $lly ));
+}( window.lazyload_youtube = window.lazyload_youtube || {}, jQuery ));

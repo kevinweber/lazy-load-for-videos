@@ -22,10 +22,10 @@ class Lazyload_Vimeo extends Lazyload_Frontend {
 			wp_enqueue_script( 'lazyload_vimeo_js', plugins_url( '../js/min/lazyload-vimeo-ck.js' , __FILE__ ) );
 			?>
 		    <script type='text/javascript'>
- 			var $llv_class = jQuery.noConflict();
+ 			var $llv = jQuery.noConflict();
 
-			$llv_class(document).ready(function() {	
-				setOptionsVimeo({
+			$llv(document).ready(function() {	
+				lazyload_vimeo.init({
 					buttonstyle: '<?php if (get_option("ll_opt_button_style") == "") { echo ""; } else { echo get_option("ll_opt_button_style"); } ?>',
 					playercolour: '<?php if (get_option("llv_opt_player_colour") == "") { echo ""; } else { echo get_option("llv_opt_player_colour"); } ?>',
 					responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
@@ -34,9 +34,9 @@ class Lazyload_Vimeo extends Lazyload_Frontend {
 			});
 
 	        function showThumb(data){
-				$llv_class("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");
+				$llv("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");
 		    	<?php if (get_option('llv_opt_title') == true) { ?>
-		    		$llv_class("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
+		    		$llv("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
 		    	<?php } ?>	
 	        };
 		    </script>
