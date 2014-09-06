@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.7
+Stable tag: 2.0
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -20,6 +20,7 @@ Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.d
 = Some additional features: =
 * Display video titles on preview images
 * Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every video. (Great for branding and video ads!)
+* Pre-roll and post-roll advertisements
 * Add Custom CSS via plugin’s options panel
 * Choose custom colour for your Vimeo player
 * Hide controls from Youtube player
@@ -99,7 +100,7 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 == Changelog ==
 
-= 1.7 =
+= 2.0 =
 * New feature: Youtube and Vimeo videos are responsive now! The video height automatically adjusts to its width
 * New feature: Set default thumbnail quality. Choose between standard and maximum resolution. You can override the default setting on every post and page individually.
 * Two new styles for the play button: "White Pulse" and "Black Pulse".
