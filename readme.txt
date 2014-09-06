@@ -104,6 +104,7 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 * New feature: Set default thumbnail quality. Choose between standard and maximum resolution. You can override the default setting on every post and page individually.
 * Two new styles for the play button: "White Pulse" and "Black Pulse".
 * Improvement: Use POST method to update all posts/pages.
+* Added very basic RTL (right-to-left) language support.
 
 = 1.6.2 =
 * New feature (beta): Apply schema.org markup to videos

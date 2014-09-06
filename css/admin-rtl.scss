@@ -1,0 +1,83 @@
+/*
+ * RTL support
+ */
+
+/*
+ * Colours
+ */
+$grey_light: #ccc;
+$grey_medium: #999;
+
+/*
+ * Mixins
+ */
+@mixin vendor-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value};
+}
+
+.update-posts {
+	&.notice {
+		form {
+			float: right;
+		}
+		.help {
+			float: right;
+			.info-icon {
+				padding-left: 0;
+				padding-right: 1px;
+			}
+		}
+	}
+	&.updated {
+		margin-right: 0;
+	}
+}
+
+.ui-tabs-nav {
+	clear: right;
+}
+
+.ui-tabs-nav li {
+	float: right;
+}
+
+.ui-tabs-nav li a {
+	margin: 0 0 -1px 6px;
+}
+
+form {
+	float: right;
+}
+
+div#floatleft {
+	float: right;
+}
+
+div#informations {
+	margin-right: 10px;
+	margin-left: 0;
+}
+
+div#informations div#text img.profilpic {
+	float: left;
+} 
+div#informations div#text li {
+	text-align: right;
+} 
+
+.newred{
+	float: left;
+}
+
+.pickerstyle{
+	float: right;
+}
+
+.label-radio {
+	margin-right: 0;
+	margin-left: 20px;
+}

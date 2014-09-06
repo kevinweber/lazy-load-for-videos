@@ -352,9 +352,13 @@ class Lazyload_Admin {
 	}
 
 	function lazyload_admin_css() {
-		wp_enqueue_style( 'lazyload_admin_css', plugins_url('../css/min/admin.css', __FILE__) );
-		wp_enqueue_style( 'lazyload_admin_css_tooltips', plugins_url('../css/min/admin-tooltips.css', __FILE__) );
+		wp_enqueue_style( 'lazyload-admin-css', plugins_url('../css/min/admin.css', __FILE__) );
+		wp_enqueue_style( 'lazyload-admin-css-tooltips', plugins_url('../css/min/admin-tooltips.css', __FILE__) );
 		wp_enqueue_style( 'farbtastic' );	// Required for colour picker
+
+		if ( is_rtl() ) {
+			wp_enqueue_style( 'lazyload-admin-rtl', plugins_url('../css/min/admin-rtl.css', __FILE__) );
+		}
 	}
 
 }
