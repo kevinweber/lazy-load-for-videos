@@ -24,7 +24,8 @@ var setOptionsYoutube = function(options) {
       controls: true,
       relations: true,
       buttonstyle: '',
-      playlist: '',
+      preroll: '',
+      postroll: '',
       videoseo: false,
       responsive: true,
       thumbnailquality: '0',
@@ -46,7 +47,27 @@ $lly(document).ready(function() {
       if (!embedparms) {
         embedparms = $lly(this).attr("href").split("v=")[1].replace(/\&/, '?');
       }
-      var youid = embedparms.split("?")[0].split("#")[0];
+
+      /*
+       * Load Youtube ID
+       */
+      var loadYouId = function() {
+        return embedparms.split("?")[0].split("#")[0];
+      };
+      var youid = loadYouId();
+
+      var loadYouIdPreroll = function() {
+        var preroll = '';
+        if ($lly_o.preroll !== preroll && $lly_o.preroll !== undefined) {
+          return $lly_o.preroll;
+        }
+        else {
+          // Fallback when no preroll ID should be loaded
+          return loadYouId();
+        }
+      };
+      var preroll = loadYouIdPreroll();
+ 
       var start = embedparms.match(/[#&]t=(\d+)s/);
       if (start) {
         start = start[1];
@@ -62,7 +83,7 @@ $lly(document).ready(function() {
         }
       }
 
-      var emu = '//www.youtube.com/embed/' + embedparms;
+      var emu = '//www.youtube.com/embed/' + loadYouIdPreroll();
 
       /*
        * Load plugin info
@@ -197,10 +218,21 @@ $lly(document).ready(function() {
       if (!$lly_o.controls) {
         controls = '&controls=0';
       }
-      var playlist = '';
-      if ($lly_o.playlist !== playlist && $lly_o.playlist !== undefined) {
-        playlist = '&playlist=' + $lly_o.playlist;
+
+      /*
+       * Generate Youtube URL parameter 'playlist'
+       */
+      if (preroll !== youid) {
+        preroll = youid + ',';
       }
+      else {
+        preroll = '';
+      }
+      var postroll = '';
+      if ($lly_o.postroll !== postroll && $lly_o.postroll !== undefined) {
+        postroll = $lly_o.postroll;
+      }
+      var playlist = '&playlist=' + preroll + postroll;
 
       /*
        * Generate URL
@@ -250,10 +282,22 @@ $lly(document).ready(function() {
    */
   var displayBranding = function() {
     if ($lly_o.displayBranding !== false) {
-      $lly(classBrandingDot).css({
+
+      $lly( classBrandingDot ).css({
         'display': 'block',
         'visibility': 'visible',
       });
+
+      // Get colour
+      var color = $lly( classBrandingDot ).css('color');
+      // Remove spaces
+      color = color.replace(/\s/g, '');
+      // Convert to lowercase
+      color = color.toLowerCase();
+      // When transparent: make it white
+      if (color === 'transparent' || color === 'rgba(0,0,0,0)' ) {
+        $lly( classBrandingDot ).css("cssText", "color: white!important;");
+      } 
     }
   };
   displayBranding();

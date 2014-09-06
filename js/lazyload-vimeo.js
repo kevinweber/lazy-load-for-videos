@@ -164,6 +164,18 @@ $llv(document).ready(function() {
         'display': 'block',
         'visibility': 'visible',
       });
+
+      // Get colour
+      var color = $llv( classBrandingDot ).css('color');
+      // Remove spaces
+      color = color.replace(/\s/g, '');
+      // Convert to lowercase
+      color = color.toLowerCase();
+      // When transparent: make it white
+      if (color === 'transparent' || color === 'rgba(0,0,0,0)' ) {
+        $llv( classBrandingDot ).css("cssText", "color: white!important;");
+      }
+
     }
   };
   displayBranding();
