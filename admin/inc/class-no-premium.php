@@ -55,7 +55,7 @@ class LAZYLOAD_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row"><a href="https://sellfy.com/p/uzBe/" id="uzBe" class="sellfy-buy-button">buy</a><script type="text/javascript" src="https://sellfy.com/js/api_buttons.js"></script></th>
+			        	<th scope="row"><a href="https://sellfy.com/p/sFX6/" id="sFX6" class="sellfy-buy-button">buy</a><script type="text/javascript" src="https://sellfy.com/js/api_buttons.js"></script></th>
 				        <td>
 							<span>Buy premium to get additional features, honour my work and push development. The price might change/increase over time.<br>
 							<strong>Immediate download after purchase.</strong>
