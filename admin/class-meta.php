@@ -5,7 +5,7 @@
 
 class Lazyload_Meta {
 
-	static $select_thumbnail_quality = 'lazyload_thumbnail_quality';
+	private $select_thumbnail_quality = 'lazyload_thumbnail_quality';
 
 	function __construct() {
 		$this->init_meta_boxes();
@@ -42,7 +42,7 @@ class Lazyload_Meta {
 		// $text = isset( $values['oembed_link'] ) ? esc_attr( $values['oembed_link'][0] ) : '';
 		// $check = isset( $values['lazyload_check_custom'] ) ? esc_attr( $values['lazyload_check_custom'][0] ) : '';
 		
-		$select_thumbnail_quality = $this::$select_thumbnail_quality;
+		$select_thumbnail_quality = $this->select_thumbnail_quality;
 			$selected = isset( $values[$select_thumbnail_quality] ) ? esc_attr( $values[$select_thumbnail_quality][0] ) : '';
 
 		wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
@@ -100,7 +100,7 @@ class Lazyload_Meta {
 		// update_post_meta( $post_id, 'lazyload_check_custom', $chk );
 
 		// SELECT
-		$select_thumbnail_quality = $this::$select_thumbnail_quality;
+		$select_thumbnail_quality = $this->select_thumbnail_quality;
 		if( isset( $_POST[$select_thumbnail_quality] ) )
 			update_post_meta( $post_id, $select_thumbnail_quality, esc_attr( $_POST[$select_thumbnail_quality] ) );	
 	}
