@@ -2,7 +2,7 @@
 /**
  * @package General (needed for both: admin and frontend)
  */
-class LAZYLOAD_General {
+class Lazyload_General {
 
 	/**
 	 * Thanks to http://t31os.wordpress.com/2010/05/24/post-has-embed/ for a nicer solution than mine

@@ -42,7 +42,7 @@ function lazyload_plugin_deactivation() {
 
 function lazyload_update_posts_with_embed() {
 	require_once( LL_PATH . 'admin/inc/class-update-posts.php' );
-	$lazyload_admin = new lazyload_Update_Posts();
+	$lazyload_admin = new Lazyload_Update_Posts();
 	$lazyload_admin->delete_oembed_caches();
 }
 
@@ -71,7 +71,7 @@ class Lazyload_Register {
 	 */
 	function delete_oembed_cache( $post_id ) {
 		require_once( LL_PATH . 'admin/inc/class-update-posts.php' );
-		$lazyload_admin = new lazyload_Update_Posts();
+		$lazyload_admin = new Lazyload_Update_Posts();
 		$lazyload_admin->delete_oembed_cache( $post_id );
 	}
 

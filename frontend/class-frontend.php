@@ -123,7 +123,7 @@ class Lazyload_Frontend {
 	 */
 	function test_if_scripts_should_be_loaded() {
 		require_once( LL_PATH . 'inc/class-general.php' );
-		$lazyload_general = new LAZYLOAD_General();
+		$lazyload_general = new Lazyload_General();
 
 		return
 			( get_option('ll_opt_load_scripts') != '1' ) ||	// Option "Support for Widgets (Youtube only)" is checked

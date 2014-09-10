@@ -2,11 +2,11 @@
 /**
  * @package Admin
  */
-class lazyload_Update_Posts {
+class Lazyload_Update_Posts {
 
 	/**
 	 * Use WordPress' built in function to delete oembed caches
-	 * Performs much better than the old lazyload_update_posts_with_oembed();
+	 * Unused by core since WP 4.0.0 (http://developer.wordpress.org/reference/classes/wp_embed/delete_oembed_caches/)
 	 *
 	 * @since 1.6.2
 	 */
