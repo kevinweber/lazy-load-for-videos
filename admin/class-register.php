@@ -50,6 +50,7 @@ class Lazyload_Register {
 
 	function __construct() {
 		add_action( 'admin_notices', array( $this, 'lazyload_plugin_notice_activation' ) );
+		add_action( 'save_post', array( $this, 'delete_oembed_cache' ) );
 	}
 
 	/**
@@ -62,6 +63,16 @@ class Lazyload_Register {
 	    }
 	    delete_option( 'lazyload_deferred_admin_notices' );
 	  }
+	}
+
+	/**
+	 * Ensure that the oembed cache for an updated post is going to be deleted
+	 * @since 2.0.3
+	 */
+	function delete_oembed_cache( $post_id ) {
+		require_once( LL_PATH . 'admin/inc/class-update-posts.php' );
+		$lazyload_admin = new lazyload_Update_Posts();
+		$lazyload_admin->delete_oembed_cache( $post_id );
 	}
 
 }

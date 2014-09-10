@@ -20,4 +20,13 @@ class lazyload_Update_Posts {
 	    endforeach;
 	}
 
+	/**
+	 * Delete cache for a single post
+	 * @since 2.0.3
+	 */
+	function delete_oembed_cache( $post_id ) {
+		global $wp_embed;
+		$wp_embed->delete_oembed_caches( $post_id );
+	}
+
 }
