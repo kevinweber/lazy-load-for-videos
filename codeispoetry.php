@@ -42,7 +42,6 @@ if ( !defined( 'LL_PATH' ) )
 
 require_once( LL_PATH . 'admin/inc/define.php' );
 require_once( LL_PATH . 'admin/class-register.php' );
-require_once( LL_PATH . 'inc/class-general.php' );
 
 function lazyload_init_plugins_loaded() {
 	require_once( LL_PATH . 'admin/class-admin-options.php' );

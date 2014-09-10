@@ -122,6 +122,7 @@ class Lazyload_Frontend {
 	 * Don't load scripts on specific circumstances
 	 */
 	function test_if_scripts_should_be_loaded() {
+		require_once( LL_PATH . 'inc/class-general.php' );
 		$lazyload_general = new LAZYLOAD_General();
 
 		return
