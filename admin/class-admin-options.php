@@ -3,7 +3,7 @@
  * Create options panel (http://codex.wordpress.org/Creating_Options_Pages)
  * @package Admin
  */
-class Lazyload_Admin {
+class Lazyload_Videos_Admin {
 
 	private $schema_prop_video = '';
 
@@ -371,6 +371,6 @@ class Lazyload_Admin {
 }
 
 function initialize_lazyloadvideos_admin() {
-	new Lazyload_Admin();
+	new Lazyload_Videos_Admin();
 }
 add_action( 'init', 'initialize_lazyloadvideos_admin' );

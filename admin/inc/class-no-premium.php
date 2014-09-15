@@ -3,7 +3,7 @@
  * @package Admin
  */
 
-class LAZYLOAD_No_Premium_Admin_Options {
+class Lazyload_Videos_No_Premium_Admin_Options {
 
 	function __construct() {
 		$this->register_no_premium_settings();
@@ -69,8 +69,8 @@ class LAZYLOAD_No_Premium_Admin_Options {
 
 }
 
-function initialize_lazyload_no_premium_admin_options() {
-	$lazyload_no_premium_admin_options = new LAZYLOAD_No_Premium_Admin_Options();
+function initialize_lazyload_videos_no_premium_admin_options() {
+	new Lazyload_Videos_No_Premium_Admin_Options();
 }
-add_action( 'init', 'initialize_lazyload_no_premium_admin_options' );
+add_action( 'init', 'initialize_lazyload_videos_no_premium_admin_options' );
 ?>

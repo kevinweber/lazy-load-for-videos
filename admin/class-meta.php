@@ -3,7 +3,7 @@
  * @package Admin
  */
 
-class Lazyload_Meta {
+class Lazyload_Videos_Meta {
 
 	private $select_thumbnail_quality = 'lazyload_thumbnail_quality';
 
@@ -107,4 +107,4 @@ class Lazyload_Meta {
 
 }
 
-new Lazyload_Meta();
+new Lazyload_Videos_Meta();

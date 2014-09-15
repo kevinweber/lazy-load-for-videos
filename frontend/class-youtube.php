@@ -2,7 +2,7 @@
 /**
  * @package Lazyload Youtube
  */
-class Lazyload_Youtube extends Lazyload_Frontend {
+class Lazyload_Videos_Youtube extends Lazyload_Videos_Frontend {
 
 	function __construct() {
 		add_action( 'wp_head', array( $this, 'enable_lazyload_js' ) );
@@ -71,6 +71,6 @@ class Lazyload_Youtube extends Lazyload_Frontend {
 }
 
 function initialize_lazyload_youtube() {
-	$lazyload_youtube = new Lazyload_Youtube();
+	new Lazyload_Videos_Youtube();
 }
 add_action( 'init', 'initialize_lazyload_youtube' );
