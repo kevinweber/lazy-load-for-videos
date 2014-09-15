@@ -2,7 +2,7 @@
 /**
  * @package Admin
  */
-class Lazyload_Update_Posts {
+class Lazyload_Videos_Update_Posts {
 
 	/**
 	 * Use WordPress' built in function to delete oembed caches

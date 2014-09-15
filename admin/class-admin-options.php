@@ -18,7 +18,7 @@ class Lazyload_Admin {
 	function admin_init() {
 		if ( isset( $_GET['page'] ) && ( $_GET['page'] == LL_ADMIN_URL ) ) {
 			if ( isset( $_POST['update_posts'] ) && $_POST['update_posts'] == 'with_oembed' ) {
-				lazyload_update_posts_with_embed();
+				lazyloadvideos_update_posts_with_embed();
 			}
 			$this->lazyload_admin_css();
 			$this->lazyload_admin_js();
@@ -370,7 +370,7 @@ class Lazyload_Admin {
 
 }
 
-function initialize_lazyload_admin() {
-	$lazyload_admin = new Lazyload_Admin();
+function initialize_lazyloadvideos_admin() {
+	new Lazyload_Admin();
 }
-add_action( 'init', 'initialize_lazyload_admin' );
+add_action( 'init', 'initialize_lazyloadvideos_admin' );

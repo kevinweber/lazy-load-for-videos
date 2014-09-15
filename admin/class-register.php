@@ -4,10 +4,10 @@
  * @package Admin
  */
 
-register_activation_hook( LL_FILE, 'lazyload_plugin_activation' );
-register_deactivation_hook( LL_FILE, 'lazyload_plugin_deactivation' );
+register_activation_hook( LL_FILE, 'lazyloadvideos_plugin_activation' );
+register_deactivation_hook( LL_FILE, 'lazyloadvideos_plugin_deactivation' );
 
-function lazyload_plugin_activation() {
+function lazyloadvideos_plugin_activation() {
 	$signup = '<div id="mc_embed_signup">
 			<form action="'.LL_NEWS_ACTION_URL.'" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 				<div class="mc-field-group">
@@ -25,28 +25,28 @@ function lazyload_plugin_activation() {
 			</div>';
 
 
-	$notices = get_option( 'lazyload_deferred_admin_notices', array() );
+	$notices = get_option( 'lazyloadvideos_deferred_admin_notices', array() );
 	$notices[] = $signup . '<br>Edit your plugin settings: <strong>
 					<a href="options-general.php?page='. LL_ADMIN_URL .'">Lazy Load for Videos</a>
 					</strong>';
 				;
-	update_option( 'lazyload_deferred_admin_notices', $notices );
+	update_option( 'lazyloadvideos_deferred_admin_notices', $notices );
 
-	lazyload_update_posts_with_embed();
+	lazyloadvideos_update_posts_with_embed();
 }
 
-function lazyload_plugin_deactivation() {
-	delete_option( 'lazyload_deferred_admin_notices' );
-	lazyload_update_posts_with_embed();
+function lazyloadvideos_plugin_deactivation() {
+	delete_option( 'lazyloadvideos_deferred_admin_notices' );
+	lazyloadvideos_update_posts_with_embed();
 }
 
-function lazyload_update_posts_with_embed() {
+function lazyloadvideos_update_posts_with_embed() {
 	require_once( LL_PATH . 'admin/inc/class-update-posts.php' );
-	$lazyload_admin = new Lazyload_Update_Posts();
+	$lazyload_admin = new Lazyload_Videos_Update_Posts();
 	$lazyload_admin->delete_oembed_caches();
 }
 
-class Lazyload_Register {
+class Lazyload_Videos_Register {
 
 	function __construct() {
 		add_action( 'admin_notices', array( $this, 'lazyload_plugin_notice_activation' ) );
@@ -57,11 +57,11 @@ class Lazyload_Register {
 	 * Display notification when plugin is activated
 	 */
 	function lazyload_plugin_notice_activation() {
-	  if ( $notices = get_option( 'lazyload_deferred_admin_notices' ) ) {
+	  if ( $notices = get_option( 'lazyloadvideos_deferred_admin_notices' ) ) {
 	    foreach ($notices as $notice) {
 	      echo "<div class='updated'><p>$notice</p></div>";
 	    }
-	    delete_option( 'lazyload_deferred_admin_notices' );
+	    delete_option( 'lazyloadvideos_deferred_admin_notices' );
 	  }
 	}
 
@@ -71,13 +71,13 @@ class Lazyload_Register {
 	 */
 	function delete_oembed_cache( $post_id ) {
 		require_once( LL_PATH . 'admin/inc/class-update-posts.php' );
-		$lazyload_admin = new Lazyload_Update_Posts();
+		$lazyload_admin = new Lazyload_Videos_Update_Posts();
 		$lazyload_admin->delete_oembed_cache( $post_id );
 	}
 
 }
 
-function initialize_lazyload_register() {
-	$lazyload_admin = new Lazyload_Register();
+function initialize_lazyloadvideos_register() {
+	new Lazyload_Videos_Register();
 }
-add_action( 'init', 'initialize_lazyload_register' );
+add_action( 'init', 'initialize_lazyloadvideos_register' );
