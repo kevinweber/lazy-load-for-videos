@@ -35,4 +35,16 @@ class Lazyload_Videos_General {
 	    }
 	}
 
+	/**
+	 * Set up supported post types
+	 */
+	function setup_post_types() {
+		$post_types = array( 'post', 'page' );
+		$post_types = apply_filters('lazyload_videos_post_types' , $post_types );
+
+		return $post_types;
+	}
+
 }
+
+$lazyload_general = new Lazyload_Videos_General();

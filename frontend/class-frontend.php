@@ -122,9 +122,6 @@ class Lazyload_Videos_Frontend {
 	 * Don't load scripts on specific circumstances
 	 */
 	function test_if_scripts_should_be_loaded() {
-		require_once( LL_PATH . 'inc/class-general.php' );
-		$lazyload_general = new Lazyload_Videos_General();
-
 		return
 			( get_option('ll_opt_load_scripts') != '1' ) ||	// Option "Support for Widgets (Youtube only)" is checked
 			( get_option('lly_opt_support_for_widgets') == true ) ||	// Option "Support for Widgets (Youtube only)" is checked
