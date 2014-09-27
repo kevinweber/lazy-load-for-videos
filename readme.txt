@@ -102,6 +102,7 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 = 2.0.4 =
 * Fix: "Update Posts" now also works for pages (not only for posts).
+* Added support for several often used post types (portfolio, news, article, articles, event, events, testimonial, testimonials, client, clients).
 
 = 2.0.3 =
 * Improvement: Automatically clear oembed cache when a post is updated.

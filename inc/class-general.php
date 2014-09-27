@@ -36,15 +36,39 @@ class Lazyload_Videos_General {
 	}
 
 	/**
-	 * Set up supported post types
+	 * Set supported post types
+	 * @return array()
+	 * @since 2.0.4
 	 */
-	function setup_post_types() {
-		$post_types = array( 'post', 'page' );
+	private function set_post_types() {
+		$post_types = array(
+			'post',
+			'page',
+			// Typical custom post type names
+			'portfolio',
+			'news',
+			'article',
+			'articles',
+			'event',
+			'events',
+			'testimonial',
+			'testimonials',
+			'client',
+			'clients',
+		);
 		$post_types = apply_filters('lazyload_videos_post_types' , $post_types );
 
 		return $post_types;
 	}
 
-}
+	/**
+	 * Get supported post types
+	 * @return array()
+	 * @since 2.0.4
+	 */
+	function get_post_types() {
+		$post_types = $this->set_post_types();
+		return $post_types;
+	}
 
-$lazyload_general = new Lazyload_Videos_General();
+}
