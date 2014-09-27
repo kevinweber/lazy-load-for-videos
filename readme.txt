@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -99,6 +99,9 @@ Easily post the URL to your content (e.g. Youtube video) into a post or page. Th
 
 
 == Changelog ==
+
+= 2.0.4 =
+* Fix: "Update Posts" now also works for pages (not only for posts).
 
 = 2.0.3 =
 * Improvement: Automatically clear oembed cache when a post is updated.
