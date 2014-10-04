@@ -54,13 +54,20 @@ jQuery.noConflict();
     $("a.lazy-load-youtube").each(function(index) {
       var that = this;
 
-      var embedparms = $(this).attr("href").split("/embed/")[1];
-      if (!embedparms) {
-        embedparms = $(this).attr("href").split("://youtu.be/")[1];
-      }
-      if (!embedparms) {
-        embedparms = $(this).attr("href").split("v=")[1].replace(/\&/, '?');
-      }
+      /*
+       * Load parameters from user's original Youtube URL
+       */
+      var load_embedparms = function() {
+        var embedparms = $(that).attr("href").split("/embed/")[1];
+        if (!embedparms) {
+          embedparms = $(that).attr("href").split("://youtu.be/")[1];
+        }
+        if (!embedparms) {
+          embedparms = $(that).attr("href").split("v=")[1].replace(/\&/, '?');
+        }
+        return embedparms;
+      };
+      var embedparms = load_embedparms();
 
       /*
        * Load Youtube ID
@@ -77,7 +84,7 @@ jQuery.noConflict();
         }
         else {
           // Fallback when no preroll ID should be loaded
-          return loadYouId();
+          return embedparms;
         }
       };
       var preroll = loadYouIdPreroll();
