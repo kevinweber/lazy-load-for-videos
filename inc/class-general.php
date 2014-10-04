@@ -56,7 +56,7 @@ class Lazyload_Videos_General {
 			'client',
 			'clients',
 		);
-		$post_types = apply_filters('lazyload_videos_post_types' , $post_types );
+		$post_types = apply_filters( 'lazyload_videos_post_types' , $post_types );
 
 		return $post_types;
 	}

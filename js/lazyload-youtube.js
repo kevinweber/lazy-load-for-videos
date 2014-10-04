@@ -246,7 +246,10 @@ jQuery.noConflict();
       if ($_o.postroll !== postroll && $_o.postroll !== undefined) {
         postroll = $_o.postroll;
       }
-      var playlist = '&playlist=' + preroll + postroll;
+      var playlist = '';
+      if ( ( preroll !== '' ) || ( postroll !== '' ) ) {
+        playlist = '&playlist=' + preroll + postroll;
+      }
 
       /*
        * Generate URL

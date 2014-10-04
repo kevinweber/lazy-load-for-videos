@@ -87,6 +87,19 @@ PageSpeed Insights is a service by Google to help you optimize your site's perfo
 = How to embed videos in WordPress? =
 Easily post the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
 
+= How to add support for custom post types? =
+You can use a filter to add support for a custom post type (since version 2.0.4).
+Replace 'post_type_label' with the name/label of your custom post type.
+
+`/**
+ * Set post types that shall support Lazy Load for Videos
+ */
+function lazyload_videos_set_post_types( $post_types ) {
+	$post_types[] = 'post_type_label';
+	return $post_types;
+}
+add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
+
 = Solved: The plugin isn't working with Jetpack... =
 "Jetpack" by WordPress.com offers some useful extensions. Only one of them makes Lazy Load for Videos break – the "Shortcode Embeds" extension. So simply disable the extension. (In order to see a "Deactivate" button for "Shortcode Embeds" on the Jetpack's extension overview, you must click on "Learn More".)
 
