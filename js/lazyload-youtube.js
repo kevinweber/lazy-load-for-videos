@@ -330,6 +330,7 @@ jQuery.noConflict();
         $( window ).on( 'resize', responsiveVideos.resize );
         // Use bindFirst() to ensure that other plugins like Inline Comments work correctly (in case they depend on the video heights)
         $( window ).bindFirst( 'load', function() { responsiveVideos.resize(); } );
+        $( window ).on( 'load', function() { responsiveVideos.resize(); } );
       }
     },
 
