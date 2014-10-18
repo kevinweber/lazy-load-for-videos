@@ -149,9 +149,9 @@ class Lazyload_Videos_Admin {
 			<h2>Lazy Load for Videos <span class="subtitle">by <a href="http://kevinw.de/ll" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo LL_VERSION; ?>)</span></h2>
 	
 			<ul class="ui-tabs-nav">
-		        <li><a href="#tab-general">General/Styling <span class="newred_dot">&bull;</span></a></li>
-		        <li><a href="#tab-youtube">Youtube <span class="newred_dot">&bull;</span></a></li>
-		    	<li><a href="#tab-vimeo">Vimeo</a></li>
+		        <li><a href="#general">General/Styling <span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#youtube">Youtube <span class="newred_dot">&bull;</span></a></li>
+		    	<li><a href="#vimeo">Vimeo</a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -162,7 +162,7 @@ class Lazyload_Videos_Admin {
 		   	?>
 
 
-				<div id="tab-general">
+				<div id="general">
 
 					<h3>General/Styling</h3>
 
@@ -218,7 +218,7 @@ class Lazyload_Videos_Admin {
 
 				</div>
 
-				<div id="tab-youtube">
+				<div id="youtube">
 
 					<h3>Lazy Load for Youtube</h3>
 
@@ -289,7 +289,7 @@ class Lazyload_Videos_Admin {
 		        	</table>
 		        </div>
 
-				<div id="tab-vimeo">
+				<div id="vimeo">
 
 					<h3>Lazy Load for Vimeo</h3>
 
