@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.0.5
+Stable tag: 2.0.6
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -112,6 +112,10 @@ add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
 
 
 == Changelog ==
+
+= 2.0.6 =
+* Improvement: Reduced memory usage when all posts are updated.
+* Thumbnail size "cover" is now default.
 
 = 2.0.5 =
 * Fix: Manually inserted links for Youtube playlists are working again.

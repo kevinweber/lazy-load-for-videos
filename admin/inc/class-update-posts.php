@@ -18,7 +18,7 @@ class Lazyload_Videos_Update_Posts {
 	    	array(
 	    		'post_type' => $lazyload_videos_general->get_post_types(),
 	    		'posts_per_page' => -1,	// -1 == no limit
-	    		'fields' => 'ids',	// Just get a list of IDs (http://thomasgriffinmedia.com/blog/2012/10/optimize-wordpress-queries/)
+	    		'fields' => 'ids',	// Just retrieve a list of IDs (http://thomasgriffinmedia.com/blog/2012/10/optimize-wordpress-queries/)
 	    		) );
 
 	    foreach ( $post_ids as $post_id ):
