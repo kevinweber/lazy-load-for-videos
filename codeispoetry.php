@@ -8,6 +8,7 @@
  * Author URI: http://kevinw.de/
  * License: GPL v3
  * Text Domain: lazy-load-videos
+ * Domain Path: /languages
 */
 
 /*

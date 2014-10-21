@@ -72,8 +72,8 @@ class Lazyload_Videos_Frontend {
 	 * Add CSS for thumbnails
 	 */
 	function load_lazyload_css_thumbnail_size() {
-    	if ( (get_option('ll_opt_thumbnail_size') == 'cover') ) {
-    		echo '.entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo { background-size: cover !important; }';
+    	if ( (get_option('ll_opt_thumbnail_size') == 'standard') ) {
+    		echo '.entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo { background-size: contain !important; }';
     	}
 	}
 

@@ -43,7 +43,7 @@ $z-index-base: 2;
 	height: 315px;
 	width: 100%;
 	max-width: 100%;
-	background-size: contain!important; /* alternative: "cover" */
+	background-size: cover!important; /* alternative: "contain" */
 	text-decoration: none;
 	display: inline-block;
 	color: #fff;

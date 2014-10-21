@@ -196,8 +196,8 @@ class Lazyload_Videos_Admin {
 					        	<th scope="row"><label>Thumbnail Size</label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_thumbnail_size">
-										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>>Standard</option>
 										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>>Cover</option>
+										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>>Contain</option>
 									</select>
 						        </td>
 					        </tr>
