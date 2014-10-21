@@ -13,11 +13,16 @@ class Lazyload_Videos_Update_Posts {
 	function delete_oembed_caches() {
 		global $wp_embed;
 		$lazyload_videos_general = new Lazyload_Videos_General();
-	    
-	    $arr_posts = get_posts( array( 'post_type' => $lazyload_videos_general->get_post_types(), 'posts_per_page' => -1 ) );	// -1 == no limit
 
-	    foreach ( $arr_posts as $post ):
-	    	$wp_embed->delete_oembed_caches( $post->ID );
+	    $post_ids = get_posts(
+	    	array(
+	    		'post_type' => $lazyload_videos_general->get_post_types(),
+	    		'posts_per_page' => -1,	// -1 == no limit
+	    		'fields' => 'ids',	// Just get a list of IDs (http://thomasgriffinmedia.com/blog/2012/10/optimize-wordpress-queries/)
+	    		) );
+
+	    foreach ( $post_ids as $post_id ):
+	    	$wp_embed->delete_oembed_caches( $post_id );
 	    endforeach;
 	}
 
