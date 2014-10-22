@@ -43,13 +43,17 @@ Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.d
 
 == Installation ==
 
-Easily upload Lazy Load for Videos into you plugin directory (/wp-content/plugins/) and activate the plugin through the 'Plugins' menu in WordPress.
+Upload Lazy Load for Videos into you plugin directory (/wp-content/plugins/) and activate the plugin through the 'Plugins' menu in WordPress.
 
 When you had already published videos before you have activated Lazy Load for Videos, update all posts by clicking the "Update Posts" button below the "Save Changes" button.
 
 You may have to clean the website's and browser's cache.
 
 If you don't see a preview image instead of the Youtube/Vimeo video, open the post editor and update/save the post again or even update all posts using the above mentioned "Update Posts" button.
+
+NOTICE - this is important to make your videos work as expected:
+Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
+Inserting a Youtube <iframe> (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
 
 
 == Frequently Asked Questions ==
@@ -85,7 +89,8 @@ Yes!
 PageSpeed Insights is a service by Google to help you optimize your site's performance. You can analyse your site using a browser extension or online, more information: https://developers.google.com/speed/pagespeed/
 
 = How to embed videos in WordPress? =
-Easily post the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
+Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
+Inserting a Youtube <iframe> (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
 
 = How to add support for custom post types? =
 You can use a filter to add support for a custom post type (since version 2.0.4).
@@ -116,6 +121,7 @@ add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
 = 2.0.6 =
 * Improvement: Reduced memory usage when all posts are updated.
 * Thumbnail size "cover" is now default.
+* Fixed a responsive video bug.
 
 = 2.0.5 =
 * Fix: Manually inserted links for Youtube playlists are working again.
