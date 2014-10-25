@@ -55,6 +55,10 @@ class Lazyload_Videos_General {
 			'testimonials',
 			'client',
 			'clients',
+			// Post Type Names for Theme "Salient"
+			'any',
+			'home_slider',
+			'nectar_slider',
 		);
 		$post_types = apply_filters( 'lazyload_videos_post_types' , $post_types );
 
