@@ -59,7 +59,14 @@ class Lazyload_Videos_Admin {
 		 * Only go on when user is not on an admin page
 		 * @since 1.6.2
 		 */
-		if (is_admin()) return $return;
+		if (is_admin()) {
+			if ( function_exists('is_buddypress') && is_buddypress() ) {
+				// do nothing here [fix for BuddyPress]
+			}
+			else {
+				return $return;
+			}
+		}
 
 		// Youtube support
 	    if ( (! is_feed()) && ($data->provider_name == 'YouTube') 
