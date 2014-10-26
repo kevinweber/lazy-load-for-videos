@@ -117,7 +117,11 @@ jQuery.noConflict();
        * Create info element
        */
       var createPluginInfo = function() {
-        if ($_o.displayBranding !== false) {
+        if (
+            ( $_o.displayBranding !== false ) &&
+            ( $(that).siblings(classBrandingDot).length === 0 ) // This prevents the site from creating unnecessary duplicate brandings
+          )
+        {
           // source = Video
           var source = $(that);
           // element = Plugin info element

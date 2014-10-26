@@ -57,6 +57,9 @@ $z-index-base: 2;
 
 .preview-vimeo {
 	display: table;
+	& > a {
+		font-size: 0;
+	}
 	&:after, &::after {
 		content: "\25B6";
 		font-size: 50px;

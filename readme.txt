@@ -121,6 +121,7 @@ add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
 = 2.0.7 =
 * Added support for three more post types (any, home_slider, nectar_slider).
 * Fix: Display videos on BuddyPress' activity streams.
+* Fix: Duplicate branding links (as seen on BuddyPress activity stream).
 * Fix: Actually clear video cache when post is updated.
 
 = 2.0.6 =
