@@ -33,24 +33,61 @@
 
     if ($_o.displayBranding !== false) {
 
-      $( classBrandingDot ).css({
+      var $element = $( classBrandingDot );
+
+      $element.css({
         'display': 'block',
         'visibility': 'visible',
       });
 
+      // When the opacity/alpha is to low, increase opacity and color it black
+      if ( 
+          ( $element.css( "opacity" ) < 0.2 ) ||
+          ( getAlpha( $element ) < 0.2 )
+        )
+      {
+        $element.css({'color':'rgba(0,0,0,1)'}).fadeTo( "fast", 0.5 );
+      }
+
+      // When the font size is to low, increase it
+      var $fontsize = $element.css( "font-size" ).replace(/\D/g,'');  // Remove everything but numbers
+      if ( $fontsize < 6 ) {
+        $element.css({'font-size':'14px'});
+      }
+
       // Get colour
-      var color = $( classBrandingDot ).css('color');
-      if ( color !== undefined ) {
+      var color = $element.css('color');
+      // Test if spaces or tab stops exist
+      if ( /\s/g.test(color) ) {
         // Remove spaces
         color = color.replace(/\s/g, '');
-        // Convert to lowercase
-        color = color.toLowerCase();
-        // When transparent: make it white
-        if ( color === 'transparent' || color === 'rgba(0,0,0,0)' ) {
-          $( classBrandingDot ).css("cssText", "color: white!important;");
-        }
       }
+      // Convert to lowercase
+      color = color.toLowerCase();
+      // When transparent: make it white
+      if ( color === 'transparent' || color === 'transparent!important' || color === 'rgba(0,0,0,0)' || color === 'rgba(255,255,255,0)' ) {
+        $element.css("cssText", "color: white!important;");
+      }
+
     }
+  };
+
+  /*
+   * Test if element's color contains a RGBA value.
+   * If yes,  @return integer
+   *          else @return 1
+   */
+  var getAlpha = function( element ) {
+    var alpha = 1;
+    var color = element.css( 'color' );
+
+    // Search color value for string "rgba" (case-insensitive)
+    if ( /rgba/i.test( color ) ) {
+      // Get the fourth (alpha) value using string replace
+      alpha = color.replace(/^.*,(.+)\)/,'$1');
+    }
+
+    return alpha;
   };
 
 }( window.lazyload_video = window.lazyload_video || {}, $lazyload_video ));
