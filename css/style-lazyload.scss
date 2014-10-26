@@ -36,6 +36,7 @@ $z-index-base: 2;
 
 .container-youtube, .container-vimeo {
 	font-size: 0;
+	line-height: 0;
 }
 
 .entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo {
@@ -49,6 +50,9 @@ $z-index-base: 2;
 	color: #fff;
 	font-family: Arial, serif;
 	font-size: 14px;
+	margin-top: 0;
+	line-height: 18px;
+	@include vendor-prefix( box-sizing, border-box );
 }
 
 .preview-vimeo {
@@ -125,7 +129,7 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 .entry-content a.lazyload-info-icon:visited, p a.lazyload-info-icon:visited, a.lazyload-info-icon:visited, .lazyload-info-icon:visited {
     width: 19px;
     height: 0;
-    line-height: 19px;
+    line-height: 0;
     display: block;
     text-align: center;
     opacity: 0.8;
@@ -138,7 +142,7 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
     z-index: $z-index-base + 2;
     text-shadow: none;
     position: relative;
-    top: 11px;
+    top: 19px;
     text-transform: none;
 	border: 0;
 	vertical-align: baseline;

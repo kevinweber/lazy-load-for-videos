@@ -77,6 +77,5 @@ else {
 	add_action( 'plugins_loaded', 'frontend_init', 16 );
 }
 
-
 /***** Plugin by Kevin Weber || kevinw.de *****/
 ?>

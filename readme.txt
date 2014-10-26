@@ -118,6 +118,11 @@ add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
 
 == Changelog ==
 
+= 2.0.7 =
+* Added support for three more post types (any, home_slider, nectar_slider).
+* Fix: Display videos on BuddyPress' activity streams.
+* Fix: Actually clear video cache when post is updated.
+
 = 2.0.6 =
 * Improvement: Reduced memory usage when all posts are updated.
 * Thumbnail size "cover" is now default.
@@ -151,7 +156,7 @@ add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
 * Fix to make the plugin ready for WordPress 4.0 and its new feature to display video previews in editor
 
 = 1.6.1 =
-* Wrapped videos into a <div> container.
+* Wrapped videos into a div-container.
 
 = 1.6 =
 * New feature: Choose from three play buttons (CSS-only white, CSS-only black, Youtube button image)

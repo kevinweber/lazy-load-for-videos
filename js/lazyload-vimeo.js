@@ -113,6 +113,7 @@ jQuery.noConflict();
   var vimeoCreateThumbProcess = function() {
     $(classPreviewVimeoDot).each(function() {
       var vid = getAttrId(this);
+      $(this).empty();  // Remove no longer needed title (title is necessary for preview in text editor)
       vimeoLoadingThumb(vid);
     });
   };

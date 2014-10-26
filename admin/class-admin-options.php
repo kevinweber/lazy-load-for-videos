@@ -54,20 +54,6 @@ class Lazyload_Videos_Admin {
 	 * Thanks to Otto's comment on StackExchange (See http://wordpress.stackexchange.com/a/19533)
 	 */
 	function lazyload_replace_video($return, $data, $url) {
-		/**
-		 * Because of WordPress 4.0 video preview in editor feature:
-		 * Only go on when user is not on an admin page
-		 * @since 1.6.2
-		 */
-		if (is_admin()) {
-			if ( function_exists('is_buddypress') && is_buddypress() ) {
-				// do nothing here [fix for BuddyPress]
-			}
-			else {
-				return $return;
-			}
-		}
-
 		// Youtube support
 	    if ( (! is_feed()) && ($data->provider_name == 'YouTube') 
 				&& (get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated
@@ -76,7 +62,7 @@ class Lazyload_Videos_Admin {
 	    	$a_class = 'lazy-load-youtube preview-lazyload preview-youtube';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
-       		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;">&ensp;</a>';
+       		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;" style="text-decoration:none;color:#000">' . $url . '</a>';
  			
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
@@ -99,9 +85,7 @@ class Lazyload_Videos_Admin {
 	    	$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
-			$preview_url = '<div id="' . $vimeoid . '" class="' . $a_class . '" title="Play Video &quot;' . $data->title . '&quot;">
-					
-				</div>';
+			$preview_url = '<div id="' . $vimeoid . '" class="' . $a_class . '" title="Play Video &quot;' . $data->title . '&quot;">' . $url . '</div>';
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
