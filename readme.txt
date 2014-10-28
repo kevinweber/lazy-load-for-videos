@@ -29,7 +29,8 @@ Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.d
 * Choose from several "Play" buttons
 * Choose between two colours for Youtube player (dark or light)
 * Choose between two colours for Youtube player’s video progress bar to highlight the amount of the video that the viewer has already seen (red or white)
-* Don’t display related videos at the end of your videos
+* Don't display related videos at the end of your videos
+* Works with WordPress Multisite
 
 = Future features: =
 * (Better) support with specific plugins
@@ -120,9 +121,9 @@ add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
 
 = 2.0.7 =
 * Added support for three more post types (any, home_slider, nectar_slider).
-* Fix: Display videos on BuddyPress' activity streams.
-* Fix: Duplicate branding links (as seen on BuddyPress activity stream).
-* Fix: Actually clear video cache when post is updated.
+* Fix: Display videos on BuddyPress activity streams.
+* Fix: Duplicate branding links (as seen on BuddyPress activity streams).
+* Fix: Actually clear oembed cache when post is updated.
 
 = 2.0.6 =
 * Improvement: Reduced memory usage when all posts are updated.

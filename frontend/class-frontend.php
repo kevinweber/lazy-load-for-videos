@@ -16,7 +16,7 @@ class Lazyload_Videos_Frontend {
 		add_action( 'wp_head', array( $lazyload_frontend, 'enable_lazyload_js' ) );
 	}
 	function enable_lazyload_js() {
-		wp_enqueue_script( 'lazyload-video-js', plugins_url( '../js/min/lazyload-video-ck.js' , __FILE__ ) );
+		wp_enqueue_script( 'lazyload-video-js', plugins_url( '../js/lazyload-video.js' , __FILE__ ) );
 		?>
 		<script>
 

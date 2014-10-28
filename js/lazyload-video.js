@@ -50,20 +50,28 @@
       }
 
       // When the font size is to low, increase it
-      var $fontsize = $element.css( "font-size" ).replace(/\D/g,'');  // Remove everything but numbers
-      if ( $fontsize < 6 ) {
-        $element.css({'font-size':'14px'});
+      var $fontsize = $element.css( "font-size" );
+      if ( $fontsize !== undefined ) {
+        // Remove everything but numbers
+        $fontsize = $fontsize.replace(/\D/g,'');
+
+        // Increase size when to low
+        if ( $fontsize < 6 ) {
+          $element.css({'font-size':'14px'});
+        }
       }
 
       // Get colour
       var color = $element.css('color');
-      // Test if spaces or tab stops exist
-      if ( /\s/g.test(color) ) {
-        // Remove spaces
-        color = color.replace(/\s/g, '');
+      if ( color !== undefined ) {
+        // Test if spaces or tab stops exist
+        if ( /\s/g.test(color) ) {
+          // Remove spaces
+          color = color.replace(/\s/g, '');
+        }
+        // Convert to lowercase
+        color = color.toLowerCase();
       }
-      // Convert to lowercase
-      color = color.toLowerCase();
       // When transparent: make it white
       if ( color === 'transparent' || color === 'transparent!important' || color === 'rgba(0,0,0,0)' || color === 'rgba(255,255,255,0)' ) {
         $element.css("cssText", "color: white!important;");
