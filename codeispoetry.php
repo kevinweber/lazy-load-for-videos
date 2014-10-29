@@ -45,21 +45,21 @@ require_once( LL_PATH . 'admin/inc/define.php' );
 require_once( LL_PATH . 'admin/class-register.php' );
 require_once( LL_PATH . 'inc/class-general.php' );
 
-function lazyload_init_plugins_loaded() {
+function lazyload_videos_init_plugins_loaded() {
 	require_once( LL_PATH . 'admin/class-admin-options.php' );
 	require_once( LL_PATH . 'frontend/class-frontend.php' );
 }
-add_action( 'plugins_loaded', 'lazyload_init_plugins_loaded', 15 );
+add_action( 'plugins_loaded', 'lazyload_videos_init_plugins_loaded', 15 );
 
 
 
-function admin_init() {
+function lazyload_videos_admin_init() {
 	if ( LL_ESSENTIAL ) {
 		include_once( LL_PATH . 'admin/inc/class-no-premium.php'); 
 	}
 	require_once( LL_PATH . 'admin/class-meta.php' );
 }
-function frontend_init() {
+function lazyload_videos_frontend_init() {
 	// Feature: Support for Widgets (Youtube only)
 	if ( (get_option('lly_opt_support_for_widgets') == true) ) {
 		require_once( LL_PATH . 'frontend/inc/support_for_widgets.php');
@@ -71,10 +71,10 @@ function frontend_init() {
 }
 
 if ( is_admin() ) {
-	add_action( 'plugins_loaded', 'admin_init', 16 );
+	add_action( 'plugins_loaded', 'lazyload_videos_admin_init', 16 );
 }
 else {
-	add_action( 'plugins_loaded', 'frontend_init', 16 );
+	add_action( 'plugins_loaded', 'lazyload_videos_frontend_init', 16 );
 }
 
 /***** Plugin by Kevin Weber || kevinw.de *****/
