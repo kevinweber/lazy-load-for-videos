@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -20,7 +20,6 @@ Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.d
 = Some additional features: =
 * Display video titles on preview images
 * Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every video. (Great for branding and video ads!)
-* Pre-roll and post-roll advertisements
 * Add Custom CSS via plugin’s options panel
 * Choose custom colour for your Vimeo player
 * Hide controls from Youtube player
@@ -31,6 +30,7 @@ Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.d
 * Choose between two colours for Youtube player’s video progress bar to highlight the amount of the video that the viewer has already seen (red or white)
 * Don't display related videos at the end of your videos
 * Works with WordPress Multisite
+* Premium feature: Pre-roll and post-roll advertisements
 
 = Future features: =
 * (Better) support with specific plugins
@@ -120,9 +120,10 @@ add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
 == Changelog ==
 
 = 2.0.7 =
+* Added red play button to the list of play buttons.
 * Added support for three more post types (any, home_slider, nectar_slider).
 * Fix: Display videos on BuddyPress activity streams.
-* Fix: Duplicate branding links (as seen on BuddyPress activity streams).
+* Fix: Don't duplicate branding links (as seen on BuddyPress activity streams).
 * Fix: Actually clear oembed cache when post is updated.
 
 = 2.0.6 =

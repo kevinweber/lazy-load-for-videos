@@ -172,7 +172,7 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Play Button <span class="newred">New styles!</span></label></th>
+					        	<th scope="row"><label>Play Button <span class="newred">New red button!</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_button_style">
 										<option value="default"<?php if (get_option('ll_opt_button_style') === 'default') { echo ' selected="selected"'; } ?>>White (CSS-only)</option>
@@ -180,6 +180,7 @@ class Lazyload_Videos_Admin {
 										<option value="css_black"<?php if (get_option('ll_opt_button_style') === 'css_black') { echo ' selected="selected"'; } ?>>Black (CSS-only)</option>
 										<option value="css_black_pulse"<?php if (get_option('ll_opt_button_style') === 'css_black_pulse') { echo ' selected="selected"'; } ?>>Black Pulse (CSS-only)</option>
 										<option value="youtube_button_image"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image') { echo ' selected="selected"'; } ?>>Youtube button image</option>
+										<option value="youtube_button_image_red"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image_red') { echo ' selected="selected"'; } ?>>Red Youtube button image</option>
 									</select>
 						        </td>
 					        </tr>
