@@ -54,7 +54,7 @@ If you don't see a preview image instead of the Youtube/Vimeo video, open the po
 
 NOTICE - this is important to make your videos work as expected:
 Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
-Inserting a Youtube <iframe> (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
+Inserting a Youtube iframe (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
 
 
 == Frequently Asked Questions ==
@@ -105,6 +105,13 @@ function lazyload_videos_set_post_types( $post_types ) {
 	return $post_types;
 }
 add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
+
+= How to use a custom play button? =
+For now, you can choose the "Youtube button image" from the play button drop-down list, then add the following custom CSS that includes a link to your custom CSS play button image:
+`.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div {
+	background-image: url(INSERT-YOUR-URL-HERE.../images/play.png);
+}`
+Feature versions might include an option to change the colour of your CSS-only buttons using a colour picker and might also include an option to directly upload the desired button image.
 
 = Solved: The plugin isn't working with Jetpack... =
 "Jetpack" by WordPress.com offers some useful extensions. Only one of them makes Lazy Load for Videos break – the "Shortcode Embeds" extension. So simply disable the extension. (In order to see a "Deactivate" button for "Shortcode Embeds" on the Jetpack's extension overview, you must click on "Learn More".)
