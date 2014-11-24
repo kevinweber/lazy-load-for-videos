@@ -126,6 +126,9 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 == Changelog ==
 
+= 2.0.8 =
+* Fix: Made 'Update Posts' working again.
+
 = 2.0.7 =
 * Added red play button to the list of play buttons.
 * Added support for three more post types (any, home_slider, nectar_slider).

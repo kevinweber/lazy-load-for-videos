@@ -9,7 +9,7 @@ class Lazyload_Videos_Admin {
 
 	function __construct() {
 		$this->set_schema_prop_video();
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		$this->admin_init();
 		// The 'oembed_dataparse' filter should be called on backend AND on frontend, not only on backend [is_admin()]. Otherwise, on some websites occur errors.
 		add_filter( 'oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3 );
 		add_action( 'admin_menu', array( $this, 'lazyload_create_menu' ) );
