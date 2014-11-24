@@ -3,7 +3,6 @@
  * register_activation_hook() and register_deactivation_hook() MUST NOT be called with action 'plugins_loaded' or any 'admin_init'
  * @package Admin
  */
-
 register_activation_hook( LL_FILE, 'lazyloadvideos_plugin_activation' );
 register_deactivation_hook( LL_FILE, 'lazyloadvideos_plugin_deactivation' );
 

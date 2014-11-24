@@ -13,19 +13,27 @@ class Lazyload_Videos_Admin {
 		// The 'oembed_dataparse' filter should be called on backend AND on frontend, not only on backend [is_admin()]. Otherwise, on some websites occur errors.
 		add_filter( 'oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3 );
 		add_action( 'admin_menu', array( $this, 'lazyload_create_menu' ) );
+		$this->lazyloadvideos_update_posts_with_embed();
 	}
 
 	function admin_init() {
 		if ( isset( $_GET['page'] ) && ( $_GET['page'] == LL_ADMIN_URL ) ) {
-			if ( isset( $_POST['update_posts'] ) && $_POST['update_posts'] == 'with_oembed' ) {
-				lazyloadvideos_update_posts_with_embed();
-			}
 			$this->lazyload_admin_css();
 			$this->lazyload_admin_js();
 		}
 		$plugin = plugin_basename( LL_FILE ); 
 		add_filter("plugin_action_links_$plugin", array( $this, 'lazyload_settings_link' ) );
 		$this->register_lazyload_settings();
+	}
+
+	/*
+	 * Update posts with embed when user has clicked "Update Posts"
+	 * @info: lazyloadvideos_update_posts_with_embed() is loaded by class-register.php
+	 */
+	function lazyloadvideos_update_posts_with_embed() {
+		if ( isset( $_POST['update_posts'] ) && $_POST['update_posts'] == 'with_oembed' ) {
+			lazyloadvideos_update_posts_with_embed();
+		}
 	}
 
 	/**
