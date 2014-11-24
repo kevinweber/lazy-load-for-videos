@@ -168,7 +168,7 @@ class Lazyload_Videos_Admin {
 				        	<tr valign="top">
 						        <th scope="row"><label>Responsive Mode <span class="newred">New!</span></label></th>
 						        <td>
-									<input name="ll_opt_load_responsive" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_responsive' ) ); ?> /> <label>Check this to improve responsiveness.</label>
+									<input name="ll_opt_load_responsive" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_responsive' ) ); ?> /> <label>Check this to improve responsiveness. Video aspect ratio will be 16:9.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
