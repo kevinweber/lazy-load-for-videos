@@ -15,24 +15,23 @@ $z-index-base: 2;
   #{$property}: #{$value};
 }
 
-@mixin keyframes($name){
-	@-webkit-keyframes $name {
+@mixin keyframes( $name ){
+	@-webkit-keyframes #{$name} {
 		@content;
 	}
-	@-moz-keyframes $name {
+	@-moz-keyframes #{$name} {
 		@content;
 	}
-	@-ms-keyframes $name {
+	@-ms-keyframes #{$name} {
 		@content;
 	}
-	@-o-keyframes $name {
+	@-o-keyframes #{$name} {
 		@content;
 	}
-	@keyframes $name {
+	@keyframes #{$name} {
 		@content;
 	}
 }
-
 
 .container-youtube, .container-vimeo {
 	font-size: 0;
@@ -164,7 +163,6 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 a.lazy-load-youtube, .lazy-load-vimeo {
 	margin-bottom: 5px!important;
 }
-
 
 @include keyframes( pulse ) {
 	0% { -webkit-transform: scale(1); }
