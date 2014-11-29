@@ -19,7 +19,7 @@ class Lazyload_Videos_No_Premium_Admin_Options {
 
 	// Step 1
 	function add_admin_tab_link() {
-		echo '<li><a href="#tab-no-premium" class="tab-orange tab-premium">Premium <span class="newred_dot">&bull;</span></a></li>';
+		echo '<li><a href="#tab-no-premium" class="tab-orange tab-premium">Premium</a></li>';
 	}
 	// Step 2
 	function add_admin_tab() { ?>
@@ -37,7 +37,7 @@ class Lazyload_Videos_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; pre-roll/post-roll ads <span class="newred">New!</span><span class="description thin"><br>Sell advertising space!</span></th>
+			        	<th scope="row">&hellip; pre-roll/post-roll ads<span class="description thin"><br>Sell advertising space!</span></th>
 			        	<td>
 			        		<label>Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement. You have to insert the plain Youtube <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label><br><br><label>&raquo;I'm very proud of this feature because it gives you a new space to promote your brand or sell advertisements! An advertiser might pay to play his video before your actual video starts to play. Isn't this an amazing opportunity?&laquo;<br>&ndash; <a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a>, digital marketer and developer of this plugin</label>
 			        	</td>
