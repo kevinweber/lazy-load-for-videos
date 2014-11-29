@@ -43,15 +43,15 @@ class Lazyload_Videos_No_Premium_Admin_Options {
 			        	</td>
 			        </tr>
 			        <tr valign="top">
-				        <th scope="row"><label>&hellip; apply schema.org markup <span class="newred">Beta</span></label></th>
-				        <td>
-							<label>Add schema.org markup to your Youtube and Vimeo videos. Those changes don't seem to affect your search ranking because videos and schema.org markup <a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">should be visible</a> without JavaScript (but that cannot be the case when videos are lazy loaded).</label>
-				        </td>
-			        </tr>
-			        <tr valign="top">
 			        	<th scope="row">&hellip; enjoy coming features<br><span class="description thin">with free lifetime updates!</span></th>
 				        <td>
 							<span>Get all future updates of this premium extension for free!</span>
+				        </td>
+			        </tr>
+			        <tr valign="top">
+			        	<th scope="row"><?php esc_html_e( '&hellip; push development', LL_TD ); ?></th>
+				        <td>
+							<span><?php esc_html_e( 'This plugin does not anywhere near compensate my month-long time efforts financially. WordPress development is a hobby of mine and allows me to experiment. With your purchase, you sponsor me to spend at least a bit more time to enhance this plugin.', INCOM_TD ); ?></span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
