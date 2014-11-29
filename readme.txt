@@ -2,9 +2,9 @@
 Contributors: kevinweber
 Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
-Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 2.0.7
+Requires at least: 3.5
+Tested up to: 4.0.1
+Stable tag: 2.1
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -35,9 +35,8 @@ Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.d
 = Future features: =
 * (Better) support with specific plugins
 * Support for new/other formats, like SoundCloud, SlideShare and Spotify 
-* Create a custom "Play" button with a colour picker
+* Create a custom "Play" button using a colour picker
 * More "Play" button styles
-* Video preview image for feeds
 * Track how often the videos have been loaded with Google Analytics
 * What you suggest
 
@@ -126,7 +125,7 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 == Changelog ==
 
-= 2.0.8 =
+= 2.1 =
 * New feature: Add schema.org markup to your Youtube and Vimeo videos.
 * New feature: Hide title/uploader. Don't display information like the video title and uploader when the video starts playing.
 * New feature: Hide annotations (such as "subscribe to channel").
