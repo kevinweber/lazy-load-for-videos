@@ -153,7 +153,7 @@ class Lazyload_Videos_Admin {
 			<ul class="ui-tabs-nav">
 		        <li><a href="#general">General/Styling <span class="newred_dot">&bull;</span></a></li>
 		        <li><a href="#youtube">Youtube <span class="newred_dot">&bull;</span></a></li>
-		    	<li><a href="#vimeo">Vimeo</a></li>
+		    	<li><a href="#vimeo">Vimeo <span class="newred_dot">&bull;</span></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -329,10 +329,9 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Colour of the vimeo controls</label></th>
+					        	<th scope="row"><label>Colour of the vimeo controls <span class="newred">Improved</span></label></th>
 					        	<td>
-					        		<input id="llv_picker_input_player_colour" class="picker-input" type="text" name="llv_opt_player_colour" placeholder="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo get_option("llv_opt_player_colour"); } ?>" />
-					        		<div id="llv_picker_player_colour" class="picker-style"></div>
+					        		<input id="llv_picker_input_player_colour" class="ll_picker_player_colour picker-input" type="text" name="llv_opt_player_colour" data-default-color="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo get_option("llv_opt_player_colour"); } ?>" />
 					        	</td>
 					        </tr>
 			        	</tbody>
@@ -376,13 +375,13 @@ class Lazyload_Videos_Admin {
 	}
 
 	function lazyload_admin_js() {
-	    wp_enqueue_script( 'lazyload_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array('jquery', 'jquery-ui-tabs', 'farbtastic' ) );
+	    wp_enqueue_script( 'lazyload_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ) );
 	}
 
 	function lazyload_admin_css() {
 		wp_enqueue_style( 'lazyload-admin-css', plugins_url('../css/min/admin.css', __FILE__) );
 		wp_enqueue_style( 'lazyload-admin-css-tooltips', plugins_url('../css/min/admin-tooltips.css', __FILE__) );
-		wp_enqueue_style( 'farbtastic' );	// Required for colour picker
+		wp_enqueue_style( 'wp-color-picker' );	// Required for colour picker
 
 		if ( is_rtl() ) {
 			wp_enqueue_style( 'lazyload-admin-rtl', plugins_url('../css/min/admin-rtl.css', __FILE__) );

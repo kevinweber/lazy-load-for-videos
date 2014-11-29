@@ -130,6 +130,7 @@ Feature versions might include an option to change the colour of your CSS-only b
 * New feature: Add schema.org markup to your Youtube and Vimeo videos.
 * New feature: Hide title/uploader. Don't display information like the video title and uploader when the video starts playing.
 * New feature: Hide annotations (such as "subscribe to channel").
+* Improved colour picker.
 * Fix: Made 'Update Posts' working again.
 
 = 2.0.7 =

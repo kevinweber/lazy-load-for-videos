@@ -55,8 +55,7 @@
   };
 
   var addColourPicker = function() {
-    $('#llv_picker_player_colour').farbtastic('#llv_picker_input_player_colour');
-// Picker No 2:    $('#incom_picker_bgcolor').farbtastic('#incom_picker_input_bgcolor');
+    $('.ll_picker_player_colour').wpColorPicker();
   };
 
 }( window.incom = window.incom || {}, jQuery ));
