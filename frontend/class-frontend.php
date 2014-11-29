@@ -9,6 +9,8 @@ class Lazyload_Videos_Frontend {
 		add_action( 'wp_head', array( $this, 'load_lazyload_css') );
 		require_once( LL_PATH . 'frontend/class-youtube.php' );
 		require_once( LL_PATH . 'frontend/class-vimeo.php' );
+		add_filter( 'lly_set_options', array( $this, 'set_options' ) );
+		add_filter( 'llv_set_options', array( $this, 'set_options' ) );
 	}
 
 	function enable_lazyload_js_init() {
@@ -136,6 +138,22 @@ class Lazyload_Videos_Frontend {
 			( is_singular() && ($lazyload_videos_general->test_if_post_or_page_has_embed()) )	// Pages/posts with oembedded media
 			//|| ( !is_singular() )	// Everything else (except for pages/posts without oembedded media)
 		? true : false;
+	}
+
+	/** 
+	 * Set options to extend setOptionsYoutube() and setOptionsVimeo() that are used in JS files
+	 */
+	function set_options() {
+		$this->set_option_video_seo();
+	}
+
+	/**
+	 * Set option "videoseo" for setOptionsYoutube() and setOptionsVimeo()
+	 */
+	function set_option_video_seo() {
+		if ( get_option("ll_video_seo") == "1" ) {
+			echo 'videoseo: true,';
+		}
 	}
 
 }

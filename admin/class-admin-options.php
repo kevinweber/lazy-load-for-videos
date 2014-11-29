@@ -114,6 +114,7 @@ class Lazyload_Videos_Admin {
 			'll_opt_button_style',
 			'll_opt_thumbnail_size',
 			'll_opt_customcss',
+			'll_video_seo', // Google: "Make sure that your video and schema.org markup are visible without executing any JavaScript or Flash." --> Video is not working with Lazy Load
 			'll_opt_support_for_tablepress',
 
 			// Youtube
@@ -208,6 +209,12 @@ class Lazyload_Videos_Admin {
 					        	<td>
 					        		<textarea rows="14" cols="70" type="text" name="ll_opt_customcss"><?php echo get_option('ll_opt_customcss'); ?></textarea>
 					        	</td>
+					        </tr>
+					        <tr valign="top">
+						        <th scope="row"><label>Schema.org Markup <span class="newred">Beta</span></label></th>
+						        <td>
+									<input name="ll_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_video_seo' ) ); ?> /> <label>Add schema.org markup to your Youtube and Vimeo videos. Those changes don't seem to affect your search ranking because videos and schema.org markup <a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">should be visible</a> without JavaScript (but that cannot be the case when videos are lazy loaded).</label> <label><span style="color:#f60;">Important:</span> Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.</label>
+						        </td>
 					        </tr>
 					        <tr valign="top">
 						        <th scope="row"><label>Support for TablePress</label></th>
