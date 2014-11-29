@@ -123,6 +123,7 @@ class Lazyload_Videos_Admin {
 			'lly_opt_thumbnail_quality',
 			'lly_opt_player_colour',
 			'lly_opt_player_colour_progress',
+			'lly_opt_player_showinfo',
 			'lly_opt_player_relations',
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
@@ -266,6 +267,12 @@ class Lazyload_Videos_Admin {
 										<option value="red"<?php if (get_option('lly_opt_player_colour_progress') === 'red') { echo ' selected="selected"'; } ?>>Red (default)</option>
 										<option value="white"<?php if (get_option('lly_opt_player_colour_progress') === 'white') { echo ' selected="selected"'; } ?>>White</option>
 									</select>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Hide title/uploader <span class="newred">New!</span></label></th>
+						        <td>
+									<input name="lly_opt_player_showinfo" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_showinfo' ) ); ?> /> <label>If checked, information like the video title and uploader will not be displayed when the video starts playing. This option only affects the playing video, not the video thumbnail.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">

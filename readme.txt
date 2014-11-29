@@ -127,6 +127,7 @@ Feature versions might include an option to change the colour of your CSS-only b
 == Changelog ==
 
 = 2.0.8 =
+* New feature: Hide title/uploader. Don't display information like the video title and uploader when the video starts playing.
 * New feature: Hide annotations (such as "subscribe to channel").
 * Fix: Made 'Update Posts' working again.
 
