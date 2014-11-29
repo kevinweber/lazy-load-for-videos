@@ -127,6 +127,7 @@ Feature versions might include an option to change the colour of your CSS-only b
 == Changelog ==
 
 = 2.0.8 =
+* New feature: Hide annotations (such as "subscribe to channel").
 * Fix: Made 'Update Posts' working again.
 
 = 2.0.7 =

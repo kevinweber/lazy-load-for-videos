@@ -38,6 +38,7 @@ jQuery.noConflict();
         theme: 'dark', // possible: dark, light
         colour: 'red', // possible: red, white
         controls: true,
+        loadpolicy: true,
         relations: true,
         buttonstyle: '',
         preroll: '',
@@ -243,6 +244,10 @@ jQuery.noConflict();
       if (!$_o.controls) {
         controls = '&controls=0';
       }
+      var loadpolicy = '';
+      if (!$_o.loadpolicy) {
+        loadpolicy = '&iv_load_policy=3';
+      }
 
       /*
        * Generate Youtube URL parameter 'playlist'
@@ -265,7 +270,7 @@ jQuery.noConflict();
       /*
        * Generate URL
        */
-      emu += ((emu.indexOf("?") === -1) ? "?" : "&") + "autoplay=1" + theme + colour + controls + relations + playlist;
+      emu += ((emu.indexOf("?") === -1) ? "?" : "&") + "autoplay=1" + theme + colour + controls + loadpolicy + relations + playlist;
 
       /*
        * Generate iFrame
