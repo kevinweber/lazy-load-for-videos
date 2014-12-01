@@ -53,7 +53,7 @@ class Lazyload_Videos_Meta {
 <!-- 		<h4>Custom Text</h4>
 		<p>
 			<p>Description &hellip;</p>
-			<input type="text" name="oembed_link" id="oembed_link" value="<?php echo $text; ?>" style="width:100%;" />
+			<input type="text" name="oembed_link" id="oembed_link" value="<?php // echo $text; ?>" style="width:100%;" />
 			<label for="oembed_link">E.g. <i>example</i></label>	
 		</p> -->
 
