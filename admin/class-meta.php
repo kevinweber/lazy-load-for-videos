@@ -59,7 +59,7 @@ class Lazyload_Videos_Meta {
 
 <!-- 		<h4>Checkbox</h4>
 		<p>
-			<input type="checkbox" name="lazyload_check_custom" id="lazyload_check_custom" <?php checked( $check, 'on' ); ?> />
+			<input type="checkbox" name="lazyload_check_custom" id="lazyload_check_custom" <?php // checked( $check, 'on' ); ?> />
 			<label for="lazyload_check_custom">If checked: Display ...</label>
 		</p> -->
 
