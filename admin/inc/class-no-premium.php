@@ -51,7 +51,7 @@ class Lazyload_Videos_No_Premium_Admin_Options {
 			        <tr valign="top">
 			        	<th scope="row"><?php esc_html_e( '&hellip; push development', LL_TD ); ?></th>
 				        <td>
-							<span><?php esc_html_e( 'This plugin does not anywhere near compensate my month-long time efforts financially. WordPress development is a hobby of mine and allows me to experiment. With your purchase, you sponsor me to spend at least a bit more time to enhance this plugin.', INCOM_TD ); ?></span>
+							<span><?php esc_html_e( 'This plugin does not anywhere near compensate my month-long time efforts financially. WordPress development is a hobby of mine and allows me to experiment. With your purchase, you sponsor me to spend at least a bit more time to enhance this plugin.', LL_TD ); ?></span>
 				        </td>
 			        </tr>
 			        <tr valign="top">

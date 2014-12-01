@@ -23,6 +23,9 @@ Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.d
 * Add Custom CSS via plugin’s options panel
 * Choose custom colour for your Vimeo player
 * Hide controls from Youtube player
+* Add schema.org markup to your Youtube and Vimeo videos
+* Hide information like the video title and uploader when the video starts playing
+* Hide annotations like "subscribe to channel"
 * Support for videos in text widget (Youtube only)
 * Choose thumbnail size (standard or cover)
 * Choose from several "Play" buttons
