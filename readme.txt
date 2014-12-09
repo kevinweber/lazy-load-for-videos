@@ -128,6 +128,9 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 == Changelog ==
 
+= 2.1.2 =
+* Improvement: Support every kind of post type.
+
 = 2.1.1 =
 * Fix: Replaced incorrect 'INCOLL_TDM_TD' variable.
 * Fixed not correct commented out variables.

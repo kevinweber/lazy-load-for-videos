@@ -41,25 +41,7 @@ class Lazyload_Videos_General {
 	 * @since 2.0.4
 	 */
 	private function set_post_types() {
-		$post_types = array(
-			'post',
-			'page',
-			// Typical custom post type names
-			'portfolio',
-			'news',
-			'article',
-			'articles',
-			'event',
-			'events',
-			'testimonial',
-			'testimonials',
-			'client',
-			'clients',
-			// Post Type Names for Theme "Salient"
-			'any',
-			'home_slider',
-			'nectar_slider',
-		);
+		$post_types = get_post_types();
 		$post_types = apply_filters( 'lazyload_videos_post_types' , $post_types );
 
 		return $post_types;
