@@ -21,8 +21,7 @@ class Lazyload_Videos_Meta {
 	}
 
 	function add_meta_box() {
-		$lazyload_videos_general = new Lazyload_Videos_General();
-		
+		global $lazyload_videos_general;
 		$screens = $lazyload_videos_general->get_post_types();
 
 		foreach ( $screens as $screen ) {

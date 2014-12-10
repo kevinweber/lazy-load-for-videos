@@ -58,3 +58,5 @@ class Lazyload_Videos_General {
 	}
 
 }
+
+$lazyload_videos_general = new Lazyload_Videos_General();

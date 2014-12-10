@@ -12,8 +12,8 @@ class Lazyload_Videos_Update_Posts {
 	 */
 	function delete_oembed_caches() {
 		global $wp_embed;
-		$lazyload_videos_general = new Lazyload_Videos_General();
-
+		global $lazyload_videos_general;
+		
 	    $post_ids = get_posts(
 	    	array(
 	    		'post_type' => $lazyload_videos_general->get_post_types(),
