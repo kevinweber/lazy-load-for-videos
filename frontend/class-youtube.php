@@ -16,9 +16,9 @@ class Lazyload_Videos_Youtube extends Lazyload_Videos_Frontend {
 	function enable_lazyload_js() {
 		if ( parent::test_if_scripts_should_be_loaded() && (get_option('lly_opt') !== '1') ) {
 			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'lazyload_youtube_js', plugins_url( '../js/lazyload-youtube.js' , __FILE__ ) );
+				wp_enqueue_script( 'lazyload_youtube_js', plugins_url( '../js/lazyload-youtube.js' , __FILE__ ), array( 'jquery' ), LL_VERSION );
 			} else {
-				wp_enqueue_script( 'lazyload_youtube_js', plugins_url( '../js/min/lazyload-youtube-ck.js' , __FILE__ ) );
+				wp_enqueue_script( 'lazyload_youtube_js', plugins_url( '../js/min/lazyload-youtube-ck.js' , __FILE__ ), array( 'jquery' ), LL_VERSION );
 			} ?>
 			<script>
 			var $lly = jQuery.noConflict();
