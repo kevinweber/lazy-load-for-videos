@@ -4,6 +4,10 @@
  */
 class Lazyload_Videos_General {
 
+	// Don't change those strings since exactly those strings are needed by the Youtube JavaScript file
+	private $thumbnailquality_default = '0';
+	private $thumbnailquality_maxresdefault = 'maxresdefault';
+
 	/**
 	 * Thanks to http://t31os.wordpress.com/2010/05/24/post-has-embed/ for a nicer solution than mine
 	 */
@@ -56,6 +60,36 @@ class Lazyload_Videos_General {
 		$post_types = $this->set_post_types();
 		return $post_types;
 	}
+
+ 	/**
+ 	 * Test which thumbnail quality should be used
+ 	 */
+ 	function get_thumbnail_quality() {
+		global $post;
+		$thumbnailquality = $this->thumbnailquality_default;
+
+		if (!isset($post->ID)) {
+			$id = null;
+		}
+		else {
+			$id = $post->ID;
+		}
+		
+		// When the individual status for a page/post is '0', all the other setting don't matter.
+		if (
+			( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) && get_post_meta( $id, 'lazyload_thumbnail_quality', true ) === $this->thumbnailquality_default )
+			) {
+			return $thumbnailquality;
+		}
+		elseif (
+			( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) && get_post_meta( $id, 'lazyload_thumbnail_quality', true ) === 'max' )
+			|| ( ( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) !== $this->thumbnailquality_default ) && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
+			) {
+			$thumbnailquality = $this->thumbnailquality_maxresdefault;
+		}
+
+		return $thumbnailquality;
+ 	}
 
 }
 

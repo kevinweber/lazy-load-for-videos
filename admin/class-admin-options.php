@@ -62,6 +62,8 @@ class Lazyload_Videos_Admin {
 	 * Thanks to Otto's comment on StackExchange (See http://wordpress.stackexchange.com/a/19533)
 	 */
 	function lazyload_replace_video($return, $data, $url) {
+		global $lazyload_videos_general;
+
 		// Youtube support
 	    if ( (! is_feed()) && ($data->provider_name == 'YouTube') 
 				&& (get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated

@@ -46,31 +46,8 @@ class Lazyload_Videos_Youtube extends Lazyload_Videos_Frontend {
  	 * Test which thumbnail quality should be used
  	 */
  	function thumbnailquality() {
-		global $post;
-		$thumbnailquality_default = '0';
-		$thumbnailquality = $thumbnailquality_default;
-
-		if (!isset($post->ID)) {
-			$id = null;
-		}
-		else {
-			$id = $post->ID;
-		}
-		
-		// When the individual status for a page/post is '0', all the other setting don't matter.
-		if (
-			( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) && get_post_meta( $id, 'lazyload_thumbnail_quality', true ) === '0' )
-			) {
-			return $thumbnailquality;
-		}
-		elseif (
-			( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) && get_post_meta( $id, 'lazyload_thumbnail_quality', true ) === 'max' )
-			|| ( ( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) !== '0' ) && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
-			) {
-			$thumbnailquality = 'maxresdefault';
-		}
-
-		return $thumbnailquality;
+		global $lazyload_videos_general;
+		return $lazyload_videos_general->get_thumbnail_quality();
  	}
 
 }
