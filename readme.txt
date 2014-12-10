@@ -134,6 +134,7 @@ Feature versions might include an option to change the colour of your CSS-only b
 * Improvement: Support every kind of post type.
 * Fix: Replaced '<?=' with '<?php echo'.
 * Improvement: Use not minified JavaScript files when SCRIPT_DEBUG is true (defined in wp-config.php).
+* Added version number to scripts.
 
 = 2.1.1 =
 * Fix: Replaced incorrect 'INCOLL_TDM_TD' variable.
