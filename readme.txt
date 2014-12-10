@@ -96,6 +96,8 @@ Easily insert the URL to your content (e.g. Youtube video) into a post or page. 
 Inserting a Youtube <iframe> (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
 
 = How to add support for custom post types? =
+UPDATE: Since plugin version 2.1.2, every custom post type is supported automatically. So you can ignore the following instructions. They will be removed with one of the next updates.
+
 You can use a filter to add support for a custom post type (since version 2.0.4).
 Replace 'post_type_label' with the name/label of your custom post type.
 
@@ -130,6 +132,7 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 = 2.1.2 =
 * Improvement: Support every kind of post type.
+* Fix: Replaced '<?=' with '<?php echo'.
 
 = 2.1.1 =
 * Fix: Replaced incorrect 'INCOLL_TDM_TD' variable.
