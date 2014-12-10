@@ -33,31 +33,32 @@ p.notice {
 			float: left;
 			width: initial;
 		}
-		.help {
-			float: left;
-			.info-icon {
-				@include vendor-prefix( border-radius, 50% );
-				border: 1px solid $grey_light;
-				width: 16px;
-				height: 16px;
-				line-height: 16px;
-				display: inline-block;
-				text-align: center;
-				font-weight: normal;
-				color: $grey_light;
-				font-size: 13px;
-				margin: 5px 0 5px 10px;
-				padding-left: 1px;
-				&:hover {
-					border-color: $grey_medium;
-					color: $grey_medium;
-				}
-			}
-		}
 	}
 	&.updated {
 		margin-top: 20px;
 		margin-left: 0;
+	}
+}
+
+.help {
+	float: left;
+	.info-icon {
+		@include vendor-prefix( border-radius, 50% );
+		border: 1px solid $grey_light;
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		display: inline-block;
+		text-align: center;
+		font-weight: normal;
+		color: $grey_light;
+		font-size: 13px;
+		margin: 5px 0 5px 10px;
+		padding-left: 1px;
+		&:hover {
+			border-color: $grey_medium;
+			color: $grey_medium;
+		}
 	}
 }
 

@@ -124,6 +124,7 @@ class Lazyload_Videos_Admin {
 			'lly_opt_title',
 			'lly_opt_support_for_widgets',
 			'lly_opt_thumbnail_quality',
+			'lly_opt_thumbnail_quality_max_force',
 			'lly_opt_player_colour',
 			'lly_opt_player_colour_progress',
 			'lly_opt_player_showinfo',
@@ -248,12 +249,16 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Default thumbnail quality</label></th>
+					        	<th scope="row"><label>Default thumbnail quality <span class="newred">Updated!</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
 										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>>Standard quality</option>
 										<option value="max"<?php if (get_option('lly_opt_thumbnail_quality') === 'max') { echo ' selected="selected"'; } ?>>Max resolution</option>
 									</select>
+									<span style="display:none;" class="lly_opt_thumbnail_quality_max_force_wrapper">
+										<input style="margin-left:3px;" name="lly_opt_thumbnail_quality_max_force" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_thumbnail_quality_max_force' ) ); ?> />
+										<label>Force max resolution everywhere<div style="display:inline;float:none;" class="help"><span class="tooltip-right info-icon" data-tooltip="By default, max resolution is only used when a singular post/page is displayed.">?</span></div></label>
+									</span>
 									<p>
 										Define which thumbnail quality should be used by default.<br>
 										<span style="color:#f90;">Important:</span> Some videos don't have a thumbnail with maximum resolution. In this case, a pixelated placeholder image will be displayed and error messages might appear in your browser's log. You can override the default setting on every post and page individually.
