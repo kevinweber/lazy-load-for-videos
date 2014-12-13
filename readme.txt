@@ -130,7 +130,8 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 == Changelog ==
 
-= 2.1.2 =
+= 2.1.4 =
+* Improvement: MUCH ENHANCED performance when updating all posts. Fewer queries, faster execution. Should fix the "Allowed memory size exhausted" issue that appeared on large sites with many posts.
 * Improvement: Support every kind of post type.
 * Fix/new feature: By default, max resolution is only used when a singular post/page is displayed. Users can choose to also load high quality thumbnails on archives and other pages using a "force" checkbox.
 * Fix: Replaced '<?=' with '<?php echo'.
