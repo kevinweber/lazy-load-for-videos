@@ -28,10 +28,15 @@ p.notice {
 	&.notice {
 		position: relative;
 		top: -14px;
+		border: 0;
+		margin-left: 0;
+		padding-left: 0;
+		background: none;
+		box-shadow: none;
 		form {
 			display: inline;
-			float: left;
 			width: initial;
+			float: left;
 		}
 	}
 	&.updated {

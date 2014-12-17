@@ -350,7 +350,7 @@ class Lazyload_Videos_Admin {
 			    <?php submit_button(); ?>
 			</form>
 
-	 		<div class="update-posts notice clear-both">
+	 		<div class="update-posts notice">
 				<form action="options-general.php?page=<?php echo LL_ADMIN_URL; ?>" method="post">
 				   <input type="hidden" name="update_posts" value="with_oembed" />
 				   <input class="button update-posts" type="submit" value="Update Posts" />
