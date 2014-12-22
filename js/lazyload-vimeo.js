@@ -2,8 +2,6 @@
  * Lazy Load Vimeo
  * by Kevin Weber (kevinw.de)
  */
-
-jQuery.noConflict();
 (function( lazyload_vimeo, $, undefined ) {
 
   // Classes

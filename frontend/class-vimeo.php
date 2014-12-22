@@ -25,23 +25,25 @@ class Lazyload_Video_Vimeo extends Lazyload_Videos_Frontend {
 				wp_enqueue_script( 'lazyload_vimeo_js', plugins_url( '../js/min/lazyload-vimeo-ck.js' , __FILE__ ), array( 'jquery' ), LL_VERSION );
 			} ?>
 		    <script type='text/javascript'>
- 			var $llv = jQuery.noConflict();
+		    (function ( $ ) {
 
-			$llv(document).ready(function() {	
-				lazyload_vimeo.init({
-					buttonstyle: '<?php if (get_option("ll_opt_button_style") == "") { echo ""; } else { echo get_option("ll_opt_button_style"); } ?>',
-					playercolour: '<?php if (get_option("llv_opt_player_colour") == "") { echo ""; } else { echo get_option("llv_opt_player_colour"); } ?>',
-					responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
-					<?php do_action( 'llv_set_options' ); ?>
+				$(document).ready(function() {	
+					lazyload_vimeo.init({
+						buttonstyle: '<?php if (get_option("ll_opt_button_style") == "") { echo ""; } else { echo get_option("ll_opt_button_style"); } ?>',
+						playercolour: '<?php if (get_option("llv_opt_player_colour") == "") { echo ""; } else { echo get_option("llv_opt_player_colour"); } ?>',
+						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
+						<?php do_action( 'llv_set_options' ); ?>
+					});
 				});
-			});
 
-	        function showThumb(data){
-				$llv("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");
-		    	<?php if (get_option('llv_opt_title') == true) { ?>
-		    		$llv("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
-		    	<?php } ?>	
-	        };
+		        function showThumb(data){
+					$("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");
+			    	<?php if (get_option('llv_opt_title') == true) { ?>
+			    		$("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
+			    	<?php } ?>	
+		        };
+
+	    	})(jQuery);
 		    </script>
 		    <?php
 		}

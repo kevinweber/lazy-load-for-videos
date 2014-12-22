@@ -24,15 +24,16 @@ class Lazyload_Videos_Frontend {
 			wp_enqueue_script( 'lazyload-video-js', plugins_url( '../js/min/lazyload-video-ck.js' , __FILE__ ), array( 'jquery' ), LL_VERSION );
 		} ?>
 		<script>
+		( function ( $ ) {
 
-		var $lazyload_video = jQuery.noConflict();
-
-		$lazyload_video(window).on( "load", function() {
-			lazyload_video.init({
-				displayBranding: 'true',
-				<?php do_action( 'lly_set_options' ); ?>
+			$(window).on( "load", function() {
+				lazyload_video.init({
+					displayBranding: 'true',
+					<?php do_action( 'lly_set_options' ); ?>
+				});
 			});
-		});
+
+		})(jQuery);
 		</script>
 		<?php
 	}

@@ -2,9 +2,6 @@
  * Code that is used by video scripts
  * by Kevin Weber (kevinw.de)
  */
-
- var $lazyload_video = jQuery.noConflict();
-
 ( function( lazyload_video, $, undefined ){
 
   // Classes
@@ -98,4 +95,4 @@
     return alpha;
   };
 
-}( window.lazyload_video = window.lazyload_video || {}, $lazyload_video ));
+}( window.lazyload_video = window.lazyload_video || {}, jQuery ));
