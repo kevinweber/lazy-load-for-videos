@@ -36,14 +36,15 @@ class Lazyload_Video_Vimeo extends Lazyload_Videos_Frontend {
 					});
 				});
 
-		        function showThumb(data){
-					$("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");
-			    	<?php if (get_option('llv_opt_title') == true) { ?>
-			    		$("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
-			    	<?php } ?>	
-		        };
-
 	    	})(jQuery);
+
+	    	var $llv = jQuery.noConflict();
+	        function showThumb(data){
+				$llv("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");
+		    	<?php if (get_option('llv_opt_title') == true) { ?>
+		    		$llv("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
+		    	<?php } ?>	
+	        };
 		    </script>
 		    <?php
 		}
