@@ -17,6 +17,8 @@ By loading the videos only when the user clicks on the preview image – using j
 
 Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.de/lazy-load-videos/)
 
+You want to enhance this plugin? Please [contribute on Github](https://github.com/kevinweber/lazy-load-for-videos). I'm looking for a WordPress enthusiast who further develops this plugin; I'll give you guidance and promote you and the plugin.
+
 = Some additional features: =
 * Display video titles on preview images
 * Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every video. (Great for branding and video ads!)
@@ -41,7 +43,7 @@ Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.d
 * Create a custom "Play" button using a colour picker
 * More "Play" button styles
 * Track how often the videos have been loaded with Google Analytics
-* What you suggest
+* ... YOU want one of those features RIGHT NOW or want to implement a feature yourself? [Contribute on Github](https://github.com/kevinweber/lazy-load-for-videos) and I'll publish your enhancements to the official WordPress directory.
 
 
 == Installation ==
@@ -53,6 +55,8 @@ When you had already published videos before you have activated Lazy Load for Vi
 You may have to clean the website's and browser's cache.
 
 If you don't see a preview image instead of the Youtube/Vimeo video, open the post editor and update/save the post again or even update all posts using the above mentioned "Update Posts" button.
+
+Optionally: Sign up to the Lazy Load for Videos newsletter to get notified about major updates.
 
 NOTICE - this is important to make your videos work as expected:
 Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
