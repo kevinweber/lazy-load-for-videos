@@ -24,6 +24,15 @@ p.notice {
 	padding: 0 10px;
 }
 
+.ui-tabs .update-posts.notice {
+	background: none;
+	box-shadow: none;
+	border-left-color: transparent;
+	margin-left: 0;
+	padding-left: 0;
+	border-left: 0;
+}
+
 .update-posts {
 	&.notice {
 		position: relative;
