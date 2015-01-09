@@ -159,9 +159,14 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 }
 
 .container-youtube embed, .container-youtube iframe, .container-youtube object, .container-youtube video,
-.container-vimeo embed, .container-vimeo iframe, .container-vimeo object, .container-vimeo video,
-a.lazy-load-youtube, .lazy-load-vimeo {
+.container-vimeo embed, .container-vimeo iframe, .container-vimeo object, .container-vimeo video {
 	margin-bottom: 5px!important;
+}
+.entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo {
+	margin-bottom: 0!important;
+	iframe {
+		margin-bottom: 0!important;
+	}
 }
 
 @include keyframes( pulse ) {
