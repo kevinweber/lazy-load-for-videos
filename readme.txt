@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
 Requires at least: 3.5
 Tested up to: 4.0.1
-Stable tag: 2.1.5
+Stable tag: 2.1.5.1
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -133,6 +133,9 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 
 == Changelog ==
+
+= 2.1.5.1 =
+* Added callback function.
 
 = 2.1.5 =
 * Fix to make Vimeo working again.

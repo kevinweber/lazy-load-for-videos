@@ -27,6 +27,10 @@
       responsiveVideos.init();
     }
 
+    if (typeof $_o.callback === 'function') {
+        $_o.callback();
+    }
+
   };
 
   var $_o;
@@ -36,6 +40,7 @@
         playercolour: '',
         videoseo: false,
         responsive: true,
+        callback: null,
       },
       options);
   };

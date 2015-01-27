@@ -28,6 +28,10 @@
       responsiveVideos.init();
     }
 
+    if (typeof $_o.callback === 'function') {
+        $_o.callback();
+    }
+
   };
 
   var $_o;
@@ -45,6 +49,7 @@
         videoseo: false,
         responsive: true,
         thumbnailquality: '0',
+        callback: null,
       },
       options);
   };

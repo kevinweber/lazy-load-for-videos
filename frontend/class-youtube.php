@@ -35,6 +35,7 @@ class Lazyload_Videos_Youtube extends Lazyload_Videos_Frontend {
 						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
 						thumbnailquality: '<?php echo $this->thumbnailquality(); ?>',
 						<?php do_action( 'lly_set_options' ); ?>
+						callback: function(){ <?php echo $this->callback(); ?> },
 					});
 				});
 
@@ -50,6 +51,15 @@ class Lazyload_Videos_Youtube extends Lazyload_Videos_Frontend {
  	function thumbnailquality() {
 		global $lazyload_videos_general;
 		return $lazyload_videos_general->get_thumbnail_quality();
+ 	}
+
+ 	/**
+ 	 * Callback
+ 	 * expects JavaScript code as string
+ 	 */
+ 	function callback() {
+ 		$js = apply_filters( 'lly_set_callback', '' );
+ 		return $js;
  	}
 
 }
