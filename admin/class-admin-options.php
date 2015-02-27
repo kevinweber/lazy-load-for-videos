@@ -182,7 +182,7 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 				        	<tr valign="top">
-						        <th scope="row"><label>Responsive Mode</label></th>
+						        <th scope="row"><label>Responsive Mode <span class="newred grey">Tip</span></label></th>
 						        <td>
 									<input name="ll_opt_load_responsive" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_responsive' ) ); ?> /> <label>Check this to improve responsiveness. Video aspect ratio will be 16:9.</label>
 						        </td>
@@ -295,7 +295,7 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Hide annotations</label></th>
+					        	<th scope="row"><label>Hide annotations <span class="newred grey">Tip</span></label></th>
 						        <td>
 									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_loadpolicy' ) ); ?> /> <label>If checked, video annotations (like "subscribe to channel") will not be shown.</label>
 						        </td>

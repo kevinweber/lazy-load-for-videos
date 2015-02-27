@@ -33,14 +33,14 @@ class Lazyload_Videos_No_Premium_Admin_Options {
 						<th>It's pretty simple:</th>
 						<td>
 							<p>I offer nearly every feature of Lazy Load for Videos for free. So you can ensure that everything works fine on your site before you grab this slick extension.</p>
-							<p>The extension removes the subtle "i" (information link) that is placed in the top right of every video. That's it.</p>
-							<p style="color:#999;"><i>Using this link I assure that the plugin gets spread. And everyone who doesn’t want the decent branding, simply pays a very little compensation for my time-consuming efforts.</i></p>
+							<p>This extension removes the subtle "i" (information link) that is placed in the top right of every video. That's it.</p>
+							<p style="color:#999;"><i>Using this link I assure that the plugin gets spread. And everyone who doesn’t want the branding pays a very little compensation for my time-consuming efforts.</i></p>
 						</td>
 					</tr>
 			        <tr valign="top">
 			        	<th scope="row">Remove branding</th>
 				        <td>
-							<span>It automatically removes the branding link from your videos. Simply install and activate both plugins (basic plugin and premium extension).</span>
+							<span>This extension removes the subtle "i" (information link) from your videos automatically. Simply install and activate both plugins (basic plugin and premium extension).</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
