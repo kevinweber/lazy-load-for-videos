@@ -251,6 +251,15 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
+					        	<th scope="row"><label>Pre-roll/post-roll ads <span class="newred">New!</span><span class="description thin"><br>Sell advertising space!</span></label></th>
+					        	<td>
+					        		<strong style="width:80px;display:inline-block">Pre-roll</strong> <input type="text" name="lly_opt_player_preroll" placeholder="" value="<?php echo get_option('lly_opt_player_preroll'); ?>" /><br>
+					        		<strong style="width:80px;display:inline-block">Post-roll</strong> <input type="text" name="lly_opt_player_postroll" placeholder="" value="<?php echo get_option('lly_opt_player_postroll'); ?>" /> (multiple IDs allowed)<br>
+					        		<br>
+					        		<label>Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement. You have to insert the plain Youtube <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label><br><br><label>&raquo;I'm very proud of this feature because it gives you a new space to promote your brand or sell advertisements! An advertiser might pay to play his video before your actual video starts to play. Isn't this an amazing opportunity?&laquo;<br>&ndash; <a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a>, marketing technologist and developer of this plugin</label><br><br><label>Play around with this plugin, and then consider to get premium or say "Thank you" with an appropriate <a href="http://kevinw.de/donate/LazyLoadVideos/" title="Pay Kevin Weber something to eat" target="_blank">donation</a>.</label>
+					        	</td>
+					        </tr>
+					        <tr valign="top">
 					        	<th scope="row"><label>Default thumbnail quality</label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
@@ -286,7 +295,13 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Hide title/uploader <span class="newred">New!</span></label></th>
+					        	<th scope="row"><label>Hide annotations</label></th>
+						        <td>
+									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_loadpolicy' ) ); ?> /> <label>If checked, video annotations (like "subscribe to channel") will not be shown.</label>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label>Hide title/uploader</label></th>
 						        <td>
 									<input name="lly_opt_player_showinfo" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_showinfo' ) ); ?> /> <label>If checked, information like the video title and uploader will not be displayed when the video starts playing. This option only affects the playing video, not the video thumbnail.</label>
 						        </td>
@@ -301,12 +316,6 @@ class Lazyload_Videos_Admin {
 					        	<th scope="row"><label>Hide player controls</label></th>
 						        <td>
 									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_controls' ) ); ?> /> <label>If checked, Youtube player controls will not be displayed.</label>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row"><label>Hide annotations <span class="newred">New!</span></label></th>
-						        <td>
-									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_loadpolicy' ) ); ?> /> <label>If checked, video annotations (like "subscribe to channel") will not be shown.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">

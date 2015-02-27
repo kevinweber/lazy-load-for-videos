@@ -32,6 +32,8 @@ class Lazyload_Video_Vimeo extends Lazyload_Videos_Frontend {
 						buttonstyle: '<?php if (get_option("ll_opt_button_style") == "") { echo ""; } else { echo get_option("ll_opt_button_style"); } ?>',
 						playercolour: '<?php if (get_option("llv_opt_player_colour") == "") { echo ""; } else { echo get_option("llv_opt_player_colour"); } ?>',
 						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
+						preroll: '<?php if (get_option("llv_opt_player_preroll") == "") { echo ""; } else { echo get_option("llv_opt_player_preroll"); } ?>',
+						postroll: '<?php if (get_option("llv_opt_player_postroll") == "") { echo ""; } else { echo get_option("llv_opt_player_postroll"); } ?>',
 						<?php do_action( 'llv_set_options' ); ?>
 						callback: function(){ <?php echo $this->callback(); ?> },
 					});

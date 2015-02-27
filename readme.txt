@@ -21,13 +21,13 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 
 = Some additional features: =
 * Display video titles on preview images
-* Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement at the end of every video. (Great for branding and video ads!)
+* Pre-roll and post-roll advertisements: Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement to every video. (Great for branding and video ads!)
+* Hide annotations like "subscribe to channel" to avoid distractions
 * Add Custom CSS via plugin’s options panel
 * Choose custom colour for your Vimeo player
 * Hide controls from Youtube player
 * Add schema.org markup to your Youtube and Vimeo videos
 * Hide information like the video title and uploader when the video starts playing
-* Hide annotations like "subscribe to channel"
 * Support for videos in text widget (Youtube only)
 * Choose thumbnail size (standard or cover)
 * Choose from several "Play" buttons
@@ -35,7 +35,6 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 * Choose between two colours for Youtube player’s video progress bar to highlight the amount of the video that the viewer has already seen (red or white)
 * Don't display related videos at the end of your videos
 * Works with WordPress Multisite
-* Premium feature: Pre-roll and post-roll advertisements
 
 = Future features: =
 * (Better) support with specific plugins
@@ -133,6 +132,9 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 
 == Changelog ==
+
+= 2.2 =
+* The pre-roll and post-roll ads feature is now available for free! Please consider an appropriate donation.
 
 = 2.1.5.1 =
 * Added callback function.

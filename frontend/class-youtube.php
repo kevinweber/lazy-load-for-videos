@@ -34,6 +34,8 @@ class Lazyload_Videos_Youtube extends Lazyload_Videos_Frontend {
 						loadpolicy: <?php if (get_option("lly_opt_player_loadpolicy") == "1") { echo "false"; } else { echo "true"; } ?>,
 						responsive: <?php if (get_option("ll_opt_load_responsive") == "1") { echo "true"; } else { echo "false"; } ?>,
 						thumbnailquality: '<?php echo $this->thumbnailquality(); ?>',
+						preroll: '<?php if (get_option("lly_opt_player_preroll") == "") { echo ""; } else { echo get_option("lly_opt_player_preroll"); } ?>',
+						postroll: '<?php if (get_option("lly_opt_player_postroll") == "") { echo ""; } else { echo get_option("lly_opt_player_postroll"); } ?>',
 						<?php do_action( 'lly_set_options' ); ?>
 						callback: function(){ <?php echo $this->callback(); ?> },
 					});
