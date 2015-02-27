@@ -151,12 +151,14 @@ class Lazyload_Videos_Admin {
 		<?php } ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2>Lazy Load for Videos <span class="subtitle">by <a href="http://kevinw.de/ll" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo LL_VERSION; ?>)</span></h2>
+			<h2>Lazy Load for Videos <span class="subtitle">by <a href="http://kevinw.de/ll" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo LL_VERSION; ?>)</span>
+				<br><span class="claim" style="font-size:15px;font-style:italic;position:relative;top:-7px;"><?php esc_html_e( 'Speed up your site and customise your video player!', LL_TD ); ?></span>
+			</h2>
 	
 			<ul class="ui-tabs-nav">
-		        <li><a href="#general">General/Styling <span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#general">General/Styling</a></li>
 		        <li><a href="#youtube">Youtube <span class="newred_dot">&bull;</span></a></li>
-		    	<li><a href="#vimeo">Vimeo <span class="newred_dot">&bull;</span></a></li>
+		    	<li><a href="#vimeo">Vimeo</a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -186,7 +188,7 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Play Button <span class="newred">New red button!</span></label></th>
+					        	<th scope="row"><label>Play Button</label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_button_style">
 										<option value="default"<?php if (get_option('ll_opt_button_style') === 'default') { echo ' selected="selected"'; } ?>>White (CSS-only)</option>
@@ -249,7 +251,7 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Default thumbnail quality <span class="newred">Updated!</span></label></th>
+					        	<th scope="row"><label>Default thumbnail quality</label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
 										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>>Standard quality</option>
@@ -336,7 +338,7 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Colour of the vimeo controls <span class="newred">Improved</span></label></th>
+					        	<th scope="row"><label>Colour of the vimeo controls</label></th>
 					        	<td>
 					        		<input id="llv_picker_input_player_colour" class="ll_picker_player_colour picker-input" type="text" name="llv_opt_player_colour" data-default-color="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo get_option("llv_opt_player_colour"); } ?>" />
 					        	</td>
@@ -390,12 +392,12 @@ class Lazyload_Videos_Admin {
 	}
 
 	function lazyload_admin_css() {
-		wp_enqueue_style( 'lazyload-admin-css', plugins_url('../css/min/admin.css', __FILE__) );
-		wp_enqueue_style( 'lazyload-admin-css-tooltips', plugins_url('../css/min/admin-tooltips.css', __FILE__) );
+		wp_enqueue_style( 'lazyload-admin-css', plugins_url('../css/min/admin.min.css', __FILE__) );
+		wp_enqueue_style( 'lazyload-admin-css-tooltips', plugins_url('../css/min/admin-tooltips.min.css', __FILE__) );
 		wp_enqueue_style( 'wp-color-picker' );	// Required for colour picker
 
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'lazyload-admin-rtl', plugins_url('../css/min/admin-rtl.css', __FILE__) );
+			wp_enqueue_style( 'lazyload-admin-rtl', plugins_url('../css/min/admin-rtl.min.css', __FILE__) );
 		}
 	}
 
