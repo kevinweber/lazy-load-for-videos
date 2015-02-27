@@ -19,45 +19,40 @@ class Lazyload_Videos_No_Premium_Admin_Options {
 
 	// Step 1
 	function add_admin_tab_link() {
-		echo '<li><a href="#tab-no-premium" class="tab-orange tab-premium">Premium</a></li>';
+		echo '<li><a href="#tab-premium" class="tab-orange tab-premium">Premium</a></li>';
 	}
 	// Step 2
 	function add_admin_tab() { ?>
-		<div id="tab-no-premium">
+		<div id="tab-premium">
 
-			<h3>Get Premium and &hellip;</h3>
+			<h3>Premium Extension</h3>
 
 			<table class="form-table">
 				<tbody>
-
+					<tr valign="top">
+						<th>It's pretty simple:</th>
+						<td>
+							<p>I offer nearly every feature of Lazy Load for Videos for free. So you can ensure that everything works fine on your site before you grab this slick extension.</p>
+							<p>The extension removes the subtle "i" (information link) that is placed in the top right of every video. That's it.</p>
+							<p style="color:#999;"><i>Using this link I assure that the plugin gets spread. And everyone who doesn’t want the decent branding, simply pays a very little compensation for my time-consuming efforts.</i></p>
+						</td>
+					</tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; remove branding</th>
+			        	<th scope="row">Remove branding</th>
 				        <td>
-							<span>The <i>Premium Extension</i> automatically removes the branding link from your videos.</span>
+							<span>It automatically removes the branding link from your videos. Simply install and activate both plugins (basic plugin and premium extension).</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; pre-roll/post-roll ads<span class="description thin"><br>Sell advertising space!</span></th>
-			        	<td>
-			        		<label>Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement. You have to insert the plain Youtube <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label><br><br><label>&raquo;I'm very proud of this feature because it gives you a new space to promote your brand or sell advertisements! An advertiser might pay to play his video before your actual video starts to play. Isn't this an amazing opportunity?&laquo;<br>&ndash; <a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a>, digital marketer and developer of this plugin</label>
-			        	</td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row">&hellip; enjoy coming features<br><span class="description thin">with free lifetime updates!</span></th>
+			        	<th scope="row"><?php esc_html_e( 'Lifetime updates', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'Enjoy all coming features!', LL_TD ); ?></span></th>
 				        <td>
-							<span>Get all future updates of this premium extension for free!</span>
-				        </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row"><?php esc_html_e( '&hellip; push development', LL_TD ); ?></th>
-				        <td>
-							<span><?php esc_html_e( 'This plugin does not anywhere near compensate my month-long time efforts financially. WordPress development is a hobby of mine and allows me to experiment. With your purchase, you sponsor me to spend at least a bit more time to enhance this plugin.', LL_TD ); ?></span>
+							<span><?php esc_html_e( 'No matter what comes next: Once you\'ve bought premium, you\'re going to get every new feature for free.', LL_TD ); ?></span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
 			        	<th scope="row"><a href="https://sellfy.com/p/sFX6/" id="sFX6" class="sellfy-buy-button">buy</a><script type="text/javascript" src="https://sellfy.com/js/api_buttons.js"></script></th>
 				        <td>
-							<span>Buy premium to get additional features, honour my work and push development. The price might change/increase over time.<br>
+							<span>Grab premium to get additional features, honour my work and push development. The price might change/increase over time.<br>
 							<strong>Immediate download after purchase.</strong>
 				        </td>
 			        </tr>
