@@ -32,10 +32,7 @@
 
       var $element = $( classBrandingDot );
 
-      $element.css({
-        'display': 'block',
-        'visibility': 'visible',
-      });
+      $element.attr("style", "display:block!important;visibility:visible!important");
 
       // When the opacity/alpha is to low, increase opacity and color it black
       if ( 
