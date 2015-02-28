@@ -22,7 +22,7 @@ class Lazyload_Video_Vimeo extends Lazyload_Videos_Frontend {
 			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
 				wp_enqueue_script( 'lazyload_vimeo_js', plugins_url( '../js/lazyload-vimeo.js' , __FILE__ ), array( 'jquery' ), LL_VERSION );
 			} else {
-				wp_enqueue_script( 'lazyload_vimeo_js', plugins_url( '../js/min/lazyload-vimeo-ck.js' , __FILE__ ), array( 'jquery' ), LL_VERSION );
+				wp_enqueue_script( 'lazyload_vimeo_js', plugins_url( '../js/min/lazyload-vimeo.min.js' , __FILE__ ), array( 'jquery' ), LL_VERSION );
 			} ?>
 		    <script type='text/javascript'>
 		    (function ( $ ) {
