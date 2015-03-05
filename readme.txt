@@ -133,8 +133,9 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 == Changelog ==
 
-= 2.2 =
+= 2.2.0.1 =
 * The pre-roll and post-roll ads feature is now available for free! Please consider an appropriate donation.
+* Updated screenshots.
 
 = 2.1.5.1 =
 * Added callback function.
@@ -273,5 +274,8 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 == Screenshots ==
 
-1. Preview image and play button are displayed.
-2. Options panel for admins (version 1.5).
+1. Preview image with video title and white play button.
+2. Preview image and red play button.
+3. Options panel for admins (v2.2).
+4. Options panel for admins (v2.2).
+5. Options panel for admins (v2.2).
