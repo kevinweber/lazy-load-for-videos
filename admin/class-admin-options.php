@@ -122,6 +122,8 @@ class Lazyload_Videos_Admin {
 			// Youtube
 			'lly_opt',
 			'lly_opt_title',
+			'lly_opt_player_preroll',
+			'lly_opt_player_postroll',
 			'lly_opt_support_for_widgets',
 			'lly_opt_thumbnail_quality',
 			'lly_opt_thumbnail_quality_max_force',

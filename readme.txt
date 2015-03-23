@@ -1,10 +1,10 @@
 === Lazy Load for Videos ===
 Contributors: kevinweber
 Donate link: http://kevinw.de/donate/LazyLoadVideos/
-Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile
+Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
-Tested up to: 4.2-alpha-31525
-Stable tag: 2.2.0.1
+Tested up to: 4.2-beta1-31774
+Stable tag: 2.2.0.2
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -120,7 +120,13 @@ For now, you can choose the "Youtube button image" from the play button drop-dow
 }`
 Feature versions might include an option to change the colour of your CSS-only buttons using a colour picker and might also include an option to directly upload the desired button image.
 
-= Solved: The plugin isn't working with Jetpack... =
+= How to lazy load playlists? =
+Similar to a single video, insert the playlist URL in the following format:
+https://www.youtube.com/watch?v=dkfQFih23Ak&list=PLRQFBJ3mkjnxaPhAVOzjxxv_0yr8XE0Ja
+(the other format - https://www.youtube.com/playlist?list=... - is not supported currently).
+Note that playlists are not working when you're using the pre-/post-roll feature yet.
+
+= The plugin isn't working with Jetpack... =
 "Jetpack" by WordPress.com offers some useful extensions. Only one of them makes Lazy Load for Videos break – the "Shortcode Embeds" extension. So simply disable the extension. (In order to see a "Deactivate" button for "Shortcode Embeds" on the Jetpack's extension overview, you must click on "Learn More".)
 
 = Known bugs - this plugin may not work correctly when one of the following plugins is activated... =
@@ -132,6 +138,9 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 
 == Changelog ==
+
+= 2.2.0.2 =
+* Fixed not working pre-roll and post-roll feature (values had not been stored).
 
 = 2.2.0.1 =
 * The pre-roll and post-roll ads feature is now available for free! Please consider an appropriate donation.
