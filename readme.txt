@@ -96,7 +96,7 @@ PageSpeed Insights is a service by Google to help you optimize your site's perfo
 
 = How to embed videos in WordPress? =
 Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
-Inserting a Youtube <iframe> (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
+Inserting a Youtube `<iframe>` (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
 
 = How to add support for custom post types? =
 UPDATE: Since plugin version 2.1.2, every custom post type is supported automatically. So you can ignore the following instructions. They will be removed with one of the next updates.
@@ -122,8 +122,7 @@ Feature versions might include an option to change the colour of your CSS-only b
 
 = How to lazy load playlists? =
 Similar to a single video, insert the playlist URL in the following format:
-https://www.youtube.com/watch?v=dkfQFih23Ak&list=PLRQFBJ3mkjnxaPhAVOzjxxv_0yr8XE0Ja
-(the other format - https://www.youtube.com/playlist?list=... - is not supported currently).
+`https://www.youtube.com/watch?v=dkfQFih23Ak&list=PLRQFBJ3mkjnxaPhAVOzjxxv_0yr8XE0Ja` (the other format - `https://www.youtube.com/playlist?list=...` - is not supported currently).
 Note that playlists are not working when you're using the pre-/post-roll feature yet.
 
 = The plugin isn't working with Jetpack... =
