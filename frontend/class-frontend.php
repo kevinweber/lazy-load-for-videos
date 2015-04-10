@@ -19,9 +19,9 @@ class Lazyload_Videos_Frontend {
 	}
 	function enable_lazyload_js() {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			wp_enqueue_script( 'lazyload-video-js', plugins_url( '../js/lazyload-video.js' , __FILE__ ), array( 'jquery' ), LL_VERSION );
+			wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/lazyload-video.js', array( 'jquery' ), LL_VERSION );
 		} else {
-			wp_enqueue_script( 'lazyload-video-js', plugins_url( '../js/min/lazyload-video.min.js' , __FILE__ ), array( 'jquery' ), LL_VERSION );
+			wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/min/lazyload-video.min.js', array( 'jquery' ), LL_VERSION );
 		} ?>
 		<script>
 		( function ( $ ) {
