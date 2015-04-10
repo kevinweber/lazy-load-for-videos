@@ -46,7 +46,7 @@ if ( !defined( 'LL_PATH' ) )
 	define( 'LL_PATH', plugin_dir_path( __FILE__ ) );
 
 if ( !defined( 'LL_URL' ) )
-	define( 'LL_URL', plugins_url( __FILE__ ) );
+	define( 'LL_URL', plugin_dir_url( __FILE__ ) );
 
 
 require_once( LL_PATH . 'admin/inc/define.php' );
