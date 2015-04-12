@@ -4,7 +4,7 @@
  * Plugin URI: http://kevinw.de/lazy-load-videos/
  * Description: Lazy Load for Videos speeds up your site by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
  * Author: Kevin Weber
- * Version: 2.2.0.2
+ * Version: 2.2.0.3
  * Author URI: http://kevinw.de/
  * License: GPL v3
  * Text Domain: lazy-load-videos
@@ -28,19 +28,16 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-define( 'LL_VERSION', '2.2.0.2' );
+define( 'LL_VERSION', '2.2.0.3' );
 
-if ( !defined( 'LL_FILE' ) ) {
+if ( !defined( 'LL_FILE' ) )
 	define( 'LL_FILE', __FILE__ );
-}
 
-if ( !defined( 'LL_ESSENTIAL' ) ) {
+if ( !defined( 'LL_ESSENTIAL' ) )
 	define( 'LL_ESSENTIAL', true );	// Should be false if this is the 'Premium' version
-}
 
-if ( !defined( 'LL_TD' ) ) {
+if ( !defined( 'LL_TD' ) )
 	define( 'LL_TD', 'lazy-load-for-videos' ); // = text domain (used for translations)
-}
 
 if ( !defined( 'LL_PATH' ) )
 	define( 'LL_PATH', plugin_dir_path( __FILE__ ) );
