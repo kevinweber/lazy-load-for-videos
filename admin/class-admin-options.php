@@ -396,19 +396,19 @@ class Lazyload_Videos_Admin {
 
 	function lazyload_admin_js() {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			wp_enqueue_script( 'lazyload_admin_js', plugins_url( '../js/admin.js' , __FILE__ ), array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
+			wp_enqueue_script( 'lazyload_admin_js', LL_URL . 'js/admin.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
 		} else {
-			wp_enqueue_script( 'lazyload_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
+			wp_enqueue_script( 'lazyload_admin_js', LL_URL . 'js/min/admin-ck.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
 		}
 	}
 
 	function lazyload_admin_css() {
-		wp_enqueue_style( 'lazyload-admin-css', plugins_url('../css/min/admin.min.css', __FILE__) );
-		wp_enqueue_style( 'lazyload-admin-css-tooltips', plugins_url('../css/min/admin-tooltips.min.css', __FILE__) );
+		wp_enqueue_style( 'lazyload-admin-css', LL_URL . 'css/min/admin.min.css' );
+		wp_enqueue_style( 'lazyload-admin-css-tooltips', LL_URL . 'css/min/admin-tooltips.min.css' );
 		wp_enqueue_style( 'wp-color-picker' );	// Required for colour picker
 
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'lazyload-admin-rtl', plugins_url('../css/min/admin-rtl.min.css', __FILE__) );
+			wp_enqueue_style( 'lazyload-admin-rtl', LL_URL . 'css/min/admin-rtl.min.css' );
 		}
 	}
 
