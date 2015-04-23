@@ -67,7 +67,7 @@ Inserting a Youtube iframe (instead of the plain URL) is deprecated and not supp
 Search for keywords using "STRG + F" keyboard shortcut (Mac: "CMD + F").
 
 = Where can I see this plugin in use? =
-For example, on http://kevinw.de/greenbird/.
+For example, on [kevinw.de/lazy-load-videos/](http://kevinw.de/lazy-load-videos/).
 
 = Which video platforms are supported? =
 Videos from the biggest video platform, Youtube (http://youtube.com), and Vimeo (http://vimeo.com) are supported.
