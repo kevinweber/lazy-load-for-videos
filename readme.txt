@@ -3,7 +3,7 @@ Contributors: kevinweber
 Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
-Tested up to: 4.2-beta1-31774
+Tested up to: 4.2.2
 Stable tag: 2.2.0.3
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
@@ -140,7 +140,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 = 2.2.0.3 =
 * Fix: Updated URL definitions to improve js minify (merge request via Github by @sigginet)
-* Changed the background colour of loading preview images from black to transparent. You can use the following CSS to use black instead: .preview-lazyload { background-color: #000 !important; }
+* Changed the background colour of loading preview images from black to transparent. You can use the following custom CSS to use black instead: .preview-lazyload { background-color: #000 !important; }
 
 = 2.2.0.2 =
 * Fixed not working pre-roll and post-roll feature (values had not been stored).
