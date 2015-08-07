@@ -9,7 +9,7 @@ class Lazyload_Videos_Youtube {
 			wp_enqueue_script( 'lazyload_youtube_js', LL_URL . 'js/lazyload-youtube.js', array( 'lazyload-video-js' ), LL_VERSION, true );
 		}
 
-		add_action( 'wp_footer', array( $this, 'enable_lazyload_js' ) );
+		add_action( 'lazyload_videos_js', array( $this, 'enable_lazyload_js' ) );
 	}
 
 	/**
@@ -18,7 +18,6 @@ class Lazyload_Videos_Youtube {
 	 */
 	function enable_lazyload_js() {
 		?>
-		<script>
 		(function ( $ ) {
 
 			$(document).ready(function() {
@@ -40,7 +39,6 @@ class Lazyload_Videos_Youtube {
 			});
 
 		})(jQuery);
-		</script>
 		<?php
 	}
 

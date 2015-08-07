@@ -29,7 +29,7 @@ class Lazyload_Videos_Frontend {
 
 	function enable_lazyload_js() {
 		?>
-		<script>
+		<script type="text/javascript">
 		( function ( $ ) {
 
 			$(window).on( "load", function() {
@@ -40,6 +40,7 @@ class Lazyload_Videos_Frontend {
 			});
 
 		})(jQuery);
+		<?php do_action( 'lazyload_videos_js' ); ?>
 		</script>
 		<?php
 	}
