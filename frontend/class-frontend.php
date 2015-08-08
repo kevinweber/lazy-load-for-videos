@@ -4,26 +4,32 @@
  */
 class Lazyload_Videos_Frontend {
 
-	function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'load_lazyload_style') );
-		add_action( 'wp_head', array( $this, 'load_lazyload_css') );
-		require_once( LL_PATH . 'frontend/class-youtube.php' );
-		require_once( LL_PATH . 'frontend/class-vimeo.php' );
-		add_filter( 'lly_set_options', array( $this, 'set_options' ) );
-		add_filter( 'llv_set_options', array( $this, 'set_options' ) );
+	function init() {
+		if ( $this->test_if_scripts_should_be_loaded() && (get_option('lly_opt') !== '1') ) {
+			$this->load_lazyload_style();
+			add_action( 'wp_head', array( $this, 'load_lazyload_css') );
+			add_filter( 'lly_set_options', array( $this, 'set_options' ) );
+			add_filter( 'llv_set_options', array( $this, 'set_options' ) );
+			add_action( 'wp_footer', array( $this, 'enable_lazyload_js' ) );
+
+			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
+				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/lazyload-video.js', array( 'jquery' ), LL_VERSION, true );
+			} else {
+				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/min/lazyload-all.min.js', array( 'jquery' ), LL_VERSION, true );
+			}
+
+			require( LL_PATH . 'frontend/class-youtube.php' );
+			require( LL_PATH . 'frontend/class-vimeo.php' );
+			$vimeo = new Lazyload_Video_Vimeo();
+			$youtube = new Lazyload_Videos_Youtube();
+			$vimeo->init();
+			$youtube->init();
+		}
 	}
 
-	function enable_lazyload_js_init() {
-		$lazyload_frontend = new Lazyload_Videos_Frontend();
-		add_action( 'wp_head', array( $lazyload_frontend, 'enable_lazyload_js' ) );
-	}
 	function enable_lazyload_js() {
-		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/lazyload-video.js', array( 'jquery' ), LL_VERSION );
-		} else {
-			wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/min/lazyload-video.min.js', array( 'jquery' ), LL_VERSION );
-		} ?>
-		<script>
+		?>
+		<script type="text/javascript">
 		( function ( $ ) {
 
 			$(window).on( "load", function() {
@@ -34,6 +40,7 @@ class Lazyload_Videos_Frontend {
 			});
 
 		})(jQuery);
+		<?php do_action( 'lazyload_videos_js' ); ?>
 		</script>
 		<?php
 	}
@@ -42,27 +49,22 @@ class Lazyload_Videos_Frontend {
 	 * Add stylesheet
 	 */
 	function load_lazyload_style() {
-		if ( $this->test_if_scripts_should_be_loaded() ) {
-			wp_enqueue_script( 'jquery' ); // Enable jQuery (comes with WordPress)
-			wp_register_style( 'lazyload-style', plugins_url('css/min/style-lazyload.min.css', plugin_dir_path( __FILE__ )) );
-			wp_enqueue_style( 'lazyload-style' );
-		}
+		wp_register_style( 'lazyload-style', plugins_url('css/min/style-lazyload.min.css', plugin_dir_path( __FILE__ )) );
+		wp_enqueue_style( 'lazyload-style' );
 	}
 
 	/**
 	 * Add CSS
 	 */
 	function load_lazyload_css() {
-		if ( $this->test_if_scripts_should_be_loaded() ) {
-			echo '<style type="text/css">';
+		echo '<style type="text/css">';
 
-			$this->load_lazyload_css_thumbnail_size();
-			$this->load_lazyload_css_video_titles();
-			$this->load_lazyload_css_button_style();
-			$this->load_lazyload_css_custom();
+		$this->load_lazyload_css_thumbnail_size();
+		$this->load_lazyload_css_video_titles();
+		$this->load_lazyload_css_button_style();
+		$this->load_lazyload_css_custom();
 
-			echo '</style>';
-		}
+		echo '</style>';
 	}
 
 	/**
@@ -162,4 +164,8 @@ class Lazyload_Videos_Frontend {
 
 }
 
-new Lazyload_Videos_Frontend();
+function initialize_lazyload_frontend() {
+	$frontend = new Lazyload_Videos_Frontend();
+	$frontend->init();
+}
+add_action( 'wp_enqueue_scripts', 'initialize_lazyload_frontend' );
