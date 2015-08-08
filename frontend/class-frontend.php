@@ -157,7 +157,7 @@ class Lazyload_Videos_Frontend {
 	 * Set option "videoseo" for setOptionsYoutube() and setOptionsVimeo()
 	 */
 	function set_option_video_seo() {
-		if ( get_option("ll_video_seo") == "1" ) {
+		if ( get_option("ll_opt_video_seo") == "1" ) {
 			echo 'videoseo: true,';
 		}
 	}
