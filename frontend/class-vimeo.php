@@ -6,7 +6,8 @@ class Lazyload_Video_Vimeo {
 
 	public function init() {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			wp_enqueue_script( 'lazyload_vimeo_js', LL_URL . 'js/lazyload-vimeo.js', array( 'lazyload-video-js' ), LL_VERSION, true );
+			$frontend = new Lazyload_Videos_Frontend();
+			wp_enqueue_script( 'lazyload_vimeo_js', LL_URL . 'js/lazyload-vimeo.js', array( 'lazyload-video-js' ), LL_VERSION, $frontend->test_if_script_should_be_loaded_in_footer() );
 		}
 
 		add_action( 'lazyload_videos_js', array( $this, 'enable_lazyload_js' ) );

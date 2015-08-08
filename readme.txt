@@ -140,6 +140,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 = 2.2.0.4 =
 * Pull request via Github: Merged code enhancements by @summatix.
+* Added option that enables you to load the scripts in footer (instead of head).
 
 = 2.2.0.3 =
 * Fix: Updated URL definitions to improve js minify (merge request via Github by @sigginet)
