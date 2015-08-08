@@ -398,7 +398,7 @@ class Lazyload_Videos_Admin {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
 			wp_enqueue_script( 'lazyload_admin_js', LL_URL . 'js/admin.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
 		} else {
-			wp_enqueue_script( 'lazyload_admin_js', LL_URL . 'js/min/admin-ck.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
+			wp_enqueue_script( 'lazyload_admin_js', LL_URL . 'js/min/admin.min.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
 		}
 	}
 
