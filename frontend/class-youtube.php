@@ -6,8 +6,7 @@ class Lazyload_Videos_Youtube {
 
 	public function init() {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			$frontend = new Lazyload_Videos_Frontend();
-			wp_enqueue_script( 'lazyload_youtube_js', LL_URL . 'js/lazyload-youtube.js', array( 'lazyload-video-js' ), LL_VERSION, $frontend->test_if_script_should_be_loaded_in_footer() );
+			wp_enqueue_script( 'lazyload_youtube_js', LL_URL . 'js/lazyload-youtube.js', array( 'lazyload-video-js' ), LL_VERSION, true );
 		}
 
 		add_action( 'lazyload_videos_js', array( $this, 'enable_lazyload_js' ) );

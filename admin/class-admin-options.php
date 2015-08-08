@@ -118,7 +118,6 @@ class Lazyload_Videos_Admin {
 			'll_opt_customcss',
 			'll_opt_video_seo', // Google: "Make sure that your video and schema.org markup are visible without executing any JavaScript or Flash." --> Video is not working with Lazy Load
 			'll_opt_support_for_tablepress',
-			'll_opt_load_in_footer',
 
 			// Youtube
 			'lly_opt',
@@ -159,7 +158,7 @@ class Lazyload_Videos_Admin {
 			</h2>
 	
 			<ul class="ui-tabs-nav">
-		        <li><a href="#general">General/Styling <span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#general">General/Styling <!--<span class="newred_dot">&bull;</span>--></a></li>
 		        <li><a href="#youtube">Youtube</a></li>
 		    	<li><a href="#vimeo">Vimeo</a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
@@ -217,12 +216,6 @@ class Lazyload_Videos_Admin {
 					        	<td>
 					        		<textarea rows="14" cols="70" type="text" name="ll_opt_customcss"><?php echo get_option('ll_opt_customcss'); ?></textarea>
 					        	</td>
-					        </tr>
-				        	<tr valign="top">
-						        <th scope="row"><label>Load script in footer <span class="newred">New</span></label></th>
-						        <td>
-									<input name="ll_opt_load_in_footer" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_in_footer' ) ); ?> /> <label>Normally, scripts are placed in the &lt;head&gt; of the HTML document. If this option is checked, the script will be placed before the &lt;/body&gt; end tag. This requires the theme to have the wp_footer() template tag in the appropriate place.</label>
-						        </td>
 					        </tr>
 					        <tr valign="top">
 						        <th scope="row"><label>Schema.org Markup <span class="newred">Beta</span></label></th>

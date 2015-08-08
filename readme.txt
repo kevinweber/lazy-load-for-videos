@@ -139,8 +139,8 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 == Changelog ==
 
 = 2.2.0.4 =
-* Pull request via Github: Merged code enhancements by @summatix.
-* Added option that enables you to load the scripts in footer (instead of head).
+* Pull request via Github: Merged code enhancements by @summatix. Combined several JavaScript files into one.
+* The wp_footer function in your theme is now required.
 
 = 2.2.0.3 =
 * Fix: Updated URL definitions to improve js minify (merge request via Github by @sigginet)

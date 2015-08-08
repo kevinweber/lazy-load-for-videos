@@ -60,7 +60,7 @@ add_action( 'plugins_loaded', 'lazyload_videos_init_plugins_loaded', 15 );
 
 function lazyload_videos_admin_init() {
 	if ( LL_ESSENTIAL ) {
-		include_once( LL_PATH . 'admin/inc/class-no-premium.php'); 
+		include_once( LL_PATH . 'admin/inc/class-no-premium.php');
 	}
 	require_once( LL_PATH . 'admin/class-meta.php' );
 }
@@ -81,6 +81,14 @@ if ( is_admin() ) {
 else {
 	add_action( 'plugins_loaded', 'lazyload_videos_frontend_init', 16 );
 }
+
+
+function lazyload_theme_check() {
+	include_once( LL_PATH . 'inc/class-theme-check.php'); 
+	$lazyload_theme_check = new Lazyload_Videos_Theme_Check();
+	$lazyload_theme_check->theme_check_init('lazyload.php');
+}
+add_action( 'init', 'lazyload_theme_check' );
 
 /***** Plugin by Kevin Weber || kevinw.de *****/
 ?>
