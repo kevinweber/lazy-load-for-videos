@@ -8,25 +8,6 @@
     handleTabs();
     addColourPicker();
     toggle();
-    thumbnailQuality.init();
-  };
-
-  var thumbnailQuality = {
-    init : function() {
-      thumbnailQuality.changeVisibility();
-      $("[name=lly_opt_thumbnail_quality]").change(function() {
-        thumbnailQuality.changeVisibility();
-      });
-    },
-
-    changeVisibility : function() {
-      var $obj = $(".lly_opt_thumbnail_quality_max_force_wrapper");
-      if( $('[name=lly_opt_thumbnail_quality]').find("option:selected").val() === "max") {
-         $obj.show('fast');
-      } else {
-        $obj.hide();
-      }
-    }
   };
 
   /*

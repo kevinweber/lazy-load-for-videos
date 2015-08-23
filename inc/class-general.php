@@ -77,12 +77,8 @@ class Lazyload_Videos_General {
 			$id = $post->ID;
 		}
 
-		// When the individual status for a page/post is '0', all the other setting don't matter.
-		if (
-			(	!is_singular() && get_option( 'lly_opt_thumbnail_quality_max_force' ) !== '1'	// Don't use high quality thumbnails on non-singular pages because all videos would be affected - even videos that don't have a high quality thumbnail
-				) ||
-			(	get_post_meta( $id, 'lazyload_thumbnail_quality', true ) && get_post_meta( $id, 'lazyload_thumbnail_quality', true ) === $this->thumbnailquality_default )
-				) {
+		// When the individual status for a page/post is '0', all the other settings don't matter.
+		if ( get_post_meta( $id, 'lazyload_thumbnail_quality', true ) && get_post_meta( $id, 'lazyload_thumbnail_quality', true ) === $this->thumbnailquality_default ) {
 			return $thumbnailquality;
 		}
 		elseif (

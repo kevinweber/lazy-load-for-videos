@@ -140,6 +140,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 = 2.2.0.4 =
 * Pull request via Github: Merged code enhancements by @summatix. Combined several JavaScript files into one.
+* Added fallback by @summatix to load thumbnail with default quality when a high quality version is not available. Removed "Force maximum resolution" option because the fallback makes this feature unnecessary.
 * The wp_footer function in your theme is now required.
 
 = 2.2.0.3 =
