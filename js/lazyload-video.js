@@ -92,4 +92,8 @@
     return alpha;
   };
 
+  $(function() {
+    lazyload_video.init(lazyload_video_settings.video);
+  });
+
 }( window.lazyload_video = window.lazyload_video || {}, jQuery ));
