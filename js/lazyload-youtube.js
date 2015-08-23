@@ -209,7 +209,21 @@
         return thumbnailurl;
       };
 
-      $(this).css("background", "#000 url(" + getThumbnailUrl() + ") center center no-repeat");
+      var setBackgroundImg = function( el ) {
+        var src = getThumbnailUrl(),
+          img = $('<img style="display:none" src="' + src + '"/>');
+        img.load(function() {
+            if (img.width() == 120) {
+              src = src.replace('maxresdefault', '0');
+            }
+
+            el.css("background", "#000 url(" + src + ") center center no-repeat");
+
+            img.remove();
+        });
+        $("body").append(img);
+      };
+      setBackgroundImg($(this));
 
       if ($_o.videoseo === true) {
         $(that).append('<meta itemprop="contentLocation" content="'+ youtubeUrl( youid ) +'" />');
