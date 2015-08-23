@@ -30,7 +30,23 @@ class Lazyload_Videos_Frontend {
 				'youtube' => $youtube->get_js_settings()
 			);
 			wp_localize_script( 'lazyload-video-js', 'lazyload_video_settings', $settings );
+			$this->generate_callbacks( $vimeo, $youtube );
 		}
+	}
+
+	/**
+	 * Replaces function markers with callback JavaScript.
+	 */
+	function generate_callbacks( $vimeo, $youtube ) {
+		global $wp_scripts;
+		$wp_scripts->registered['lazyload-video-js']->extra['data'] = str_replace(
+			array( '"<!--VIMEO_CALLBACK-->"', '"<!--YOUTUBE_CALLBACK-->"' ),
+			array( $this->create_callback( $vimeo), $this->create_callback( $youtube ) ),
+			$wp_scripts->registered['lazyload-video-js']->extra['data'] );
+	}
+
+	function create_callback( $el ) {
+		return 'function(){' . $el->callback() . '}';
 	}
 
 	function get_js_settings() {

@@ -26,7 +26,7 @@ class Lazyload_Video_Vimeo {
 			'preroll'      => get_option( 'llv_opt_player_preroll', ''),
 			'postroll'     => get_option( 'llv_opt_player_postroll', '' ),
 			'show_title'   => get_option( 'llv_opt_title', false ) == true,
-			'callback'     => $this->callback()
+			'callback'     => '<!--VIMEO_CALLBACK-->'
 		) );
 	}
 

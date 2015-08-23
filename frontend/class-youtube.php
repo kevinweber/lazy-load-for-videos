@@ -27,7 +27,7 @@ class Lazyload_Videos_Youtube {
 			'thumbnailquality' => $this->thumbnailquality(),
 			'preroll'          => get_option( 'lly_opt_player_preroll', '' ),
 			'postroll'         => get_option( 'lly_opt_player_postroll', '' ),
-			'callback'         => $this->callback()
+			'callback'         => '<!--YOUTUBE_CALLBACK-->'
 		) );
 	}
 
