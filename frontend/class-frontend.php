@@ -8,9 +8,8 @@ class Lazyload_Videos_Frontend {
 		if ( $this->test_if_scripts_should_be_loaded() && (get_option('lly_opt') !== '1') ) {
 			$this->load_lazyload_style();
 			add_action( 'wp_head', array( $this, 'load_lazyload_css') );
-			add_filter( 'lly_set_options', array( $this, 'set_options' ) );
-			add_filter( 'llv_set_options', array( $this, 'set_options' ) );
-			add_action( 'wp_footer', array( $this, 'enable_lazyload_js' ) );
+			add_filter( 'lly_change_options', array( $this, 'set_options' ) );
+			add_filter( 'llv_change_options', array( $this, 'set_options' ) );
 
 			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
 				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/lazyload-video.js', array( 'jquery' ), LL_VERSION, true );
@@ -24,25 +23,34 @@ class Lazyload_Videos_Frontend {
 			$youtube = new Lazyload_Videos_Youtube();
 			$vimeo->init();
 			$youtube->init();
+
+			$settings = array(
+				'video' => $this->get_js_settings(),
+				'vimeo' => $vimeo->get_js_settings(),
+				'youtube' => $youtube->get_js_settings()
+			);
+			wp_localize_script( 'lazyload-video-js', 'lazyload_video_settings', $settings );
+			$this->generate_callbacks( $vimeo, $youtube );
 		}
 	}
 
-	function enable_lazyload_js() {
-		?>
-		<script type="text/javascript">
-		( function ( $ ) {
+	/**
+	 * Replaces function markers with callback JavaScript.
+	 */
+	function generate_callbacks( $vimeo, $youtube ) {
+		global $wp_scripts;
+		$wp_scripts->registered['lazyload-video-js']->extra['data'] = str_replace(
+			array( '"<!--VIMEO_CALLBACK-->"', '"<!--YOUTUBE_CALLBACK-->"' ),
+			array( $this->create_callback( $vimeo), $this->create_callback( $youtube ) ),
+			$wp_scripts->registered['lazyload-video-js']->extra['data'] );
+	}
 
-			$(window).on( "load", function() {
-				lazyload_video.init({
-					displayBranding: 'true',
-					<?php do_action( 'lly_set_options' ); ?>
-				});
-			});
+	function create_callback( $el ) {
+		return 'function(){' . $el->callback() . '}';
+	}
 
-		})(jQuery);
-		<?php do_action( 'lazyload_videos_js' ); ?>
-		</script>
-		<?php
+	function get_js_settings() {
+		return array( 'displayBranding' => true );
 	}
 
 	/**
@@ -149,17 +157,19 @@ class Lazyload_Videos_Frontend {
 	/** 
 	 * Set options to extend setOptionsYoutube() and setOptionsVimeo() that are used in JS files
 	 */
-	function set_options() {
-		$this->set_option_video_seo();
+	function set_options( $options ) {
+		return $this->set_option_video_seo( $options );
 	}
 
 	/**
 	 * Set option "videoseo" for setOptionsYoutube() and setOptionsVimeo()
 	 */
-	function set_option_video_seo() {
-		if ( get_option("ll_opt_video_seo") == "1" ) {
-			echo 'videoseo: true,';
+	function set_option_video_seo( $options ) {
+		if ( get_option( 'll_opt_video_seo' ) == '1' ) {
+			$options[ 'videoseo' ] = true;
 		}
+
+		return $options;
 	}
 
 }

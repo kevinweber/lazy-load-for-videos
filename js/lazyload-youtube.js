@@ -384,4 +384,8 @@
 
   };
 
+  $(function() {
+    lazyload_youtube.init(lazyload_video_settings.youtube);
+  });
+
 }( window.lazyload_youtube = window.lazyload_youtube || {}, jQuery ));

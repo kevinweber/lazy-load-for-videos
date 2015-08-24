@@ -2,6 +2,14 @@
  * Lazy Load Vimeo
  * by Kevin Weber (kevinw.de)
  */
+
+function showThumb(data){
+  jQuery("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");
+  if (lazyload_video_settings.vimeo.show_title) {
+    jQuery("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
+  }
+}
+
 (function( lazyload_vimeo, $, undefined ) {
 
   // Classes
@@ -227,5 +235,9 @@
     },
 
   };
+
+  $(function() {
+    lazyload_vimeo.init(lazyload_video_settings.vimeo);
+  });
 
 }( window.lazyload_vimeo = window.lazyload_vimeo || {}, jQuery ));
