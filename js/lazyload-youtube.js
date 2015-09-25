@@ -213,7 +213,7 @@
         var src = getThumbnailUrl(),
           img = $('<img style="display:none" src="' + src + '"/>');
         img.load(function() {
-            if (img.width() == 120) {
+            if (img.width() === 120) {
               src = src.replace('maxresdefault', '0');
             }
 
