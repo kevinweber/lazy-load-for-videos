@@ -7,7 +7,7 @@
  * Version: 2.2.0.4
  * Author URI: http://kevinw.de/
  * License: GPL v3
- * Text Domain: lazy-load-videos
+ * Text Domain: lazy-load-for-videos
  * Domain Path: /languages/
 */
 
@@ -49,6 +49,17 @@ if ( !defined( 'LL_URL' ) )
 require_once( LL_PATH . 'admin/inc/define.php' );
 require_once( LL_PATH . 'admin/class-register.php' );
 require_once( LL_PATH . 'inc/class-general.php' );
+
+
+/**
+ * Load plugin textdomain.
+ * @since 2.2.0.4
+ */
+function lazyload_load_textdomain() {
+  load_plugin_textdomain( LL_TD, false, dirname( plugin_basename( LL_FILE ) ) . '/languages/' ); 
+}
+add_action( 'plugins_loaded', 'lazyload_load_textdomain' );
+
 
 function lazyload_videos_init_plugins_loaded() {
 	require_once( LL_PATH . 'admin/class-admin-options.php' );

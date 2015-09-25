@@ -40,7 +40,7 @@ class Lazyload_Videos_Admin {
 	 * Add settings link on plugin page
 	 */
 	function lazyload_settings_link($links) { 
-	  $settings_link = '<a href="options-general.php?page='. LL_ADMIN_URL .'">Settings</a>'; 
+	  $settings_link = '<a href="options-general.php?page='. LL_ADMIN_URL .'">'.esc_html__( 'Settings', LL_TD ).'</a>'; 
 	  array_unshift($links, $settings_link); 
 	  return $links; 
 	}
@@ -105,7 +105,7 @@ class Lazyload_Videos_Admin {
 	}
 
 	function lazyload_create_menu() {
-		add_options_page('Lazy Load for Videos', 'Lazy Load for Videos', 'manage_options', LL_ADMIN_URL, array( $this, 'lazyload_settings_page' ));
+		add_options_page( esc_html__( 'Lazy Load for Videos', LL_TD ), esc_html__( 'Lazy Load for Videos', LL_TD ), 'manage_options', LL_ADMIN_URL, array( $this, 'lazyload_settings_page' ));
 	}
 
 	function register_lazyload_settings() {
@@ -148,18 +148,18 @@ class Lazyload_Videos_Admin {
 	function lazyload_settings_page()	{ ?>
 
 		<?php if ( isset( $_POST['update_posts'] ) && $_POST['update_posts'] == 'with_oembed' ) { ?>
-			<div class="update-posts updated"><p>Your posts have been updated successfully.</p></div>
+			<div class="update-posts updated"><p><?php esc_html_e( 'Your posts have been updated successfully.', LL_TD ); ?></p></div>
 		<?php } ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2>Lazy Load for Videos <span class="subtitle">by <a href="http://kevinw.de/ll" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo LL_VERSION; ?>)</span>
+			<h2><?php esc_html_e( 'Lazy Load for Videos', LL_TD ); ?> <span class="subtitle"><?php esc_html_e( 'by', LL_TD ); ?> <a href="http://kevinw.de/ll" target="_blank" title="<?php esc_html_e( 'Website by Kevin Weber', LL_TD ); ?>">Kevin Weber</a> (<?php esc_html_e( 'Version', LL_TD ); ?> <?php echo LL_VERSION; ?>)</span>
 				<br><span class="claim" style="font-size:15px;font-style:italic;position:relative;top:-7px;"><?php esc_html_e( 'Speed up your site and customise your video player!', LL_TD ); ?></span>
 			</h2>
 	
 			<ul class="ui-tabs-nav">
-		        <li><a href="#general">General/Styling <!--<span class="newred_dot">&bull;</span>--></a></li>
-		        <li><a href="#youtube">Youtube</a></li>
-		    	<li><a href="#vimeo">Vimeo</a></li>
+		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
+		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?> <span class="newred_dot">&bull;</span></a></li>
+		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -172,60 +172,67 @@ class Lazyload_Videos_Admin {
 
 				<div id="general">
 
-					<h3>General/Styling</h3>
+					<h3><?php esc_html_e( 'General/Styling', LL_TD ); ?></h3>
 
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label>Only load CSS/JS when needed<br><span class="description thin">to improve performance</span></label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Only load CSS/JS when needed', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'to improve performance', LL_TD ); ?></span></label></th>
 						        <td>
-									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label>It can happen that &ndash; when this option is checked &ndash; videos on pages do not lazy load although they should. It works on most sites. Simply test it.</label>
+									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label><?php esc_html_e( 'It can happen that &ndash; when this option is checked &ndash; videos on pages do not lazy load although they should. It works on most sites. Simply test it.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 				        	<tr valign="top">
-						        <th scope="row"><label>Responsive Mode <span class="newred grey">Tip</span></label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Responsive Mode', LL_TD ); ?> <span class="newred grey"><?php esc_html_e( 'Tip', LL_TD ); ?></span></label></th>
 						        <td>
-									<input name="ll_opt_load_responsive" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_responsive' ) ); ?> /> <label>Check this to improve responsiveness. Video aspect ratio will be 16:9.</label>
+									<input name="ll_opt_load_responsive" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_responsive' ) ); ?> /> <label><?php esc_html_e( 'Check this to improve responsiveness. Video aspect ratio will be 16:9.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Play Button</label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Play Button', LL_TD ); ?></label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_button_style">
-										<option value="default"<?php if (get_option('ll_opt_button_style') === 'default') { echo ' selected="selected"'; } ?>>White (CSS-only)</option>
-										<option value="css_white_pulse"<?php if (get_option('ll_opt_button_style') === 'css_white_pulse') { echo ' selected="selected"'; } ?>>White Pulse (CSS-only)</option>
-										<option value="css_black"<?php if (get_option('ll_opt_button_style') === 'css_black') { echo ' selected="selected"'; } ?>>Black (CSS-only)</option>
-										<option value="css_black_pulse"<?php if (get_option('ll_opt_button_style') === 'css_black_pulse') { echo ' selected="selected"'; } ?>>Black Pulse (CSS-only)</option>
-										<option value="youtube_button_image"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image') { echo ' selected="selected"'; } ?>>Youtube button image</option>
-										<option value="youtube_button_image_red"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image_red') { echo ' selected="selected"'; } ?>>Red Youtube button image</option>
+										<option value="default"<?php if (get_option('ll_opt_button_style') === 'default') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'White (CSS-only)', LL_TD ); ?></option>
+										<option value="css_white_pulse"<?php if (get_option('ll_opt_button_style') === 'css_white_pulse') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'White Pulse (CSS-only)', LL_TD ); ?></option>
+										<option value="css_black"<?php if (get_option('ll_opt_button_style') === 'css_black') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Black (CSS-only)', LL_TD ); ?></option>
+										<option value="css_black_pulse"<?php if (get_option('ll_opt_button_style') === 'css_black_pulse') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Black Pulse (CSS-only)', LL_TD ); ?></option>
+										<option value="youtube_button_image"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Youtube button image', LL_TD ); ?></option>
+										<option value="youtube_button_image_red"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image_red') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Red Youtube button image', LL_TD ); ?></option>
 									</select>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Thumbnail Size</label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail Size', LL_TD ); ?></label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_thumbnail_size">
-										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>>Cover</option>
-										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>>Contain</option>
+										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Cover', LL_TD ); ?></option>
+										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Contain', LL_TD ); ?></option>
 									</select>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Custom CSS</label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Custom CSS', LL_TD ); ?></label></th>
 					        	<td>
 					        		<textarea rows="14" cols="70" type="text" name="ll_opt_customcss"><?php echo get_option('ll_opt_customcss'); ?></textarea>
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Schema.org Markup <span class="newred">Beta</span></label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Schema.org Markup', LL_TD ); ?> <span class="newred">Beta</span></label></th>
 						        <td>
-									<input name="ll_opt_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_video_seo' ) ); ?> /> <label>Add schema.org markup to your Youtube and Vimeo videos. Those changes don't seem to affect your search ranking because videos and schema.org markup <a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">should be visible</a> without JavaScript (but that cannot be the case when videos are lazy loaded).</label> <label><span style="color:#f60;">Important:</span> Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.</label>
+									<input name="ll_opt_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_video_seo' ) ); ?> /> 
+									<label>
+										<?php printf( esc_html__( 'Add schema.org markup to your Youtube and Vimeo videos. Those changes don\'t seem to affect your search ranking because videos and schema.org markup %1$sshould be visible%2$s without JavaScript (but that cannot be the case when videos are lazy loaded).', LL_TD ),
+											'<a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">',
+											'</a>'
+										); ?>
+									</label> 
+									<label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Support for TablePress</label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Support for TablePress', LL_TD ); ?></label></th>
 						        <td>
-									<input name="ll_opt_support_for_tablepress" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_support_for_tablepress' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance). If checked, you can paste a Youtube or Vimeo URL into tables that are created with TablePress and it will be lazy loaded.</label>
+									<input name="ll_opt_support_for_tablepress" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_support_for_tablepress' ) ); ?> /> <label><?php esc_html_e( 'Only check this box if you actually use this feature (for reason of performance). If checked, you can paste a Youtube or Vimeo URL into tables that are created with TablePress and it will be lazy loaded.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					    </tbody>
@@ -235,87 +242,99 @@ class Lazyload_Videos_Admin {
 
 				<div id="youtube">
 
-					<h3>Lazy Load for Youtube</h3>
+					<h3><?php esc_html_e( 'Lazy Load for Youtube', LL_TD ); ?></h3>
 
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label>Disable Lazy Load for Youtube</label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Disable Lazy Load for Youtube', LL_TD ); ?></label></th>
 						        <td>
-									<input name="lly_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Youtube</b> videos.</label> <label><span style="color:#f60;">Important:</span> Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.</label>
+									<input name="lly_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt' ) ); ?> /> 
+									<label>									
+										<?php printf( esc_html__( 'If checked, Lazy Load will not be used for %1$s videos.', LL_TD ),
+											'<b>Youtube</b>'
+										); ?>
+									</label> 
+									<label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Display Youtube title</label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Display Youtube title', LL_TD ); ?></label></th>
 						        <td>
-									<input name="lly_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_title' ) ); ?> /> <label>If checked, the Youtube video title will be displayed on preview image.</label>
+									<input name="lly_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_title' ) ); ?> /> <label><?php esc_html_e( 'If checked, the Youtube video title will be displayed on preview image.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Pre-roll/post-roll ads<span class="description thin"><br>Sell advertising space!</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Pre-roll/post-roll ads', LL_TD ); ?><span class="description thin"><br>Sell advertising space!</span></label></th>
 					        	<td>
-					        		<strong style="width:80px;display:inline-block">Pre-roll</strong> <input type="text" name="lly_opt_player_preroll" placeholder="" value="<?php echo get_option('lly_opt_player_preroll'); ?>" /><br>
-					        		<strong style="width:80px;display:inline-block">Post-roll</strong> <input type="text" name="lly_opt_player_postroll" placeholder="" value="<?php echo get_option('lly_opt_player_postroll'); ?>" /> (multiple IDs allowed)<br>
+					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Pre-roll', LL_TD ); ?></strong> <input type="text" name="lly_opt_player_preroll" placeholder="" value="<?php echo get_option('lly_opt_player_preroll'); ?>" /><br>
+					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Post-roll', LL_TD ); ?></strong> <input type="text" name="lly_opt_player_postroll" placeholder="" value="<?php echo get_option('lly_opt_player_postroll'); ?>" /> <?php esc_html_e( '(multiple IDs allowed)', LL_TD ); ?><br>
 					        		<br>
-					        		<label>Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement. You have to insert the plain Youtube <b>video ID</b>, like <b>Dp2mI9AgiGs</b> or a comma-separated list of video IDs (<i>Dp2mI9AgiGs,IJNR2EpS0jw</i>).</label>
+					        		<label>
+										<?php printf( esc_html__( 'Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement. You have to insert the plain Youtube %1$s, like %2$s or a comma-separated list of video IDs (%3$s).', LL_TD ),
+											'<b>video ID</b>',
+											'<b>IJNR2EpS0jw</b>',
+											'<i>IJNR2EpS0jw,dMH0bHeiRNg</i>'
+										); ?>
+					        		</label>
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Thumbnail quality <span class="newred">Updated</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?> <span class="newred"><?php esc_html_e( 'Updated', LL_TD ); ?></span></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
-										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>>Standard quality</option>
-										<option value="max"<?php if (get_option('lly_opt_thumbnail_quality') === 'max') { echo ' selected="selected"'; } ?>>Max resolution</option>
+										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
+										<option value="max"<?php if (get_option('lly_opt_thumbnail_quality') === 'max') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Max resolution', LL_TD ); ?></option>
 									</select>
-									<p>Define which thumbnail quality should be used by default. When a maximum resolution thumbnail is not available, the standard thumbnail will be loaded. This setting can be overridden on every individual page/post.</p>
+									<p><?php esc_html_e( 'Define which thumbnail quality should be used by default. When a maximum resolution thumbnail is not available, the standard thumbnail will be loaded. This setting can be overridden on every individual page/post.', LL_TD ); ?></p>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Player colour</label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Player colour', LL_TD ); ?></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_player_colour">
-										<option value="dark"<?php if (get_option('lly_opt_player_colour') === 'dark') { echo ' selected="selected"'; } ?>>Dark (default)</option>
-										<option value="light"<?php if (get_option('lly_opt_player_colour') === 'light') { echo ' selected="selected"'; } ?>>Light</option>
+										<option value="dark"<?php if (get_option('lly_opt_player_colour') === 'dark') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Dark (default)', LL_TD ); ?></option>
+										<option value="light"<?php if (get_option('lly_opt_player_colour') === 'light') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Light', LL_TD ); ?></option>
 									</select>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Colour of progress bar</label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Colour of progress bar', LL_TD ); ?></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_player_colour_progress">
-										<option value="red"<?php if (get_option('lly_opt_player_colour_progress') === 'red') { echo ' selected="selected"'; } ?>>Red (default)</option>
-										<option value="white"<?php if (get_option('lly_opt_player_colour_progress') === 'white') { echo ' selected="selected"'; } ?>>White</option>
+										<option value="red"<?php if (get_option('lly_opt_player_colour_progress') === 'red') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Red (default)', LL_TD ); ?></option>
+										<option value="white"<?php if (get_option('lly_opt_player_colour_progress') === 'white') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'White', LL_TD ); ?></option>
 									</select>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Hide annotations <span class="newred grey">Tip</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Hide annotations', LL_TD ); ?> <span class="newred grey">Tip</span></label></th>
 						        <td>
-									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_loadpolicy' ) ); ?> /> <label>If checked, video annotations (like "subscribe to channel") will not be shown.</label>
+									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_loadpolicy' ) ); ?> /> <label><?php esc_html_e( 'If checked, video annotations (like "subscribe to channel") will not be shown.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Hide title/uploader</label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Hide title/uploader', LL_TD ); ?></label></th>
 						        <td>
-									<input name="lly_opt_player_showinfo" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_showinfo' ) ); ?> /> <label>If checked, information like the video title and uploader will not be displayed when the video starts playing. This option only affects the playing video, not the video thumbnail.</label>
+									<input name="lly_opt_player_showinfo" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_showinfo' ) ); ?> /> <label><?php esc_html_e( 'If checked, information like the video title and uploader will not be displayed when the video starts playing. This option only affects the playing video, not the video thumbnail.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Hide related videos</label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Hide related videos', LL_TD ); ?></label></th>
 						        <td>
-									<input name="lly_opt_player_relations" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_relations' ) ); ?> /> <label>If checked, related videos at the end of your videos will not be displayed.</label>
+									<input name="lly_opt_player_relations" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_relations' ) ); ?> /> <label><?php esc_html_e( 'If checked, related videos at the end of your videos will not be displayed.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Hide player controls</label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Hide player controls', LL_TD ); ?></label></th>
 						        <td>
-									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_controls' ) ); ?> /> <label>If checked, Youtube player controls will not be displayed.</label>
+									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_controls' ) ); ?> /> <label><?php esc_html_e( 'If checked, Youtube player controls will not be displayed.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Support for widgets</label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Support for widgets', LL_TD ); ?></label></th>
 						        <td>
-									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label>Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.</label>
+									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label><?php esc_html_e( 'Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 			        	</tbody>
@@ -324,24 +343,24 @@ class Lazyload_Videos_Admin {
 
 				<div id="vimeo">
 
-					<h3>Lazy Load for Vimeo</h3>
+					<h3><?php esc_html_e( 'Lazy Load for Vimeo', LL_TD ); ?></h3>
 
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label>Disable Lazy Load for Vimeo</label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Disable Lazy Load for Vimeo', LL_TD ); ?></label></th>
 						        <td>
-									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> <label>If checked, Lazy Load will not be used for <b>Vimeo</b> videos.</label> <label><span style="color:#f60;">Important:</span> Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.</label>
+									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> <label><?php esc_html_e( 'If checked, Lazy Load will not be used for <b>Vimeo</b> videos.', LL_TD ); ?></label> <label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label>Display Vimeo title</label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Display Vimeo title', LL_TD ); ?></label></th>
 						        <td>
-									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label>If checked, the Vimeo video title will be displayed on preview image.</label>
+									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label><?php esc_html_e( 'If checked, the Vimeo video title will be displayed on preview image.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label>Colour of the vimeo controls</label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Colour of the vimeo controls', LL_TD ); ?></label></th>
 					        	<td>
 					        		<input id="llv_picker_input_player_colour" class="ll_picker_player_colour picker-input" type="text" name="llv_opt_player_colour" data-default-color="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo get_option("llv_opt_player_colour"); } ?>" />
 					        	</td>
@@ -361,7 +380,7 @@ class Lazyload_Videos_Admin {
 				   <input class="button update-posts" type="submit" value="Update Posts" />
 				</form>
 				<div class="help">
-					<span class="tooltip-right info-icon" data-tooltip="Save changes first.">?</span> <span>Update posts to setup your plugin for the first time or when recommended somewhere.
+					<span class="tooltip-right info-icon" data-tooltip="Save changes first.">?</span> <span><?php esc_html_e( 'Update posts to setup your plugin for the first time or when recommended somewhere.', LL_TD ); ?></span>
 				</div>
 			</div>
 
@@ -369,19 +388,34 @@ class Lazyload_Videos_Admin {
 
 		    <table class="form-table">
 		        <tr valign="top">
-			        <th scope="row" style="width:100px;"><a href="http://kevinw.de/ll" target="_blank"><img src="https://www.gravatar.com/avatar/9d876cfd1fed468f71c84d26ca0e9e33?d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536&s=100" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;"></a></th>
-			        <td style="width:200px;">
-			        	<p><a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a> &ndash; that's me.<br>
-			        	I'm the developer of this plugin. I hope you enjoy it!</p>
-			        </td>
+		        <th scope="row" style="width:100px;"><a href="http://kevinw.de/ll" target="_blank"><img src="https://www.gravatar.com/avatar/9d876cfd1fed468f71c84d26ca0e9e33?d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536&s=100" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;"></a></th>
+		        <td style="width:200px;">
+		        	<p><a href="http://kevinw.de/ll" target="_blank">Kevin Weber</a> &ndash; <?php esc_html_e( 'that\'s me.', LL_TD ); ?><br>
+		        	<?php esc_html_e( 'I\'m the developer of this plugin. Love it!', LL_TD ); ?></p></td>
 			        <td>
-						<p>Another great plugin: <a href="http://kevinw.de/ll-ind" title="Inline Comments" target="_blank">Inline Comments</a>.</p>
-			        </td>
-			        <td>
-						<p><b>It's free!</b> Support me with <a href="http://kevinw.de/donate/LazyLoadVideos/" title="Pay him something to eat" target="_blank">a delicious lunch</a> and give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/lazy-load-for-videos?filter=5" title="Vote for Lazy Load for Videos" target="_blank">on WordPress.org</a>.</p>
-			        </td>
+						<p>
+							<b><?php esc_html_e( 'It\'s free!', LL_TD ); ?></b> 
+							<?php printf( esc_html__( 'Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star rating %3$son WordPress.org%4$s.', LL_TD ),
+								'<a href="http://kevinw.de/donate/LazyLoadVideos/" title="Pay me a delicious lunch" target="_blank">',
+								'</a>',
+								'<a href="http://wordpress.org/support/view/plugin-reviews/lazy-load-for-videos?filter=5" title="Vote for Lazy Load for Videos" target="_blank">',
+								'</a>'
+							); ?>
+						</p>
+			        </td>   
+		        <td style="width:300px;">
+					<p>
+						<b><?php esc_html_e( 'Personal tip: Must use plugins', LL_TD ); ?></b>
+						<ol>
+							<li><a href="http://kevinw.de/ll-wb" title="wBounce" target="_blank"><?php esc_html_e( 'wBounce', LL_TD ); ?></a> <?php esc_html_e( '(on my part)', LL_TD ); ?></li>
+							<li><a href="https://yoast.com/wordpress/plugins/seo/" title="WordPress SEO by Yoast" target="_blank"><?php esc_html_e( 'WordPress SEO', LL_TD ); ?></a> <?php esc_html_e( '(by Yoast)', LL_TD ); ?></li>
+							<li><a href="http://kevinw.de/ll-ind" title="Inline Comments" target="_blank"><?php esc_html_e( 'Inline Comments', LL_TD ); ?></a> <?php esc_html_e( '(on my part)', LL_TD ); ?></li>
+							<li><a href="https://wordpress.org/plugins/broken-link-checker/" title="Broken Link Checker" target="_blank"><?php esc_html_e( 'Broken Link Checker', LL_TD ); ?></a> <?php esc_html_e( '(by Janis Elsts)', LL_TD ); ?></li>
+						</ol>
+					</p>
+		        </td>
 		        </tr>
-		    </table>
+			</table>
 		</div>
 	<?php
 	}

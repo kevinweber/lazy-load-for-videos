@@ -3,7 +3,7 @@ Contributors: kevinweber
 Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
-Tested up to: 4.2.2
+Tested up to: 4.3.1
 Stable tag: 2.2.0.4
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
@@ -139,9 +139,10 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 == Changelog ==
 
 = 2.2.0.4 =
+* Important: The wp_footer function in your theme is now required.
 * Pull request via Github: Merged code enhancements by @summatix. Combined several JavaScript files into one.
 * Added fallback by @summatix to load thumbnail with default quality when a high quality version is not available. Removed "Force maximum resolution" option because the fallback makes this feature unnecessary.
-* The wp_footer function in your theme is now required.
+* Made plugin translatable.
 
 = 2.2.0.3 =
 * Fix: Updated URL definitions to improve js minify (merge request via Github by @sigginet)

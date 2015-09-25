@@ -25,22 +25,22 @@ class Lazyload_Videos_No_Premium_Admin_Options {
 	function add_admin_tab() { ?>
 		<div id="tab-premium">
 
-			<h3>Premium Extension</h3>
+			<h3><?php esc_html_e( 'Premium Extension', LL_TD ); ?></h3>
 
 			<table class="form-table">
 				<tbody>
 					<tr valign="top">
-						<th>It's pretty simple:</th>
+						<th><?php esc_html_e( 'It\'s pretty simple:', LL_TD ); ?></th>
 						<td>
-							<p>I offer nearly every feature of Lazy Load for Videos for free. So you can ensure that everything works fine on your site before you grab this slick extension.</p>
-							<p>This extension removes the subtle "i" (information link) that is placed in the top right of every video. That's it.</p>
-							<p style="color:#999;"><i>Using this link I assure that the plugin gets spread. And everyone who doesn’t want the branding pays a very little compensation for my time-consuming efforts.</i></p>
+							<p><?php esc_html_e( 'I offer nearly every feature of Lazy Load for Videos for free. So you can ensure that everything works fine on your site before you grab this slick extension.', LL_TD ); ?></p>
+							<p><?php esc_html_e( 'This extension removes the subtle "i" (information link) that is placed in the top right of every video. That\'s it.', LL_TD ); ?></p>
+							<p style="color:#999;"><i><?php esc_html_e( 'Using this link I assure that the plugin gets spread. And everyone who doesn’t want the branding pays a very little compensation for my time-consuming efforts.', LL_TD ); ?></i></p>
 						</td>
 					</tr>
 			        <tr valign="top">
-			        	<th scope="row">Remove branding</th>
+			        	<th scope="row"><?php esc_html_e( 'Remove branding', LL_TD ); ?></th>
 				        <td>
-							<span>This extension removes the subtle "i" (information link) from your videos automatically. Simply install and activate both plugins (basic plugin and premium extension).</span>
+							<span><?php esc_html_e( 'This extension removes the subtle "i" (information link) from your videos automatically. Simply install and activate both plugins (basic plugin and premium extension).', LL_TD ); ?></span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
@@ -52,8 +52,8 @@ class Lazyload_Videos_No_Premium_Admin_Options {
 			        <tr valign="top">
 			        	<th scope="row"><a href="https://sellfy.com/p/sFX6/" id="sFX6" class="sellfy-buy-button">buy</a><script type="text/javascript" src="https://sellfy.com/js/api_buttons.js"></script></th>
 				        <td>
-							<span>Grab premium to get additional features, honour my work and push development. The price might change/increase over time.<br>
-							<strong>Immediate download after purchase.</strong>
+							<span><?php esc_html_e( 'Grab premium to get additional features, honour my work and push development. The price might change/increase over time.', LL_TD ); ?><br>
+							<strong><?php esc_html_e( 'Immediate download after purchase.', LL_TD ); ?></strong>
 				        </td>
 			        </tr>
 			    </tbody>
