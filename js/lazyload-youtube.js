@@ -57,30 +57,28 @@
   var doload_lly = function() {
 
     $("a.lazy-load-youtube").each(function(index) {
-      var that = this;
+      var $that = $(this);
+      var $thatHref = $that.attr("href");
+      var embedparms;
 
       /*
        * Load parameters from user's original Youtube URL
        */
       var load_embedparms = function() {
-        var embedparms = $(that).attr("href").split("/embed/")[1];
+        embedparms = $thatHref.split("/embed/")[1];
         if (!embedparms) {
-          embedparms = $(that).attr("href").split("://youtu.be/")[1];
+          embedparms = $thatHref.split("://youtu.be/")[1];
         }
         if (!embedparms) {
-          embedparms = $(that).attr("href").split("v=")[1].replace(/\&/, '?');
+          embedparms = $thatHref.split("v=")[1].replace(/\&/, '?');
         }
-        return embedparms;
       };
-      var embedparms = load_embedparms();
+      load_embedparms();
 
       /*
        * Load Youtube ID
        */
-      var loadYouId = function() {
-        return embedparms.split("?")[0].split("#")[0];
-      };
-      var youid = loadYouId();
+      var youid = embedparms.split("?")[0].split("#")[0];
 
       var loadYouIdPreroll = function() {
         var preroll = '';
@@ -124,11 +122,11 @@
       var createPluginInfo = function() {
         if (
             ( $_o.displayBranding !== false ) &&
-            ( $(that).siblings(classBrandingDot).length === 0 ) // This prevents the site from creating unnecessary duplicate brandings
+            ( $that.siblings(classBrandingDot).length === 0 ) // This prevents the site from creating unnecessary duplicate brandings
           )
         {
           // source = Video
-          var source = $(that);
+          var source = $that;
           // element = Plugin info element
           var element = $( loadPluginInfo() );
           // Prepend element to source
@@ -139,11 +137,11 @@
       createPluginInfo();
 
       var videoTitle = function() {
-        if ( $(that).attr('video-title') !== undefined ) {
-          return $(that).attr("video-title");
+        if ( $that.attr('video-title') !== undefined ) {
+          return $that.attr("video-title");
         }
-        else if ( $(this).html() !== '' && $(this).html() !== undefined ) {
-          return $(this).html();
+        else if ( $that.html() !== '' && $that.html() !== undefined ) {
+          return $that.html();
         }
         else {
           return "";
@@ -184,12 +182,12 @@
       }
 
       if (embedparms.indexOf("showinfo=0") !== -1) {
-        $(this).html('');
+        $that.html('');
       } else {
-        $(this).html('<div class="lazy-load-youtube-info"><span class="titletext youtube"'+itemprop_name+'>' + videoTitle() + '</span></div>');
+        $that.html('<div class="lazy-load-youtube-info"><span class="titletext youtube"'+itemprop_name+'>' + videoTitle() + '</span></div>');
       }
 
-      $(this).prepend('<div style="height:' + getHeight($(this)) + 'px;width:' + getWidth($(this)) + 'px;" class="lazy-load-youtube-div"></div>').addClass($_o.buttonstyle);
+      $that.prepend('<div style="height:' + getHeight($that) + 'px;width:' + getWidth($that) + 'px;" class="lazy-load-youtube-div"></div>').addClass($_o.buttonstyle);
 
 
       /*
@@ -223,25 +221,25 @@
         });
         $("body").append(img);
       };
-      setBackgroundImg($(this));
+      setBackgroundImg($that);
 
       if ($_o.videoseo === true) {
-        $(that).append('<meta itemprop="contentLocation" content="'+ youtubeUrl( youid ) +'" />');
-        $(that).append('<meta itemprop="embedUrl" content="'+ emu +'" />');
-        $(this).append('<meta itemprop="thumbnail" content="'+ getThumbnailUrl() +'" />');
+        $that.append('<meta itemprop="contentLocation" content="'+ youtubeUrl( youid ) +'" />');
+        $that.append('<meta itemprop="embedUrl" content="'+ emu +'" />');
+        $that.append('<meta itemprop="thumbnail" content="'+ getThumbnailUrl() +'" />');
  
         $.getJSON('http://gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc&callback=?',function( data ){
-            $(that).append('<meta itemprop="datePublished" content="'+ data.data.uploaded +'" />');
-            $(that).append('<meta itemprop="duration" content="'+ data.data.duration +'" />');
-            $(that).append('<meta itemprop="aggregateRating" content="'+ data.data.rating +'" />');
+            $that.append('<meta itemprop="datePublished" content="'+ data.data.uploaded +'" />');
+            $that.append('<meta itemprop="duration" content="'+ data.data.duration +'" />');
+            $that.append('<meta itemprop="aggregateRating" content="'+ data.data.rating +'" />');
             // TODO: Retrieve and use even more data for Video SEO.
               // Get possible response data with http://www.jsoneditoronline.org/ and http://gdata.youtube.com/feeds/api/videos/pk99sSGF0YE?v=2&alt=jsonc
         });
 
       }
 
-      $(this).attr("id", youid + index);
-      $(this).attr("href", youtubeUrl( youid ) + (start ? "#t=" + start + "s" : ""));
+      $that.attr("id", youid + index);
+      $that.attr("href", youtubeUrl( youid ) + (start ? "#t=" + start + "s" : ""));
 
       /*
        * Configure URL parameters
@@ -297,7 +295,7 @@
       /*
        * Generate iFrame
        */
-      var videoFrame = '<iframe width="' + parseInt($(this).css("width")) + '" height="' + parseInt($(this).css("height")) + '" style="vertical-align:top;" src="' + emu + '" frameborder="0" allowfullscreen></iframe>';
+      var videoFrame = '<iframe width="' + parseInt($that.css("width")) + '" height="' + parseInt($that.css("height")) + '" style="vertical-align:top;" src="' + emu + '" frameborder="0" allowfullscreen></iframe>';
 
       /*
        * Register "onclick" event handler
@@ -387,5 +385,34 @@
   $(function() {
     lazyload_youtube.init(lazyload_video_settings.youtube);
   });
+
+  // /*
+  //  * Speed test
+  //  * Exemplary usage:
+  // // var load_embedparmsTest = new SpeedTest(load_embedparms, null, 500000);
+  // // load_embedparmsTest.startTest();
+  // */
+  // function SpeedTest( testImplement, testParams, repititions ) {
+  //   this.testImplement = testImplement;
+  //   this.testParams = testParams;
+  //   this.repititions = repititions || 10000;
+  //   this.average = 0;
+  // }
+
+  // SpeedTest.prototype = {
+  //   startTest: function() {
+  //     var beginTime, endTime, sumTimes = 0;
+  //     for (var i = 0, x = this.repititions; i < x; i++) {
+  //       beginTime = +new Date(); // Use "+" to return date in ms
+  //       this.testImplement(this.testParams);
+  //       endTime = +new Date();
+  //       sumTimes += endTime - beginTime;
+  //     }
+  //     this.average = sumTimes / this.repititions;
+  //     return console.log("Average execution across " +
+  //                         this.repititions + ": " +
+  //                         this.average);
+  //   }
+  // };
 
 }( window.lazyload_youtube = window.lazyload_youtube || {}, jQuery ));
