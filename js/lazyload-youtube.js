@@ -65,7 +65,7 @@
       /*
        * Load parameters from user's original Youtube URL
        */
-      var loadEmbedParams = function() {
+      (function setEmbedParams() {
         embedparms = $thatHref.split("/embed/")[1];
         if (!embedparms) {
           embedparms = $thatHref.split("://youtu.be/")[1];
@@ -73,15 +73,14 @@
         if (!embedparms) {
           embedparms = $thatHref.split("v=")[1].replace(/\&/, '?');
         }
-      };
-      loadEmbedParams();
+      })();
 
       /*
        * Load Youtube ID
        */
       var youid = embedparms.split("?")[0].split("#")[0];
 
-      var loadYouIdPreroll = function() {
+      (function setYouIdPreroll() {
         if ($_o.preroll !== undefined && $_o.preroll !== preroll) {
           preroll = $_o.preroll;
         }
@@ -89,8 +88,7 @@
           // Fallback when no preroll ID should be loaded
           preroll = embedparms;
         }
-      };
-      loadYouIdPreroll();
+      })();
 
       var emu = '//www.youtube.com/embed/' + preroll;
 
@@ -244,8 +242,12 @@
       $that.attr("href", youtubeUrl( youid ) + (start ? "#t=" + start + "s" : ""));
 
 
-      var generateUrl = function() {
-        var theme, colour, showinfo, relations, controls, loadpolicy, postroll, playlist = '';
+      (function generateUrl() {
+        var theme = '',
+            colour = '',
+            postroll = '',
+            playlist = '',
+            showinfo, relations, controls, loadpolicy;
 
         /*
          * Configure URL parameters
@@ -280,8 +282,7 @@
          * Generate URL
          */
         emu += ((emu.indexOf("?") === -1) ? "?" : "&") + "autoplay=1" + theme + colour + controls + loadpolicy + showinfo + relations + playlist;
-      };
-      generateUrl();
+      })();
 
 
       /*
@@ -381,8 +382,8 @@
   /*
    * Speed test
    * Exemplary usage:
-  // var loadEmbedParamsTest = new SpeedTest(loadEmbedParams, null, 500000);
-  // loadEmbedParamsTest.startTest();
+  // var setEmbedParamsTest = new SpeedTest(setEmbedParams, null, 500000);
+  // setEmbedParamsTest.startTest();
   */
   function SpeedTest( testImplement, testParams, repititions ) {
     this.testImplement = testImplement;
