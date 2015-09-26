@@ -60,11 +60,12 @@
       var $that = $(this);
       var $thatHref = $that.attr("href");
       var embedparms;
+      var preroll = '';
 
       /*
        * Load parameters from user's original Youtube URL
        */
-      var load_embedparms = function() {
+      var loadEmbedParams = function() {
         embedparms = $thatHref.split("/embed/")[1];
         if (!embedparms) {
           embedparms = $thatHref.split("://youtu.be/")[1];
@@ -73,7 +74,7 @@
           embedparms = $thatHref.split("v=")[1].replace(/\&/, '?');
         }
       };
-      load_embedparms();
+      loadEmbedParams();
 
       /*
        * Load Youtube ID
@@ -81,33 +82,17 @@
       var youid = embedparms.split("?")[0].split("#")[0];
 
       var loadYouIdPreroll = function() {
-        var preroll = '';
-        if ($_o.preroll !== preroll && $_o.preroll !== undefined) {
-          return $_o.preroll;
+        if ($_o.preroll !== undefined && $_o.preroll !== preroll) {
+          preroll = $_o.preroll;
         }
         else {
           // Fallback when no preroll ID should be loaded
-          return embedparms;
+          preroll = embedparms;
         }
       };
-      var preroll = loadYouIdPreroll();
- 
-      var start = embedparms.match(/[#&]t=(\d+)s/);
-      if (start) {
-        start = start[1];
-      } else {
-        start = embedparms.match(/[#&]t=(\d+)m(\d+)s/);
-        if (start) {
-          start = parseInt(start[1]) * 60 + parseInt(start[2]);
-        } else {
-          start = embedparms.match(/[?&]start=(\d+)/);
-          if (start) {
-            start = start[1];
-          }
-        }
-      }
+      loadYouIdPreroll();
 
-      var emu = '//www.youtube.com/embed/' + loadYouIdPreroll();
+      var emu = '//www.youtube.com/embed/' + preroll;
 
       /*
        * Load plugin info
@@ -140,7 +125,7 @@
         if ( $that.attr('video-title') !== undefined ) {
           return $that.attr("video-title");
         }
-        else if ( $that.html() !== '' && $that.html() !== undefined ) {
+        else if ( $that.html() !== undefined && $that.html() !== '' ) {
           return $that.html();
         }
         else {
@@ -171,10 +156,27 @@
         return calc; 
       };
 
+
+      var start = embedparms.match(/[#&]t=(\d+)s/);
+      if (start) {
+        start = start[1];
+      } else {
+        start = embedparms.match(/[#&]t=(\d+)m(\d+)s/);
+        if (start) {
+          start = parseInt(start[1]) * 60 + parseInt(start[2]);
+        } else {
+          start = embedparms.match(/[?&]start=(\d+)/);
+          if (start) {
+            start = start[1];
+          }
+        }
+      }
+
       embedparms = embedparms.split("#")[0];
       if (start && embedparms.indexOf("start=") === -1) {
         embedparms += ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
       }
+
 
       var itemprop_name = '';
       if ($_o.videoseo === true ) {
@@ -241,56 +243,46 @@
       $that.attr("id", youid + index);
       $that.attr("href", youtubeUrl( youid ) + (start ? "#t=" + start + "s" : ""));
 
-      /*
-       * Configure URL parameters
-       */
-      var theme = '';
-      if ($_o.theme !== theme && $_o.theme !== undefined && $_o.theme !== 'dark') {
-        theme = '&theme=' + $_o.theme;
-      }
-      var colour = '';
-      if ($_o.colour !== colour && $_o.colour !== undefined && $_o.colour !== 'red') {
-        colour = '&color=' + $_o.colour;
-      }
-      var showinfo = '';
-      if (!$_o.showinfo) {
-        showinfo = '&showinfo=0';
-      }      
-      var relations = '';
-      if (!$_o.relations) {
-        relations = '&rel=0';
-      }
-      var controls = '';
-      if (!$_o.controls) {
-        controls = '&controls=0';
-      }
-      var loadpolicy = '';
-      if (!$_o.loadpolicy) {
-        loadpolicy = '&iv_load_policy=3';
-      }
 
-      /*
-       * Generate Youtube URL parameter 'playlist'
-       */
-      if (preroll !== youid) {
-        preroll = youid + ',';
-      }
-      else {
-        preroll = '';
-      }
-      var postroll = '';
-      if ($_o.postroll !== postroll && $_o.postroll !== undefined) {
-        postroll = $_o.postroll;
-      }
-      var playlist = '';
-      if ( ( preroll !== '' ) || ( postroll !== '' ) ) {
-        playlist = '&playlist=' + preroll + postroll;
-      }
+      var generateUrl = function() {
+        var theme, colour, showinfo, relations, controls, loadpolicy, postroll, playlist = '';
 
-      /*
-       * Generate URL
-       */
-      emu += ((emu.indexOf("?") === -1) ? "?" : "&") + "autoplay=1" + theme + colour + controls + loadpolicy + showinfo + relations + playlist;
+        /*
+         * Configure URL parameters
+         */
+        if ($_o.theme !== undefined && $_o.theme !== theme && $_o.theme !== 'dark') {
+          theme = '&theme=' + $_o.theme;
+        }
+        if ($_o.colour !== undefined && $_o.colour !== colour && $_o.colour !== 'red') {
+          colour = '&color=' + $_o.colour;
+        }
+        showinfo = !$_o.showinfo ? '&showinfo=0' : '';
+        relations = !$_o.relations ? '&rel=0' : '';
+        controls = !$_o.controls ? '&controls=0' : '';
+        loadpolicy = !$_o.loadpolicy ? '&iv_load_policy=3' : '';
+
+        /*
+         * Configure URL parameter 'playlist'
+         */
+        if (preroll !== youid) {
+          preroll = youid + ',';
+        } else {
+          preroll = '';
+        }
+        if ($_o.postroll !== undefined && $_o.postroll !== postroll) {
+          postroll = $_o.postroll;
+        }
+        if ( ( preroll !== '' ) || ( postroll !== '' ) ) {
+          playlist = '&playlist=' + preroll + postroll;
+        }
+
+        /*
+         * Generate URL
+         */
+        emu += ((emu.indexOf("?") === -1) ? "?" : "&") + "autoplay=1" + theme + colour + controls + loadpolicy + showinfo + relations + playlist;
+      };
+      generateUrl();
+
 
       /*
        * Generate iFrame
@@ -386,33 +378,33 @@
     lazyload_youtube.init(lazyload_video_settings.youtube);
   });
 
-  // /*
-  //  * Speed test
-  //  * Exemplary usage:
-  // // var load_embedparmsTest = new SpeedTest(load_embedparms, null, 500000);
-  // // load_embedparmsTest.startTest();
-  // */
-  // function SpeedTest( testImplement, testParams, repititions ) {
-  //   this.testImplement = testImplement;
-  //   this.testParams = testParams;
-  //   this.repititions = repititions || 10000;
-  //   this.average = 0;
-  // }
+  /*
+   * Speed test
+   * Exemplary usage:
+  // var loadEmbedParamsTest = new SpeedTest(loadEmbedParams, null, 500000);
+  // loadEmbedParamsTest.startTest();
+  */
+  function SpeedTest( testImplement, testParams, repititions ) {
+    this.testImplement = testImplement;
+    this.testParams = testParams;
+    this.repititions = repititions || 10000;
+    this.average = 0;
+  }
 
-  // SpeedTest.prototype = {
-  //   startTest: function() {
-  //     var beginTime, endTime, sumTimes = 0;
-  //     for (var i = 0, x = this.repititions; i < x; i++) {
-  //       beginTime = +new Date(); // Use "+" to return date in ms
-  //       this.testImplement(this.testParams);
-  //       endTime = +new Date();
-  //       sumTimes += endTime - beginTime;
-  //     }
-  //     this.average = sumTimes / this.repititions;
-  //     return console.log("Average execution across " +
-  //                         this.repititions + ": " +
-  //                         this.average);
-  //   }
-  // };
+  SpeedTest.prototype = {
+    startTest: function() {
+      var beginTime, endTime, sumTimes = 0;
+      for (var i = 0, x = this.repititions; i < x; i++) {
+        beginTime = +new Date(); // Use "+" to return date in ms
+        this.testImplement(this.testParams);
+        endTime = +new Date();
+        sumTimes += endTime - beginTime;
+      }
+      this.average = sumTimes / this.repititions;
+      return console.log("Average execution across " +
+                          this.repititions + ": " +
+                          this.average);
+    }
+  };
 
 }( window.lazyload_youtube = window.lazyload_youtube || {}, jQuery ));
