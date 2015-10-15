@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
 Tested up to: 4.3.1
-Stable tag: 2.2.0.4
+Stable tag: 2.2.1
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -37,10 +37,8 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 * Works with WordPress Multisite
 
 = Future features: =
-* (Better) support with specific plugins
 * Support for new/other formats, like SoundCloud, SlideShare and Spotify 
 * Create a custom "Play" button using a colour picker
-* More "Play" button styles
 * Track how often the videos have been loaded with Google Analytics
 * ... YOU want one of those features RIGHT NOW or want to implement a feature yourself? [Contribute on Github](https://github.com/kevinweber/lazy-load-for-videos) and I'll publish your enhancements to the official WordPress directory.
 
@@ -137,6 +135,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.2.1 =
+* The "i" link is now optional. By default, no information link is displayed.
 
 = 2.2.0.4 =
 * Important: The wp_footer function in your theme is now required.
