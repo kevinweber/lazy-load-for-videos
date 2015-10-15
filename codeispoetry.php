@@ -70,9 +70,6 @@ add_action( 'plugins_loaded', 'lazyload_videos_init_plugins_loaded', 15 );
 
 
 function lazyload_videos_admin_init() {
-	if ( LL_ESSENTIAL ) {
-		include_once( LL_PATH . 'admin/inc/class-no-premium.php');
-	}
 	require_once( LL_PATH . 'admin/class-meta.php' );
 }
 function lazyload_videos_frontend_init() {

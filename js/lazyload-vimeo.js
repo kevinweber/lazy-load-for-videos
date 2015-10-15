@@ -48,6 +48,7 @@ function showThumb(data){
         playercolour: '',
         videoseo: false,
         responsive: true,
+        displayBranding: false,
         callback: null,
       },
       options);
@@ -74,7 +75,7 @@ function showThumb(data){
    */
   var createPluginInfo = function() {
       if (
-          ( $_o.displayBranding !== false ) &&
+          ( $_o.displayBranding === true ) &&
           ( $( classPreviewVimeoDot ).siblings(classBrandingDot).length === 0 ) // This prevents the site from creating unnecessary duplicate brandings
         )
       {

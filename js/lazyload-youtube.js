@@ -49,6 +49,7 @@
         videoseo: false,
         responsive: true,
         thumbnailquality: '0',
+        displaybranding: false,
         callback: null,
       },
       options);
@@ -104,7 +105,7 @@
        */
       var createPluginInfo = function() {
         if (
-            ( $_o.displayBranding !== false ) &&
+            ( $_o.displaybranding === true ) &&
             ( $that.siblings(classBrandingDot).length === 0 ) // This prevents the site from creating unnecessary duplicate brandings
           )
         {

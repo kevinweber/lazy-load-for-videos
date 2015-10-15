@@ -118,6 +118,7 @@ class Lazyload_Videos_Admin {
 			'll_opt_customcss',
 			'll_opt_video_seo', // Google: "Make sure that your video and schema.org markup are visible without executing any JavaScript or Flash." --> Video is not working with Lazy Load
 			'll_opt_support_for_tablepress',
+			'll_attribute',
 
 			// Youtube
 			'lly_opt',
@@ -233,6 +234,15 @@ class Lazyload_Videos_Admin {
 						        <th scope="row"><label><?php esc_html_e( 'Support for TablePress', LL_TD ); ?></label></th>
 						        <td>
 									<input name="ll_opt_support_for_tablepress" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_support_for_tablepress' ) ); ?> /> <label><?php esc_html_e( 'Only check this box if you actually use this feature (for reason of performance). If checked, you can paste a Youtube or Vimeo URL into tables that are created with TablePress and it will be lazy loaded.', LL_TD ); ?></label>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+						        <th scope="row"><label><?php esc_html_e( 'Attribution', LL_TD ); ?></label></th>
+						        <td>
+									<?php $options = get_option( 'll_attribute' ); ?>
+									<input class="radio" type="radio" name="ll_attribute" value="none"<?php checked( 'none' == $options || empty($options) ); ?> /> <label for="none">None</label>
+									<input class="radio" type="radio" name="ll_attribute" value="link"<?php checked( 'link' == $options ); ?> /> <label for="link">Link</label>
+									<input class="radio" type="radio" name="ll_attribute" value="donate"<?php checked( 'donate' == $options ); ?> /> <label for="donate">Donate (tbd)</label>
 						        </td>
 					        </tr>
 					    </tbody>

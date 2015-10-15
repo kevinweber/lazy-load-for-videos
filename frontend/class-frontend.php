@@ -11,9 +11,7 @@ class Lazyload_Videos_Frontend {
 			add_filter( 'lly_change_options', array( $this, 'set_options' ) );
 			add_filter( 'llv_change_options', array( $this, 'set_options' ) );
 
-			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/lazyload-video.js', array( 'jquery' ), LL_VERSION, true );
-			} else {
+			if ( !defined('SCRIPT_DEBUG') || !SCRIPT_DEBUG ) {
 				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/min/lazyload-all.min.js', array( 'jquery' ), LL_VERSION, true );
 			}
 
@@ -25,7 +23,6 @@ class Lazyload_Videos_Frontend {
 			$youtube->init();
 
 			$settings = array(
-				'video' => $this->get_js_settings(),
 				'vimeo' => $vimeo->get_js_settings(),
 				'youtube' => $youtube->get_js_settings()
 			);
@@ -47,10 +44,6 @@ class Lazyload_Videos_Frontend {
 
 	function create_callback( $el ) {
 		return 'function(){' . $el->callback() . '}';
-	}
-
-	function get_js_settings() {
-		return array( 'displayBranding' => true );
 	}
 
 	/**
