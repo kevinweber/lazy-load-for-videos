@@ -237,7 +237,7 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label><?php esc_html_e( 'Attribution', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'give appropriate credit for my time-consuming efforts', LL_TD ); ?></span></label></th>
+						        <th scope="row"><?php esc_html_e( 'Attribution', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'give appropriate credit for my time-consuming efforts', LL_TD ); ?></span></th>
 						        <td>
 									<?php $options = get_option( 'll_attribute' ); ?>
 									<input class="radio" type="radio" name="ll_attribute" value="none"<?php checked( 'none' == $options || empty($options) ); ?> /> <label for="none"><?php esc_html_e( 'No attribution: "I can not afford to give appropriate credit for this free plugin."', LL_TD ); ?></label><br><br>
