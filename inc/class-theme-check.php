@@ -38,7 +38,7 @@ class Lazyload_Videos_Theme_Check {
 	}
 	// Output the notice
 	function theme_check_test_footer_notices() {
-		echo '<div class="error"><p>Your active theme is <strong>missing</strong> the call to &lt;?php wp_footer(); ?&gt;<br>Always have it just before the closing </body> tag of your theme, or you will break many plugins. See <a href="https://codex.wordpress.org/Function_Reference/wp_footer" target="_blank">wordpress.org</a>.</p></div>';
+		echo '<div class="error"><p>Your active theme might be <strong>missing</strong> the call to &lt;?php wp_footer(); ?&gt;<br>Always have it just before the closing </body> tag of your theme, or you will break many plugins. See <a href="https://codex.wordpress.org/Function_Reference/wp_footer" target="_blank">wordpress.org</a>.</p></div>';
 	}
 	
 }
