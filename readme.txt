@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
 Tested up to: 4.4
-Stable tag: 2.2.1
+Stable tag: 2.2.1.1
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -135,6 +135,10 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.2.1.1 =
+* Fixed not working option to disable Vimeo.
+* Removed callback functionality.
 
 = 2.2.1 =
 * The "i" link is now optional. By default, no information link is displayed.
