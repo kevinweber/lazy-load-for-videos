@@ -5,7 +5,7 @@
 class Lazyload_Videos_Frontend {
 
 	function init() {
-		if ( $this->test_if_scripts_should_be_loaded() && (get_option('lly_opt') !== '1') ) {
+		if ( $this->test_if_scripts_should_be_loaded() ) {
 			$this->load_lazyload_style();
 			add_action( 'wp_head', array( $this, 'load_lazyload_css') );
 			add_filter( 'lly_change_options', array( $this, 'set_options' ) );
@@ -13,46 +13,38 @@ class Lazyload_Videos_Frontend {
 
 			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
 				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/lazyload-video.js', array( 'jquery' ), LL_VERSION, true );
-			} else {
+			} else if ( (get_option('lly_opt') !== '1') && (get_option('llv_opt') !== '1') ) {
 				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/min/lazyload-all.min.js', array( 'jquery' ), LL_VERSION, true );
 			}
 
-			require( LL_PATH . 'frontend/class-youtube.php' );
-			require( LL_PATH . 'frontend/class-vimeo.php' );
-			$vimeo = new Lazyload_Video_Vimeo();
-			$youtube = new Lazyload_Videos_Youtube();
-			$vimeo->init();
-			$youtube->init();
+            $settings = array();
+            
+            if (get_option('lly_opt') !== '1') {
+                require( LL_PATH . 'frontend/class-youtube.php' );
+                $youtube = new Lazyload_Videos_Youtube();
+                $youtube->init();
+                
+                $settings_youtube = array(
+                    'youtube' => $youtube->get_js_settings()
+                );
+                $settings = array_merge($settings, $settings_youtube);
+                
+            }
+            if (get_option('llv_opt') !== '1') {
+                require( LL_PATH . 'frontend/class-vimeo.php' );
+                $vimeo = new Lazyload_Video_Vimeo();
+                $vimeo->init();
+                
+                $settings_vimeo = array(
+                    'vimeo' => $vimeo->get_js_settings()
+                );
+                $settings = array_merge($settings, $settings_vimeo);
+            }
 
-			$settings = array(
-				'video' => $this->get_js_settings(),
-				'vimeo' => $vimeo->get_js_settings(),
-				'youtube' => $youtube->get_js_settings()
-			);
 			wp_localize_script( 'lazyload-video-js', 'lazyload_video_settings', $settings );
-			$this->generate_callbacks( $vimeo, $youtube );
 		}
 	}
-
-	/**
-	 * Replaces function markers with callback JavaScript.
-	 */
-	function generate_callbacks( $vimeo, $youtube ) {
-		global $wp_scripts;
-		$wp_scripts->registered['lazyload-video-js']->extra['data'] = str_replace(
-			array( '"<!--VIMEO_CALLBACK-->"', '"<!--YOUTUBE_CALLBACK-->"' ),
-			array( $this->create_callback( $vimeo), $this->create_callback( $youtube ) ),
-			$wp_scripts->registered['lazyload-video-js']->extra['data'] );
-	}
-
-	function create_callback( $el ) {
-		return 'function(){' . $el->callback() . '}';
-	}
-
-	function get_js_settings() {
-		return array();
-	}
-
+    
 	/**
 	 * Add stylesheet
 	 */
