@@ -216,7 +216,9 @@
               src = src.replace('maxresdefault', '0');
             }
 
-            el.css("background", "#000 url(" + src + ") center center no-repeat");
+            if (el.css("background-image") === 'none') {
+              el.css("background", "#000 url(" + src + ") center center no-repeat");
+            }
 
             img.remove();
         });
