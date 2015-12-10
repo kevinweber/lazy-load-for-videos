@@ -172,8 +172,9 @@
       }
 
       embedparms = embedparms.split("#")[0];
+      var embedstart = '';
       if (start && embedparms.indexOf("start=") === -1) {
-        var embedstart = ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
+        embedstart = ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
       }
 
 
