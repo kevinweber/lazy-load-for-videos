@@ -24,7 +24,7 @@
       doload_lly();
     });
 
-    if (typeof responsiveVideos.init === 'function' && $_o.responsive === true ) { 
+    if (typeof responsiveVideos.init === 'function' && $_o.responsive === true ) {
       responsiveVideos.init();
     }
 
@@ -141,7 +141,7 @@
        */
       var getWidth = function( element ) {
         var calc = (parseInt(element.css("width")) - 4);
-        return calc;   
+        return calc;
       };
       var getHeight = function( element ) {
         var calc = 0;
@@ -152,15 +152,15 @@
           var width = getWidth( element );
           calc = Math.round( width * videoratio );
         }
-        return calc; 
+        return calc;
       };
 
 
-      var start = embedparms.match(/[#&]t=(\d+)s/);
+      var start = embedparms.match(/[#&?]t=(\d+)/);
       if (start) {
         start = start[1];
       } else {
-        start = embedparms.match(/[#&]t=(\d+)m(\d+)s/);
+        start = embedparms.match(/[#&?]t=(\d+)m(\d+)/);
         if (start) {
           start = parseInt(start[1]) * 60 + parseInt(start[2]);
         } else {
@@ -172,8 +172,9 @@
       }
 
       embedparms = embedparms.split("#")[0];
+      var embedstart = '';
       if (start && embedparms.indexOf("start=") === -1) {
-        embedparms += ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
+        embedstart = ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
       }
 
 
@@ -196,11 +197,11 @@
        */
       var setThumbnailUrl = function( youid ) {
         var $url = "//i2.ytimg.com/vi/" + youid + "/" + $_o.thumbnailquality + ".jpg";
-        
+
         thumbnailurl = $url;
-      };   
+      };
       setThumbnailUrl(youid);
-      
+
       /*
        * Get thumbnail URL
        */
@@ -216,7 +217,9 @@
               src = src.replace('maxresdefault', '0');
             }
 
-            el.css("background", "#000 url(" + src + ") center center no-repeat");
+            if (el.css("background-image") === 'none') {
+              el.css("background", "#000 url(" + src + ") center center no-repeat");
+            }
 
             img.remove();
         });
@@ -228,7 +231,7 @@
         $that.append('<meta itemprop="contentLocation" content="'+ youtubeUrl( youid ) +'" />');
         $that.append('<meta itemprop="embedUrl" content="'+ emu +'" />');
         $that.append('<meta itemprop="thumbnail" content="'+ getThumbnailUrl() +'" />');
- 
+
         $.getJSON('http://gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc&callback=?',function( data ){
             $that.append('<meta itemprop="datePublished" content="'+ data.data.uploaded +'" />');
             $that.append('<meta itemprop="duration" content="'+ data.data.duration +'" />');
@@ -282,7 +285,7 @@
         /*
          * Generate URL
          */
-        emu += ((emu.indexOf("?") === -1) ? "?" : "&") + "autoplay=1" + theme + colour + controls + loadpolicy + showinfo + relations + playlist;
+        emu += ((emu.indexOf("?") === -1) ? "?" : "&") + "autoplay=1" + theme + colour + controls + loadpolicy + showinfo + relations + playlist + embedstart;
       })();
 
 
@@ -300,8 +303,8 @@
         removeBranding(this);
 
         $('#' + youid + index).replaceWith( videoFrame );
-        if (typeof responsiveVideos.resize === 'function' && $_o.responsive === true) { 
-          responsiveVideos.resize(); 
+        if (typeof responsiveVideos.resize === 'function' && $_o.responsive === true) {
+          responsiveVideos.resize();
         }
         return false;
       });
@@ -325,16 +328,16 @@
    * and on https://gist.github.com/infostreams/6540654
    */
   $.fn.bindFirst = function(which, handler) {
-        // ensures a handler is run before any other registered handlers, 
+        // ensures a handler is run before any other registered handlers,
         // independent of the order in which they were bound
         var $el = $(this);
         $el.unbind(which, handler);
         $el.bind(which, handler);
-   
+
         var events = $._data($el[0]).events;
         var registered = events[which];
         registered.unshift(registered.pop());
-   
+
         events[which] = registered;
       };
 
