@@ -139,6 +139,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 = 2.2.1.1 =
 * Fixed not working option to disable Vimeo.
 * Removed callback functionality.
+* Merged pull request from @R33D3M33R on Github (https://github.com/kevinweber/lazy-load-for-videos/pull/7): Load video at custom start time wasn't working properly. Background-image was always overriden, even if user has set a custom one.
 
 = 2.2.1 =
 * The "i" link is now optional. By default, no information link is displayed.
