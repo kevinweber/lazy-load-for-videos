@@ -1,0 +1,495 @@
+# Copyright (C) 2015 Lazy Load for Videos
+# This file is distributed under the same license as the Lazy Load for Videos package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Lazy Load for Videos 2.2.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lazy-load-for-videos\n"
+"POT-Creation-Date: 2015-10-16 10:07:24+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-11-23 09:23+0100\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
+"X-Generator: Poedit 1.7.4\n"
+"Language-Team: \n"
+"Language: sr_RS\n"
+
+#: admin/class-admin-options.php:43
+msgid "Settings"
+msgstr "Podešavanja"
+
+#. Plugin Name of the plugin/theme
+#: admin/class-admin-options.php:108 admin/class-admin-options.php:156
+msgid "Lazy Load for Videos"
+msgstr "Lazy Load for Videos"
+
+#: admin/class-admin-options.php:152
+msgid "Your posts have been updated successfully."
+msgstr "Vaši postovi uspešno su sačuvani"
+
+#: admin/class-admin-options.php:156
+msgid "by"
+msgstr "autor"
+
+#: admin/class-admin-options.php:156
+msgid "Website by Kevin Weber"
+msgstr "web site autor Kevin Weber"
+
+#: admin/class-admin-options.php:156
+msgid "Version"
+msgstr "Verzija"
+
+#: admin/class-admin-options.php:157
+msgid "Speed up your site and customise your video player!"
+msgstr "Ubrzajte svoj site i prilagodite svoj video prikazivač!"
+
+#: admin/class-admin-options.php:161 admin/class-admin-options.php:176
+msgid "General/Styling"
+msgstr "Opšte/Stilizovanje"
+
+#: admin/class-admin-options.php:162
+msgid "Youtube"
+msgstr "Youtube"
+
+#: admin/class-admin-options.php:163
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: admin/class-admin-options.php:181
+msgid "Only load CSS/JS when needed"
+msgstr "Učitaj CSS/JS samo kad je potrebno"
+
+#: admin/class-admin-options.php:181
+msgid "to improve performance"
+msgstr "da se poboljšaju performanse."
+
+#: admin/class-admin-options.php:183
+msgid ""
+"It can happen that &ndash; when this option is checked &ndash; videos on pages do "
+"not lazy load although they should. It works on most sites. Simply test it."
+msgstr ""
+"To se može postići &ndash kada je ova opcija štiklirana &ndash; lazy load ne "
+"primenjuje se na video-materijale iako bi trebalo. Na većini site-ova radi. "
+"Jednostavno ga testirajte."
+
+#: admin/class-admin-options.php:187
+msgid "Responsive Mode"
+msgstr "Responzivni režim."
+
+#: admin/class-admin-options.php:187
+msgid "Tip"
+msgstr "Savet"
+
+#: admin/class-admin-options.php:189
+msgid "Check this to improve responsiveness. Video aspect ratio will be 16:9."
+msgstr ""
+"Štiklirajte ovo da biste proverili responzivnost. Odnos širine i visine biće 16:9."
+
+#: admin/class-admin-options.php:193
+msgid "Play Button"
+msgstr "Taster za prikazivanje"
+
+#: admin/class-admin-options.php:196
+msgid "White (CSS-only)"
+msgstr "Beli (samo CSS)"
+
+#: admin/class-admin-options.php:197
+msgid "White Pulse (CSS-only)"
+msgstr "Beli puls (samo CSS)"
+
+#: admin/class-admin-options.php:198
+msgid "Black (CSS-only)"
+msgstr "Crni (samo CSS)"
+
+#: admin/class-admin-options.php:199
+msgid "Black Pulse (CSS-only)"
+msgstr "Crni puls (samo CSS)"
+
+#: admin/class-admin-options.php:200
+msgid "Youtube button image"
+msgstr "Slika youtube tastera"
+
+#: admin/class-admin-options.php:201
+msgid "Red Youtube button image"
+msgstr "Slika crvenog youtube tastera"
+
+#: admin/class-admin-options.php:206
+msgid "Thumbnail Size"
+msgstr "Veličina sličice"
+
+#: admin/class-admin-options.php:209
+msgid "Cover"
+msgstr "Naslovna slika"
+
+#: admin/class-admin-options.php:210
+msgid "Contain"
+msgstr "Sadrži"
+
+#: admin/class-admin-options.php:215
+msgid "Custom CSS"
+msgstr "Prilagođeni CSS"
+
+#: admin/class-admin-options.php:221
+msgid "Schema.org Markup"
+msgstr "Schema.org Markup"
+
+#: admin/class-admin-options.php:225
+msgid ""
+"Add schema.org markup to your Youtube and Vimeo videos. Those changes don't seem to "
+"affect your search ranking because videos and schema.org markup %1$sshould be "
+"visible%2$s without JavaScript (but that cannot be the case when videos are lazy "
+"loaded)."
+msgstr ""
+"Dodajte schema.org markup svojim Youtube i Vimeo video-sadržajima. Izgleda da te "
+"promene ne utiču na vaše rangiranje u pretrazi jer video-sadržaji i schema.org "
+"markup %1$treba da budu vidljivi%2$s bez JavaScript-a (ali to ne može biti slučaj "
+"kad se koristi lazy load)."
+
+#: admin/class-admin-options.php:230 admin/class-admin-options.php:275
+#: admin/class-admin-options.php:370
+msgid "Important:"
+msgstr "Važno:"
+
+#: admin/class-admin-options.php:230 admin/class-admin-options.php:275
+#: admin/class-admin-options.php:370
+msgid ""
+"Updates on this option will only affect new posts and posts you update afterwards "
+"with the \"Update Posts\" button at the bottom of this form."
+msgstr ""
+"Ažuriranja ove opcije odraziće se samo na nove postove i postove koje kasnije "
+"ažurirate tasterom  \"Ažuriraj postove\" na kraju ovog obrasca. "
+
+#: admin/class-admin-options.php:234
+msgid "Support for TablePress"
+msgstr "Podrška za TablePress"
+
+#: admin/class-admin-options.php:236
+msgid ""
+"Only check this box if you actually use this feature (for reason of performance). "
+"If checked, you can paste a Youtube or Vimeo URL into tables that are created with "
+"TablePress and it will be lazy loaded."
+msgstr ""
+"Štiklirajte ovo polje samo ako stvarno koristite ovu funkcionalnost (zbog "
+"performansi). Ako je štiklirana, možete nalepiti URL za youtube ili Vimeo u tablice "
+"kreirane uz pomoć TablePress-a i biće učitane uz pomoć lazy load-a."
+
+#: admin/class-admin-options.php:240
+msgid "Attribution"
+msgstr "Priznanje"
+
+#: admin/class-admin-options.php:240
+msgid "give appropriate credit for my time-consuming efforts"
+msgstr "Priznajte mi odgovarajuće zasluge za trud koji mi oduzima mnogo vremena."
+
+#: admin/class-admin-options.php:243
+msgid ""
+"No attribution: \"I can not afford to give appropriate credit for this free plugin."
+"\""
+msgstr ""
+"Bez priznanja: \"Ne mogu priuštiti sebi da dam odgovarajući kredit za ovaj "
+"besplatni plugin.\""
+
+#: admin/class-admin-options.php:244
+msgid ""
+"Link attribution: Display a subtle \"i\" (information link) that is placed in the "
+"top right of every video and helps that the plugin gets spread."
+msgstr ""
+"Atribucija linka: Prikažite diskretno \"i\" (link za informacije) u gornjem desnom "
+"uglu svakog video-sadržaja čime pomažete širenje ovog plugin-a."
+
+#: admin/class-admin-options.php:247
+msgid "Donation: \"I have donated already or will do so soon.\""
+msgstr "Donacija: \"Već sam donirao ili ću uskoro\""
+
+#: admin/class-admin-options.php:248
+msgid ""
+"Please %1$sdonate now%2$s so that I can keep up the development of this plugin."
+msgstr ""
+"Molim vas %1$sdonirajte sada%2$s kako bih mogao da nastavim razvoj ovog plugin-a."
+
+#: admin/class-admin-options.php:262
+msgid "Lazy Load for Youtube"
+msgstr "Lazy Load za Youtube"
+
+#: admin/class-admin-options.php:267
+msgid "Disable Lazy Load for Youtube"
+msgstr "Deaktiviraj Lazy Load za Youtube"
+
+#: admin/class-admin-options.php:271
+msgid "If checked, Lazy Load will not be used for %1$s videos."
+msgstr "Ako je štikliran, Lazy Load neće se koristiti za %1$s video-sadržaje."
+
+#: admin/class-admin-options.php:279
+msgid "Display Youtube title"
+msgstr "Prikaži Youtube naslov"
+
+#: admin/class-admin-options.php:281
+msgid "If checked, the Youtube video title will be displayed on preview image."
+msgstr ""
+"Ako je ova opcija štiklirana, naziv Youtube video-sadržaja biće prikazan na slici "
+"pregleda."
+
+#: admin/class-admin-options.php:285
+msgid "Pre-roll/post-roll ads"
+msgstr "Reklame pre prikazivanja/posle prikazivanja video-sadržaja."
+
+#: admin/class-admin-options.php:287
+msgid "Pre-roll"
+msgstr "Pre prikazivanja"
+
+#: admin/class-admin-options.php:288
+msgid "Post-roll"
+msgstr "Posle prikazivanja"
+
+#: admin/class-admin-options.php:288
+msgid "(multiple IDs allowed)"
+msgstr "(Dozvoljeni višestruki ID)"
+
+#: admin/class-admin-options.php:291
+msgid ""
+"Convert all Youtube videos into a playlist and automatically add your corporate "
+"video, product teaser or another video advertisement. You have to insert the plain "
+"Youtube %1$s, like %2$s or a comma-separated list of video IDs (%3$s)."
+msgstr ""
+"Pretvorite Youtube video-sadržaje u listu za prikazivanje i automatski dodajte "
+"reklamu svoje firme ili neku drugu video-reklamu. Morate uneti prazan Youtube %1$s, "
+"kao što je %2$s ili spisak ID-ja video-sadržaja odvojenih zarezima (%3$s)."
+
+#: admin/class-admin-options.php:300
+msgid "Thumbnail quality"
+msgstr "Kvalitet sličice"
+
+#: admin/class-admin-options.php:300
+msgid "Updated"
+msgstr "Ažuriran"
+
+#: admin/class-admin-options.php:303 admin/class-meta.php:70
+msgid "Standard quality"
+msgstr "Standardni kvalitet"
+
+#: admin/class-admin-options.php:304 admin/class-meta.php:71
+msgid "Max resolution"
+msgstr "Maksimalna rezolucija"
+
+#: admin/class-admin-options.php:306
+msgid ""
+"Define which thumbnail quality should be used by default. When a maximum resolution "
+"thumbnail is not available, the standard thumbnail will be loaded. This setting can "
+"be overridden on every individual page/post."
+msgstr ""
+"Odredite koji kvalitet sličice treba da se koristi kao podrazumevani. Kada nije "
+"raspoloživa maksimalna rezolucija sličice, biće učitana standardna sličica. Ovo "
+"podešavanje može se poništiti na svakom pojedinačnom postu ili na svakoj "
+"pojedinačnoj stranici."
+
+#: admin/class-admin-options.php:310
+msgid "Player colour"
+msgstr "Boja tastera za prikazivanje"
+
+#: admin/class-admin-options.php:313
+msgid "Dark (default)"
+msgstr "Tamna (podrazumevana)"
+
+#: admin/class-admin-options.php:314
+msgid "Light"
+msgstr "Svetla"
+
+#: admin/class-admin-options.php:319
+msgid "Colour of progress bar"
+msgstr "Boja trake za prikazivanje napretka"
+
+#: admin/class-admin-options.php:322
+msgid "Red (default)"
+msgstr "Crvena (standardna)"
+
+#: admin/class-admin-options.php:323
+msgid "White"
+msgstr "Bela"
+
+#: admin/class-admin-options.php:328
+msgid "Hide annotations"
+msgstr "Sakrij beleške"
+
+#: admin/class-admin-options.php:330
+msgid ""
+"If checked, video annotations (like \"subscribe to channel\") will not be shown."
+msgstr ""
+"Ako je ova opcija štiklirana, video-obaveštenja (kao što je \"pretplatite se na "
+"kanal\") neće biti prikazana."
+
+#: admin/class-admin-options.php:334
+msgid "Hide title/uploader"
+msgstr "Sakrij naslov/pošiljaoca"
+
+#: admin/class-admin-options.php:336
+msgid ""
+"If checked, information like the video title and uploader will not be displayed "
+"when the video starts playing. This option only affects the playing video, not the "
+"video thumbnail."
+msgstr ""
+"Ako je ova opcija štiklirana, podaci kao što su naziv video-sadržaja i pošiljalac "
+"neće biti prikazani kad počne prikazivanje video-sadržaja. Ova opcija odnosi se "
+"samo na prikazivanje video-sadržaja, ne na sličicu videa."
+
+#: admin/class-admin-options.php:340
+msgid "Hide related videos"
+msgstr "Sakrij povezane video-sadržaje."
+
+#: admin/class-admin-options.php:342
+msgid "If checked, related videos at the end of your videos will not be displayed."
+msgstr ""
+"Ako je ova opcija štiklirana, povezani video-sadržaji neće biti prikazani na kraju "
+"vašeg video-sadržaja."
+
+#: admin/class-admin-options.php:346
+msgid "Hide player controls"
+msgstr "Sakrij kontrole prikazivača"
+
+#: admin/class-admin-options.php:348
+msgid "If checked, Youtube player controls will not be displayed."
+msgstr ""
+"Ako je ova opcija štiklirana, kontrole Youtube prikazivača neće biti prikazane."
+
+#: admin/class-admin-options.php:352
+msgid "Support for widgets"
+msgstr "Podrška za widget-e"
+
+#: admin/class-admin-options.php:354
+msgid ""
+"Only check this box if you actually use this feature (for reason of performance)! "
+"If checked, you can paste a Youtube URL into a text widget and it will be lazy "
+"loaded."
+msgstr ""
+"Štiklirajte ovo polje samo ako zaista koristite ovu funkcionalnost (zbog "
+"performansi)! Ako je ova opcija štiklirana, možete nalepiti Youtube URL"
+
+#: admin/class-admin-options.php:363
+msgid "Lazy Load for Vimeo"
+msgstr "Lazy Load za Vimeo"
+
+#: admin/class-admin-options.php:368
+msgid "Disable Lazy Load for Vimeo"
+msgstr "Deaktiviraj Lazy Load za Vimeo"
+
+#: admin/class-admin-options.php:370
+msgid "If checked, Lazy Load will not be used for <b>Vimeo</b> videos."
+msgstr ""
+"Ako je ova opcija štiklirana, Lazy Load neće biti korišćen za <b>Vimeo</b> video-"
+"sadržaje."
+
+#: admin/class-admin-options.php:374
+msgid "Display Vimeo title"
+msgstr "Prikaži Vimeo naslov."
+
+#: admin/class-admin-options.php:376
+msgid "If checked, the Vimeo video title will be displayed on preview image."
+msgstr ""
+"Ako je ova opcija štiklirana, naziv Vimeo video-sadržaja biće prikazan na stranici "
+"pregleda."
+
+#: admin/class-admin-options.php:380
+msgid "Colour of the vimeo controls"
+msgstr "Boja vimeo kontrola."
+
+#: admin/class-admin-options.php:400
+msgid ""
+"Update posts to setup your plugin for the first time or when recommended somewhere."
+msgstr ""
+"Ažuirirajte postove da biste prvi put podesili plugin ili kad je negde preporučeno."
+
+#: admin/class-admin-options.php:410
+msgid "that's me."
+msgstr "to sam ja"
+
+#: admin/class-admin-options.php:411
+msgid "I'm the developer of this plugin. Love it!"
+msgstr "Ja sam programer ovog plugin-a. Sviđa mi se!"
+
+#: admin/class-admin-options.php:414
+msgid "It's free!"
+msgstr "Besplatan je!"
+
+#: admin/class-admin-options.php:415
+msgid ""
+"Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star rating "
+"%3$son WordPress.org%4$s."
+msgstr ""
+"Častite me %1$ukusnim ručkom%2$s ili dajte ovom plugin-u ocenu sa 5 zvezdica %3$sna "
+"WordPress.org%4$s."
+
+#: admin/class-admin-options.php:425
+msgid "Personal tip: Must use plugins"
+msgstr "Lični savet: Plugin-i koje morate koristiti!"
+
+#: admin/class-admin-options.php:427
+msgid "wBounce"
+msgstr "wBounce"
+
+#: admin/class-admin-options.php:427 admin/class-admin-options.php:429
+msgid "(on my part)"
+msgstr "(moja zasluga)"
+
+#: admin/class-admin-options.php:428
+msgid "WordPress SEO"
+msgstr "WordPress SEO"
+
+#: admin/class-admin-options.php:428
+msgid "(by Yoast)"
+msgstr "(Yoast)"
+
+#: admin/class-admin-options.php:429
+msgid "Inline Comments"
+msgstr "Inline Comments"
+
+#: admin/class-admin-options.php:430
+msgid "Broken Link Checker"
+msgstr "Broken Link Checker"
+
+#: admin/class-admin-options.php:430
+msgid "(by Janis Elsts)"
+msgstr "(by Janis Elsts)"
+
+#: admin/class-meta.php:65
+msgid "Youtube thumbnail quality"
+msgstr "Kvalitet Youtube sličice"
+
+#: admin/class-meta.php:69
+msgid "Default"
+msgstr "Podrazumevani"
+
+#: admin/inc/define.php:5
+msgid ""
+"To suggest and vote for new features: Let the developer come into contact with you."
+msgstr ""
+"Da biste predlagali nove funkcionalnosti i glasali za stare: Omogućite programeru "
+"da kontaktira s vama. "
+
+#: admin/inc/define.php:6
+msgid "Get contacted"
+msgstr "Ostavite svoj kontakt"
+
+#: admin/inc/define.php:7
+msgid "Signup via Plugin"
+msgstr "Prijavi se putem plugin-a"
+
+#. Plugin URI of the plugin/theme
+msgid "http://kevinw.de/lazy-load-videos/"
+msgstr "http://kevinw.de/lazy-load-videos/"
+
+#. Description of the plugin/theme
+msgid ""
+"Lazy Load for Videos speeds up your site by replacing embedded Youtube and Vimeo "
+"videos with a clickable preview image. Visitors simply click on the image to play "
+"the video."
+msgstr ""
+"Lazy Load za video-sadržaje ubrzava vaš site tako što zamenjuje Youtube i Vimeo "
+"video-sadržaje pregledom slike na koji možete kliknuti. Posetioci jednostavno "
+"kliknu na sliku da bi prikazali video."
+
+#. Author of the plugin/theme
+msgid "Kevin Weber"
+msgstr "Kevin Weber"
+
+#. Author URI of the plugin/theme
+msgid "http://kevinw.de/"
+msgstr "http://kevinw.de/"
