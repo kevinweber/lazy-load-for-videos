@@ -97,7 +97,7 @@
        * Load plugin info
        */
       var loadPluginInfo = function() {
-        return '<a class="' + classBranding + '" href="http://kevinw.de/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
+        return '<a class="' + classBranding + '" href="//kevinw.de/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
       };
 
       /*
@@ -230,12 +230,12 @@
         $that.append('<meta itemprop="embedUrl" content="'+ emu +'" />');
         $that.append('<meta itemprop="thumbnail" content="'+ getThumbnailUrl() +'" />');
 
-        $.getJSON('http://gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc&callback=?',function( data ){
+        $.getJSON('//gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc&callback=?',function( data ){
             $that.append('<meta itemprop="datePublished" content="'+ data.data.uploaded +'" />');
             $that.append('<meta itemprop="duration" content="'+ data.data.duration +'" />');
             $that.append('<meta itemprop="aggregateRating" content="'+ data.data.rating +'" />');
             // TODO: Retrieve and use even more data for Video SEO.
-              // Get possible response data with http://www.jsoneditoronline.org/ and http://gdata.youtube.com/feeds/api/videos/pk99sSGF0YE?v=2&alt=jsonc
+              // Get possible response data with //www.jsoneditoronline.org/ and //gdata.youtube.com/feeds/api/videos/pk99sSGF0YE?v=2&alt=jsonc
         });
 
       }
@@ -322,8 +322,8 @@
   /*
    * Ensure that a handler is run before any other registered handlers,
    * independent of the order in which they were bound
-   * As seen on http://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
-   * and on https://gist.github.com/infostreams/6540654
+   * As seen on //stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
+   * and on //gist.github.com/infostreams/6540654
    */
   $.fn.bindFirst = function(which, handler) {
         // ensures a handler is run before any other registered handlers,

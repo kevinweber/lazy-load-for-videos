@@ -67,7 +67,7 @@ function showThumb(data){
    * Load plugin info
    */
   var loadPluginInfo = function() {
-    return '<a class="' + classBranding + '" href="http://kevinw.de/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
+    return '<a class="' + classBranding + '" href="//kevinw.de/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
   };
 
   /*
@@ -162,7 +162,7 @@ function showThumb(data){
         $("#" + id).append('<meta itemprop="datePublished" content="'+ data[0].upload_date +'" />');
         $("#" + id).append('<meta itemprop="duration" content="'+ data[0].duration +'" />');
         $("#" + id).append('<meta itemprop="aggregateRating" content="'+ data.data.rating +'" />');
-        // TODO: Retrieve and use even more data for Video SEO. Possible data: https://developer.vimeo.com/apis/simple#response-data
+        // TODO: Retrieve and use even more data for Video SEO. Possible data: //developer.vimeo.com/apis/simple#response-data
       
       });
 
@@ -182,8 +182,8 @@ function showThumb(data){
   /*
    * Ensure that a handler is run before any other registered handlers,
    * independent of the order in which they were bound
-   * As seen on http://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
-   * and on https://gist.github.com/infostreams/6540654
+   * As seen on //stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
+   * and on //gist.github.com/infostreams/6540654
    */
   $.fn.bindFirst = function(which, handler) {
     // ensures a handler is run before any other registered handlers, 
