@@ -174,7 +174,7 @@
 
       embedparms = embedparms.split("#")[0];
       var embedstart = '';
-      if (start !== 0 && embedparms.indexOf("start=") === -1) {
+      if (start && start !== 0 && embedparms.indexOf("start=") === -1) {
         embedstart = ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
       }
 
