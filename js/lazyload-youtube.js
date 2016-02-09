@@ -155,28 +155,28 @@
         return calc;
       };
 
-
-      var start = embedparms.match(/[#&?]t=(\d+)/);
-      if (start) {
-        start = start[1];
-      } else {
-        start = embedparms.match(/[#&?]t=(\d+)m(\d+)/);
-        if (start) {
-          start = parseInt(start[1]) * 60 + parseInt(start[2]);
-        } else {
-          start = embedparms.match(/[?&]start=(\d+)/);
-          if (start) {
-            start = start[1];
+      var start = 0;
+      var time_factors = [3600, 60, 1]; // h, m, s
+      var start_match = embedparms.match(/[#&?]t=(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/);
+      if (start_match) {
+        for (var s=1; s < start_match.length; s++) {
+          if (typeof start_match[s] !== 'undefined') {
+            start += parseInt(start_match[s])*time_factors[s-1];
           }
+        }
+      }
+      if (start === 0) {
+        start_match = embedparms.match(/[#&?](?:t|start)=(\d+)/);
+        if (start_match) {
+          start = start_match[1];
         }
       }
 
       embedparms = embedparms.split("#")[0];
       var embedstart = '';
-      if (start && embedparms.indexOf("start=") === -1) {
+      if (start !== 0 && embedparms.indexOf("start=") === -1) {
         embedstart = ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
       }
-
 
       var itemprop_name = '';
       if ($_o.videoseo === true ) {
@@ -216,11 +216,9 @@
             if (img.width() === 120) {
               src = src.replace('maxresdefault', '0');
             }
-
             if (el.css("background-image") === 'none') {
               el.css("background", "#000 url(" + src + ") center center no-repeat");
             }
-
             img.remove();
         });
         $("body").append(img);
