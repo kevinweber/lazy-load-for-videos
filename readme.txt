@@ -4,7 +4,7 @@ Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
 Tested up to: 4.4
-Stable tag: 2.2.2
+Stable tag: 2.2.2.1
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -142,8 +142,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
-= 2.2.2 =
+= 2.2.2.1 =
 * Now you can add a custom start time to each video URL. Use it like this: ...url.../watch?v=VIDEO_ID&t=XhYmZs or .../watch?v=VIDEO_ID&t=Z (replace X/Y/Z with hours/minutes/seconds). Pull request from @R33D3M33R on Github (https://github.com/kevinweber/lazy-load-for-videos/pull/8).
+* Removed "http" from URLs for https compatibility.
 
 = 2.2.1.2 =
 * Added Serbian translation by Ogi Djuraskovic.
