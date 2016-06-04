@@ -169,6 +169,11 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	}
 }
 
+a.lazy-load-youtube { 
+    // Prevent plugins such as BBPress from making this link "inline"
+    display: block !important;
+}
+
 @include keyframes( pulse ) {
 	0% { -webkit-transform: scale(1); }
 	35% { -webkit-transform: scale(1.1); }
