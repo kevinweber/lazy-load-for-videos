@@ -1,3 +1,5 @@
+/*global lazyload_video_settings */
+
 /*
  * Lazy Load Youtube
  * by Kevin Weber (kevinw.de)
@@ -213,6 +215,8 @@
         var src = getThumbnailUrl(),
           img = $('<img style="display:none" src="' + src + '"/>');
         img.load(function() {
+            // If the max resolution thumbnail is not available, fall back to smaller size.
+            // But note that we'll still see an 404 error in the console in this case.
             if (img.width() === 120) {
               src = src.replace('maxresdefault', '0');
             }
@@ -381,33 +385,33 @@
     lazyload_youtube.init(lazyload_video_settings.youtube);
   });
 
-  /*
-   * Speed test
-   * Exemplary usage:
-  // var setEmbedParamsTest = new SpeedTest(setEmbedParams, null, 500000);
-  // setEmbedParamsTest.startTest();
-  */
-  function SpeedTest( testImplement, testParams, repititions ) {
-    this.testImplement = testImplement;
-    this.testParams = testParams;
-    this.repititions = repititions || 10000;
-    this.average = 0;
-  }
-
-  SpeedTest.prototype = {
-    startTest: function() {
-      var beginTime, endTime, sumTimes = 0;
-      for (var i = 0, x = this.repititions; i < x; i++) {
-        beginTime = +new Date(); // Use "+" to return date in ms
-        this.testImplement(this.testParams);
-        endTime = +new Date();
-        sumTimes += endTime - beginTime;
-      }
-      this.average = sumTimes / this.repititions;
-      return console.log("Average execution across " +
-                          this.repititions + ": " +
-                          this.average);
-    }
-  };
+//  /*
+//   * Speed test
+//   * Exemplary usage:
+//  // var setEmbedParamsTest = new SpeedTest(setEmbedParams, null, 500000);
+//  // setEmbedParamsTest.startTest();
+//  */
+//  function SpeedTest( testImplement, testParams, repititions ) {
+//    this.testImplement = testImplement;
+//    this.testParams = testParams;
+//    this.repititions = repititions || 10000;
+//    this.average = 0;
+//  }
+//
+//  SpeedTest.prototype = {
+//    startTest: function() {
+//      var beginTime, endTime, sumTimes = 0;
+//      for (var i = 0, x = this.repititions; i < x; i++) {
+//        beginTime = +new Date(); // Use "+" to return date in ms
+//        this.testImplement(this.testParams);
+//        endTime = +new Date();
+//        sumTimes += endTime - beginTime;
+//      }
+//      this.average = sumTimes / this.repititions;
+//      return console.log("Average execution across " +
+//                          this.repititions + ": " +
+//                          this.average);
+//    }
+//  };
 
 }( window.lazyload_youtube = window.lazyload_youtube || {}, jQuery ));
