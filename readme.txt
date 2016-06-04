@@ -3,8 +3,8 @@ Contributors: kevinweber
 Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
-Tested up to: 4.4
-Stable tag: 2.2.2.1
+Tested up to: 4.4.3
+Stable tag: 2.2.2.2
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -17,7 +17,7 @@ By loading the videos only when the user clicks on the preview image – using j
 
 Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.de/lazy-load-videos/)
 
-You want to enhance this plugin? Please [contribute on Github](https://github.com/kevinweber/lazy-load-for-videos). I'm looking for a WordPress enthusiast who further develops this plugin; I'll give you guidance and promote you and the plugin.
+This plugin is no longer under active development. You want to enhance this plugin? Please [contribute on Github](https://github.com/kevinweber/lazy-load-for-videos).
 
 = Some additional features: =
 * Display video titles on preview images
@@ -37,10 +37,8 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 * Works with WordPress Multisite
 
 = Future features: =
-* Support for new/other formats, like SoundCloud, SlideShare and Spotify 
-* Create a custom "Play" button using a colour picker
 * Track how often the videos have been loaded with Google Analytics
-* ... YOU want one of those features RIGHT NOW or want to implement a feature yourself? [Contribute on Github](https://github.com/kevinweber/lazy-load-for-videos) and I'll publish your enhancements to the official WordPress directory.
+* ... YOU want a new feature RIGHT NOW? Please implement it yourself and [contribute on Github](https://github.com/kevinweber/lazy-load-for-videos), and I'll publish your enhancements to the official WordPress directory.
 
 
 = Translators =
@@ -141,6 +139,10 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.2.2.2 =
+* Prevent other themes/plugins (such as BBPress) from displaying Youtube videos "inline" because this causes videos not to be displayed.
+* Set the default margin-bottom for iframes/embeds to "0".
 
 = 2.2.2.1 =
 * Now you can add a custom start time to each video URL. Use it like this: ...url.../watch?v=VIDEO_ID&t=XhYmZs or .../watch?v=VIDEO_ID&t=Z (replace X/Y/Z with hours/minutes/seconds). Pull request from @R33D3M33R on Github (https://github.com/kevinweber/lazy-load-for-videos/pull/8).
@@ -292,6 +294,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Upgrade Notice ==
+
+= 2.2.2.2 =
+* The default margin-bottom for iframes/embeds is set to "0". This might affect your blog's styling. So please check what happens if a user clicks on a Youtube video. You might have to override the margin-bottom value using CSS and "!important".
 
 = 1.6.2 =
 * Several important fixes. Please upgrade.
