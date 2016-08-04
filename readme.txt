@@ -3,8 +3,8 @@ Contributors: kevinweber
 Donate link: http://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
-Tested up to: 4.4.3
-Stable tag: 2.2.2.2
+Tested up to: 4.5.3
+Stable tag: 2.2.3
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -139,6 +139,13 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.2.3 =
+* Don't show video link if preview image isn't loaded yet.
+* Wait with displaying preview image until initial resize of video is done.
+* Fallback if visitor has no JavaScript: Display video title and URL.
+* Feature "Player color" for Youtube videos is now deprecated because Youtube doesn't support it for its HTML5 player.
+* Reduced play button image file sizes.
 
 = 2.2.2.2 =
 * Prevent other themes/plugins (such as BBPress) from displaying Youtube videos "inline" because this causes videos not to be displayed.
@@ -294,6 +301,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Upgrade Notice ==
+
+= 2.2.3 =
+* This plugin will automatically update all embed links in your database to apply the newest updates. This is the same procedure that can be manually triggered using the "Update Posts" button on the admin page.
 
 = 2.2.2.2 =
 * The default margin-bottom for iframes/embeds is set to "0". This might affect your blog's styling. So please check what happens if a user clicks on a Youtube video. You might have to override the margin-bottom value using CSS and "!important".

@@ -77,12 +77,12 @@ class Lazyload_Videos_Register {
 
 	/**
 	 * Check plugin's version and deal with special cases
-	 * @since 2.3
+	 * @since 2.2.3
 	 */
 	function check_for_plugin_version() {
       $version = get_option(LL_VERSION_KEY);
       
-      if (!$version || version_compare($version, '2.3', '<')) {
+      if (!$version || version_compare($version, '2.2.3', '<')) {
         lazyloadvideos_update_posts_with_embed();
       }
       
@@ -94,7 +94,7 @@ class Lazyload_Videos_Register {
 	/**
 	 * Add/update plugin version
      * Make sure this is done AFTER the checks in check_for_plugin_version()
-	 * @since 2.3
+	 * @since 2.2.3
 	 */
     function update_plugin_version() {
       // Store the plugin version for necessary fixes that might be needed in future

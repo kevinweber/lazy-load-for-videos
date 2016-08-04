@@ -184,7 +184,7 @@ class Lazyload_Videos_Admin {
 	
 			<ul class="ui-tabs-nav">
 		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
-		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?> <span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><!-- <span class="newred_dot">&bull;</span> --></a></li>
 		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
@@ -322,7 +322,7 @@ class Lazyload_Videos_Admin {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?> <span class="newred"><?php esc_html_e( 'Updated', LL_TD ); ?></span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
 										<option value="0"<?php if (get_option('lly_opt_thumbnail_quality') === '0') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
@@ -332,12 +332,13 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Player colour', LL_TD ); ?></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Player colour', LL_TD ); ?> <span class="newred grey">DEPRECATED</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_player_colour">
 										<option value="dark"<?php if (get_option('lly_opt_player_colour') === 'dark') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Dark (default)', LL_TD ); ?></option>
 										<option value="light"<?php if (get_option('lly_opt_player_colour') === 'light') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Light', LL_TD ); ?></option>
 									</select>
+                                    <p><?php esc_html_e( 'Note from Youtube: This parameter has been deprecated for HTML5 players, which always use the dark theme.', LL_TD ); ?></p>
 						        </td>
 					        </tr>
 					        <tr valign="top">
