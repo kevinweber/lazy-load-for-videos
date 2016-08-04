@@ -8,11 +8,11 @@ $z-index-base: 2;
  * Mixins
  */
 @mixin vendor-prefix($property, $value) {
+  #{$property}: #{$value};
   -webkit-#{$property}: #{$value};
   -moz-#{$property}: #{$value};
   -ms-#{$property}: #{$value};
   -o-#{$property}: #{$value};
-  #{$property}: #{$value};
 }
 
 @mixin keyframes( $name ){
