@@ -22,6 +22,10 @@ function showThumb(data){
   // Helpers
   var videoratio = 0.5625;
 
+  function markInitialized() {
+    $(classPreviewVimeoDot).parent().removeClass(classNotLoaded);
+  }
+
   lazyload_vimeo.init = function( options ) {
     setOptionsYoutube( options );
 
@@ -34,6 +38,8 @@ function showThumb(data){
 
     if (typeof responsiveVideos.init === 'function' && $_o.responsive === true ) { 
       responsiveVideos.init();
+    } else {
+      markInitialized();
     }
 
     if (typeof $_o.callback === 'function') {
@@ -134,8 +140,6 @@ function showThumb(data){
       
       $this.empty();  // Remove no longer needed title (title is necessary for preview in text editor)
       vimeoLoadingThumb(vid);
-      
-      $this.parent().removeClass(classNotLoaded);
     });
   };
 
@@ -219,7 +223,10 @@ function showThumb(data){
         $( window ).on( 'resize', responsiveVideos.resize );
         // Use bindFirst() to ensure that other plugins like Inline Comments work correctly (in case they depend on the video heights)
         $( window ).bindFirst( 'load', function() { responsiveVideos.resize(); } );
-        $( window ).on( 'load', function() { responsiveVideos.resize(); } );
+        $( window ).on( 'load', function() {
+          responsiveVideos.resize();
+          markInitialized();
+        } );
       }
     },
 

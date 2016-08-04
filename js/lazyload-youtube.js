@@ -8,7 +8,7 @@
 
   // Classes
   var classPreviewYoutube = 'preview-youtube';
-    //var classPreviewYoutubeDot = '.' + classPreviewYoutube;
+    var classPreviewYoutubeDot = '.' + classPreviewYoutube;
   var classBranding = 'lazyload-info-icon';
     var classBrandingDot = '.' + classBranding;
   var classNotLoaded = 'js-lazyload--not-loaded';
@@ -17,6 +17,10 @@
   var videoratio = 0.5625;
   var thumbnailurl = '';
 
+  function markInitialized() {
+    $(classPreviewYoutubeDot).parent().removeClass(classNotLoaded);
+  }
+  
   lazyload_youtube.init = function( options ) {
     setOptionsYoutube( options );
 
@@ -29,6 +33,8 @@
 
     if (typeof responsiveVideos.init === 'function' && $_o.responsive === true ) {
       responsiveVideos.init();
+    } else {
+      markInitialized();
     }
 
     if (typeof $_o.callback === 'function') {
@@ -318,8 +324,6 @@
       var removeBranding = function( element ) {
         $(element).prev( classBrandingDot ).remove();
       };
-
-      $that.parent().removeClass(classNotLoaded);
     });
 
   };
@@ -360,7 +364,10 @@
         $( window ).on( 'resize', responsiveVideos.resize );
         // Use bindFirst() to ensure that other plugins like Inline Comments work correctly (in case they depend on the video heights)
         $( window ).bindFirst( 'load', function() { responsiveVideos.resize(); } );
-        $( window ).on( 'load', function() { responsiveVideos.resize(); } );
+        $( window ).on( 'load', function() {
+          responsiveVideos.resize();
+          markInitialized();
+        } );
       }
     },
 

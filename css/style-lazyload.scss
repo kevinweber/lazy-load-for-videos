@@ -44,6 +44,10 @@ $z-index-base: 2;
     }
 }
 
+.preview-lazyload {
+  opacity: 1;
+  @include vendor-prefix(transition, opacity 0.25s);
+}
 .js-lazyload--not-loaded .preview-lazyload {
     opacity: 0;
 }
