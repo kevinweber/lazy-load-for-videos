@@ -48,14 +48,15 @@ function lazyloadvideos_update_posts_with_embed() {
 class Lazyload_Videos_Register {
 
 	function __construct() {
-		add_action( 'admin_notices', array( $this, 'lazyload_plugin_notice_activation' ) );
+		add_action( 'admin_notices', array( $this, 'plugin_notice_activation' ) );
 		add_action( 'save_post', array( $this, 'delete_oembed_cache' ) );
+        $this->check_for_plugin_version();
 	}
 
 	/**
 	 * Display notification when plugin is activated
 	 */
-	function lazyload_plugin_notice_activation() {
+	function plugin_notice_activation() {
 	  if ( $notices = get_option( 'lazyloadvideos_deferred_admin_notices' ) ) {
 	    foreach ($notices as $notice) {
 	      echo "<div class='updated'><p>$notice</p></div>";
@@ -73,6 +74,33 @@ class Lazyload_Videos_Register {
 		$lazyload_admin = new Lazyload_Videos_Update_Posts();
 		$lazyload_admin->delete_oembed_cache( $post_id );
 	}
+
+	/**
+	 * Check plugin's version and deal with special cases
+	 * @since 2.3
+	 */
+	function check_for_plugin_version() {
+      $version = get_option(LL_VERSION_KEY);
+      
+      if (!$version || version_compare($version, '2.3', '<')) {
+        lazyloadvideos_update_posts_with_embed();
+      }
+      
+      if (!$version || version_compare($version, LL_VERSION, '<')) {
+        $this->update_plugin_version();
+      }
+	}
+  
+	/**
+	 * Add/update plugin version
+     * Make sure this is done AFTER the checks in check_for_plugin_version()
+	 * @since 2.3
+	 */
+    function update_plugin_version() {
+      // Store the plugin version for necessary fixes that might be needed in future
+      add_option( LL_VERSION_KEY, LL_VERSION );
+      update_option( LL_VERSION_KEY, LL_VERSION );
+    }
 
 }
 
