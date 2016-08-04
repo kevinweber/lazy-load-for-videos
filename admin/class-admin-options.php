@@ -56,6 +56,12 @@ class Lazyload_Videos_Admin {
 	function get_schema_prop_video() {
 		return $this->schema_prop_video;
 	}
+    
+    function text__no_script_fallback($title, $url) {
+        $no_script_fallback = '<noscript>Video can\'t be loaded: ' . $title . ' (' . $url . ')</noscript>';
+        
+        return $no_script_fallback;
+    }
 
 	/**
 	 * Replace embedded Youtube and Vimeo videos with a special piece of code.
@@ -73,9 +79,14 @@ class Lazyload_Videos_Admin {
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
        		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;" style="text-decoration:none;color:#000">' . $url . '</a>';
- 			
+            
  			// Wrap container around $preview_url
-       		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
+       		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded"'
+                . $this->get_schema_prop_video() .'>'
+                . $preview_url
+                . $this->text__no_script_fallback($data->title, $url)
+                . '</div>';
+            
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
 
@@ -95,9 +106,23 @@ class Lazyload_Videos_Admin {
 	    	$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
-			$preview_url = '<div id="' . $vimeoid . '" class="' . $a_class . '" title="Play Video &quot;' . $data->title . '&quot;">' . $url . '</div>';
+			$preview_url = '<div id="' 
+                    . $vimeoid 
+                    . '" class="' 
+                    . $a_class 
+                    . '" title="Play Video &quot;' 
+                    . $data->title 
+                    . '&quot;">' 
+                    . $url 
+                    . '</div>';
+            
 			// Wrap container around $preview_url
-			$preview_url = '<div class="container-lazyload container-vimeo"'. $this->get_schema_prop_video() .'>' . $preview_url . '</div>';
+			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded"'
+                    . $this->get_schema_prop_video() 
+                    .'>' 
+                    . $preview_url 
+                    . $this->text__no_script_fallback($data->title, $url)
+                    . '</div>';
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
 	    }
 

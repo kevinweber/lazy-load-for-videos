@@ -11,6 +11,7 @@
     //var classPreviewYoutubeDot = '.' + classPreviewYoutube;
   var classBranding = 'lazyload-info-icon';
     var classBrandingDot = '.' + classBranding;
+  var classNotLoaded = 'js-lazyload--not-loaded';
 
   // Helpers
   var videoratio = 0.5625;
@@ -318,6 +319,7 @@
         $(element).prev( classBrandingDot ).remove();
       };
 
+      $that.parent().removeClass(classNotLoaded);
     });
 
   };

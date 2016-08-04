@@ -33,9 +33,19 @@ $z-index-base: 2;
 	}
 }
 
-.container-youtube, .container-vimeo {
+.container-youtube,
+.container-vimeo {
 	font-size: 0;
 	line-height: 0;
+    noscript {
+        display: block;
+        font-size: 1rem;
+        text-align: left;
+    }
+}
+
+.js-lazyload--not-loaded .preview-lazyload {
+    opacity: 0;
 }
 
 .entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo {

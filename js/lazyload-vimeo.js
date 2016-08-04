@@ -17,6 +17,7 @@ function showThumb(data){
     var classPreviewVimeoDot = '.' + classPreviewVimeo;
   var classBranding = 'lazyload-info-icon';
     var classBrandingDot = '.' + classBranding;
+  var classNotLoaded = 'js-lazyload--not-loaded';
 
   // Helpers
   var videoratio = 0.5625;
@@ -128,9 +129,13 @@ function showThumb(data){
 
   var vimeoCreateThumbProcess = function() {
     $(classPreviewVimeoDot).each(function() {
-      var vid = getAttrId(this);
-      $(this).empty();  // Remove no longer needed title (title is necessary for preview in text editor)
+      var vid = getAttrId(this),
+        $this = $(this);
+      
+      $this.empty();  // Remove no longer needed title (title is necessary for preview in text editor)
       vimeoLoadingThumb(vid);
+      
+      $this.parent().removeClass(classNotLoaded);
     });
   };
 
