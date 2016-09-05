@@ -28,10 +28,14 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+if ( !defined( 'LL_OPTION_KEY' ) ) {
+	define( 'LL_OPTION_KEY', 'lazyloadvideos' );
+}
+
 if (!defined('LL_VERSION'))
     define('LL_VERSION', '2.2.3');
 if (!defined('LL_VERSION_KEY'))
-    define('LL_VERSION_KEY', WBOUNCE_OPTION_KEY.'_version');
+    define('LL_VERSION_KEY', LL_OPTION_KEY.'_version');
 
 if ( !defined( 'LL_FILE' ) )
 	define( 'LL_FILE', __FILE__ );
