@@ -74,6 +74,9 @@ For example, on [kevinw.de/lazy-load-videos/](http://kevinw.de/lazy-load-videos/
 = Which video platforms are supported? =
 Videos from the biggest video platform, Youtube (http://youtube.com), and Vimeo (http://vimeo.com) are supported.
 
+= The plugin isn't working with Jetpack... =
+"Jetpack" by WordPress.com offers some useful extensions. Only one of them makes Lazy Load for Videos break – the "Shortcode Embeds" extension. So simply disable the extension. (In order to see a "Deactivate" button for "Shortcode Embeds" on the Jetpack's extension overview, you must click on "Learn More".)
+
 = Does the Lazy Load for Videos plugin work when there is more than one video on the same page? =
 Yes. The plugin works on single posts and pages as well as on archive pages with several posts and videos.
 
@@ -126,9 +129,6 @@ Feature versions might include an option to change the colour of your CSS-only b
 Similar to a single video, insert the playlist URL in the following format:
 `https://www.youtube.com/watch?v=dkfQFih23Ak&list=PLRQFBJ3mkjnxaPhAVOzjxxv_0yr8XE0Ja` (the other format - `https://www.youtube.com/playlist?list=...` - is not supported currently).
 Note that playlists are not working when you're using the pre-/post-roll feature yet.
-
-= The plugin isn't working with Jetpack... =
-"Jetpack" by WordPress.com offers some useful extensions. Only one of them makes Lazy Load for Videos break – the "Shortcode Embeds" extension. So simply disable the extension. (In order to see a "Deactivate" button for "Shortcode Embeds" on the Jetpack's extension overview, you must click on "Learn More".)
 
 = Known bugs - this plugin may not work correctly when one of the following plugins is activated... =
 * "YouTube" (http://wordpress.org/extend/plugins/youtube-embed-plus/)
