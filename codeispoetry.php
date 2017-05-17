@@ -1,11 +1,11 @@
 <?php
 /*
  * Plugin Name: Lazy Load for Videos
- * Plugin URI: http://kevinw.de/lazy-load-videos/
+ * Plugin URI: https://kevinw.de/lazy-load-videos/
  * Description: Lazy Load for Videos speeds up your site by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
  * Author: Kevin Weber
  * Version: 2.2.3
- * Author URI: http://kevinw.de/
+ * Author URI: https://kevinw.de/
  * License: GPL v3
  * Text Domain: lazy-load-for-videos
  * Domain Path: /languages/
@@ -63,7 +63,7 @@ require_once( LL_PATH . 'inc/class-general.php' );
  * @since 2.2.0.4
  */
 function lazyload_load_textdomain() {
-  load_plugin_textdomain( LL_TD, false, dirname( plugin_basename( LL_FILE ) ) . '/languages/' ); 
+  load_plugin_textdomain( LL_TD, false, dirname( plugin_basename( LL_FILE ) ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'lazyload_load_textdomain' );
 
@@ -99,7 +99,7 @@ else {
 
 
 function lazyload_theme_check() {
-	include_once( LL_PATH . 'inc/class-theme-check.php'); 
+	include_once( LL_PATH . 'inc/class-theme-check.php');
 	$lazyload_theme_check = new Lazyload_Videos_Theme_Check();
 	$lazyload_theme_check->theme_check_init('lazyload.php');
 }

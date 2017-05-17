@@ -1,6 +1,6 @@
 === Lazy Load for Videos ===
 Contributors: kevinweber
-Donate link: http://kevinw.de/donate/LazyLoadVideos/
+Donate link: https://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
 Tested up to: 4.5.3
@@ -15,7 +15,7 @@ Speed up your site by replacing embedded Youtube and Vimeo videos with a clickab
 This plugin improves page load times and increases your Google PageSpeed Score. It replaces embedded Youtube and Vimeo videos with a clickable preview image.
 By loading the videos only when the user clicks on the preview image – using jQuery –, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy.
 
-Demo on the developer’s website: [kevinw.de/lazy-load-videos/](http://kevinw.de/lazy-load-videos/)
+Demo on the developer’s website: [kevinw.de/lazy-load-videos/](https://kevinw.de/lazy-load-videos/)
 
 This plugin is no longer under active development. You want to enhance this plugin? Please [contribute on Github](https://github.com/kevinweber/lazy-load-for-videos).
 
@@ -42,9 +42,9 @@ This plugin is no longer under active development. You want to enhance this plug
 
 
 = Translators =
-* Serbian (sr_RS) - [Ogi Djuraskovic](http://firstsiteguide.com/)
+* Serbian (sr_RS) - [Ogi Djuraskovic](//firstsiteguide.com/)
 
-If you have created your own language pack, or have an update of an existing one, you can [send me](http://kevinw.de/contact/) your gettext PO and MO so that I can bundle it into my plugin. You can download the latest POT file [from here](http://plugins.svn.wordpress.org/lazy-load-for-videos/trunk/languages/lazy-load-for-videos.pot).
+If you have created your own language pack, or have an update of an existing one, you can [send me](https://kevinw.de/contact/) your gettext PO and MO so that I can bundle it into my plugin. You can download the latest POT file [from here](http://plugins.svn.wordpress.org/lazy-load-for-videos/trunk/languages/lazy-load-for-videos.pot).
 
 
 == Installation ==
@@ -69,10 +69,10 @@ Inserting a Youtube iframe (instead of the plain URL) is deprecated and not supp
 Search for keywords using "STRG + F" keyboard shortcut (Mac: "CMD + F").
 
 = Where can I see this plugin in use? =
-For example, on [kevinw.de/lazy-load-videos/](http://kevinw.de/lazy-load-videos/).
+For example, on [kevinw.de/lazy-load-videos/](https://kevinw.de/lazy-load-videos/).
 
 = Which video platforms are supported? =
-Videos from the biggest video platform, Youtube (http://youtube.com), and Vimeo (http://vimeo.com) are supported.
+Videos from the biggest video platform, Youtube (https://youtube.com), and Vimeo (https://vimeo.com) are supported.
 
 = The plugin isn't working with Jetpack... =
 "Jetpack" by WordPress.com offers some useful extensions. Only one of them makes Lazy Load for Videos break – the "Shortcode Embeds" extension. So simply disable the extension. (In order to see a "Deactivate" button for "Shortcode Embeds" on the Jetpack's extension overview, you must click on "Learn More".)
@@ -133,7 +133,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 = Known bugs - this plugin may not work correctly when one of the following plugins is activated... =
 * "YouTube" (http://wordpress.org/extend/plugins/youtube-embed-plus/)
 * "Shortcode Embeds" extension within Jetpack, see answer above (http://jetpack.me/support/shortcode-embeds/)
-* "BuddyPress" (http://wordpress.org/plugins/buddypress/)
+* "BuddyPress" (https://wordpress.org/plugins/buddypress/)
 * Thumbnails from Vimeo videos in "Privacy Mode" are not supported because Vimeo’s API doesn’t deliver thumbnails for those videos.
 * [???]
 

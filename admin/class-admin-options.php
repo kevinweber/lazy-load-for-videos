@@ -21,7 +21,7 @@ class Lazyload_Videos_Admin {
 			$this->lazyload_admin_css();
 			$this->lazyload_admin_js();
 		}
-		$plugin = plugin_basename( LL_FILE ); 
+		$plugin = plugin_basename( LL_FILE );
 		add_filter("plugin_action_links_$plugin", array( $this, 'lazyload_settings_link' ) );
 		$this->register_lazyload_settings();
 	}
@@ -39,10 +39,10 @@ class Lazyload_Videos_Admin {
 	/**
 	 * Add settings link on plugin page
 	 */
-	function lazyload_settings_link($links) { 
-	  $settings_link = '<a href="options-general.php?page='. LL_ADMIN_URL .'">'.esc_html__( 'Settings', LL_TD ).'</a>'; 
-	  array_unshift($links, $settings_link); 
-	  return $links; 
+	function lazyload_settings_link($links) {
+	  $settings_link = '<a href="options-general.php?page='. LL_ADMIN_URL .'">'.esc_html__( 'Settings', LL_TD ).'</a>';
+	  array_unshift($links, $settings_link);
+	  return $links;
 	}
 
 	/**
@@ -56,10 +56,10 @@ class Lazyload_Videos_Admin {
 	function get_schema_prop_video() {
 		return $this->schema_prop_video;
 	}
-    
+
     function text__no_script_fallback($title, $url) {
         $no_script_fallback = '<noscript>Video can\'t be loaded: ' . $title . ' (' . $url . ')</noscript>';
-        
+
         return $no_script_fallback;
     }
 
@@ -71,7 +71,7 @@ class Lazyload_Videos_Admin {
 		global $lazyload_videos_general;
 
 		// Youtube support
-	    if ( (! is_feed()) && ($data->provider_name == 'YouTube') 
+	    if ( (! is_feed()) && ($data->provider_name == 'YouTube')
 				&& (get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated
 	    	) {
 
@@ -79,19 +79,19 @@ class Lazyload_Videos_Admin {
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
        		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;" style="text-decoration:none;color:#000">' . $url . '</a>';
-            
+
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded"'
                 . $this->get_schema_prop_video() .'>'
                 . $preview_url
                 . $this->text__no_script_fallback($data->title, $url)
                 . '</div>';
-            
+
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
 
 	    // Vimeo support
-	    elseif ( (! is_feed()) && ($data->provider_name == 'Vimeo') 
+	    elseif ( (! is_feed()) && ($data->provider_name == 'Vimeo')
 				&& (get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
 	    	) {
 
@@ -106,21 +106,21 @@ class Lazyload_Videos_Admin {
 	    	$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
-			$preview_url = '<div id="' 
-                    . $vimeoid 
-                    . '" class="' 
-                    . $a_class 
-                    . '" title="Play Video &quot;' 
-                    . $data->title 
-                    . '&quot;">' 
-                    . $url 
+			$preview_url = '<div id="'
+                    . $vimeoid
+                    . '" class="'
+                    . $a_class
+                    . '" title="Play Video &quot;'
+                    . $data->title
+                    . '&quot;">'
+                    . $url
                     . '</div>';
-            
+
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded"'
-                    . $this->get_schema_prop_video() 
-                    .'>' 
-                    . $preview_url 
+                    . $this->get_schema_prop_video()
+                    .'>'
+                    . $preview_url
                     . $this->text__no_script_fallback($data->title, $url)
                     . '</div>';
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
@@ -181,7 +181,7 @@ class Lazyload_Videos_Admin {
 			<h2><?php esc_html_e( 'Lazy Load for Videos', LL_TD ); ?> <span class="subtitle"><?php esc_html_e( 'by', LL_TD ); ?> <a href="//kevinw.de/ll" target="_blank" title="<?php esc_html_e( 'Website by Kevin Weber', LL_TD ); ?>">Kevin Weber</a> (<?php esc_html_e( 'Version', LL_TD ); ?> <?php echo LL_VERSION; ?>)</span>
 				<br><span class="claim" style="font-size:15px;font-style:italic;position:relative;top:-7px;"><?php esc_html_e( 'Speed up your site and customise your video player!', LL_TD ); ?></span>
 			</h2>
-	
+
 			<ul class="ui-tabs-nav">
 		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
 		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><!-- <span class="newred_dot">&bull;</span> --></a></li>
@@ -245,13 +245,13 @@ class Lazyload_Videos_Admin {
 					        <tr valign="top">
 						        <th scope="row"><label><?php esc_html_e( 'Schema.org Markup', LL_TD ); ?> <span class="newred">Beta</span></label></th>
 						        <td>
-									<input name="ll_opt_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_video_seo' ) ); ?> /> 
+									<input name="ll_opt_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_video_seo' ) ); ?> />
 									<label>
 										<?php printf( esc_html__( 'Add schema.org markup to your Youtube and Vimeo videos. Those changes don\'t seem to affect your search ranking because videos and schema.org markup %1$sshould be visible%2$s without JavaScript (but that cannot be the case when videos are lazy loaded).', LL_TD ),
-											'<a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">',
+											'<a href="//developers.google.com/webmasters/videosearch/schema" target="_blank">',
 											'</a>'
 										); ?>
-									</label> 
+									</label>
 									<label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
@@ -267,9 +267,9 @@ class Lazyload_Videos_Admin {
 									<?php $options = get_option( 'll_attribute' ); ?>
 									<input class="radio" type="radio" name="ll_attribute" value="none"<?php checked( 'none' == $options || empty($options) ); ?> /> <label for="none"><?php esc_html_e( 'No attribution: "I can not afford to give appropriate credit for this free plugin."', LL_TD ); ?></label><br><br>
 									<input class="radio" type="radio" name="ll_attribute" value="link"<?php checked( 'link' == $options ); ?> /> <label for="link"><?php esc_html_e( 'Link attribution: Display a subtle "i" (information link) that is placed in the top right of every video and helps that the plugin gets spread.', LL_TD ); ?></label><br><br>
-									<input class="radio" type="radio" name="ll_attribute" value="donate"<?php checked( 'donate' == $options ); ?> /> 
+									<input class="radio" type="radio" name="ll_attribute" value="donate"<?php checked( 'donate' == $options ); ?> />
 									<label for="donate">
-										<?php esc_html_e( 'Donation: "I have donated already or will do so soon."', LL_TD ); ?> 
+										<?php esc_html_e( 'Donation: "I have donated already or will do so soon."', LL_TD ); ?>
 										<?php printf( esc_html__( 'Please %1$sdonate now%2$s so that I can keep up the development of this plugin.', LL_TD ),
 											'<a href="//kevinw.de/donate/LazyLoadVideos/" target="_blank">',
 											'</a>'
@@ -291,12 +291,12 @@ class Lazyload_Videos_Admin {
 					        <tr valign="top">
 						        <th scope="row"><label><?php esc_html_e( 'Disable Lazy Load for Youtube', LL_TD ); ?></label></th>
 						        <td>
-									<input name="lly_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt' ) ); ?> /> 
-									<label>									
+									<input name="lly_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt' ) ); ?> />
+									<label>
 										<?php printf( esc_html__( 'If checked, Lazy Load will not be used for %1$s videos.', LL_TD ),
 											'<b>Youtube</b>'
 										); ?>
-									</label> 
+									</label>
 									<label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
@@ -431,13 +431,13 @@ class Lazyload_Videos_Admin {
 
 		    <table class="form-table">
 		        <tr valign="top">
-		        <th scope="row" style="width:100px;"><a href="//kevinw.de/ll" target="_blank"><img src="https://www.gravatar.com/avatar/9d876cfd1fed468f71c84d26ca0e9e33?d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536&s=100" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;"></a></th>
+		        <th scope="row" style="width:100px;"><a href="//kevinw.de/ll" target="_blank"><img src="//www.gravatar.com/avatar/9d876cfd1fed468f71c84d26ca0e9e33?d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536&s=100" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;"></a></th>
 		        <td style="width:200px;">
 		        	<p><a href="//kevinw.de/ll" target="_blank">Kevin Weber</a> &ndash; <?php esc_html_e( 'that\'s me.', LL_TD ); ?><br>
 		        	<?php esc_html_e( 'I\'m the developer of this plugin. Love it!', LL_TD ); ?></p></td>
 			        <td>
 						<p>
-							<b><?php esc_html_e( 'It\'s free!', LL_TD ); ?></b> 
+							<b><?php esc_html_e( 'It\'s free!', LL_TD ); ?></b>
 							<?php printf( esc_html__( 'Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star rating %3$son WordPress.org%4$s.', LL_TD ),
 								'<a href="//kevinw.de/donate/LazyLoadVideos/" title="Pay me a delicious lunch" target="_blank">',
 								'</a>',
@@ -445,15 +445,15 @@ class Lazyload_Videos_Admin {
 								'</a>'
 							); ?>
 						</p>
-			        </td>   
+			        </td>
 		        <td style="width:300px;">
 					<p>
 						<b><?php esc_html_e( 'Personal tip: Must use plugins', LL_TD ); ?></b>
 						<ol>
 							<li><a href="//kevinw.de/ll-wb" title="wBounce" target="_blank"><?php esc_html_e( 'wBounce', LL_TD ); ?></a> <?php esc_html_e( '(on my part)', LL_TD ); ?></li>
-							<li><a href="https://yoast.com/wordpress/plugins/seo/" title="WordPress SEO by Yoast" target="_blank"><?php esc_html_e( 'WordPress SEO', LL_TD ); ?></a> <?php esc_html_e( '(by Yoast)', LL_TD ); ?></li>
+							<li><a href="//yoast.com/wordpress/plugins/seo/" title="WordPress SEO by Yoast" target="_blank"><?php esc_html_e( 'WordPress SEO', LL_TD ); ?></a> <?php esc_html_e( '(by Yoast)', LL_TD ); ?></li>
 							<li><a href="//kevinw.de/ll-ind" title="Inline Comments" target="_blank"><?php esc_html_e( 'Inline Comments', LL_TD ); ?></a> <?php esc_html_e( '(on my part)', LL_TD ); ?></li>
-							<li><a href="https://wordpress.org/plugins/broken-link-checker/" title="Broken Link Checker" target="_blank"><?php esc_html_e( 'Broken Link Checker', LL_TD ); ?></a> <?php esc_html_e( '(by Janis Elsts)', LL_TD ); ?></li>
+							<li><a href="//wordpress.org/plugins/broken-link-checker/" title="Broken Link Checker" target="_blank"><?php esc_html_e( 'Broken Link Checker', LL_TD ); ?></a> <?php esc_html_e( '(by Janis Elsts)', LL_TD ); ?></li>
 						</ol>
 					</p>
 		        </td>
