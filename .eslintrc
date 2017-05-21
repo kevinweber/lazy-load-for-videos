@@ -2,7 +2,7 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
   },
   "extends": "eslint:recommended",
   "globals": {
@@ -14,12 +14,12 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
-      "modules": true
+      "modules": true,
     }
   },
   "rules": {
     "no-console": "off",
     "no-unused-vars": ["warn"],
-    "semi": 2
+    "semi": 2,
   }
 }
