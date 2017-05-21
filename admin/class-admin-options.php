@@ -270,7 +270,7 @@ class Lazyload_Videos_Admin {
 									<input class="radio" type="radio" name="ll_attribute" value="donate"<?php checked( 'donate' == $options ); ?> />
 									<label for="donate">
 										<?php esc_html_e( 'Donation: "I have donated already or will do so soon."', LL_TD ); ?>
-										<?php printf( esc_html__( 'Please %1$sdonate now%2$s so that I can keep up the development of this plugin.', LL_TD ),
+										<?php printf( esc_html__( 'Please %1$sdonate now%2$s so I can keep maintaining and improving this plugin.', LL_TD ),
 											'<a href="//kevinw.de/donate/LazyLoadVideos/" target="_blank">',
 											'</a>'
 										); ?>
