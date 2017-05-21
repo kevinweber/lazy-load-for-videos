@@ -4,7 +4,7 @@ Donate link: https://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
 Tested up to: 4.5.3
-Stable tag: 2.2.3
+Stable tag: 2.3
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
