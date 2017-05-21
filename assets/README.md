@@ -1,4 +1,4 @@
-Assets
+Asset Folders
 ====================
 
-Files in this folder are auto-generated. Do not modify them directly.
+The asset folders (css, js and media) are auto-generated. Do not modify their content directly.

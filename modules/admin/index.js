@@ -1,3 +1,6 @@
+import './styles.scss';
+import './tooltips.scss';
+
 (function (incom, $) {
 
   $(document).ready(function () {

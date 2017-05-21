@@ -145,7 +145,8 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 = 2.3 =
 * New feature: Disable lazy-loading of a single video by appending `lazyload=0` to the video URL.
-* Solve AMP error: "The attribute 'video-title' may not appear in tag 'a'.". NOTE: The change will only affect new and updated posts. Click on "Update Posts" in the admin panel to apply the change to all posts/pages.
+* Solved AMP error: "The attribute 'video-title' may not appear in tag 'a'.". NOTE: The change will only affect new and updated posts. Click on "Update Posts" in the admin panel to apply the change to all posts/pages.
+* Big refactoring: The plugin's JavaScript and CSS is now organized in modules and the output files are generated using Webpack. This refactoring makes contributions possible/easier and allows development using modern, future-proof JavaScript.
 
 = 2.2.3 =
 * Don't show video link if preview image isn't loaded yet.

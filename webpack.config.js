@@ -2,24 +2,33 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    admin: './js/admin.js',
-    'lazyload-all': './js/lazyload-all.js',
-    'lazyload-vimeo': './js/lazyload-vimeo.js',
-    'lazyload-youtube': './js/lazyload-youtube.js',
+    admin: './modules/admin/index.js',
+    'lazyload-all': './modules/lazyload-all/index.js',
+    'lazyload-vimeo': './modules/lazyload-vimeo/index.js',
+    'lazyload-youtube': './modules/lazyload-youtube/index.js',
   },
   module: {
     rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: 'media/[name].[ext]',
+          publicPath: '../',
+        },
+      }],
     }, {
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'eslint-loader',
-      options: {
-        // This option makes ESLint automatically fix minor issues
-        fix: true,
-      },
+      use: [{
+        loader: 'babel-loader'
+      }, {
+        loader: 'eslint-loader',
+        options: {
+          // This option makes ESLint automatically fix minor issues
+          fix: true,
+        },
+      }]
     }, {
       test: /\.s?css$/,
       use: ExtractTextPlugin.extract({
@@ -35,11 +44,11 @@ module.exports = {
     extensions: ['*', '.js', '.scss']
   },
   output: {
-    path: __dirname + '/assets/js/',
-    filename: '[name].js',
+    path: __dirname + '/assets/',
+    filename: 'js/[name].js',
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('css/[name].css'),
   ],
   devtool: "#cheap-source-map",
 };

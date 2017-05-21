@@ -93,7 +93,7 @@ p.notice {
 .ui-tabs-nav li a {
 	padding: 4px 20px 6px;
 	font-weight: bold;
-	background:url(../../images/gray-grad.png) repeat-x scroll left top #DFDFDF;
+	background: url(./images/gray-grad.png) repeat-x scroll left top #DFDFDF;
 	text-shadow: 0 1px 0 #FFFFFF;
 }
 
@@ -183,7 +183,7 @@ span.thin {
 textarea {
 	width:100%;
 }
-	
+
 input.regular-text {
 	width:100%;
 }
@@ -206,7 +206,7 @@ div#informations {
 }
 
 div#informations div#titel {
-	background: url(../../images/gray-grad.png) repeat-x scroll left top #DFDFDF;
+	background: url(./images/gray-grad.png) repeat-x scroll left top #DFDFDF;
 	border-bottom: 1px solid #ddd;
 	text-shadow: 0 1px 0 #fff;
 	padding:5px;
@@ -222,13 +222,13 @@ div#informations div#text img.profilpic {
 	float:right;
 	width:38px;
 	height:50px;
-} 
+}
 div#informations div#text li {
 	text-align:left;
 	border-bottom:1px solid #ddd;
 	margin-bottom:4px;
 	padding-bottom:2px;
-} 
+}
 
 div#informations div#text li.center {
 	text-align:center;
