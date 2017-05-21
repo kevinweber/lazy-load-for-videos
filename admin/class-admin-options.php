@@ -78,7 +78,7 @@ class Lazyload_Videos_Admin {
 	    	$a_class = 'lazy-load-youtube preview-lazyload preview-youtube';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
-       		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;" style="text-decoration:none;color:#000">' . $url . '</a>';
+       		$preview_url = '<a class="' . $a_class . '" href="' . $url . '" data-video-title="' . $data->title . '" title="Play Video &quot;' . $data->title . '&quot;" style="text-decoration:none;color:#000">' . $url . '</a>';
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded"'

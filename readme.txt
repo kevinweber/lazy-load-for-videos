@@ -140,6 +140,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
+= 2.2.4 =
+* Solve AMP error: "The attribute 'video-title' may not appear in tag 'a'."
+
 = 2.2.3 =
 * Don't show video link if preview image isn't loaded yet.
 * Wait with displaying preview image until initial resize of video is done.

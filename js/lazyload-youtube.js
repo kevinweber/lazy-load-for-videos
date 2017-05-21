@@ -20,7 +20,7 @@
   function markInitialized() {
     $(classPreviewYoutubeDot).parent().removeClass(classNotLoaded);
   }
-  
+
   lazyload_youtube.init = function( options ) {
     setOptionsYoutube( options );
 
@@ -130,8 +130,8 @@
       createPluginInfo();
 
       var videoTitle = function() {
-        if ( $that.attr('video-title') !== undefined ) {
-          return $that.attr("video-title");
+        if ( $that.attr('data-video-title') !== undefined ) {
+          return $that.attr("data-video-title");
         }
         else if ( $that.html() !== undefined && $that.html() !== '' ) {
           return $that.html();
