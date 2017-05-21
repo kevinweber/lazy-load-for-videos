@@ -103,6 +103,9 @@ PageSpeed Insights is a service by Google to help you optimize your site's perfo
 Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
 Inserting a Youtube `<iframe>` (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
 
+= How to disable lazy-loading of a single video? =
+Append `&lazyload=0` to the video URL.
+
 = How to add support for custom post types? =
 UPDATE: Since plugin version 2.1.2, every custom post type is supported automatically. So you can ignore the following instructions. They will be removed with one of the next updates.
 
@@ -140,8 +143,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
-= 2.2.4 =
-* Solve AMP error: "The attribute 'video-title' may not appear in tag 'a'." (NOTE: The change will only affects new and updated posts. Click on "Update Posts" in the admin panel to apply the change to all posts/pages.)
+= 2.3 =
+* New feature: Disable lazy-loading of a single video by appending `lazyload=0` to the video URL.
+* Solve AMP error: "The attribute 'video-title' may not appear in tag 'a'.". NOTE: The change will only affect new and updated posts. Click on "Update Posts" in the admin panel to apply the change to all posts/pages.
 
 = 2.2.3 =
 * Don't show video link if preview image isn't loaded yet.

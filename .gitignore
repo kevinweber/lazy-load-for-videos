@@ -12,6 +12,4 @@ wp-content/cache/
 wp-content/backups/
 sitemap.xml.gz
 *.DS_Store
-*.codekit
-.sass-cache
-js/lazyload-all.js
+node_modules/

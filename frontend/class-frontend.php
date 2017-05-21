@@ -12,29 +12,29 @@ class Lazyload_Videos_Frontend {
 			add_filter( 'llv_change_options', array( $this, 'set_options' ) );
 
 			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/lazyload-video.js', array( 'jquery' ), LL_VERSION, true );
+				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', array( 'jquery' ), LL_VERSION, true );
 			} else if ( (get_option('lly_opt') !== '1') && (get_option('llv_opt') !== '1') ) {
-				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'js/min/lazyload-all.min.js', array( 'jquery' ), LL_VERSION, true );
+				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', array( 'jquery' ), LL_VERSION, true );
 			}
 
             $settings = array();
-            
+
             if (get_option('lly_opt') !== '1') {
                 require( LL_PATH . 'frontend/class-youtube.php' );
                 $youtube = new Lazyload_Videos_Youtube();
                 $youtube->init();
-                
+
                 $settings_youtube = array(
                     'youtube' => $youtube->get_js_settings()
                 );
                 $settings = array_merge($settings, $settings_youtube);
-                
+
             }
             if (get_option('llv_opt') !== '1') {
                 require( LL_PATH . 'frontend/class-vimeo.php' );
                 $vimeo = new Lazyload_Video_Vimeo();
                 $vimeo->init();
-                
+
                 $settings_vimeo = array(
                     'vimeo' => $vimeo->get_js_settings()
                 );
@@ -44,7 +44,7 @@ class Lazyload_Videos_Frontend {
 			wp_localize_script( 'lazyload-video-js', 'lazyload_video_settings', $settings );
 		}
 	}
-    
+
 	/**
 	 * Add stylesheet
 	 */
@@ -101,13 +101,13 @@ class Lazyload_Videos_Frontend {
 	function load_lazyload_css_button_style() {
     	if ( get_option('ll_opt_button_style') == 'youtube_button_image' ) {
     		// Display youtube button image
-    		echo '.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div { background: url('.plugin_dir_url( __FILE__ ).'../images/play-youtube.png) center center no-repeat; }';	
+    		echo '.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div { background: url('.plugin_dir_url( __FILE__ ).'../images/play-youtube.png) center center no-repeat; }';
     		// ... and remove CSS-only content
     		echo $this->load_css_button_selectors() . ' { content: ""; }';
     	}
     	else if ( get_option('ll_opt_button_style') == 'youtube_button_image_red' ) {
     		// Display RED youtube button image
-    		echo '.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div { background: url('.plugin_dir_url( __FILE__ ).'../images/play-y-red.png) center center no-repeat; }';	
+    		echo '.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div { background: url('.plugin_dir_url( __FILE__ ).'../images/play-y-red.png) center center no-repeat; }';
     		// ... and remove CSS-only content
     		echo $this->load_css_button_selectors() . ' { content: ""; }';
     	}
@@ -137,7 +137,7 @@ class Lazyload_Videos_Frontend {
 	 */
 	function test_if_scripts_should_be_loaded() {
 		global $lazyload_videos_general;
-		
+
 		return
 			( get_option('ll_opt_load_scripts') != '1' ) ||	// Option "Support for Widgets (Youtube only)" is checked
 			( get_option('lly_opt_support_for_widgets') == true ) ||	// Option "Support for Widgets (Youtube only)" is checked
@@ -146,7 +146,7 @@ class Lazyload_Videos_Frontend {
 		? true : false;
 	}
 
-	/** 
+	/**
 	 * Set options to extend setOptionsYoutube() and setOptionsVimeo() that are used in JS files
 	 */
 	function set_options( $options ) {
