@@ -76,19 +76,19 @@
        * Load parameters from user's original Youtube URL
        */
       (function setEmbedParams() {
-        embedparms = $thatHref.split("/embed/")[1];
+        embedparms = $thatHref.split('/embed/')[1];
         if (!embedparms) {
-          embedparms = $thatHref.split("://youtu.be/")[1];
+          embedparms = $thatHref.split('://youtu.be/')[1];
         }
         if (!embedparms) {
-          embedparms = $thatHref.split("v=")[1].replace(/\&/, '?');
+          embedparms = $thatHref.split('v=')[1].replace(/\&/, '?');
         }
       })();
 
       /*
        * Load Youtube ID
        */
-      var youid = embedparms.split("?")[0].split("#")[0];
+      var youid = embedparms.split('?')[0].split('#')[0];
 
       (function setYouIdPreroll() {
         if ($_o.preroll !== undefined && $_o.preroll !== preroll) {
@@ -130,15 +130,15 @@
       createPluginInfo();
 
       var videoTitle = function() {
-        // "video-title" is no longer used in our code but we keep it here because several blogs still have posts/pages cached with the video-title attribute (instead of the new data-video-title)
+        // Since v2.3: "video-title" is no longer used in our code but we keep it here because several blogs still have posts/pages cached with the video-title attribute (instead of the new data-video-title)
         if ( $that.attr('video-title') !== undefined ) {
-          return $that.attr("video-title");
+          return $that.attr('video-title');
         } else if ( $that.attr('data-video-title') !== undefined ) {
-          return $that.attr("data-video-title");
+          return $that.attr('data-video-title');
         } else if ( $that.html() !== undefined && $that.html() !== '' ) {
           return $that.html();
         } else {
-          return "";
+          return '';
         }
       };
 
@@ -150,13 +150,13 @@
        * Helpers to calculate dimensions
        */
       var getWidth = function( element ) {
-        var calc = (parseInt(element.css("width")) - 4);
+        var calc = (parseInt(element.css('width')) - 4);
         return calc;
       };
       var getHeight = function( element ) {
         var calc = 0;
         if ( $_o.responsive === false ) {
-          calc = (parseInt(element.css("height")) - 4);
+          calc = (parseInt(element.css('height')) - 4);
         }
         else {
           var width = getWidth( element );
@@ -182,10 +182,10 @@
         }
       }
 
-      embedparms = embedparms.split("#")[0];
+      embedparms = embedparms.split('#')[0];
       var embedstart = '';
-      if (start && start !== 0 && embedparms.indexOf("start=") === -1) {
-        embedstart = ((embedparms.indexOf("?") === -1) ? "?" : "&") + "start=" + start;
+      if (start && start !== 0 && embedparms.indexOf('start=') === -1) {
+        embedstart = ((embedparms.indexOf('?') === -1) ? '?' : '&') + 'start=' + start;
       }
 
       var itemprop_name = '';
@@ -193,7 +193,7 @@
         itemprop_name = ' itemprop="name"';
       }
 
-      if (embedparms.indexOf("showinfo=0") !== -1) {
+      if (embedparms.indexOf('showinfo=0') !== -1) {
         $that.html('');
       } else {
         $that.html('<div class="lazy-load-youtube-info"><span class="titletext youtube"'+itemprop_name+'>' + videoTitle() + '</span></div>');
@@ -206,7 +206,7 @@
        * Set thumbnail URL
        */
       var setThumbnailUrl = function( youid ) {
-        var $url = "//i2.ytimg.com/vi/" + youid + "/" + $_o.thumbnailquality + ".jpg";
+        var $url = '//i2.ytimg.com/vi/' + youid + '/' + $_o.thumbnailquality + '.jpg';
 
         thumbnailurl = $url;
       };
@@ -228,12 +228,12 @@
             if (img.width() === 120) {
               src = src.replace('maxresdefault', '0');
             }
-            if (el.css("background-image") === 'none') {
-              el.css("background", "#000 url(" + src + ") center center no-repeat");
+            if (el.css('background-image') === 'none') {
+              el.css('background', '#000 url(' + src + ') center center no-repeat');
             }
             img.remove();
         });
-        $("body").append(img);
+        $('body').append(img);
       };
       setBackgroundImg($that);
 
@@ -252,8 +252,8 @@
 
       }
 
-      $that.attr("id", youid + index);
-      $that.attr("href", youtubeUrl( youid ) + (start ? "#t=" + start + "s" : ""));
+      $that.attr('id', youid + index);
+      $that.attr('href', youtubeUrl( youid ) + (start ? '#t=' + start + 's' : ''));
 
 
       (function generateUrl() {
@@ -295,7 +295,7 @@
         /*
          * Generate URL
          */
-        emu += ((emu.indexOf("?") === -1) ? "?" : "&") + "autoplay=1" + theme + colour + controls + loadpolicy + showinfo + relations + playlist + embedstart;
+        emu += ((emu.indexOf('?') === -1) ? '?' : '&') + 'autoplay=1' + theme + colour + controls + loadpolicy + showinfo + relations + playlist + embedstart;
       })();
 
 
