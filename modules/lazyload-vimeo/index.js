@@ -143,34 +143,40 @@ window.showThumb = function showThumb(data) {
         $this = $(this);
 
       $this.empty(); // Remove no longer needed title (title is necessary for preview in text editor)
+
       vimeoLoadingThumb(vid);
     });
   };
 
   var vimeoLoadingThumb = function (id) {
-    var url = vimeoCallbackUrl(id) + ".json?callback=showThumb";
+    var $container = $("#" + id);
+    var script;
 
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = url;
+    if (lazyload_video_settings.vimeo.loadthumbnail) {
+      script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = vimeoCallbackUrl(id) + ".json?callback=showThumb";
+
+      $container.prepend(script);
+    }
 
     var itemprop_name = '';
     if ($_o.videoseo === true) {
       itemprop_name = ' itemprop="name"';
     }
 
-    $("#" + id).prepend(script).prepend('<div style="height:' + (parseInt($("#" + id).css("height"))) + 'px;width:' + (parseInt($("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div"><span class="titletext vimeo"' + itemprop_name + '></span></div>').addClass($_o.buttonstyle);
+    $container
+        .prepend('<div style="height:' + (parseInt($("#" + id).css("height"))) + 'px;width:' + (parseInt($("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div"><span class="titletext vimeo"' + itemprop_name + '></span></div>')
+        .addClass($_o.buttonstyle);
 
     vimeoVideoSeo(id);
   };
 
   var vimeoVideoSeo = function (id) {
     if ($_o.videoseo === true) {
-
       $.getJSON(vimeoCallbackUrl(id) + '?callback=?', {
         format: "json"
       }, function (data) {
-
         $("#" + id).append('<meta itemprop="contentLocation" content="' + data[0].url + '" />');
         $("#" + id).append('<meta itemprop="embedUrl" content="' + vimeoUrl(id) + '" />');
         $("#" + id).append('<meta itemprop="thumbnail" content="' + data[0].thumbnail_large + '" />');
@@ -178,7 +184,6 @@ window.showThumb = function showThumb(data) {
         $("#" + id).append('<meta itemprop="duration" content="' + data[0].duration + '" />');
         $("#" + id).append('<meta itemprop="aggregateRating" content="' + data.data.rating + '" />');
         // TODO: Retrieve and use even more data for Video SEO. Possible data: //developer.vimeo.com/apis/simple#response-data
-
       });
 
     }
