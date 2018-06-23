@@ -27,7 +27,7 @@
     "lazy load"
   ],
   "author": "Kevin Weber",
-  "license": "MIT",
+  "license": "gpl-3",
   "bugs": {
     "url": "https://github.com/kevinweber/lazy-load-for-videos/issues"
   },

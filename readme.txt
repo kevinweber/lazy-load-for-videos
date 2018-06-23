@@ -3,8 +3,8 @@ Contributors: kevinweber
 Donate link: https://kevinw.de/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
-Tested up to: 4.9.4
-Stable tag: 2.3.1
+Tested up to: 4.9.6
+Stable tag: 2.4.0
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -142,6 +142,11 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.4 =
+* New feature: Display a pattern instead of a thumbnail and thereby avoid requests to a video platform (until the user clicks play and requests become necessary).
+* Automated CSS prefixing. Some prefixes are no longer added. (Supported browsers are defined in .browserslistrc file.)
+* For developers: Update all dependencies and Webpack.
 
 = 2.3 =
 * New feature: Disable lazy-loading of a single video by appending `lazyload=0` to the video URL.
