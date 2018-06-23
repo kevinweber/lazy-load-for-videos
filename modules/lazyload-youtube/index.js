@@ -81,7 +81,7 @@
           embedparms = $thatHref.split('://youtu.be/')[1];
         }
         if (!embedparms) {
-          embedparms = $thatHref.split('v=')[1].replace(/\&/, '?');
+          embedparms = $thatHref.split('v=')[1].replace(/&/, '?');
         }
       })();
 

@@ -1,6 +1,12 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const extractCSS = new MiniCssExtractPlugin({
+  filename: 'css/[name].css',
+});
+
+const IS_PROD = (process.env.NODE_ENV === 'production');
 
 module.exports = {
+  mode: IS_PROD ? 'production' : 'development',
   entry: {
     admin: './modules/admin/index.js',
     'lazyload-all': './modules/lazyload-all/index.js',
@@ -12,7 +18,7 @@ module.exports = {
       test: /\.(png|svg|jpg|gif)$/,
       use: [{
         loader: 'file-loader',
-        options: {
+        query: {
           name: 'media/[name].[ext]',
           publicPath: '../',
         },
@@ -24,15 +30,16 @@ module.exports = {
         loader: 'babel-loader'
       }, {
         loader: 'eslint-loader',
-        options: {
+        query: {
           // This option makes ESLint automatically fix minor issues
           fix: true,
         },
       }]
     }, {
       test: /\.s?css$/,
-      use: ExtractTextPlugin.extract({
-        use: [{
+      use: [
+        MiniCssExtractPlugin.loader,
+        {
           loader: 'css-loader'
         }, {
           loader: 'postcss-loader',
@@ -45,8 +52,8 @@ module.exports = {
           },
         }, {
           loader: 'sass-loader'
-        }]
-      })
+        }
+      ],
     }]
   },
   resolve: {
@@ -57,7 +64,7 @@ module.exports = {
     filename: 'js/[name].js',
   },
   plugins: [
-    new ExtractTextPlugin('css/[name].css'),
+    extractCSS,
   ],
   devtool: "#cheap-source-map",
 };
