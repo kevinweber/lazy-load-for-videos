@@ -188,7 +188,7 @@ class Lazyload_Videos_Admin {
 			</h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
+		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><!-- <span class="newred_dot">&bull;</span> --></a></li>
 		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
@@ -227,18 +227,23 @@ class Lazyload_Videos_Admin {
 										<option value="css_white_pulse"<?php if (get_option('ll_opt_button_style') === 'css_white_pulse') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'White Pulse (CSS-only)', LL_TD ); ?></option>
 										<option value="css_black"<?php if (get_option('ll_opt_button_style') === 'css_black') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Black (CSS-only)', LL_TD ); ?></option>
 										<option value="css_black_pulse"<?php if (get_option('ll_opt_button_style') === 'css_black_pulse') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Black Pulse (CSS-only)', LL_TD ); ?></option>
-										<option value="youtube_button_image"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Youtube button image', LL_TD ); ?></option>
+										<option value="youtube_button_image"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Old Youtube button image', LL_TD ); ?></option>
 										<option value="youtube_button_image_red"<?php if (get_option('ll_opt_button_style') === 'youtube_button_image_red') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Red Youtube button image', LL_TD ); ?></option>
 									</select>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail Size', LL_TD ); ?></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Thumbnails/Patterns', LL_TD ); ?> <span class="newred red">New</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_thumbnail_size">
-										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Cover', LL_TD ); ?></option>
-										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Contain', LL_TD ); ?></option>
+										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Thumbnail covering the video element', LL_TD ); ?></option>
+										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Thumbnail contained within the video element', LL_TD ); ?></option>
+										<option value="pattern-carbon"<?php if (get_option('ll_opt_thumbnail_size') === 'pattern-carbon') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Pattern: Carbon', LL_TD ); ?></option>
+										<option value="pattern-dots"<?php if (get_option('ll_opt_thumbnail_size') === 'pattern-dots') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Pattern: Dots', LL_TD ); ?></option>
+										<option value="pattern-light-s"<?php if (get_option('ll_opt_thumbnail_size') === 'pattern-light-s') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Pattern: Light Seigaiha', LL_TD ); ?></option>
+										<option value="none"<?php if (get_option('ll_opt_thumbnail_size') === 'none') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'None', LL_TD ); ?></option>
 									</select>
+									<p><?php esc_html_e( 'For a thumbnail to be displayed, a request needs to be made to the server of a video platform. You can display one of the available patterns instead, or nothing at all.', LL_TD ); ?></p>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -404,7 +409,7 @@ class Lazyload_Videos_Admin {
 					        <tr valign="top">
 						        <th scope="row"><label><?php esc_html_e( 'Display Vimeo title', LL_TD ); ?></label></th>
 						        <td>
-									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label><?php esc_html_e( 'If checked, the Vimeo video title will be displayed on preview image.', LL_TD ); ?></label>
+									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label><?php esc_html_e( 'If checked, the Vimeo video title will be displayed on preview image.', LL_TD ); ?> <span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> Titles won't be displayed if you've chosen to not load a thumbnail in the general tab of this settings page.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">

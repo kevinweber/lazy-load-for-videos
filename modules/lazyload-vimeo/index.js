@@ -8,7 +8,12 @@ window.showThumb = function showThumb(data) {
     return;
   }
 
-  jQuery("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");
+  jQuery("#" + data[0].id)
+      .css('background-image', 'url(' + data[0].thumbnail_large + ')')
+      .css('background-color', '#000')
+      .css('background-position', 'center center')
+      .css('background-repeat', 'no-repeat');
+      
   if (lazyload_video_settings.vimeo.show_title) {
     jQuery("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
   }

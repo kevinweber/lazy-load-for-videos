@@ -230,7 +230,10 @@
               src = src.replace('maxresdefault', '0');
             }
             if (el.css('background-image') === 'none') {
-              el.css('background', '#000 url(' + src + ') center center no-repeat');
+              el.css('background-image', 'url(' + src + ')');
+              el.css('background-color', '#000');
+              el.css('background-position', 'center center');
+              el.css('background-repeat', 'no-repeat');
             }
             img.remove();
         });

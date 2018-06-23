@@ -28,11 +28,10 @@ $z-index-base: 2;
 }
 
 .entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo {
-	background: transparent;
+	background-color: transparent;
 	height: 315px;
 	width: 100%;
 	max-width: 100%;
-	background-size: cover!important; /* alternative: "contain" */
 	text-decoration: none;
 	display: inline-block;
 	color: #fff;
