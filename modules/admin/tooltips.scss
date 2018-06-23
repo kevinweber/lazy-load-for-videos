@@ -22,20 +22,10 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
-  -webkit-transition: 
-	  opacity 0.2s ease-in-out,
-		visibility 0.2s ease-in-out,
-		-webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
-	-moz-transition:    
-		opacity 0.2s ease-in-out,
-		visibility 0.2s ease-in-out,
-		-moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
-	transition:         
+	transition:
 		opacity 0.2s ease-in-out,
 		visibility 0.2s ease-in-out,
 		transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform:    translate3d(0, 0, 0);
   transform:         translate3d(0, 0, 0);
   pointer-events: none;
 }
@@ -119,9 +109,7 @@
 .tooltip-top:hover:after,
 .tooltip-top:focus:before,
 .tooltip-top:focus:after {
-  -webkit-transform: translateY(-12px);
-  -moz-transform:    translateY(-12px);
-  transform:         translateY(-12px); 
+  transform:         translateY(-12px);
 }
 
 /* Left */
@@ -145,9 +133,7 @@
 .tooltip-left:hover:after,
 .tooltip-left:focus:before,
 .tooltip-left:focus:after {
-  -webkit-transform: translateX(-12px);
-  -moz-transform:    translateX(-12px);
-  transform:         translateX(-12px); 
+  transform:         translateX(-12px);
 }
 
 /* Bottom */
@@ -170,9 +156,7 @@
 .tooltip-bottom:hover:after,
 .tooltip-bottom:focus:before,
 .tooltip-bottom:focus:after {
-  -webkit-transform: translateY(12px);
-  -moz-transform:    translateY(12px);
-  transform:         translateY(12px); 
+  transform:         translateY(12px);
 }
 
 /* Right */
@@ -194,9 +178,7 @@
 .tooltip-right:hover:after,
 .tooltip-right:focus:before,
 .tooltip-right:focus:after {
-  -webkit-transform: translateX(12px);
-  -moz-transform:    translateX(12px);
-  transform:         translateX(12px); 
+  transform:         translateX(12px);
 }
 
 /* Move directional arrows down a bit for left/right tooltips */

@@ -1,37 +1,12 @@
-/*
- * Variables
- */
 $white: #fff;
 $z-index-base: 2;
 
-/*
- * Mixins
- */
-@mixin vendor-prefix($property, $value) {
-  #{$property}: #{$value};
-  -webkit-#{$property}: #{$value};
-  -moz-#{$property}: #{$value};
-  -ms-#{$property}: #{$value};
-  -o-#{$property}: #{$value};
-}
-
-@mixin keyframes( $name ){
-	@-webkit-keyframes #{$name} {
-		@content;
-	}
-	@-moz-keyframes #{$name} {
-		@content;
-	}
-	@-ms-keyframes #{$name} {
-		@content;
-	}
-	@-o-keyframes #{$name} {
-		@content;
-	}
-	@keyframes #{$name} {
-		@content;
-	}
-}
+ @keyframes pulse {
+	 0% { transform: scale(1); }
+	 35% { transform: scale(1.1); }
+	 60% { transform: scale(1.05); }
+	 100% { transform: scale(1); }
+ }
 
 .container-youtube,
 .container-vimeo {
@@ -46,7 +21,7 @@ $z-index-base: 2;
 
 .preview-lazyload {
   opacity: 1;
-  @include vendor-prefix(transition, opacity 0.25s);
+  transition: opacity 0.25s;
 }
 .js-lazyload--not-loaded .preview-lazyload {
     opacity: 0;
@@ -65,7 +40,7 @@ $z-index-base: 2;
 	font-size: 14px;
 	margin-top: 0;
 	line-height: 18px;
-	@include vendor-prefix( box-sizing, border-box );
+	box-sizing: border-box;
 }
 
 .preview-vimeo {
@@ -107,7 +82,7 @@ $z-index-base: 2;
 	&.preview-vimeo:after, &.preview-vimeo::after,
 	&.preview-youtube .lazy-load-youtube-div:before, &.preview-youtube .lazy-load-youtube-div::before {
 	    font-size: 70px;
-	    @include vendor-prefix( animation, pulse 3s infinite linear );
+	    animation: pulse 3s infinite linear;
 	}
 }
 
@@ -123,7 +98,7 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 .lazy-load-youtube-div, .lazy-load-vimeo-div {
 	position: absolute;
 	z-index: $z-index-base + 1;
-} 
+}
 .lazy-load-youtube-info {
 	position: relative;
 }
@@ -183,14 +158,7 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	}
 }
 
-a.lazy-load-youtube { 
+a.lazy-load-youtube {
     // Prevent plugins such as BBPress from making this link "inline"
     display: block !important;
 }
-
-@include keyframes( pulse ) {
-	0% { -webkit-transform: scale(1); }
-	35% { -webkit-transform: scale(1.1); }
-	60% { -webkit-transform: scale(1.05); }
-	100% { -webkit-transform: scale(1); }
-};
