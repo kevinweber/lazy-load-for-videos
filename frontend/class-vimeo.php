@@ -29,8 +29,14 @@ class Lazyload_Video_Vimeo {
 			'postroll'     => get_option( 'llv_opt_player_postroll', '' ),
 			'show_title'   => get_option( 'llv_opt_title', false ) == true,
 			'displaybranding'  => ! (get_option( 'll_display_branding', false ) == false),
+			'loadthumbnail'	 => $this->should_load_thumbnail(),
 			'callback'     => '<!--VIMEO_CALLBACK-->'
 		) );
+	}
+
+	function should_load_thumbnail() {
+		$thumbnail = get_option('ll_opt_thumbnail_size');
+		return $thumbnail == '' || $thumbnail == 'standard' || $thumbnail == 'cover';
 	}
 
 	/**

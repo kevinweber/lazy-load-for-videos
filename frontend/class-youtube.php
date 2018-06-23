@@ -30,8 +30,14 @@ class Lazyload_Videos_Youtube {
 			'preroll'          => get_option( 'lly_opt_player_preroll', '' ),
 			'postroll'         => get_option( 'lly_opt_player_postroll', '' ),
 			'displaybranding'  => ( get_option( 'll_attribute' ) == 'link' ),
+			'loadthumbnail'	 => $this->should_load_thumbnail(),
 			'callback'         => '<!--YOUTUBE_CALLBACK-->'
 		) );
+	}
+
+	function should_load_thumbnail() {
+		$thumbnail = get_option('ll_opt_thumbnail_size');
+		return $thumbnail == '' || $thumbnail == 'standard' || $thumbnail == 'cover';
 	}
 
  	/**

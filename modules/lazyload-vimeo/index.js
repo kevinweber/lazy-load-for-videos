@@ -4,6 +4,10 @@
  */
 
 window.showThumb = function showThumb(data) {
+  if (!lazyload_video_settings.vimeo.loadthumbnail) {
+    return;
+  }
+
   jQuery("#" + data[0].id).css("background", "#000 url(" + data[0].thumbnail_large + ") center center no-repeat");
   if (lazyload_video_settings.vimeo.show_title) {
     jQuery("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
@@ -56,6 +60,7 @@ window.showThumb = function showThumb(data) {
         videoseo: false,
         responsive: true,
         displayBranding: false,
+        loadthumbnail: true,
         callback: null,
       },
       options);

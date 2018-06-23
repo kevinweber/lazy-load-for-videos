@@ -59,6 +59,7 @@
         responsive: true,
         thumbnailquality: '0',
         displaybranding: false,
+        loadthumbnail: true,
         callback: null,
       },
       options);
@@ -235,7 +236,10 @@
         });
         $('body').append(img);
       };
-      setBackgroundImg($that);
+
+      if ($_o.loadthumbnail) {
+        setBackgroundImg($that);
+      }
 
       if ($_o.videoseo === true) {
         $that.append('<meta itemprop="contentLocation" content="'+ youtubeUrl( youid ) +'" />');
