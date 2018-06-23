@@ -35,6 +35,15 @@ module.exports = {
         use: [{
           loader: 'css-loader'
         }, {
+          loader: 'postcss-loader',
+          query: {
+            plugins: (loader) => {
+              const plugins = [];
+              plugins.push(require('autoprefixer'));
+              return plugins;
+            },
+          },
+        }, {
           loader: 'sass-loader'
         }]
       })
