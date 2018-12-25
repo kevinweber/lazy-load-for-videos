@@ -2,7 +2,7 @@
 
 /*
  * Lazy Load Youtube
- * by Kevin Weber (kevinw.de)
+ * by Kevin Weber (www.kweber.com)
  */
 (function( lazyload_youtube, $, undefined ) {
 
@@ -107,7 +107,7 @@
        * Load plugin info
        */
       var loadPluginInfo = function() {
-        return '<a class="' + classBranding + '" href="//kevinw.de/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
+        return '<a class="' + classBranding + '" href="//www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
       };
 
       /*
@@ -431,4 +431,4 @@
 //    }
 //  };
 
-}( window.lazyload_youtube = window.lazyload_youtube || {}, jQuery ));
+}(window.lazyload_youtube = window.lazyload_youtube || {}, jQuery));

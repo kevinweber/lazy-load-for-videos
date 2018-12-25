@@ -1,6 +1,6 @@
 /*
  * Lazy Load Vimeo
- * by Kevin Weber (kevinw.de)
+ * by Kevin Weber (www.kweber.com)
  */
 
 window.showThumb = function showThumb(data) {
@@ -84,7 +84,7 @@ window.showThumb = function showThumb(data) {
    * Load plugin info
    */
   var loadPluginInfo = function () {
-    return '<a class="' + classBranding + '" href="//kevinw.de/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
+    return '<a class="' + classBranding + '" href="//www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
   };
 
   /*

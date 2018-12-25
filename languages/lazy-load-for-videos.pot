@@ -434,7 +434,7 @@ msgid "Signup via Plugin"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://kevinw.de/lazy-load-videos/"
+msgid "https://www.kweber.com/lazy-load-videos/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -449,5 +449,5 @@ msgid "Kevin Weber"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://kevinw.de/"
+msgid "https://www.kweber.com/"
 msgstr ""

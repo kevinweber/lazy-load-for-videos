@@ -473,8 +473,8 @@ msgid "Signup via Plugin"
 msgstr "Prijavi se putem plugin-a"
 
 #. Plugin URI of the plugin/theme
-msgid "http://kevinw.de/lazy-load-videos/"
-msgstr "http://kevinw.de/lazy-load-videos/"
+msgid "http://www.kweber.com/lazy-load-videos/"
+msgstr "http://www.kweber.com/lazy-load-videos/"
 
 #. Description of the plugin/theme
 msgid ""
@@ -491,5 +491,5 @@ msgid "Kevin Weber"
 msgstr "Kevin Weber"
 
 #. Author URI of the plugin/theme
-msgid "http://kevinw.de/"
-msgstr "http://kevinw.de/"
+msgid "http://www.kweber.com/"
+msgstr "http://www.kweber.com/"

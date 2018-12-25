@@ -1,11 +1,11 @@
 <?php
 /*
  * Plugin Name: Lazy Load for Videos
- * Plugin URI: https://kevinw.de/lazy-load-videos/
+ * Plugin URI: https://www.kweber.com/lazy-load-videos/
  * Description: Lazy Load for Videos speeds up your site by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
  * Author: Kevin Weber
  * Version: 2.4.0
- * Author URI: https://kevinw.de/
+ * Author URI: https://www.kweber.com/
  * License: GPL v3
  * Text Domain: lazy-load-for-videos
  * Domain Path: /languages/
@@ -105,5 +105,5 @@ function lazyload_theme_check() {
 }
 add_action( 'init', 'lazyload_theme_check' );
 
-/***** Plugin by Kevin Weber || kevinw.de *****/
+/***** Plugin by Kevin Weber || www.kweber.com *****/
 ?>
