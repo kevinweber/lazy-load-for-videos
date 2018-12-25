@@ -1,21 +1,21 @@
 {
-  extends: "eslint:recommended",
-  env: {
-    browser: true,
-    es6: true,
-    node: true,
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
   },
-  parserOptions: {
-    ecmaVersion: 8,
-    sourceType: 'module',
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
   },
-  globals: {
-    jQuery: true,
-    lazyload_video_settings: true,
+  "globals": {
+    "jQuery": true,
+    "lazyload_video_settings": true
   },
-  rules: {
+  "rules": {
     "no-console": "off",
     "no-unused-vars": ["warn"],
-    semi: 2,
+    "semi": 2
   }
 }
