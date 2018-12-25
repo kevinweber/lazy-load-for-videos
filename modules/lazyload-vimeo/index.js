@@ -36,7 +36,7 @@ window.showThumb = function showThumb(data) {
   }
 
   lazyload_vimeo.init = function (options) {
-    setOptionsYoutube(options);
+    setOptionsVimeo(options);
 
     /*
      * Use ajaxStop function to prevent plugin from breaking when another plugin uses Ajax
@@ -58,7 +58,7 @@ window.showThumb = function showThumb(data) {
   };
 
   var $_o;
-  var setOptionsYoutube = function (options) {
+  var setOptionsVimeo = function (options) {
     $_o = $.extend({
         buttonstyle: '',
         playercolour: '',
