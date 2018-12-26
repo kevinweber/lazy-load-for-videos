@@ -3,23 +3,18 @@
  * by Kevin Weber (www.kweber.com)
  */
 
-window.showThumb = function showThumb(data) {
-  if (!lazyload_video_settings.vimeo.loadthumbnail) {
-    return;
-  }
-
-  jQuery("#" + data[0].id)
-      .css('background-image', 'url(' + data[0].thumbnail_large + ')')
-      .css('background-color', '#000')
-      .css('background-position', 'center center')
-      .css('background-repeat', 'no-repeat');
-      
-  if (lazyload_video_settings.vimeo.show_title) {
-    jQuery("#" + data[0].id).children().children('.titletext.vimeo').text(data[0].title);
-  }
-};
-
 (function (lazyload_vimeo, $) {
+  window.showThumb = function showThumb(data) {
+    var relevantData = data[0];
+
+    if (lazyload_video_settings.vimeo.loadthumbnail) {
+      $('#' + relevantData.id)
+        .css('background-image', 'url(' + relevantData.thumbnail_large + ')')
+        .css('background-color', '#000')
+        .css('background-position', 'center center')
+        .css('background-repeat', 'no-repeat');
+    }
+  };
 
   // Classes
   var classPreviewVimeo = 'preview-vimeo';
@@ -170,8 +165,14 @@ window.showThumb = function showThumb(data) {
       itemprop_name = ' itemprop="name"';
     }
 
+    var title = '';
+    if (lazyload_video_settings.vimeo.show_title) {
+      var videoTitle = $container.attr('data-video-title');
+      title = '<span class="titletext vimeo"' + itemprop_name + ' >' + videoTitle + '</span>';
+    }
+
     $container
-        .prepend('<div style="height:' + (parseInt($("#" + id).css("height"))) + 'px;width:' + (parseInt($("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div"><span class="titletext vimeo"' + itemprop_name + '></span></div>')
+        .prepend('<div style="height:' + (parseInt($("#" + id).css("height"))) + 'px;width:' + (parseInt($("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div">' + title + '</div>')
         .addClass($_o.buttonstyle);
 
     vimeoVideoSeo(id);
@@ -180,14 +181,17 @@ window.showThumb = function showThumb(data) {
   var vimeoVideoSeo = function (id) {
     if ($_o.videoseo === true) {
       $.getJSON(vimeoCallbackUrl(id) + '?callback=?', {
-        format: "json"
+        format: 'json'
       }, function (data) {
-        $("#" + id).append('<meta itemprop="contentLocation" content="' + data[0].url + '" />');
-        $("#" + id).append('<meta itemprop="embedUrl" content="' + vimeoUrl(id) + '" />');
-        $("#" + id).append('<meta itemprop="thumbnail" content="' + data[0].thumbnail_large + '" />');
-        $("#" + id).append('<meta itemprop="datePublished" content="' + data[0].upload_date + '" />');
-        $("#" + id).append('<meta itemprop="duration" content="' + data[0].duration + '" />');
-        $("#" + id).append('<meta itemprop="aggregateRating" content="' + data.data.rating + '" />');
+        var relevantData = data[0];
+
+        $("#" + id)
+          .append('<meta itemprop="contentLocation" content="' + relevantData.url + '" />')
+          .append('<meta itemprop="embedUrl" content="' + vimeoUrl(id) + '" />')
+          .append('<meta itemprop="thumbnail" content="' + relevantData.thumbnail_large + '" />')
+          .append('<meta itemprop="datePublished" content="' + relevantData.upload_date + '" />')
+          .append('<meta itemprop="duration" content="' + relevantData.duration + '" />')
+          .append('<meta itemprop="aggregateRating" content="' + data.data.rating + '" />');
         // TODO: Retrieve and use even more data for Video SEO. Possible data: //developer.vimeo.com/apis/simple#response-data
       });
 
@@ -228,7 +232,6 @@ window.showThumb = function showThumb(data) {
    * The following code bases on "Responsive Video Embeds" by Kevin Leary, www.kevinleary.net, WordPress development in Boston, MA
    */
   var responsiveVideos = {
-
     config: {
       container: $('.container-lazyload'),
       selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-youtube-div, .lazy-load-vimeo-div'
@@ -236,12 +239,13 @@ window.showThumb = function showThumb(data) {
 
     init: function () {
       if (responsiveVideos.config.container.length > 0) {
-        $(window).on('resize', responsiveVideos.resize);
+        var $window = $(window);
+        $window.on('resize', responsiveVideos.resize);
         // Use bindFirst() to ensure that other plugins like Inline Comments work correctly (in case they depend on the video heights)
-        $(window).bindFirst('load', function () {
+        $window.bindFirst('load', function () {
           responsiveVideos.resize();
         });
-        $(window).on('load', function () {
+        $window.on('load', function () {
           responsiveVideos.resize();
           markInitialized();
         });
