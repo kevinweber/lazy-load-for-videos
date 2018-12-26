@@ -8,7 +8,7 @@
     var relevantData = data[0];
 
     if (lazyload_video_settings.vimeo.loadthumbnail) {
-      $('#' + relevantData.id)
+      $('[id=' + relevantData.id + ']')
         .css('background-image', 'url(' + relevantData.thumbnail_large + ')')
         .css('background-color', '#000')
         .css('background-position', 'center center')
