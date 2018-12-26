@@ -4,7 +4,7 @@ Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
 Tested up to: 5.0.2
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -142,6 +142,10 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.5.1 =
+* Use https for thumbnails.
+* Display background correctly if same Vimeo video is placed on the same page repeatedly.
 
 = 2.5 =
 * NOTE: The HTML and CSS for videos has been adjusted, mostly affecting the Vimeo embed. If you've added any custom CSS, be warned. Otherwise, no need to worry. 
