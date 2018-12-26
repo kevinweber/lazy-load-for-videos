@@ -17,7 +17,7 @@ By loading the videos only when the user clicks on the preview image – using j
 
 Demo on the developer’s website: [www.kweber.com/lazy-load-videos/](https://www.kweber.com/lazy-load-videos/)
 
-This plugin is no longer under active development. You want to enhance this plugin? Please [contribute on Github](https://github.com/kevinweber/lazy-load-for-videos).
+You want to enhance this plugin? Please [contribute on Github](https://github.com/kevinweber/lazy-load-for-videos).
 
 = Some additional features: =
 * Display video titles on preview images
