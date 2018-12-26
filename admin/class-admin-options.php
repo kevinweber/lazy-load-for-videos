@@ -83,7 +83,11 @@ class Lazyload_Videos_Admin {
 	    	$a_class = 'lazy-load-youtube preview-lazyload preview-youtube';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
-       		$preview_url = "<a class=\"{$a_class}\" href=\"{$url}\" data-video-title=\"{$data->title}\" title=\"Play Video &quot;{$data->title}&quot;\" style=\"text-decoration:none;color:#000\">{$url}</a>";
+			$play_title_text = sprintf(esc_attr__( 'Play video &quot;%s&quot;', LL_TD ),
+				$data->title
+			);
+
+       		$preview_url = "<a class=\"{$a_class}\" href=\"{$url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\" style=\"text-decoration:none;color:#000\">{$url}</a>";
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded"'
@@ -111,7 +115,11 @@ class Lazyload_Videos_Admin {
 	    	$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
 
-			$preview_url = "<div id=\"{$vimeoid}\" class=\"{$a_class}\" data-video-title=\"{$data->title}\" title=\"Play Video &quot;{$data->title}&quot;\">{$url}</div>";
+			$play_title_text = sprintf(esc_attr__( 'Play video &quot;%s&quot;', LL_TD ),
+				$data->title
+			);
+
+			$preview_url = "<a href=\"{$url}\" id=\"{$vimeoid}\" class=\"{$a_class}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded"'
@@ -454,7 +462,6 @@ class Lazyload_Videos_Admin {
 						<ol>
 							<li><a href="//www.kweber.com/ll-wb" title="wBounce" target="_blank"><?php esc_html_e( 'wBounce', LL_TD ); ?></a> <?php esc_html_e( '(on my part)', LL_TD ); ?></li>
 							<li><a href="//yoast.com/wordpress/plugins/seo/" title="WordPress SEO by Yoast" target="_blank"><?php esc_html_e( 'WordPress SEO', LL_TD ); ?></a> <?php esc_html_e( '(by Yoast)', LL_TD ); ?></li>
-							<li><a href="//www.kweber.com/ll-ind" title="Inline Comments" target="_blank"><?php esc_html_e( 'Inline Comments', LL_TD ); ?></a> <?php esc_html_e( '(on my part)', LL_TD ); ?></li>
 							<li><a href="//wordpress.org/plugins/broken-link-checker/" title="Broken Link Checker" target="_blank"><?php esc_html_e( 'Broken Link Checker', LL_TD ); ?></a> <?php esc_html_e( '(by Janis Elsts)', LL_TD ); ?></li>
 						</ol>
 					</p>
