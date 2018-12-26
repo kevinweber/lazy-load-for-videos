@@ -3,8 +3,8 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
 Requires at least: 3.5
-Tested up to: 4.9.6
-Stable tag: 2.4.0
+Tested up to: 5.0.2
+Stable tag: 2.5.0
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -142,6 +142,14 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.5 =
+* NOTE: The HTML and CSS for videos has been adjusted, mostly affecting the Vimeo embed. If you've added any custom CSS, be warned. Otherwise, no need to worry. 
+* NOTE 2: If video titles aren't showing as expected, click on the "Update Posts" button on the admin page for this plugin.
+* A11y: Make it easier for screen readers to select both video types, Youtube and Vimeo.
+* I18n: Make "Play video" text translatable.
+* Fixed Vimeo title that didn't show up if background pattern option was selected.
+* Reduced CSS and JS file sizes.
 
 = 2.4 =
 * New feature: Display a pattern instead of a thumbnail and thereby avoid requests to a video platform (until the user clicks play and requests become necessary).
