@@ -139,13 +139,13 @@ class Lazyload_Videos_Frontend {
 	function load_lazyload_css_button_style() {
     	if ( get_option('ll_opt_button_style') == 'youtube_button_image' ) {
     		// Display youtube button image
-    		echo '.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div { background: url('.plugin_dir_url( __FILE__ ).'../assets/play-youtube.png) center center no-repeat; }';
+    		echo '.lazy-load-div { background: url('.plugin_dir_url( __FILE__ ).'../assets/play-youtube.png) center center no-repeat; }';
     		// ... and remove CSS-only content
     		echo $this->load_css_button_selectors() . ' { content: ""; }';
     	}
     	else if ( get_option('ll_opt_button_style') == 'youtube_button_image_red' ) {
     		// Display RED youtube button image
-    		echo '.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div { background: url('.plugin_dir_url( __FILE__ ).'../assets/play-y-red.png) center center no-repeat; }';
+    		echo '.lazy-load-div { background: url('.plugin_dir_url( __FILE__ ).'../assets/play-y-red.png) center center no-repeat; }';
     		// ... and remove CSS-only content
     		echo $this->load_css_button_selectors() . ' { content: ""; }';
     	}
@@ -162,10 +162,7 @@ class Lazyload_Videos_Frontend {
 	 * Little helper funtion to return the needed selectors for the play buttons
 	 */
 	private function load_css_button_selectors( $add = '' ) {
-		return '
-			.preview-youtube .lazy-load-youtube-div'.$add.':before,
-			.preview-vimeo .lazy-load-vimeo-div'.$add.':before
-			';
+		return ".lazy-load-div{$add}:before";
 	}
 
 	/**

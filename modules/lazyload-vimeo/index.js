@@ -146,7 +146,7 @@
 
       $this.empty(); // Remove no longer needed title (title is necessary for preview in text editor)
 
-      vimeoLoadingThumb(vid);
+      vimeoLoadingThumb($this);
     });
   };
 
@@ -170,12 +170,12 @@
     var info = '';
     if (lazyload_video_settings.vimeo.show_title) {
       var videoTitle = $container.attr('data-video-title');
-      info = '<div aria-hidden="true" class="lazy-load-vimeo-info"><span class="titletext vimeo"' + itemprop_name + ' >' + videoTitle + '</span></div>';
+      info = '<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo"' + itemprop_name + ' >' + videoTitle + '</span></div>';
     }
 
     $container
         .prepend(info)
-        .prepend('<div aria-hidden="true" style="height:' + (parseInt($("#" + id).css("height"))) + 'px;width:' + (parseInt($("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div"></div>')
+        .prepend('<div aria-hidden="true" style="height:' + (parseInt($("#" + id).css("height"))) + 'px;width:' + (parseInt($("#" + id).css("width"))) + 'px;" class="lazy-load-div"></div>')
         .addClass($_o.buttonstyle);
 
     vimeoVideoSeo(id);
@@ -237,7 +237,7 @@
   var responsiveVideos = {
     config: {
       container: $('.container-lazyload'),
-      selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-youtube-div, .lazy-load-vimeo-div'
+      selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-div'
     },
 
     init: function () {
