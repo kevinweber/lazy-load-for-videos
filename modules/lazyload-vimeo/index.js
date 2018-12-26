@@ -79,7 +79,7 @@
    * Load plugin info
    */
   var loadPluginInfo = function () {
-    return '<a class="' + classBranding + '" href="//www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
+    return '<a class="' + classBranding + '" href="https://www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
   };
 
   /*
@@ -130,7 +130,7 @@
   };
 
   var vimeoUrl = function (id) {
-    return '//player.vimeo.com/video/' + id;
+    return 'https://player.vimeo.com/video/' + id;
   };
 
   // Remove dots and hashs from a string
@@ -194,21 +194,21 @@
           .append('<meta itemprop="datePublished" content="' + relevantData.upload_date + '" />')
           .append('<meta itemprop="duration" content="' + relevantData.duration + '" />')
           .append('<meta itemprop="aggregateRating" content="' + data.data.rating + '" />');
-        // TODO: Retrieve and use even more data for Video SEO. Possible data: //developer.vimeo.com/apis/simple#response-data
+        // TODO: Retrieve and use even more data for Video SEO. Possible data: https://developer.vimeo.com/apis/simple#response-data
       });
 
     }
   };
 
   var vimeoCallbackUrl = function (id) {
-    return '//vimeo.com/api/v2/video/' + id + '.json';
+    return 'https://vimeo.com/api/v2/video/' + id + '.json';
   };
 
   /*
    * Ensure that a handler is run before any other registered handlers,
    * independent of the order in which they were bound
-   * As seen on //stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
-   * and on //gist.github.com/infostreams/6540654
+   * As seen on https://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
+   * and on https://gist.github.com/infostreams/6540654
    */
   $.fn.bindFirst = function (which, handler) {
     // ensures a handler is run before any other registered handlers,

@@ -101,13 +101,13 @@
         }
       })();
 
-      var emu = '//www.youtube.com/embed/' + preroll;
+      var emu = 'https://www.youtube.com/embed/' + preroll;
 
       /*
        * Load plugin info
        */
       var loadPluginInfo = function() {
-        return '<a class="' + classBranding + '" href="//www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
+        return '<a class="' + classBranding + '" href="https://www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
       };
 
       /*
@@ -141,7 +141,7 @@
       };
 
       var youtubeUrl = function( id ) {
-        return '//www.youtube.com/watch?v=' + id;
+        return 'https://www.youtube.com/watch?v=' + id;
       };
 
       /*
@@ -203,8 +203,8 @@
       /*
        * Set thumbnail URL
        */
-      var setThumbnailUrl = function( youid ) {
-        var $url = '//i2.ytimg.com/vi/' + youid + '/' + $_o.thumbnailquality + '.jpg';
+      var setThumbnailUrl = function(youid) {
+        var $url = 'https://i2.ytimg.com/vi/' + youid + '/' + $_o.thumbnailquality + '.jpg';
 
         thumbnailurl = $url;
       };
@@ -217,21 +217,24 @@
         return thumbnailurl;
       };
 
-      var setBackgroundImg = function( el ) {
-        var src = getThumbnailUrl(),
-          img = $('<img style="display:none" src="' + src + '"/>');
+      var setBackgroundImg = function($el) {
+        var src = getThumbnailUrl();
+        var img = $('<img style="display:none" src="' + src + '"/>');
+
         img.load(function() {
             // If the max resolution thumbnail is not available, fall back to smaller size.
             // But note that we'll still see an 404 error in the console in this case.
             if (img.width() === 120) {
               src = src.replace('maxresdefault', '0');
             }
-            if (el.css('background-image') === 'none') {
-              el.css('background-image', 'url(' + src + ')');
-              el.css('background-color', '#000');
-              el.css('background-position', 'center center');
-              el.css('background-repeat', 'no-repeat');
+
+            if ($el.css('background-image') === 'none') {
+              $el.css('background-image', 'url(' + src + ')')
+                .css('background-color', '#000')
+                .css('background-position', 'center center')
+                .css('background-repeat', 'no-repeat');
             }
+
             img.remove();
         });
         $('body').append(img);
@@ -246,7 +249,7 @@
         $that.append('<meta itemprop="embedUrl" content="'+ emu +'" />');
         $that.append('<meta itemprop="thumbnail" content="'+ getThumbnailUrl() +'" />');
 
-        $.getJSON('//gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc&callback=?',function( data ){
+        $.getJSON('https://gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc&callback=?',function( data ){
             $that.append('<meta itemprop="datePublished" content="'+ data.data.uploaded +'" />');
             $that.append('<meta itemprop="duration" content="'+ data.data.duration +'" />');
             $that.append('<meta itemprop="aggregateRating" content="'+ data.data.rating +'" />');
@@ -337,8 +340,8 @@
   /*
    * Ensure that a handler is run before any other registered handlers,
    * independent of the order in which they were bound
-   * As seen on //stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
-   * and on //gist.github.com/infostreams/6540654
+   * As seen on https://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
+   * and on https://gist.github.com/infostreams/6540654
    */
   $.fn.bindFirst = function(which, handler) {
         // ensures a handler is run before any other registered handlers,
