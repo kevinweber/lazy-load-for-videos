@@ -104,7 +104,7 @@
     $(classPreviewVimeoDot).on('click', function (event) {
       event.preventDefault();
       
-      var vid = getAttrId(this);
+      var vid = $(this).attr('id');
 
       removePlayerControls(this);
       removeBranding(this);
@@ -141,17 +141,16 @@
 
   var vimeoCreateThumbProcess = function () {
     $(classPreviewVimeoDot).each(function () {
-      var vid = getAttrId(this),
-        $this = $(this);
+      var $this = $(this);
+      var vid = $this.attr('id');
 
       $this.empty(); // Remove no longer needed title (title is necessary for preview in text editor)
 
-      vimeoLoadingThumb($this);
+      vimeoLoadingThumb($this, vid);
     });
   };
 
-  var vimeoLoadingThumb = function (id) {
-    var $container = $("#" + id);
+  var vimeoLoadingThumb = function ($container, id) {
     var script;
 
     if (lazyload_video_settings.vimeo.loadthumbnail) {
@@ -204,12 +203,6 @@
   var vimeoCallbackUrl = function (id) {
     return '//vimeo.com/api/v2/video/' + id + '.json';
   };
-
-  var getAttrId = function (element) {
-    var vid = $(element).attr('id');
-    return vid;
-  };
-
 
   /*
    * Ensure that a handler is run before any other registered handlers,
