@@ -164,9 +164,7 @@ class Lazyload_Videos_Frontend {
 	private function load_css_button_selectors( $add = '' ) {
 		return '
 			.preview-youtube .lazy-load-youtube-div'.$add.':before,
-			.preview-youtube .lazy-load-youtube-div'.$add.'::before,
-			.preview-vimeo'.$add.':after,
-			.preview-vimeo'.$add.'::after
+			.preview-vimeo .lazy-load-vimeo-div'.$add.':before
 			';
 	}
 

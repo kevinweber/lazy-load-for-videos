@@ -42,12 +42,14 @@ $z-index-base: 2;
 	box-sizing: border-box;
 }
 
-.preview-vimeo {
+a.lazy-load-vimeo {
+	text-decoration: none;
+}
+
+.lazy-load-vimeo-div {
 	display: table;
-	& > a {
-		font-size: 0;
-	}
-	&:after, &::after {
+
+	&::before {
 		content: "\25B6";
 		font-size: 50px;
 		font-family: Arial, sans-serif;
@@ -61,7 +63,8 @@ $z-index-base: 2;
 		vertical-align: middle;
 		text-align: center;
 	}
-	&:hover:after {
+
+	&:hover::before {
 		opacity: 0.9;
 		text-shadow: 0px 0px 60px rgba(0,0,0,0.5);
 	}
@@ -69,17 +72,19 @@ $z-index-base: 2;
 
 .preview-youtube .lazy-load-youtube-div {
 	display: table;
+
 	&:before, &::before {
-		@extend .preview-vimeo:after;
+		@extend .lazy-load-vimeo-div::before;
 	}
+
 	&:hover:before {
-		@extend .preview-vimeo:hover:after;
+		@extend .lazy-load-vimeo-div:hover::before;
 	}
 }
 
 .css_white_pulse, .css_black_pulse {
-	&.preview-vimeo:after, &.preview-vimeo::after,
-	&.preview-youtube .lazy-load-youtube-div:before, &.preview-youtube .lazy-load-youtube-div::before {
+	&.preview-vimeo .lazy-load-vimeo-div::before,
+	&.preview-youtube .lazy-load-youtube-div::before {
 	    font-size: 70px;
 	    animation: pulse 3s infinite linear;
 	}
@@ -89,7 +94,8 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	text-decoration: none;
 	cursor: pointer;
 }
-.lazy-load-youtube-div, .lazy-load-vimeo-div, .lazy-load-youtube-info {
+.lazy-load-youtube-div, .lazy-load-vimeo-div,
+.lazy-load-youtube-info, .lazy-load-vimeo-info {
 	max-width: 100%;
 	opacity: 0.8;
 	color: #fff;
@@ -98,10 +104,11 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	position: absolute;
 	z-index: $z-index-base + 1;
 }
-.lazy-load-youtube-info {
+.lazy-load-youtube-info, .lazy-load-vimeo-info {
 	position: relative;
 }
-.lazy-load-youtube-div:hover, .lazy-load-vimeo-div:hover, .lazy-load-youtube:hover > div {
+.lazy-load-youtube-div:hover, .lazy-load-vimeo-div:hover,
+.lazy-load-youtube:hover > div, .lazy-load-vimeo:hover > div {
 	opacity: 1;
 }
 
@@ -115,6 +122,7 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	text-transform: none;
 	font-weight: normal;
 }
+
 .entry-content a.lazyload-info-icon, p a.lazyload-info-icon, a.lazyload-info-icon, .lazyload-info-icon,
 .entry-content a.lazyload-info-icon:visited, p a.lazyload-info-icon:visited, a.lazyload-info-icon:visited, .lazyload-info-icon:visited {
     width: 19px;

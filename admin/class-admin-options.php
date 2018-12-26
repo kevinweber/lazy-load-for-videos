@@ -87,7 +87,7 @@ class Lazyload_Videos_Admin {
 				$data->title
 			);
 
-       		$preview_url = "<a class=\"{$a_class}\" href=\"{$url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\" style=\"text-decoration:none;color:#000\">{$url}</a>";
+       		$preview_url = "<a class=\"{$a_class}\" href=\"{$url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded"'

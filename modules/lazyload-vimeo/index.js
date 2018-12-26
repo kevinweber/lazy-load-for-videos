@@ -101,7 +101,9 @@
 
 
   var vimeoCreatePlayer = function () {
-    $(classPreviewVimeoDot).on('click', function () {
+    $(classPreviewVimeoDot).on('click', function (event) {
+      event.preventDefault();
+      
       var vid = getAttrId(this);
 
       removePlayerControls(this);
@@ -113,7 +115,7 @@
         playercolour = '&color=' + $_o.playercolour;
       }
 
-      $(this).html('<iframe src="' + vimeoUrl(vid) + '?autoplay=1' + playercolour + '" style="height:' + (parseInt($("#" + vid).css("height"))) + 'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
+      $(this).replaceWith('<iframe src="' + vimeoUrl(vid) + '?autoplay=1' + playercolour + '" style="height:' + (parseInt($("#" + vid).css("height"))) + 'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
       if (typeof responsiveVideos.resize === 'function' && $_o.responsive === true) {
         responsiveVideos.resize();
       }
@@ -157,7 +159,7 @@
       script.type = 'text/javascript';
       script.src = vimeoCallbackUrl(id) + ".json?callback=showThumb";
 
-      $container.prepend(script);
+      $container.after(script);
     }
 
     var itemprop_name = '';
@@ -165,14 +167,15 @@
       itemprop_name = ' itemprop="name"';
     }
 
-    var title = '';
+    var info = '';
     if (lazyload_video_settings.vimeo.show_title) {
       var videoTitle = $container.attr('data-video-title');
-      title = '<span class="titletext vimeo"' + itemprop_name + ' >' + videoTitle + '</span>';
+      info = '<div aria-hidden="true" class="lazy-load-vimeo-info"><span class="titletext vimeo"' + itemprop_name + ' >' + videoTitle + '</span></div>';
     }
 
     $container
-        .prepend('<div style="height:' + (parseInt($("#" + id).css("height"))) + 'px;width:' + (parseInt($("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div">' + title + '</div>')
+        .prepend(info)
+        .prepend('<div aria-hidden="true" style="height:' + (parseInt($("#" + id).css("height"))) + 'px;width:' + (parseInt($("#" + id).css("width"))) + 'px;" class="lazy-load-vimeo-div"></div>')
         .addClass($_o.buttonstyle);
 
     vimeoVideoSeo(id);

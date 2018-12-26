@@ -194,10 +194,10 @@
       if (embedparms.indexOf('showinfo=0') !== -1) {
         $that.html('');
       } else {
-        $that.html('<div class="lazy-load-youtube-info"><span class="titletext youtube"'+itemprop_name+'>' + videoTitle() + '</span></div>');
+        $that.html('<div aria-hidden="true" class="lazy-load-youtube-info"><span class="titletext youtube"'+itemprop_name+'>' + videoTitle() + '</span></div>');
       }
 
-      $that.prepend('<div style="height:' + getHeight($that) + 'px;width:' + getWidth($that) + 'px;" class="lazy-load-youtube-div"></div>').addClass($_o.buttonstyle);
+      $that.prepend('<div aria-hidden="true" style="height:' + getHeight($that) + 'px;width:' + getWidth($that) + 'px;" class="lazy-load-youtube-div"></div>').addClass($_o.buttonstyle);
 
 
       /*
