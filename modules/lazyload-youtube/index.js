@@ -131,10 +131,7 @@
       createPluginInfo();
 
       var videoTitle = function() {
-        // Since v2.3: "video-title" is no longer used in our code but we keep it here because several blogs still have posts/pages cached with the video-title attribute (instead of the new data-video-title)
-        if ( $that.attr('video-title') !== undefined ) {
-          return $that.attr('video-title');
-        } else if ( $that.attr('data-video-title') !== undefined ) {
+        if ( $that.attr('data-video-title') !== undefined ) {
           return $that.attr('data-video-title');
         } else if ( $that.html() !== undefined && $that.html() !== '' ) {
           return $that.html();
