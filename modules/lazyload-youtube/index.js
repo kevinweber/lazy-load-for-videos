@@ -311,7 +311,7 @@
       /*
        * Generate iFrame
        */
-      var videoFrame = '<iframe width="' + parseInt($that.css("width")) + '" height="' + parseInt($that.css("height")) + '" style="vertical-align:top;" src="' + emu + '" frameborder="0" allowfullscreen></iframe>';
+      var videoFrame = '<iframe width="' + parseInt($that.css("width")) + '" height="' + parseInt($that.css("height")) + '" style="vertical-align:top;" src="' + emu + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 
       /*
        * Register "onclick" event handler
