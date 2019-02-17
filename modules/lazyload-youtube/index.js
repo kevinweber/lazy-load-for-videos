@@ -50,6 +50,7 @@
         colour: 'red', // possible: red, white
         controls: true,
         loadpolicy: true,
+        modestbranding: false,
         showinfo: true,
         relations: true,
         buttonstyle: '',
@@ -268,7 +269,7 @@
             colour = '',
             postroll = '',
             playlist = '',
-            showinfo, relations, controls, loadpolicy;
+            showinfo, relations, controls, loadpolicy, modestbranding;
 
         /*
          * Configure URL parameters
@@ -279,10 +280,11 @@
         if ($_o.colour !== undefined && $_o.colour !== colour && $_o.colour !== 'red') {
           colour = '&color=' + $_o.colour;
         }
-        showinfo = !$_o.showinfo ? '&showinfo=0' : '';
-        relations = !$_o.relations ? '&rel=0' : '';
-        controls = !$_o.controls ? '&controls=0' : '';
-        loadpolicy = !$_o.loadpolicy ? '&iv_load_policy=3' : '';
+        showinfo = $_o.showinfo ? '' : '&showinfo=0';
+        relations = $_o.relations ? '' : '&rel=0';
+        controls = $_o.controls ? '' : '&controls=0';
+        loadpolicy = $_o.loadpolicy ? '' : '&iv_load_policy=3';
+        modestbranding = $_o.modestbranding ? '&modestbranding=1' : '';
 
         /*
          * Configure URL parameter 'playlist'
@@ -292,17 +294,17 @@
         } else {
           preroll = '';
         }
-        if ($_o.postroll !== undefined && $_o.postroll !== postroll) {
+        if (($_o.postroll !== undefined) && ($_o.postroll !== postroll)) {
           postroll = $_o.postroll;
         }
-        if ( ( preroll !== '' ) || ( postroll !== '' ) ) {
+        if ((preroll !== '') || (postroll !== '')) {
           playlist = '&playlist=' + preroll + postroll;
         }
 
         /*
          * Generate URL
          */
-        emu += ((emu.indexOf('?') === -1) ? '?' : '&') + 'autoplay=1' + theme + colour + controls + loadpolicy + showinfo + relations + playlist + embedstart;
+        emu += ((emu.indexOf('?') === -1) ? '?' : '&') + 'autoplay=1' + theme + colour + controls + loadpolicy + modestbranding + showinfo + relations + playlist + embedstart;
       })();
 
 
@@ -314,7 +316,7 @@
       /*
        * Register "onclick" event handler
        */
-      $( this ).on( "click", function() {
+      $(this).on( "click", function() {
 
         removePlayerControls(this);
         removeBranding(this);
@@ -382,7 +384,7 @@
     resize: function() {
       $( responsiveVideos.config.selector, responsiveVideos.config.container ).each( function () {
 
-        var $this = $( this );
+        var $this = $(this);
         var width = $this.parent().width();
         var height = Math.round( width * videoratio );
 

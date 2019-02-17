@@ -163,6 +163,7 @@ class Lazyload_Videos_Admin {
 			'lly_opt_player_relations',
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
+			'lly_opt_player_modestbranding',
 
 			// Vimeo
 			'llv_opt',
@@ -188,8 +189,8 @@ class Lazyload_Videos_Admin {
 			</h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
-		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><!-- <span class="newred_dot">&bull;</span> --></a></li>
+		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
+		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
@@ -233,7 +234,7 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Thumbnails/Patterns', LL_TD ); ?> <span class="newred red">New</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Thumbnails/Patterns', LL_TD ); ?></label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_thumbnail_size">
 										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Thumbnail covering the video element', LL_TD ); ?></option>
@@ -348,6 +349,12 @@ class Lazyload_Videos_Admin {
 										<option value="red"<?php if (get_option('lly_opt_player_colour_progress') === 'red') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Red (default)', LL_TD ); ?></option>
 										<option value="white"<?php if (get_option('lly_opt_player_colour_progress') === 'white') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'White', LL_TD ); ?></option>
 									</select>
+						        </td>
+					        </tr>
+							<tr valign="top">
+					        	<th scope="row"><label><?php esc_html_e( 'Apply modest branding', LL_TD ); ?> <span class="newred">New</span></label></th>
+						        <td>
+									<input name="lly_opt_player_modestbranding" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_modestbranding' ) ); ?> /> <label><?php esc_html_e( 'If checked, the YouTube logo will not be shown in the control bar.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
