@@ -352,9 +352,9 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 							<tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Apply modest branding', LL_TD ); ?> <span class="newred">New</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Hide Youtube logo', LL_TD ); ?> <span class="newred">New</span></label></th>
 						        <td>
-									<input name="lly_opt_player_modestbranding" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_modestbranding' ) ); ?> /> <label><?php esc_html_e( 'If checked, the YouTube logo will not be shown in the control bar.', LL_TD ); ?></label>
+									<input name="lly_opt_player_modestbranding" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_modestbranding' ) ); ?> /> <label><?php esc_html_e( 'If checked, the YouTube logo will not be shown in the control bar using Youtube\'s modest branding feature.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">

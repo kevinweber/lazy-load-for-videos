@@ -1,10 +1,10 @@
 === Lazy Load for Videos ===
 Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
-Tags: youtube, vimeo, performance, admin, plugin, content, video, page, jquery, mobile, lazy load
+Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load
 Requires at least: 3.5
-Tested up to: 5.0.2
-Stable tag: 2.5.1
+Tested up to: 5.1.0
+Stable tag: 2.6.0
 License: GPL v3
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -27,11 +27,11 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 * Choose custom colour for your Vimeo player
 * Hide controls from Youtube player
 * Add schema.org markup to your Youtube and Vimeo videos
+* Hide Youtube logo from control bar (modest branding)
 * Hide information like the video title and uploader when the video starts playing
 * Support for videos in text widget (Youtube only)
 * Choose thumbnail size (standard or cover)
 * Choose from several "Play" buttons
-* Choose between two colours for Youtube player (dark or light)
 * Choose between two colours for Youtube player’s video progress bar to highlight the amount of the video that the viewer has already seen (red or white)
 * Don't display related videos at the end of your videos
 * Works with WordPress Multisite
@@ -142,6 +142,10 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.6.0 =
+* New feature: Hide Youtube logo from control bar by using Youtube's modest branding feature.
+* Extend iframe code with allow attribute and values recommended by Youtube
 
 = 2.5.1 =
 * Use https for thumbnails.
