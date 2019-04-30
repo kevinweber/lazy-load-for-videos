@@ -38,7 +38,7 @@
      */
     $(document).ready(doload_llv()).ajaxStop(function () {
       doload_llv();
-      if (typeof responsiveVideos.init === 'function' && $_o.responsive === true ) {
+      if (typeof responsiveVideos.resize === 'function' && $_o.responsive === true ) {
         responsiveVideos.resize();
       }
       markInitialized();

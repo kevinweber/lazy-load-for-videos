@@ -29,7 +29,7 @@
      */
     $(document).ready(doload_lly()).ajaxStop(function() {
       doload_lly();
-      if (typeof responsiveVideos.init === 'function' && $_o.responsive === true ) {
+      if (typeof responsiveVideos.resize === 'function' && $_o.responsive === true ) {
         responsiveVideos.resize();
       }
       markInitialized();
