@@ -448,7 +448,7 @@ class Lazyload_Videos_Admin {
 
 		    <table class="form-table">
 		        <tr valign="top">
-		        <th scope="row" style="width:100px;"><a href="https://www.kweber.com/ll" target="_blank"><img src="https://www.gravatar.com/avatar/9d876cfd1fed468f71c84d26ca0e9e33?d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536&s=100" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;"></a></th>
+		        <th scope="row" style="width:100px;"><a href="https://www.kweber.com/ll" target="_blank"><img loading="lazy" src="https://www.gravatar.com/avatar/9d876cfd1fed468f71c84d26ca0e9e33?d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536&s=100" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;"></a></th>
 		        <td style="width:200px;">
 		        	<p><a href="https://www.kweber.com/ll" target="_blank">Kevin Weber</a> &ndash; <?php esc_html_e( 'that\'s me.', LL_TD ); ?><br>
 		        	<?php esc_html_e( 'I\'m the developer of this plugin. Love it!', LL_TD ); ?></p></td>
