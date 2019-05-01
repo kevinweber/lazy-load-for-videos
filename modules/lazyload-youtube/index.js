@@ -220,7 +220,7 @@
 
       var setBackgroundImg = function($el) {
         var src = getThumbnailUrl();
-        var img = $('<img loading="lazy" style="display:none" src="' + src + '"/>');
+        var img = $('<img style="display:none" src="' + src + '"/>');
 
         img.load(function() {
             // If the max resolution thumbnail is not available, fall back to smaller size.
@@ -311,7 +311,7 @@
       /*
        * Generate iFrame
        */
-      var videoFrame = '<iframe loading="lazy" width="' + parseInt($that.css("width")) + '" height="' + parseInt($that.css("height")) + '" style="vertical-align:top;" src="' + emu + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      var videoFrame = '<iframe width="' + parseInt($that.css("width")) + '" height="' + parseInt($that.css("height")) + '" style="vertical-align:top;" src="' + emu + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 
       /*
        * Register "onclick" event handler

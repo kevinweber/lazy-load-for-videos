@@ -115,7 +115,7 @@
         playercolour = '&color=' + $_o.playercolour;
       }
 
-      $(this).replaceWith('<iframe loading="lazy" src="' + vimeoUrl(vid) + '?autoplay=1' + playercolour + '" style="height:' + (parseInt($("#" + vid).css("height"))) + 'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
+      $(this).replaceWith('<iframe src="' + vimeoUrl(vid) + '?autoplay=1' + playercolour + '" style="height:' + (parseInt($("#" + vid).css("height"))) + 'px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>');
       if (typeof responsiveVideos.resize === 'function' && $_o.responsive === true) {
         responsiveVideos.resize();
       }
