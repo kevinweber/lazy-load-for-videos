@@ -48,6 +48,7 @@ a.lazy-load-vimeo {
 
 .lazy-load-div {
 	display: table;
+	pointer-events: none;
 
 	&::before {
 		content: "\25B6";

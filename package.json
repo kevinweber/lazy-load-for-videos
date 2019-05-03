@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "lazy-load-for-videos",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)",
   "scripts": {
     "production": "NODE_ENV=production webpack --progress --colors --config ./webpack.config.js -p",
@@ -38,8 +38,10 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^2.1.1",
-    "eslint": "^5.16.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.17.2",
     "file-loader": "^1.1.11",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.12.0",

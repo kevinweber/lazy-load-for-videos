@@ -1,347 +1,354 @@
-/*global lazyload_video_settings */
+/* global lazyload_video_settings */
 
 /*
  * Lazy Load Youtube
  * by Kevin Weber (www.kweber.com)
  */
-(function( lazyload_youtube, $, undefined ) {
-
+(($) => {
   // Classes
-  var classPreviewYoutube = 'preview-youtube';
-    var classPreviewYoutubeDot = '.' + classPreviewYoutube;
-  var classBranding = 'lazyload-info-icon';
-    var classBrandingDot = '.' + classBranding;
-  var classNotLoaded = 'js-lazyload--not-loaded';
+  const classPreviewYoutube = 'preview-youtube';
+  const classPreviewYoutubeDot = `.${classPreviewYoutube}`;
+  const classBranding = 'lazyload-info-icon';
+  const classBrandingDot = `.${classBranding}`;
+  const classNotLoaded = 'js-lazyload--not-loaded';
 
   // Helpers
-  var videoratio = 0.5625;
-  var thumbnailurl = '';
+  const videoratio = 0.5625;
+  let thumbnailurl = '';
+
+  let $Options;
+  function mergeOptions(options) {
+    $Options = $.extend({
+      theme: 'dark', // possible: dark, light
+      colour: 'red', // possible: red, white
+      controls: true,
+      loadpolicy: true,
+      modestbranding: false,
+      showinfo: true,
+      relations: true,
+      buttonstyle: '',
+      preroll: '',
+      postroll: '',
+      videoseo: false,
+      responsive: true,
+      thumbnailquality: '0',
+      displaybranding: false,
+      loadthumbnail: true,
+      callback: null,
+    },
+    options);
+  }
 
   function markInitialized() {
     $(classPreviewYoutubeDot).parent().removeClass(classNotLoaded);
   }
 
-  lazyload_youtube.init = function( options ) {
-    setOptionsYoutube( options );
+  function removePlayerControls(element) {
+    $(element).removeClass(classPreviewYoutube);
+  }
+  function removeBranding(element) {
+    $(element).prev(classBrandingDot).remove();
+  }
 
-    /*
-     * Use ajaxStop function to prevent plugin from breaking when another plugin uses Ajax
-     */
-    $(document).ready(doload_lly()).ajaxStop(function() {
-      doload_lly();
-      if (typeof responsiveVideos.resize === 'function' && $_o.responsive === true ) {
-        responsiveVideos.resize();
+  /*
+   * The following code bases on "Responsive Video Embeds" by Kevin Leary
+   */
+  const responsiveVideos = {
+    config: {
+      container: '.container-lazyload',
+      selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-div',
+    },
+
+    init() {
+      if (responsiveVideos.config.container.length > 0) {
+        $(window).on('resize', responsiveVideos.resize);
+        // Use bindFirst() to ensure that other plugins like Inline Comments
+        // work correctly (in case they depend on the video heights)
+        $(window).bindFirst('load', () => { responsiveVideos.resize(); });
+        $(window).on('load', () => {
+          responsiveVideos.resize();
+          markInitialized();
+        });
       }
-      markInitialized();
-    });
+    },
 
-    if (typeof responsiveVideos.init === 'function' && $_o.responsive === true ) {
-      responsiveVideos.init();
-    } else {
-      markInitialized();
-    }
+    resize() {
+      $(responsiveVideos.config.container).find(responsiveVideos.config.selector)
+        .each((index, item) => {
+          const $this = $(item);
+          const width = $this.parent().width();
+          const height = Math.round(width * videoratio);
 
-    if (typeof $_o.callback === 'function') {
-        $_o.callback();
-    }
-
+          $this.attr('height', height);
+          $this.attr('width', width);
+          $this.css({
+            height,
+            width,
+          });
+        });
+    },
   };
 
-  var $_o;
-  var setOptionsYoutube = function(options) {
-    $_o = $.extend({
-        theme: 'dark', // possible: dark, light
-        colour: 'red', // possible: red, white
-        controls: true,
-        loadpolicy: true,
-        modestbranding: false,
-        showinfo: true,
-        relations: true,
-        buttonstyle: '',
-        preroll: '',
-        postroll: '',
-        videoseo: false,
-        responsive: true,
-        thumbnailquality: '0',
-        displaybranding: false,
-        loadthumbnail: true,
-        callback: null,
-      },
-      options);
-  };
-
-  var doload_lly = function() {
-
-    $("a.lazy-load-youtube").each(function(index) {
-      var $that = $(this);
-      var $thatHref = $that.attr("href");
-      var embedparms;
-      var preroll = '';
+  function load() {
+    $('a.lazy-load-youtube').each((index, item) => {
+      const $that = $(item);
+      const $thatHref = $that.attr('href');
+      let embedparms;
+      let preroll = '';
 
       /*
        * Load parameters from user's original Youtube URL
        */
       (function setEmbedParams() {
-        embedparms = $thatHref.split('/embed/')[1];
+        [, embedparms] = $thatHref.split('/embed/');
         if (!embedparms) {
-          embedparms = $thatHref.split('://youtu.be/')[1];
+          [, embedparms] = $thatHref.split('://youtu.be/');
         }
         if (!embedparms) {
           embedparms = $thatHref.split('v=')[1].replace(/&/, '?');
         }
-      })();
+      }());
 
       /*
        * Load Youtube ID
        */
-      var youid = embedparms.split('?')[0].split('#')[0];
+      const videoId = embedparms.split('?')[0].split('#')[0];
 
-      (function setYouIdPreroll() {
-        if ($_o.preroll !== undefined && $_o.preroll !== preroll) {
-          preroll = $_o.preroll;
-        }
-        else {
+      (function setvideoIdPreroll() {
+        if ($Options.preroll !== undefined && $Options.preroll !== preroll) {
+          ({ preroll } = $Options);
+        } else {
           // Fallback when no preroll ID should be loaded
           preroll = embedparms;
         }
-      })();
+      }());
 
-      var emu = 'https://www.youtube.com/embed/' + preroll;
+      let emu = `https://www.youtube.com/embed/${preroll}`;
 
       /*
        * Load plugin info
        */
-      var loadPluginInfo = function() {
-        return '<a class="' + classBranding + '" href="https://www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>';
-      };
+      function loadPluginInfo() {
+        return `<a class="${classBranding}" href="https://www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>`;
+      }
 
       /*
        * Create info element
        */
-      var createPluginInfo = function() {
+      function createPluginInfo() {
         if (
-            ( $_o.displaybranding === true ) &&
-            ( $that.siblings(classBrandingDot).length === 0 ) // This prevents the site from creating unnecessary duplicate brandings
-          )
-        {
+          ($Options.displaybranding === true)
+          // This prevents the site from creating unnecessary duplicate brandings
+          && ($that.siblings(classBrandingDot).length === 0)
+        ) {
           // source = Video
-          var source = $that;
+          const source = $that;
           // element = Plugin info element
-          var element = $( loadPluginInfo() );
+          const element = $(loadPluginInfo());
           // Prepend element to source
-          source.before( element );
+          source.before(element);
         }
-      };
+      }
 
       createPluginInfo();
 
-      var videoTitle = function() {
-        if ( $that.attr('data-video-title') !== undefined ) {
+      function videoTitle() {
+        if ($that.attr('data-video-title') !== undefined) {
           return $that.attr('data-video-title');
-        } else if ( $that.html() !== undefined && $that.html() !== '' ) {
+        } if ($that.html() !== undefined && $that.html() !== '') {
           return $that.html();
-        } else {
-          return '';
         }
-      };
+        return '';
+      }
 
-      var youtubeUrl = function( id ) {
-        return 'https://www.youtube.com/watch?v=' + id;
-      };
+      function youtubeUrl(id) {
+        return `https://www.youtube.com/watch?v=${id}`;
+      }
 
       /*
        * Helpers to calculate dimensions
        */
-      var getWidth = function( element ) {
-        var calc = (parseInt(element.css('width')) - 4);
+      function getWidth(element) {
+        const calc = (parseInt(element.css('width'), 10) - 4);
         return calc;
-      };
-      var getHeight = function( element ) {
-        var calc = 0;
-        if ( $_o.responsive === false ) {
-          calc = (parseInt(element.css('height')) - 4);
-        }
-        else {
-          var width = getWidth( element );
-          calc = Math.round( width * videoratio );
+      }
+      function getHeight(element) {
+        let calc = 0;
+        if ($Options.responsive === false) {
+          calc = (parseInt(element.css('height'), 10) - 4);
+        } else {
+          const width = getWidth(element);
+          calc = Math.round(width * videoratio);
         }
         return calc;
-      };
+      }
 
-      var start = 0;
-      var time_factors = [3600, 60, 1]; // h, m, s
-      var start_match = embedparms.match(/[#&?]t=(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/);
-      if (start_match) {
-        for (var s=1; s < start_match.length; s++) {
-          if (typeof start_match[s] !== 'undefined') {
-            start += parseInt(start_match[s])*time_factors[s-1];
+      let start = 0;
+      const timeFactors = [3600, 60, 1]; // h, m, s
+      let startMatch = embedparms.match(/[#&?]t=(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/);
+      if (startMatch) {
+        for (let s = 1; s < startMatch.length; s += 1) {
+          if (typeof startMatch[s] !== 'undefined') {
+            start += parseInt(startMatch[s], 10) * timeFactors[s - 1];
           }
         }
       }
       if (start === 0) {
-        start_match = embedparms.match(/[#&?](?:t|start)=(\d+)/);
-        if (start_match) {
-          start = start_match[1];
+        startMatch = embedparms.match(/[#&?](?:t|start)=(\d+)/);
+        if (startMatch) {
+          [, start] = startMatch;
         }
       }
 
-      embedparms = embedparms.split('#')[0];
-      var embedstart = '';
+      [embedparms] = embedparms.split('#');
+      let embedstart = '';
       if (start && start !== 0 && embedparms.indexOf('start=') === -1) {
-        embedstart = ((embedparms.indexOf('?') === -1) ? '?' : '&') + 'start=' + start;
+        embedstart = `${(embedparms.indexOf('?') === -1) ? '?' : '&'}start=${start}`;
       }
 
-      var itemprop_name = '';
-      if ($_o.videoseo === true ) {
-        itemprop_name = ' itemprop="name"';
+      let itempropName = '';
+      if ($Options.videoseo === true) {
+        itempropName = ' itemprop="name"';
       }
 
       if (embedparms.indexOf('showinfo=0') !== -1) {
         $that.html('');
       } else {
-        $that.html('<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube"'+itemprop_name+'>' + videoTitle() + '</span></div>');
+        $that.html(`<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube"${itempropName}>${videoTitle()}</span></div>`);
       }
 
-      $that.prepend('<div aria-hidden="true" style="height:' + getHeight($that) + 'px;width:' + getWidth($that) + 'px;" class="lazy-load-div"></div>').addClass($_o.buttonstyle);
+      $that.prepend(`<div aria-hidden="true" style="height:${getHeight($that)}px;width:${getWidth($that)}px;" class="lazy-load-div"></div>`).addClass($Options.buttonstyle);
 
 
       /*
        * Set thumbnail URL
        */
-      var setThumbnailUrl = function(youid) {
-        var $url = 'https://i2.ytimg.com/vi/' + youid + '/' + $_o.thumbnailquality + '.jpg';
+      function setThumbnailUrl(thumbnailId) {
+        const $url = `https://i2.ytimg.com/vi/${thumbnailId}/${$Options.thumbnailquality}.jpg`;
 
         thumbnailurl = $url;
-      };
-      setThumbnailUrl(youid);
+      }
+      setThumbnailUrl(videoId);
 
       /*
        * Get thumbnail URL
        */
-      var getThumbnailUrl = function() {
+      function getThumbnailUrl() {
         return thumbnailurl;
-      };
+      }
 
-      var setBackgroundImg = function($el) {
-        var src = getThumbnailUrl();
-        var img = $('<img style="display:none" src="' + src + '"/>');
+      function setBackgroundImg($el) {
+        let src = getThumbnailUrl();
+        const img = $(`<img style="display:none" src="${src}"/>`);
 
-        img.load(function() {
-            // If the max resolution thumbnail is not available, fall back to smaller size.
-            // But note that we'll still see an 404 error in the console in this case.
-            if (img.width() === 120) {
-              src = src.replace('maxresdefault', '0');
-            }
+        img.load(() => {
+          // If the max resolution thumbnail is not available, fall back to smaller size.
+          // But note that we'll still see an 404 error in the console in this case.
+          if (img.width() === 120) {
+            src = src.replace('maxresdefault', '0');
+          }
 
-            if ($el.css('background-image') === 'none') {
-              $el.css('background-image', 'url(' + src + ')')
-                .css('background-color', '#000')
-                .css('background-position', 'center center')
-                .css('background-repeat', 'no-repeat');
-            }
+          if ($el.css('background-image') === 'none') {
+            $el.css('background-image', `url(${src})`)
+              .css('background-color', '#000')
+              .css('background-position', 'center center')
+              .css('background-repeat', 'no-repeat');
+          }
 
-            img.remove();
+          img.remove();
         });
         $('body').append(img);
-      };
+      }
 
-      if ($_o.loadthumbnail) {
+      if ($Options.loadthumbnail) {
         setBackgroundImg($that);
       }
 
-      if ($_o.videoseo === true) {
-        $that.append('<meta itemprop="contentLocation" content="'+ youtubeUrl( youid ) +'" />');
-        $that.append('<meta itemprop="embedUrl" content="'+ emu +'" />');
-        $that.append('<meta itemprop="thumbnail" content="'+ getThumbnailUrl() +'" />');
+      if ($Options.videoseo === true) {
+        $that.append(`<meta itemprop="contentLocation" content="${youtubeUrl(videoId)}" />`);
+        $that.append(`<meta itemprop="embedUrl" content="${emu}" />`);
+        $that.append(`<meta itemprop="thumbnail" content="${getThumbnailUrl()}" />`);
 
-        $.getJSON('https://gdata.youtube.com/feeds/api/videos/'+youid+'?v=2&alt=jsonc&callback=?',function( data ){
-            $that.append('<meta itemprop="datePublished" content="'+ data.data.uploaded +'" />');
-            $that.append('<meta itemprop="duration" content="'+ data.data.duration +'" />');
-            $that.append('<meta itemprop="aggregateRating" content="'+ data.data.rating +'" />');
-            // TODO: Retrieve and use even more data for Video SEO.
-              // Get possible response data with //www.jsoneditoronline.org/ and //gdata.youtube.com/feeds/api/videos/pk99sSGF0YE?v=2&alt=jsonc
+        $.getJSON(`https://gdata.youtube.com/feeds/api/videos/${videoId}?v=2&alt=jsonc&callback=?`, (data) => {
+          $that.append(`<meta itemprop="datePublished" content="${data.data.uploaded}" />`);
+          $that.append(`<meta itemprop="duration" content="${data.data.duration}" />`);
+          $that.append(`<meta itemprop="aggregateRating" content="${data.data.rating}" />`);
+          // TODO: Retrieve and use even more data for Video SEO.
+          // Get possible response data with //www.jsoneditoronline.org/ and
+          // gdata.youtube.com/feeds/api/videos/pk99sSGF0YE?v=2&alt=jsonc
         });
-
       }
 
-      $that.attr('id', youid + index);
-      $that.attr('href', youtubeUrl( youid ) + (start ? '#t=' + start + 's' : ''));
+      $that.attr('id', videoId + index);
+      $that.attr('href', youtubeUrl(videoId) + (start ? `#t=${start}s` : ''));
 
 
       (function generateUrl() {
-        var theme = '',
-            colour = '',
-            postroll = '',
-            playlist = '',
-            showinfo, relations, controls, loadpolicy, modestbranding;
+        let theme = '';
+        let colour = '';
+        let postroll = '';
+        let playlist = '';
 
         /*
          * Configure URL parameters
          */
-        if ($_o.theme !== undefined && $_o.theme !== theme && $_o.theme !== 'dark') {
-          theme = '&theme=' + $_o.theme;
+        if ($Options.theme !== undefined && $Options.theme !== theme && $Options.theme !== 'dark') {
+          theme = `&theme=${$Options.theme}`;
         }
-        if ($_o.colour !== undefined && $_o.colour !== colour && $_o.colour !== 'red') {
-          colour = '&color=' + $_o.colour;
+        if ($Options.colour !== undefined && $Options.colour !== colour && $Options.colour !== 'red') {
+          colour = `&color=${$Options.colour}`;
         }
-        showinfo = $_o.showinfo ? '' : '&showinfo=0';
-        relations = $_o.relations ? '' : '&rel=0';
-        controls = $_o.controls ? '' : '&controls=0';
-        loadpolicy = $_o.loadpolicy ? '' : '&iv_load_policy=3';
-        modestbranding = $_o.modestbranding ? '&modestbranding=1' : '';
+
+        const showinfo = $Options.showinfo ? '' : '&showinfo=0';
+        const relations = $Options.relations ? '' : '&rel=0';
+        const controls = $Options.controls ? '' : '&controls=0';
+        const loadpolicy = $Options.loadpolicy ? '' : '&iv_load_policy=3';
+        const modestbranding = $Options.modestbranding ? '&modestbranding=1' : '';
 
         /*
          * Configure URL parameter 'playlist'
          */
-        if (preroll !== youid) {
-          preroll = youid + ',';
+        if (preroll !== videoId) {
+          preroll = `${videoId},`;
         } else {
           preroll = '';
         }
-        if (($_o.postroll !== undefined) && ($_o.postroll !== postroll)) {
-          postroll = $_o.postroll;
+        if (($Options.postroll !== undefined) && ($Options.postroll !== postroll)) {
+          ({ postroll } = $Options);
         }
         if ((preroll !== '') || (postroll !== '')) {
-          playlist = '&playlist=' + preroll + postroll;
+          playlist = `&playlist=${preroll}${postroll}`;
         }
 
         /*
          * Generate URL
          */
-        emu += ((emu.indexOf('?') === -1) ? '?' : '&') + 'autoplay=1' + theme + colour + controls + loadpolicy + modestbranding + showinfo + relations + playlist + embedstart;
-      })();
-
+        emu += `${(emu.indexOf('?') === -1) ? '?' : '&'}autoplay=1${theme}${colour}${controls}${loadpolicy}${modestbranding}${showinfo}${relations}${playlist}${embedstart}`;
+      }());
 
       /*
        * Generate iFrame
        */
-      var videoFrame = '<iframe width="' + parseInt($that.css("width")) + '" height="' + parseInt($that.css("height")) + '" style="vertical-align:top;" src="' + emu + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      const videoFrame = `<iframe width="${parseInt($that.css('width'), 10)}" height="${parseInt($that.css('height'), 10)}" style="vertical-align:top;" src="${emu}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 
       /*
        * Register "onclick" event handler
        */
-      $(this).on( "click", function() {
+      $that.on('click', (event) => {
+        event.preventDefault();
 
-        removePlayerControls(this);
-        removeBranding(this);
+        const eventTarget = event.target;
+        removePlayerControls(eventTarget);
+        removeBranding(eventTarget);
 
-        $('#' + youid + index).replaceWith( videoFrame );
-        if (typeof responsiveVideos.resize === 'function' && $_o.responsive === true) {
+        $(`#${videoId}${index}`).replaceWith(videoFrame);
+        if (typeof responsiveVideos.resize === 'function' && $Options.responsive === true) {
           responsiveVideos.resize();
         }
         return false;
       });
-
-      var removePlayerControls = function( element ) {
-        $(element).removeClass(classPreviewYoutube);
-      };
-      var removeBranding = function( element ) {
-        $(element).prev( classBrandingDot ).remove();
-      };
     });
-
-  };
-
+  }
 
   /*
    * Ensure that a handler is run before any other registered handlers,
@@ -349,92 +356,48 @@
    * As seen on https://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
    * and on https://gist.github.com/infostreams/6540654
    */
-  $.fn.bindFirst = function(which, handler) {
-        // ensures a handler is run before any other registered handlers,
-        // independent of the order in which they were bound
-        var $el = $(this);
-        $el.unbind(which, handler);
-        $el.bind(which, handler);
+  // eslint-disable-next-line no-param-reassign,func-names
+  $.fn.bindFirst = function (which, handler) {
+    // ensures a handler is run before any other registered handlers,
+    // independent of the order in which they were bound
+    const $el = $(this);
+    $el.unbind(which, handler);
+    $el.bind(which, handler);
 
-        var events = $._data($el[0]).events;
-        var registered = events[which];
-        registered.unshift(registered.pop());
+    // eslint-disable-next-line no-underscore-dangle
+    const { events } = $._data($el[0]);
+    const registered = events[which];
+    registered.unshift(registered.pop());
 
-        events[which] = registered;
-      };
-
-  /*
-   * The following code bases on "Responsive Video Embeds" by Kevin Leary, www.kevinleary.net, WordPress development in Boston, MA
-   */
-  var responsiveVideos = {
-
-    config: {
-      container: '.container-lazyload',
-      selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-div'
-    },
-
-    init: function() {
-      if ( responsiveVideos.config.container.length > 0 ) {
-        $( window ).on( 'resize', responsiveVideos.resize );
-        // Use bindFirst() to ensure that other plugins like Inline Comments work correctly (in case they depend on the video heights)
-        $( window ).bindFirst( 'load', function() { responsiveVideos.resize(); } );
-        $( window ).on( 'load', function() {
-          responsiveVideos.resize();
-          markInitialized();
-        } );
-      }
-    },
-
-    resize: function() {
-        $( responsiveVideos.config.container ).find( responsiveVideos.config.selector ).each( function () {
-
-        var $this = $(this);
-        var width = $this.parent().width();
-        var height = Math.round( width * videoratio );
-
-        $this.attr( 'height', height );
-        $this.attr( 'width', width );
-        $this.css({
-            'height': height,
-            'width': width,
-          });
-
-      });
-    },
-
+    events[which] = registered;
   };
 
-  $(function() {
-    lazyload_youtube.init(lazyload_video_settings.youtube);
+  function init(options) {
+    mergeOptions(options);
+
+    /*
+     * Use ajaxStop function to prevent plugin from breaking when another plugin uses Ajax
+     */
+    $(document).ready(load()).ajaxStop(() => {
+      load();
+      if (typeof responsiveVideos.resize === 'function' && $Options.responsive === true) {
+        responsiveVideos.resize();
+      }
+      markInitialized();
+    });
+
+    if (typeof responsiveVideos.init === 'function' && $Options.responsive === true) {
+      responsiveVideos.init();
+    } else {
+      markInitialized();
+    }
+
+    if (typeof $Options.callback === 'function') {
+      $Options.callback();
+    }
+  }
+
+  $(() => {
+    init(lazyload_video_settings.youtube);
   });
-
-//  /*
-//   * Speed test
-//   * Exemplary usage:
-//  // var setEmbedParamsTest = new SpeedTest(setEmbedParams, null, 500000);
-//  // setEmbedParamsTest.startTest();
-//  */
-//  function SpeedTest( testImplement, testParams, repititions ) {
-//    this.testImplement = testImplement;
-//    this.testParams = testParams;
-//    this.repititions = repititions || 10000;
-//    this.average = 0;
-//  }
-//
-//  SpeedTest.prototype = {
-//    startTest: function() {
-//      var beginTime, endTime, sumTimes = 0;
-//      for (var i = 0, x = this.repititions; i < x; i++) {
-//        beginTime = +new Date(); // Use "+" to return date in ms
-//        this.testImplement(this.testParams);
-//        endTime = +new Date();
-//        sumTimes += endTime - beginTime;
-//      }
-//      this.average = sumTimes / this.repititions;
-//      return console.log("Average execution across " +
-//                          this.repititions + ": " +
-//                          this.average);
-//    }
-//  };
-
-}(window.lazyload_youtube = window.lazyload_youtube || {}, jQuery));
+})(jQuery);
