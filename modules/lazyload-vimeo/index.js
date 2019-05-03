@@ -38,6 +38,10 @@
      */
     $(document).ready(doload_llv()).ajaxStop(function () {
       doload_llv();
+      if (typeof responsiveVideos.resize === 'function' && $_o.responsive === true ) {
+        responsiveVideos.resize();
+      }
+      markInitialized();
     });
 
     if (typeof responsiveVideos.init === 'function' && $_o.responsive === true) {
@@ -229,7 +233,7 @@
    */
   var responsiveVideos = {
     config: {
-      container: $('.container-lazyload'),
+      container: '.container-lazyload',
       selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-div'
     },
 
@@ -249,7 +253,7 @@
     },
 
     resize: function () {
-      $(responsiveVideos.config.selector, responsiveVideos.config.container).each(function () {
+      $( responsiveVideos.config.container ).find( responsiveVideos.config.selector ).each(function () {
 
         var $this = $(this);
         var width = $this.parent().width();
