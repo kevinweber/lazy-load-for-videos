@@ -10,7 +10,6 @@
     "sourceType": "module"
   },
   "globals": {
-    "jQuery": true,
     "lazyload_video_settings": true
   },
   "rules": {
