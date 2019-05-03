@@ -89,41 +89,89 @@
     },
   };
 
+  function getVideoUrl(preroll, videoId, emu, embedstart) {
+    let theme = '';
+    let colour = '';
+    let postroll = '';
+    let playlist = '';
+    let overridePreroll = preroll;
+
+    /*
+     * Configure URL parameters
+     */
+    if ($Options.theme !== undefined && $Options.theme !== theme && $Options.theme !== 'dark') {
+      theme = `&theme=${$Options.theme}`;
+    }
+    if ($Options.colour !== undefined && $Options.colour !== colour && $Options.colour !== 'red') {
+      colour = `&color=${$Options.colour}`;
+    }
+
+    const showinfo = $Options.showinfo ? '' : '&showinfo=0';
+    const relations = $Options.relations ? '' : '&rel=0';
+    const controls = $Options.controls ? '' : '&controls=0';
+    const loadpolicy = $Options.loadpolicy ? '' : '&iv_load_policy=3';
+    const modestbranding = $Options.modestbranding ? '&modestbranding=1' : '';
+
+    /*
+     * Configure URL parameter 'playlist'
+     */
+    if (preroll !== videoId) {
+      overridePreroll = `${videoId},`;
+    } else {
+      overridePreroll = '';
+    }
+    if (($Options.postroll !== undefined) && ($Options.postroll !== postroll)) {
+      ({ postroll } = $Options);
+    }
+    if ((preroll !== '') || (postroll !== '')) {
+      playlist = `&playlist=${overridePreroll}${postroll}`;
+    }
+
+    /*
+     * Generate URL
+     */
+    return `${emu}${(emu.indexOf('?') === -1) ? '?' : '&'}autoplay=1${theme}${colour}${controls}${loadpolicy}${modestbranding}${showinfo}${relations}${playlist}${embedstart}`;
+  }
+
+  /*
+   * Load parameters from user's original Youtube URL
+   */
+  function getEmbedParams(href) {
+    let params = '';
+
+    [, params] = href.split('/embed/');
+    if (!params) {
+      [, params] = href.split('://youtu.be/');
+    }
+    if (!params) {
+      params = href.split('v=')[1].replace(/&/, '?');
+    }
+
+    return params;
+  }
+
+  function getVideoIdPreroll(preroll, defaultParams) {
+    if ($Options.preroll !== undefined && $Options.preroll !== preroll) {
+      return $Options.preroll;
+    }
+
+    // Fallback when no preroll ID should be loaded
+    return defaultParams;
+  }
+
   function load() {
     $('a.lazy-load-youtube').each((index, item) => {
       const $that = $(item);
       const $thatHref = $that.attr('href');
-      let embedparms;
-      let preroll = '';
-
-      /*
-       * Load parameters from user's original Youtube URL
-       */
-      (function setEmbedParams() {
-        [, embedparms] = $thatHref.split('/embed/');
-        if (!embedparms) {
-          [, embedparms] = $thatHref.split('://youtu.be/');
-        }
-        if (!embedparms) {
-          embedparms = $thatHref.split('v=')[1].replace(/&/, '?');
-        }
-      }());
+      let embedparms = getEmbedParams($thatHref);
+      const preroll = '';
 
       /*
        * Load Youtube ID
        */
       const videoId = embedparms.split('?')[0].split('#')[0];
 
-      (function setvideoIdPreroll() {
-        if ($Options.preroll !== undefined && $Options.preroll !== preroll) {
-          ({ preroll } = $Options);
-        } else {
-          // Fallback when no preroll ID should be loaded
-          preroll = embedparms;
-        }
-      }());
-
-      let emu = `https://www.youtube.com/embed/${preroll}`;
+      const emu = `https://www.youtube.com/embed/${getVideoIdPreroll(preroll, embedparms)}`;
 
       /*
        * Load plugin info
@@ -219,7 +267,6 @@
 
       $that.prepend(`<div aria-hidden="true" style="height:${getHeight($that)}px;width:${getWidth($that)}px;" class="lazy-load-div"></div>`).addClass($Options.buttonstyle);
 
-
       /*
        * Set thumbnail URL
        */
@@ -282,54 +329,11 @@
       $that.attr('id', videoId + index);
       $that.attr('href', youtubeUrl(videoId) + (start ? `#t=${start}s` : ''));
 
-
-      (function generateUrl() {
-        let theme = '';
-        let colour = '';
-        let postroll = '';
-        let playlist = '';
-
-        /*
-         * Configure URL parameters
-         */
-        if ($Options.theme !== undefined && $Options.theme !== theme && $Options.theme !== 'dark') {
-          theme = `&theme=${$Options.theme}`;
-        }
-        if ($Options.colour !== undefined && $Options.colour !== colour && $Options.colour !== 'red') {
-          colour = `&color=${$Options.colour}`;
-        }
-
-        const showinfo = $Options.showinfo ? '' : '&showinfo=0';
-        const relations = $Options.relations ? '' : '&rel=0';
-        const controls = $Options.controls ? '' : '&controls=0';
-        const loadpolicy = $Options.loadpolicy ? '' : '&iv_load_policy=3';
-        const modestbranding = $Options.modestbranding ? '&modestbranding=1' : '';
-
-        /*
-         * Configure URL parameter 'playlist'
-         */
-        if (preroll !== videoId) {
-          preroll = `${videoId},`;
-        } else {
-          preroll = '';
-        }
-        if (($Options.postroll !== undefined) && ($Options.postroll !== postroll)) {
-          ({ postroll } = $Options);
-        }
-        if ((preroll !== '') || (postroll !== '')) {
-          playlist = `&playlist=${preroll}${postroll}`;
-        }
-
-        /*
-         * Generate URL
-         */
-        emu += `${(emu.indexOf('?') === -1) ? '?' : '&'}autoplay=1${theme}${colour}${controls}${loadpolicy}${modestbranding}${showinfo}${relations}${playlist}${embedstart}`;
-      }());
-
       /*
        * Generate iFrame
        */
-      const videoFrame = `<iframe width="${parseInt($that.css('width'), 10)}" height="${parseInt($that.css('height'), 10)}" style="vertical-align:top;" src="${emu}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      const videoUrl = getVideoUrl(preroll, videoId, emu, embedstart);
+      const videoFrame = `<iframe width="${parseInt($that.css('width'), 10)}" height="${parseInt($that.css('height'), 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 
       /*
        * Register "onclick" event handler
