@@ -8,10 +8,10 @@ const IS_DEV = (process.env.NODE_ENV === 'development');
 const config = {
   mode: IS_DEV ? 'development' : 'production',
   entry: {
-    admin: './modules/admin/index.js',
-    'lazyload-all': './modules/lazyload-all/index.js',
-    'lazyload-vimeo': './modules/lazyload-vimeo/index.js',
-    'lazyload-youtube': './modules/lazyload-youtube/index.js',
+    admin: './modules/admin/webpackEntry.js',
+    'lazyload-all': './modules/lazyload-all/webpackEntry.js',
+    'lazyload-vimeo': './modules/lazyload-vimeo/webpackEntry.js',
+    'lazyload-youtube': './modules/lazyload-youtube/webpackEntry.js',
   },
   module: {
     rules: [{

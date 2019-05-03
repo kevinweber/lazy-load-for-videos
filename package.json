@@ -7,7 +7,7 @@
     "production": "NODE_ENV=production webpack --config ./webpack.config.js -p",
     "development": "NODE_ENV=development webpack --progress --colors --config ./webpack.config.js",
     "test": "jest",
-    "watch:test": "npm run test -- --watchAll",
+    "watch:test": "npm run test -- --watch",
     "watch": "npm run development -- --watch"
   },
   "repository": {
