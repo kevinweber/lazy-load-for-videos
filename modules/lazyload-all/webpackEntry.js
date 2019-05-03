@@ -1,4 +1,5 @@
 /* global lazyload_video_settings */
+// INFO: "lazyload_video_settings" is added inline into the page using PHP
 import './styles.scss';
 
 import jQueryBindFirst from '../utils/jQueryBindFirst';

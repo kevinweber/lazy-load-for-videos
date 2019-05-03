@@ -3,10 +3,10 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load
 Requires at least: 3.5
-Tested up to: 5.1.0
+Tested up to: 5.2.0
 Stable tag: 2.6.0
 License: GPL v3
-License URI: http://www.gnu.org/copyleft/gpl.html
+License URI: https://www.gnu.org/copyleft/gpl.html
 
 Speed up your site by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
 
@@ -44,7 +44,7 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 = Translators =
 * Serbian (sr_RS) - [Ogi Djuraskovic](//firstsiteguide.com/)
 
-If you have created your own language pack, or have an update of an existing one, you can [send me](https://www.kweber.com/contact/) your gettext PO and MO so that I can bundle it into my plugin. You can download the latest POT file [from here](http://plugins.svn.wordpress.org/lazy-load-for-videos/trunk/languages/lazy-load-for-videos.pot).
+If you have created your own language pack, or have an update of an existing one, you can [send me](https://www.kweber.com/contact/) your gettext PO and MO so that I can bundle it into my plugin. You can download the latest POT file [from here](https://plugins.svn.wordpress.org/lazy-load-for-videos/trunk/languages/lazy-load-for-videos.pot).
 
 
 == Installation ==
@@ -60,7 +60,7 @@ If you don't see a preview image instead of the Youtube/Vimeo video, open the po
 Optionally: Sign up to the Lazy Load for Videos newsletter to get notified about major updates.
 
 NOTICE - this is important to make your videos work as expected:
-Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
+Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: https://codex.wordpress.org/Embeds)
 Inserting a Youtube iframe (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
 
 
@@ -100,7 +100,7 @@ Yes!
 PageSpeed Insights is a service by Google to help you optimize your site's performance. You can analyse your site using a browser extension or online, more information: https://developers.google.com/speed/pagespeed/
 
 = How to embed videos in WordPress? =
-Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: http://codex.wordpress.org/Embeds)
+Easily insert the URL to your content (e.g. Youtube video) into a post or page. The URL must be on its own line and must not be hyperlinked. "WordPress will automatically turn [the URL] into a YouTube embed when the post is viewed." (Source: https://codex.wordpress.org/Embeds)
 Inserting a Youtube `<iframe>` (instead of the plain URL) is deprecated and not supported by Lazy Load for Videos.
 
 = How to disable lazy-loading of a single video? =
@@ -134,8 +134,8 @@ Similar to a single video, insert the playlist URL in the following format:
 Note that playlists are not working when you're using the pre-/post-roll feature yet.
 
 = Known bugs - this plugin may not work correctly when one of the following plugins is activated... =
-* "YouTube" (http://wordpress.org/extend/plugins/youtube-embed-plus/)
-* "Shortcode Embeds" extension within Jetpack, see answer above (http://jetpack.me/support/shortcode-embeds/)
+* "YouTube" (https://wordpress.org/extend/plugins/youtube-embed-plus/)
+* "Shortcode Embeds" extension within Jetpack, see answer above (https://jetpack.me/support/shortcode-embeds/)
 * "BuddyPress" (https://wordpress.org/plugins/buddypress/)
 * Thumbnails from Vimeo videos in "Privacy Mode" are not supported because Vimeo’s API doesn’t deliver thumbnails for those videos.
 * [???]
@@ -143,9 +143,14 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
+= 2.7.0 =
+* Rewrite large portions of the JavaScript code to make maintenance and open source contributions easier and less risky.
+* Improve Ajax support, including support for Ajax Page Loader plugin. Thanks to @devattendant's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/19).
+* Remove option to display a credit link in the top right corner of each video. This reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
+
 = 2.6.0 =
 * New feature: Hide Youtube logo from control bar by using Youtube's modest branding feature.
-* Extend iframe code with allow attribute and values recommended by Youtube
+* Extend iframe code with allow attribute and values recommended by Youtube.
 
 = 2.5.1 =
 * Use https for thumbnails.
@@ -181,7 +186,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 * Set the default margin-bottom for iframes/embeds to "0".
 
 = 2.2.2.1 =
-* Now you can add a custom start time to each video URL. Use it like this: ...url.../watch?v=VIDEO_ID&t=XhYmZs or .../watch?v=VIDEO_ID&t=Z (replace X/Y/Z with hours/minutes/seconds). Pull request from @R33D3M33R on Github (https://github.com/kevinweber/lazy-load-for-videos/pull/8).
+* Now you can add a custom start time to each video URL. Use it like this: ...url.../watch?v=VIDEO_ID&t=XhYmZs or .../watch?v=VIDEO_ID&t=Z (replace X/Y/Z with hours/minutes/seconds). Thanks to @R33D3M33R's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/8).
 * Removed "http" from URLs for https compatibility.
 
 = 2.2.1.2 =
@@ -197,7 +202,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 = 2.2.0.4 =
 * Important: The wp_footer function in your theme is now required.
-* Pull request via Github: Merged code enhancements by @summatix. Combined several JavaScript files into one.
+* Combined several JavaScript files into one. Thanks to @summatix's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/5).
 * Added fallback by @summatix to load thumbnail with default quality when a high quality version is not available. Removed "Force maximum resolution" option because the fallback makes this feature unnecessary.
 * Made plugin translatable.
 
@@ -322,7 +327,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 * Bugfix: 'Infinite Scroll' plugins are compatible with this plugin now
 
 = 1.2 =
-* Added jQuery.noConflict to avoid some bugs (See: http://api.jquery.com/jQuery.noConflict)
+* Added jQuery.noConflict to avoid some bugs (See: https://api.jquery.com/jQuery.noConflict)
 * This plugin now uses jQuery that comes with WordPress
 
 = 1.1 =
