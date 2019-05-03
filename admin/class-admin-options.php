@@ -273,11 +273,10 @@ class Lazyload_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><?php esc_html_e( 'Attribution', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'give appropriate credit for my time-consuming efforts', LL_TD ); ?></span></th>
+						        <th scope="row"><?php esc_html_e( 'Attribution', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( "Are you thankful for this plugin? I've invested months and months of work. This plugin is 100% free and open source.", LL_TD ); ?></span></th>
 						        <td>
 									<?php $options = get_option( 'll_attribute' ); ?>
 									<input class="radio" type="radio" name="ll_attribute" value="none"<?php checked( 'none' == $options || empty($options) ); ?> /> <label for="none"><?php esc_html_e( 'No attribution: "I can not afford to give appropriate credit for this free plugin."', LL_TD ); ?></label><br><br>
-									<input class="radio" type="radio" name="ll_attribute" value="link"<?php checked( 'link' == $options ); ?> /> <label for="link"><?php esc_html_e( 'Link attribution: Display a subtle "i" (information link) that is placed in the top right of every video and helps that the plugin gets spread.', LL_TD ); ?></label><br><br>
 									<input class="radio" type="radio" name="ll_attribute" value="donate"<?php checked( 'donate' == $options ); ?> />
 									<label for="donate">
 										<?php esc_html_e( 'Donation: "I have donated already or will do so soon."', LL_TD ); ?>

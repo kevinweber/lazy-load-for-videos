@@ -8,8 +8,6 @@ const $ = window.jQuery || window.$;
 // Classes
 const classPreviewYoutube = 'preview-youtube';
 const classPreviewYoutubeDot = `.${classPreviewYoutube}`;
-const classBranding = 'lazyload-info-icon';
-const classBrandingDot = `.${classBranding}`;
 const classNotLoaded = 'js-lazyload--not-loaded';
 
 // Helpers
@@ -32,7 +30,6 @@ function mergeOptions(options) {
     videoseo: false,
     responsive: true,
     thumbnailquality: '0',
-    displaybranding: false,
     loadthumbnail: true,
     callback: null,
   },
@@ -45,9 +42,6 @@ function markInitialized() {
 
 function removePlayerControls(element) {
   $(element).removeClass(classPreviewYoutube);
-}
-function removeBranding(element) {
-  $(element).prev(classBrandingDot).remove();
 }
 
 /*
@@ -172,33 +166,6 @@ function load() {
     const videoId = embedparms.split('?')[0].split('#')[0];
 
     const emu = `https://www.youtube.com/embed/${getVideoIdPreroll(preroll, embedparms)}`;
-
-    /*
-     * Load plugin info
-     */
-    function loadPluginInfo() {
-      return `<a class="${classBranding}" href="https://www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>`;
-    }
-
-    /*
-     * Create info element
-     */
-    function createPluginInfo() {
-      if (
-        ($Options.displaybranding === true)
-        // This prevents the site from creating unnecessary duplicate brandings
-        && ($that.siblings(classBrandingDot).length === 0)
-      ) {
-        // source = Video
-        const source = $that;
-        // element = Plugin info element
-        const element = $(loadPluginInfo());
-        // Prepend element to source
-        source.before(element);
-      }
-    }
-
-    createPluginInfo();
 
     function videoTitle() {
       if ($that.attr('data-video-title') !== undefined) {
@@ -343,7 +310,6 @@ function load() {
 
       const eventTarget = event.target;
       removePlayerControls(eventTarget);
-      removeBranding(eventTarget);
 
       $(`#${videoId}${index}`).replaceWith(videoFrame);
       if (typeof responsiveVideos.resize === 'function' && $Options.responsive === true) {

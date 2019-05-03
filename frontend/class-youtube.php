@@ -30,7 +30,6 @@ class Lazyload_Videos_Youtube {
 			'thumbnailquality' => $this->thumbnailquality(),
 			'preroll'          => get_option( 'lly_opt_player_preroll', '' ),
 			'postroll'         => get_option( 'lly_opt_player_postroll', '' ),
-			'displaybranding'  => ( get_option( 'll_attribute' ) == 'link' ),
 			'loadthumbnail'	 => $this->should_load_thumbnail(),
 			'callback'         => '<!--YOUTUBE_CALLBACK-->'
 		) );

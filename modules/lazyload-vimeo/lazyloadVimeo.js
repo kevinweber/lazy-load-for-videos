@@ -20,8 +20,6 @@ window.showThumb = (data) => {
 // Classes
 const classPreviewVimeo = 'preview-vimeo';
 const classPreviewVimeoDot = `.${classPreviewVimeo}`;
-const classBranding = 'lazyload-info-icon';
-const classBrandingDot = `.${classBranding}`;
 const classNotLoaded = 'js-lazyload--not-loaded';
 
 // Helpers
@@ -38,43 +36,14 @@ function mergeOptions(options) {
     playercolour: '',
     videoseo: false,
     responsive: true,
-    displayBranding: false,
     loadthumbnail: true,
     callback: null,
   },
   options);
 }
 
-/*
- * Load plugin info
- */
-function loadPluginInfo() {
-  return `<a class="${classBranding}" href="https://www.kweber.com/lazy-load-videos/" title="Lazy Load for Videos by Kevin Weber" target="_blank">i</a>`;
-}
-
-/*
- * Create info element
- */
-function createPluginInfo() {
-  if (
-    ($Options.displayBranding === true)
-    // This prevents the site from creating unnecessary duplicate brandings
-    && ($(classPreviewVimeoDot).siblings(classBrandingDot).length === 0)
-  ) {
-    // source = Video
-    const source = $(classPreviewVimeoDot);
-    // element = Plugin info element
-    const element = $(loadPluginInfo());
-    // Prepend element to source
-    source.before(element);
-  }
-}
-
 function removePlayerControls(element) {
   $(element).removeClass(classPreviewVimeo);
-}
-function removeBranding(element) {
-  $(element).prev(classBrandingDot).remove();
 }
 
 function vimeoUrl(videoId) {
@@ -202,7 +171,6 @@ function vimeoCreatePlayer() {
     const vid = $(event.target).attr('id');
 
     removePlayerControls(item);
-    removeBranding(item);
 
     let playercolour = '';
     if ($Options.playercolour !== playercolour) {
@@ -219,7 +187,6 @@ function vimeoCreatePlayer() {
 
 function load() {
   vimeoCreateThumbProcess();
-  createPluginInfo();
 
   // Replace thumbnail with iframe
   vimeoCreatePlayer();
