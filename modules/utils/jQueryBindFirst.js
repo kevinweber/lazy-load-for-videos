@@ -5,7 +5,7 @@
  * and on https://gist.github.com/infostreams/6540654
  */
 export default function ($) {
-  if ($) {
+  if ($ && $.fn) {
     // eslint-disable-next-line no-param-reassign,func-names
     $.fn.bindFirst = function (which, handler) {
       // ensures a handler is run before any other registered handlers,
