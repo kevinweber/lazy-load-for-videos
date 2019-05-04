@@ -21,7 +21,6 @@ window.showThumb = (data) => {
 
 // Classes
 const classPreviewVimeo = 'preview-vimeo';
-const classPreviewVimeoDot = `.${classPreviewVimeo}`;
 
 let pluginOptions;
 const defaultPluginOptions = {
@@ -33,7 +32,7 @@ const defaultPluginOptions = {
 };
 
 function removePlayerControls(element) {
-  $(element).removeClass(classPreviewVimeo);
+  element.classList.remove(classPreviewVimeo);
 }
 
 function vimeoUrl(videoId) {
@@ -50,46 +49,39 @@ function vimeoCallbackUrl(thumbnailId) {
   return `https://vimeo.com/api/v2/video/${thumbnailId}.json`;
 }
 
-function vimeoLoadingThumb($container, id) {
-  let script;
-
+function vimeoLoadingThumb(videoLinkElement, id) {
   if (lazyload_video_settings.vimeo.loadthumbnail) {
-    script = document.createElement('script');
-    script.type = 'text/javascript';
+    const script = document.createElement('script');
     script.src = `${vimeoCallbackUrl(id)}.json?callback=showThumb`;
-
-    $container.after(script);
+    videoLinkElement.parentNode.insertBefore(script, videoLinkElement.firstChild);
   }
 
   let info = '';
   if (lazyload_video_settings.vimeo.show_title) {
-    const videoTitle = $container.attr('data-video-title');
+    const videoTitle = videoLinkElement.getAttribute('data-video-title');
     info = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo" itemprop="name">${videoTitle}</span></div>`;
   }
 
-  $container
-    .prepend(info)
-    .prepend('<div aria-hidden="true" class="lazy-load-div"></div>')
-    .addClass(pluginOptions.buttonstyle);
+  const lazyloadDiv = createElements(`${info}<div aria-hidden="true" class="lazy-load-div"></div>`);
+  videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
+  videoLinkElement.classList.add(pluginOptions.buttonstyle);
 }
 
-function vimeoCreateThumbProcess() {
-  $(classPreviewVimeoDot).each((index, item) => {
-    const $item = $(item);
-    const vid = $item.attr('id');
+function vimeoCreateThumbProcess(videoLinkElement) {
+  const previewItem = videoLinkElement;
+  const vid = previewItem.getAttribute('id');
 
-    // Remove no longer needed title (title is necessary for preview in text editor)
-    $item.empty();
+  // Remove no longer needed title (title is necessary for preview in text editor)
+  previewItem.innerHTML = '';
 
-    vimeoLoadingThumb($item, vid);
-  });
+  vimeoLoadingThumb(previewItem, vid);
 }
 
-function vimeoCreatePlayer() {
-  $(classPreviewVimeoDot).on('click', (event) => {
+function vimeoCreatePlayer(videoLinkElement) {
+  videoLinkElement.addEventListener('click', (event) => {
     event.preventDefault();
     const item = event.target;
-    const vid = $(event.target).attr('id');
+    const vid = item.getAttribute('id');
 
     removePlayerControls(item);
 
@@ -99,7 +91,9 @@ function vimeoCreatePlayer() {
       playercolour = `&color=${pluginOptions.playercolour}`;
     }
 
-    $(item).replaceWith(`<iframe src="${vimeoUrl(vid)}?autoplay=1${playercolour}" style="height:${parseInt($(`#${vid}`).css('height'), 10)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>`);
+    const videoIFrame = createElements(`<iframe src="${vimeoUrl(vid)}?autoplay=1${playercolour}" style="height:${parseInt(item.clientHeight, 10)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>`);
+    item.parentNode.replaceChild(videoIFrame, item);
+
     if (pluginOptions.responsive === true) {
       resizeResponsiveVideos();
     }
@@ -107,10 +101,11 @@ function vimeoCreatePlayer() {
 }
 
 function load() {
-  vimeoCreateThumbProcess();
-
-  // Replace thumbnail with iframe
-  vimeoCreatePlayer();
+  findElements(`.${classPreviewVimeo}`).forEach((item) => {
+    vimeoCreateThumbProcess(item);
+    // Replace thumbnail with iframe
+    vimeoCreatePlayer(item);
+  });
 }
 
 const lazyloadVimeo = (options) => {
