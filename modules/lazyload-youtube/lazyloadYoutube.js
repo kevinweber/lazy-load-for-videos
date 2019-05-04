@@ -6,11 +6,14 @@ import { init, resizeResponsiveVideos, videoratio } from '../shared/video';
  */
 
 const $ = window.jQuery || window.$;
+// Select one element
+const $Test = domSelector => document.querySelector(domSelector);
+// Select multiple elements
+const $$Test = domSelector => [].slice.call(document.querySelectorAll(domSelector));
 
 // Classes
 const classPreviewYoutube = 'preview-youtube';
 const classPreviewYoutubeDot = `.${classPreviewYoutube}`;
-const classNotLoaded = 'js-lazyload--not-loaded';
 
 // Helpers
 let thumbnailurl = '';
@@ -35,11 +38,13 @@ const defaultPluginOptions = {
 };
 
 function markInitialized() {
-  $(classPreviewYoutubeDot).parent().removeClass(classNotLoaded);
+  $$Test(classPreviewYoutubeDot).forEach((item) => {
+    item.parentNode.classList.remove('js-lazyload--not-loaded');
+  });
 }
 
 function removePlayerControls(element) {
-  $(element).removeClass(classPreviewYoutube);
+  element.classList.remove(classPreviewYoutube);
 }
 
 function getVideoUrl(preroll, videoId, emu, embedstart) {
@@ -113,7 +118,7 @@ function getVideoIdPreroll(preroll, defaultParams) {
 }
 
 function load() {
-  $('a.lazy-load-youtube').each((index, item) => {
+  $$Test('a.lazy-load-youtube').forEach((item, index) => {
     const $that = $(item);
     const $thatHref = $that.attr('href');
     let embedparms = getEmbedParams($thatHref);
@@ -210,31 +215,37 @@ function load() {
       return thumbnailurl;
     }
 
-    function setBackgroundImg($el) {
+    function setBackgroundImg(element) {
       let src = getThumbnailUrl();
-      const img = $(`<img style="display:none" src="${src}"/>`);
 
-      img.load(() => {
+      // Create a temporary image. Once it is loaded, we can update the video element
+      // using the src of this temporary image, then remove this temporary image.
+      const img = document.createElement('img');
+      img.setAttribute('style', 'display:none');
+      img.setAttribute('src', src);
+
+      img.addEventListener('load', () => {
         // If the max resolution thumbnail is not available, fall back to smaller size.
         // But note that we'll still see an 404 error in the console in this case.
-        if (img.width() === 120) {
+        if (img.width === 120) {
           src = src.replace('maxresdefault', '0');
         }
 
-        if ($el.css('background-image') === 'none') {
-          $el.css('background-image', `url(${src})`)
-            .css('background-color', '#000')
-            .css('background-position', 'center center')
-            .css('background-repeat', 'no-repeat');
+        if (!element.style.backgroundImage) {
+          element.style.backgroundImage = `url(${src})`;
+          element.style.backgroundColor = '#000';
+          element.style.backgroundPosition = 'center';
+          element.style.backgroundRepeat = 'no-repeat';
         }
 
-        img.remove();
+        img.parentNode.removeChild(img);
       });
-      $('body').append(img);
+
+      document.body.appendChild(img);
     }
 
     if (pluginOptions.loadthumbnail) {
-      setBackgroundImg($that);
+      setBackgroundImg($that[0]);
     }
 
     if (pluginOptions.videoseo === true) {
