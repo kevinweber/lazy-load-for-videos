@@ -15,7 +15,6 @@ let thumbnailurl = '';
 
 let pluginOptions;
 const defaultPluginOptions = {
-  theme: 'dark', // possible: dark, light
   colour: 'red', // possible: red, white
   controls: true,
   loadpolicy: true,
@@ -36,7 +35,6 @@ function removePlayerControls(element) {
 }
 
 function getVideoUrl(preroll, videoId, emu, embedstart) {
-  let theme = '';
   let colour = '';
   let postroll = '';
   let playlist = '';
@@ -45,9 +43,6 @@ function getVideoUrl(preroll, videoId, emu, embedstart) {
   /*
    * Configure URL parameters
    */
-  if (pluginOptions.theme !== undefined && pluginOptions.theme !== theme && pluginOptions.theme !== 'dark') {
-    theme = `&theme=${pluginOptions.theme}`;
-  }
   if (pluginOptions.colour !== undefined && pluginOptions.colour !== colour && pluginOptions.colour !== 'red') {
     colour = `&color=${pluginOptions.colour}`;
   }
@@ -76,7 +71,7 @@ function getVideoUrl(preroll, videoId, emu, embedstart) {
   /*
    * Generate URL
    */
-  return `${emu}${(emu.indexOf('?') === -1) ? '?' : '&'}autoplay=1${theme}${colour}${controls}${loadpolicy}${modestbranding}${showinfo}${relations}${playlist}${embedstart}`;
+  return `${emu}${(emu.indexOf('?') === -1) ? '?' : '&'}autoplay=1${colour}${controls}${loadpolicy}${modestbranding}${showinfo}${relations}${playlist}${embedstart}`;
 }
 
 /*

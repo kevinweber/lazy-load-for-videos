@@ -18,7 +18,6 @@ class Lazyload_Videos_Youtube {
 	 */
 	function get_js_settings() {
 		return apply_filters( 'lly_change_options', array(
-			'theme'            => get_option( 'lly_opt_player_colour', 'dark' ),
 			'colour'           => get_option( 'lly_opt_player_colour_progress', 'red' ),
 			'showinfo'         => ! ( get_option( 'lly_opt_player_showinfo' ) == '1' ),
 			'relations'        => ! ( get_option( 'lly_opt_player_relations' ) == '1' ),

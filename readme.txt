@@ -145,8 +145,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 = 2.7.0 =
 * Rewrite large portions of the JavaScript code to make maintenance and open source contributions easier and less risky.
 * Improve Ajax support, including support for Ajax Page Loader plugin. Thanks to @devattendant's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/19).
-* Remove feature "Schema.org Markup"
-* Remove option to display a credit link in the top right corner of each video. This reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
+* Remove feature "Schema.org Markup" (was in beta)
+* Remove Youtube feature "Player colour" (was deprecated for a while)
+* Remove option to display a credit link in the top right corner of each video. This further reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
 
 = 2.6.0 =
 * New feature: Hide Youtube logo from control bar by using Youtube's modest branding feature.
