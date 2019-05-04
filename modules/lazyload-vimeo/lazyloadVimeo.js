@@ -29,18 +29,15 @@ function markInitialized() {
   $(classPreviewVimeoDot).parent().removeClass(classNotLoaded);
 }
 
-let $Options;
-function mergeOptions(options) {
-  $Options = $.extend({
-    buttonstyle: '',
-    playercolour: '',
-    videoseo: false,
-    responsive: true,
-    loadthumbnail: true,
-    callback: null,
-  },
-  options);
-}
+let pluginOptions;
+const defaultPluginOptions = {
+  buttonstyle: '',
+  playercolour: '',
+  videoseo: false,
+  responsive: true,
+  loadthumbnail: true,
+  callback: null,
+};
 
 function removePlayerControls(element) {
   $(element).removeClass(classPreviewVimeo);
@@ -61,7 +58,7 @@ function vimeoCallbackUrl(thumbnailId) {
 }
 
 function vimeoVideoSeo(id) {
-  if ($Options.videoseo === true) {
+  if (pluginOptions.videoseo === true) {
     $.getJSON(`${vimeoCallbackUrl(id)}?callback=?`, {
       format: 'json',
     }, (data) => {
@@ -91,7 +88,7 @@ function vimeoLoadingThumb($container, id) {
   }
 
   let itempropName = '';
-  if ($Options.videoseo === true) {
+  if (pluginOptions.videoseo === true) {
     itempropName = ' itemprop="name"';
   }
 
@@ -104,7 +101,7 @@ function vimeoLoadingThumb($container, id) {
   $container
     .prepend(info)
     .prepend(`<div aria-hidden="true" style="height:${parseInt($(`#${id}`).css('height'), 10)}px;width:${parseInt($(`#${id}`).css('width'), 10)}px;" class="lazy-load-div"></div>`)
-    .addClass($Options.buttonstyle);
+    .addClass(pluginOptions.buttonstyle);
 
   vimeoVideoSeo(id);
 }
@@ -173,13 +170,13 @@ function vimeoCreatePlayer() {
     removePlayerControls(item);
 
     let playercolour = '';
-    if ($Options.playercolour !== playercolour) {
-      $Options.playercolour = filterDotHash($Options.playercolour);
-      playercolour = `&color=${$Options.playercolour}`;
+    if (pluginOptions.playercolour !== playercolour) {
+      pluginOptions.playercolour = filterDotHash(pluginOptions.playercolour);
+      playercolour = `&color=${pluginOptions.playercolour}`;
     }
 
     $(item).replaceWith(`<iframe src="${vimeoUrl(vid)}?autoplay=1${playercolour}" style="height:${parseInt($(`#${vid}`).css('height'), 10)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>`);
-    if (typeof responsiveVideos.resize === 'function' && $Options.responsive === true) {
+    if (typeof responsiveVideos.resize === 'function' && pluginOptions.responsive === true) {
       responsiveVideos.resize();
     }
   });
@@ -193,27 +190,30 @@ function load() {
 }
 
 const init = (options) => {
-  mergeOptions(options);
+  pluginOptions = {
+    ...defaultPluginOptions,
+    ...options,
+  };
 
   /*
    * Use ajaxStop function to prevent plugin from breaking when another plugin uses Ajax
    */
   $(document).ready(load()).ajaxStop(() => {
     load();
-    if (typeof responsiveVideos.resize === 'function' && $Options.responsive === true) {
+    if (typeof responsiveVideos.resize === 'function' && pluginOptions.responsive === true) {
       responsiveVideos.resize();
     }
     markInitialized();
   });
 
-  if (typeof responsiveVideos.init === 'function' && $Options.responsive === true) {
+  if (typeof responsiveVideos.init === 'function' && pluginOptions.responsive === true) {
     responsiveVideos.init();
   } else {
     markInitialized();
   }
 
-  if (typeof $Options.callback === 'function') {
-    $Options.callback();
+  if (typeof pluginOptions.callback === 'function') {
+    pluginOptions.callback();
   }
 };
 

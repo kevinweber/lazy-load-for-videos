@@ -14,27 +14,24 @@ const classNotLoaded = 'js-lazyload--not-loaded';
 const videoratio = 0.5625;
 let thumbnailurl = '';
 
-let $Options;
-function mergeOptions(options) {
-  $Options = $.extend({
-    theme: 'dark', // possible: dark, light
-    colour: 'red', // possible: red, white
-    controls: true,
-    loadpolicy: true,
-    modestbranding: false,
-    showinfo: true,
-    relations: true,
-    buttonstyle: '',
-    preroll: '',
-    postroll: '',
-    videoseo: false,
-    responsive: true,
-    thumbnailquality: '0',
-    loadthumbnail: true,
-    callback: null,
-  },
-  options);
-}
+let pluginOptions;
+const defaultPluginOptions = {
+  theme: 'dark', // possible: dark, light
+  colour: 'red', // possible: red, white
+  controls: true,
+  loadpolicy: true,
+  modestbranding: false,
+  showinfo: true,
+  relations: true,
+  buttonstyle: '',
+  preroll: '',
+  postroll: '',
+  videoseo: false,
+  responsive: true,
+  thumbnailquality: '0',
+  loadthumbnail: true,
+  callback: null,
+};
 
 function markInitialized() {
   $(classPreviewYoutubeDot).parent().removeClass(classNotLoaded);
@@ -93,18 +90,18 @@ function getVideoUrl(preroll, videoId, emu, embedstart) {
   /*
    * Configure URL parameters
    */
-  if ($Options.theme !== undefined && $Options.theme !== theme && $Options.theme !== 'dark') {
-    theme = `&theme=${$Options.theme}`;
+  if (pluginOptions.theme !== undefined && pluginOptions.theme !== theme && pluginOptions.theme !== 'dark') {
+    theme = `&theme=${pluginOptions.theme}`;
   }
-  if ($Options.colour !== undefined && $Options.colour !== colour && $Options.colour !== 'red') {
-    colour = `&color=${$Options.colour}`;
+  if (pluginOptions.colour !== undefined && pluginOptions.colour !== colour && pluginOptions.colour !== 'red') {
+    colour = `&color=${pluginOptions.colour}`;
   }
 
-  const showinfo = $Options.showinfo ? '' : '&showinfo=0';
-  const relations = $Options.relations ? '' : '&rel=0';
-  const controls = $Options.controls ? '' : '&controls=0';
-  const loadpolicy = $Options.loadpolicy ? '' : '&iv_load_policy=3';
-  const modestbranding = $Options.modestbranding ? '&modestbranding=1' : '';
+  const showinfo = pluginOptions.showinfo ? '' : '&showinfo=0';
+  const relations = pluginOptions.relations ? '' : '&rel=0';
+  const controls = pluginOptions.controls ? '' : '&controls=0';
+  const loadpolicy = pluginOptions.loadpolicy ? '' : '&iv_load_policy=3';
+  const modestbranding = pluginOptions.modestbranding ? '&modestbranding=1' : '';
 
   /*
    * Configure URL parameter 'playlist'
@@ -114,8 +111,8 @@ function getVideoUrl(preroll, videoId, emu, embedstart) {
   } else {
     overridePreroll = '';
   }
-  if (($Options.postroll !== undefined) && ($Options.postroll !== postroll)) {
-    ({ postroll } = $Options);
+  if ((pluginOptions.postroll !== undefined) && (pluginOptions.postroll !== postroll)) {
+    ({ postroll } = pluginOptions);
   }
   if ((preroll !== '') || (postroll !== '')) {
     playlist = `&playlist=${overridePreroll}${postroll}`;
@@ -145,8 +142,8 @@ function getEmbedParams(href) {
 }
 
 function getVideoIdPreroll(preroll, defaultParams) {
-  if ($Options.preroll !== undefined && $Options.preroll !== preroll) {
-    return $Options.preroll;
+  if (pluginOptions.preroll !== undefined && pluginOptions.preroll !== preroll) {
+    return pluginOptions.preroll;
   }
 
   // Fallback when no preroll ID should be loaded
@@ -189,7 +186,7 @@ function load() {
     }
     function getHeight(element) {
       let calc = 0;
-      if ($Options.responsive === false) {
+      if (pluginOptions.responsive === false) {
         calc = (parseInt(element.css('height'), 10) - 4);
       } else {
         const width = getWidth(element);
@@ -222,7 +219,7 @@ function load() {
     }
 
     let itempropName = '';
-    if ($Options.videoseo === true) {
+    if (pluginOptions.videoseo === true) {
       itempropName = ' itemprop="name"';
     }
 
@@ -232,13 +229,13 @@ function load() {
       $that.html(`<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube"${itempropName}>${videoTitle()}</span></div>`);
     }
 
-    $that.prepend(`<div aria-hidden="true" style="height:${getHeight($that)}px;width:${getWidth($that)}px;" class="lazy-load-div"></div>`).addClass($Options.buttonstyle);
+    $that.prepend(`<div aria-hidden="true" style="height:${getHeight($that)}px;width:${getWidth($that)}px;" class="lazy-load-div"></div>`).addClass(pluginOptions.buttonstyle);
 
     /*
      * Set thumbnail URL
      */
     function setThumbnailUrl(thumbnailId) {
-      const $url = `https://i2.ytimg.com/vi/${thumbnailId}/${$Options.thumbnailquality}.jpg`;
+      const $url = `https://i2.ytimg.com/vi/${thumbnailId}/${pluginOptions.thumbnailquality}.jpg`;
 
       thumbnailurl = $url;
     }
@@ -274,11 +271,11 @@ function load() {
       $('body').append(img);
     }
 
-    if ($Options.loadthumbnail) {
+    if (pluginOptions.loadthumbnail) {
       setBackgroundImg($that);
     }
 
-    if ($Options.videoseo === true) {
+    if (pluginOptions.videoseo === true) {
       $that.append(`<meta itemprop="contentLocation" content="${youtubeUrl(videoId)}" />`);
       $that.append(`<meta itemprop="embedUrl" content="${emu}" />`);
       $that.append(`<meta itemprop="thumbnail" content="${getThumbnailUrl()}" />`);
@@ -312,7 +309,7 @@ function load() {
       removePlayerControls(eventTarget);
 
       $(`#${videoId}${index}`).replaceWith(videoFrame);
-      if (typeof responsiveVideos.resize === 'function' && $Options.responsive === true) {
+      if (typeof responsiveVideos.resize === 'function' && pluginOptions.responsive === true) {
         responsiveVideos.resize();
       }
       return false;
@@ -321,27 +318,30 @@ function load() {
 }
 
 function init(options) {
-  mergeOptions(options);
+  pluginOptions = {
+    ...defaultPluginOptions,
+    ...options,
+  };
 
   /*
    * Use ajaxStop function to prevent plugin from breaking when another plugin uses Ajax
    */
   $(document).ready(load()).ajaxStop(() => {
     load();
-    if (typeof responsiveVideos.resize === 'function' && $Options.responsive === true) {
+    if (typeof responsiveVideos.resize === 'function' && pluginOptions.responsive === true) {
       responsiveVideos.resize();
     }
     markInitialized();
   });
 
-  if (typeof responsiveVideos.init === 'function' && $Options.responsive === true) {
+  if (typeof responsiveVideos.init === 'function' && pluginOptions.responsive === true) {
     responsiveVideos.init();
   } else {
     markInitialized();
   }
 
-  if (typeof $Options.callback === 'function') {
-    $Options.callback();
+  if (typeof pluginOptions.callback === 'function') {
+    pluginOptions.callback();
   }
 }
 
