@@ -1,4 +1,4 @@
-import { init, resizeResponsiveVideos } from '../shared/video';
+import { init, setBackgroundImage, resizeResponsiveVideos } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
 
@@ -13,23 +13,15 @@ window.showThumb = (data) => {
   const relevantData = data[0];
 
   if (lazyload_video_settings.vimeo.loadthumbnail) {
-    $(`[id=${relevantData.id}]`)
-      .css('background-image', `url(${relevantData.thumbnail_large})`)
-      .css('background-color', '#000')
-      .css('background-position', 'center center')
-      .css('background-repeat', 'no-repeat');
+    findElements(`[id="${relevantData.id}"]`).forEach((element) => {
+      setBackgroundImage(element, relevantData.thumbnail_large);
+    });
   }
 };
 
 // Classes
 const classPreviewVimeo = 'preview-vimeo';
 const classPreviewVimeoDot = `.${classPreviewVimeo}`;
-const classNotLoaded = 'js-lazyload--not-loaded';
-
-// Helpers
-function markInitialized() {
-  $(classPreviewVimeoDot).parent().removeClass(classNotLoaded);
-}
 
 let pluginOptions;
 const defaultPluginOptions = {
@@ -128,7 +120,7 @@ const lazyloadVimeo = (options) => {
   };
 
   init({
-    load, pluginOptions, markInitialized,
+    load, pluginOptions, previewVideoSelector: `.${classPreviewVimeo}`,
   });
 };
 

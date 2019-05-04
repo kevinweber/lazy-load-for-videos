@@ -1,4 +1,4 @@
-import { init, resizeResponsiveVideos } from '../shared/video';
+import { init, resizeResponsiveVideos, setBackgroundImage } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
 
@@ -30,12 +30,6 @@ const defaultPluginOptions = {
   loadthumbnail: true,
   callback: null,
 };
-
-function markInitialized() {
-  findElements(`.${classPreviewYoutube}`).forEach((item) => {
-    item.parentNode.classList.remove('js-lazyload--not-loaded');
-  });
-}
 
 function removePlayerControls(element) {
   element.classList.remove(classPreviewYoutube);
@@ -205,9 +199,7 @@ function load() {
         }
 
         if (!element.style.backgroundImage) {
-          // Don't simply set "background:url(...)..." because this prop would override
-          // custom styling such as "background-size: cover".
-          element.setAttribute('style', `background-image:url(${src});background-color:#000;background-position:center center;background-repeat:no-repeat;`);
+          setBackgroundImage(element, src);
         }
 
         img.parentNode.removeChild(img);
@@ -254,7 +246,7 @@ function lazyloadYoutube(options) {
   };
 
   init({
-    load, pluginOptions, markInitialized,
+    load, pluginOptions, previewVideoSelector: `.${classPreviewYoutube}`,
   });
 }
 

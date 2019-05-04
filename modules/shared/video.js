@@ -1,4 +1,5 @@
 import jQueryAjaxStop from '../utils/jQueryAjaxStop';
+import findElements from '../utils/findElements';
 
 const $ = window.jQuery || window.$;
 const videoratio = 0.5625;
@@ -10,6 +11,12 @@ const responsiveVideosConfig = {
   container: '.container-lazyload',
   selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-div',
 };
+
+export function setBackgroundImage(element, imageUrl) {
+  // Don't simply set "background:url(...)..." because this prop would override
+  // custom styling such as "background-size: cover".
+  element.setAttribute('style', `background-image:url(${imageUrl});background-color:#000;background-position:center center;background-repeat:no-repeat;`);
+}
 
 export function resizeResponsiveVideos() {
   $(responsiveVideosConfig.container).find(responsiveVideosConfig.selector)
@@ -27,7 +34,13 @@ export function resizeResponsiveVideos() {
     });
 }
 
-function initResponsiveVideos(markInitialized) {
+function markInitialized(domSelector) {
+  findElements(domSelector).forEach((item) => {
+    item.parentNode.classList.remove('js-lazyload--not-loaded');
+  });
+}
+
+function initResponsiveVideos(previewVideoSelector) {
   const $window = $(window);
   $window.on('resize', resizeResponsiveVideos);
   // Use bindFirst() to ensure that other plugins like Inline Comments
@@ -37,12 +50,12 @@ function initResponsiveVideos(markInitialized) {
   });
   $window.on('load', () => {
     resizeResponsiveVideos();
-    markInitialized();
+    markInitialized(previewVideoSelector);
   });
 }
 
 export function init({
-  load, pluginOptions, markInitialized,
+  load, pluginOptions, previewVideoSelector,
 }) {
   load();
 
@@ -54,13 +67,13 @@ export function init({
     if (pluginOptions.responsive === true) {
       resizeResponsiveVideos();
     }
-    markInitialized();
+    markInitialized(previewVideoSelector);
   });
 
   if (pluginOptions.responsive === true) {
-    initResponsiveVideos(markInitialized);
+    initResponsiveVideos(previewVideoSelector);
   } else {
-    markInitialized();
+    markInitialized(previewVideoSelector);
   }
 
   if (typeof pluginOptions.callback === 'function') {
