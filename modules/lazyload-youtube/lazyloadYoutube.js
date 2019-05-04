@@ -1,3 +1,5 @@
+import { init, resizeResponsiveVideos, videoratio } from '../shared/video';
+
 /*
  * Lazy Load Youtube
  * by Kevin Weber (www.kweber.com)
@@ -11,7 +13,6 @@ const classPreviewYoutubeDot = `.${classPreviewYoutube}`;
 const classNotLoaded = 'js-lazyload--not-loaded';
 
 // Helpers
-const videoratio = 0.5625;
 let thumbnailurl = '';
 
 let pluginOptions;
@@ -40,45 +41,6 @@ function markInitialized() {
 function removePlayerControls(element) {
   $(element).removeClass(classPreviewYoutube);
 }
-
-/*
- * The following code bases on "Responsive Video Embeds" by Kevin Leary
- */
-const responsiveVideos = {
-  config: {
-    container: '.container-lazyload',
-    selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-div',
-  },
-
-  init() {
-    if (responsiveVideos.config.container.length > 0) {
-      $(window).on('resize', responsiveVideos.resize);
-      // Use bindFirst() to ensure that other plugins like Inline Comments
-      // work correctly (in case they depend on the video heights)
-      $(window).bindFirst('load', () => { responsiveVideos.resize(); });
-      $(window).on('load', () => {
-        responsiveVideos.resize();
-        markInitialized();
-      });
-    }
-  },
-
-  resize() {
-    $(responsiveVideos.config.container).find(responsiveVideos.config.selector)
-      .each((index, item) => {
-        const $this = $(item);
-        const width = $this.parent().width();
-        const height = Math.round(width * videoratio);
-
-        $this.attr('height', height);
-        $this.attr('width', width);
-        $this.css({
-          height,
-          width,
-        });
-      });
-  },
-};
 
 function getVideoUrl(preroll, videoId, emu, embedstart) {
   let theme = '';
@@ -309,40 +271,23 @@ function load() {
       removePlayerControls(eventTarget);
 
       $(`#${videoId}${index}`).replaceWith(videoFrame);
-      if (typeof responsiveVideos.resize === 'function' && pluginOptions.responsive === true) {
-        responsiveVideos.resize();
+      if (pluginOptions.responsive === true) {
+        resizeResponsiveVideos();
       }
       return false;
     });
   });
 }
 
-function init(options) {
+function lazyloadYoutube(options) {
   pluginOptions = {
     ...defaultPluginOptions,
     ...options,
   };
 
-  /*
-   * Use ajaxStop function to prevent plugin from breaking when another plugin uses Ajax
-   */
-  $(document).ready(load()).ajaxStop(() => {
-    load();
-    if (typeof responsiveVideos.resize === 'function' && pluginOptions.responsive === true) {
-      responsiveVideos.resize();
-    }
-    markInitialized();
+  init({
+    load, pluginOptions, markInitialized,
   });
-
-  if (typeof responsiveVideos.init === 'function' && pluginOptions.responsive === true) {
-    responsiveVideos.init();
-  } else {
-    markInitialized();
-  }
-
-  if (typeof pluginOptions.callback === 'function') {
-    pluginOptions.callback();
-  }
 }
 
-export default init;
+export default lazyloadYoutube;

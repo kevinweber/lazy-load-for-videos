@@ -6,6 +6,6 @@ import onReady from '../utils/onReady';
 import lazyloadYoutube from './lazyloadYoutube';
 
 onReady(() => {
-  jQueryBindFirst(window.jQuery);
+  jQueryBindFirst();
   lazyloadYoutube(lazyload_video_settings.youtube);
 });

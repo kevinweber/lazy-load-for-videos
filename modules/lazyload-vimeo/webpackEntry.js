@@ -6,6 +6,6 @@ import onReady from '../utils/onReady';
 import lazyloadVimeo from './lazyloadVimeo';
 
 onReady(() => {
-  jQueryBindFirst(window.jQuery);
+  jQueryBindFirst();
   lazyloadVimeo(lazyload_video_settings.vimeo);
 });

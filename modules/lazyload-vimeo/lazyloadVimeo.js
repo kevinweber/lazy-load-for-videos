@@ -1,3 +1,5 @@
+import { init, resizeResponsiveVideos } from '../shared/video';
+
 /*
  * Lazy Load Vimeo
  * by Kevin Weber (www.kweber.com)
@@ -23,8 +25,6 @@ const classPreviewVimeoDot = `.${classPreviewVimeo}`;
 const classNotLoaded = 'js-lazyload--not-loaded';
 
 // Helpers
-const videoratio = 0.5625;
-
 function markInitialized() {
   $(classPreviewVimeoDot).parent().removeClass(classNotLoaded);
 }
@@ -118,49 +118,6 @@ function vimeoCreateThumbProcess() {
   });
 }
 
-
-/*
- * The following code bases on "Responsive Video Embeds" by Kevin Leary
- */
-const responsiveVideos = {
-  config: {
-    container: '.container-lazyload',
-    selector: 'object, embed, iframe, .preview-lazyload, .lazy-load-div',
-  },
-
-  init() {
-    if (responsiveVideos.config.container.length > 0) {
-      const $window = $(window);
-      $window.on('resize', responsiveVideos.resize);
-      // Use bindFirst() to ensure that other plugins like Inline Comments
-      // work correctly (in case they depend on the video heights)
-      $window.bindFirst('load', () => {
-        responsiveVideos.resize();
-      });
-      $window.on('load', () => {
-        responsiveVideos.resize();
-        markInitialized();
-      });
-    }
-  },
-
-  resize() {
-    $(responsiveVideos.config.container).find(responsiveVideos.config.selector)
-      .each((index, item) => {
-        const $item = $(item);
-        const width = $item.parent().width();
-        const height = Math.round(width * videoratio);
-
-        $item.attr('height', height);
-        $item.attr('width', width);
-        $item.css({
-          height,
-          width,
-        });
-      });
-  },
-};
-
 function vimeoCreatePlayer() {
   $(classPreviewVimeoDot).on('click', (event) => {
     event.preventDefault();
@@ -176,8 +133,8 @@ function vimeoCreatePlayer() {
     }
 
     $(item).replaceWith(`<iframe src="${vimeoUrl(vid)}?autoplay=1${playercolour}" style="height:${parseInt($(`#${vid}`).css('height'), 10)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>`);
-    if (typeof responsiveVideos.resize === 'function' && pluginOptions.responsive === true) {
-      responsiveVideos.resize();
+    if (pluginOptions.responsive === true) {
+      resizeResponsiveVideos();
     }
   });
 }
@@ -189,32 +146,15 @@ function load() {
   vimeoCreatePlayer();
 }
 
-const init = (options) => {
+const lazyloadVimeo = (options) => {
   pluginOptions = {
     ...defaultPluginOptions,
     ...options,
   };
 
-  /*
-   * Use ajaxStop function to prevent plugin from breaking when another plugin uses Ajax
-   */
-  $(document).ready(load()).ajaxStop(() => {
-    load();
-    if (typeof responsiveVideos.resize === 'function' && pluginOptions.responsive === true) {
-      responsiveVideos.resize();
-    }
-    markInitialized();
+  init({
+    load, pluginOptions, markInitialized,
   });
-
-  if (typeof responsiveVideos.init === 'function' && pluginOptions.responsive === true) {
-    responsiveVideos.init();
-  } else {
-    markInitialized();
-  }
-
-  if (typeof pluginOptions.callback === 'function') {
-    pluginOptions.callback();
-  }
 };
 
-export default init;
+export default lazyloadVimeo;

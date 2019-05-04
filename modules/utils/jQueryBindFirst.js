@@ -4,7 +4,9 @@
  * As seen on https://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
  * and on https://gist.github.com/infostreams/6540654
  */
-export default function ($) {
+export default function () {
+  const $ = window.jQuery || window.$;
+
   if ($ && $.fn) {
     // eslint-disable-next-line no-param-reassign,func-names
     $.fn.bindFirst = function (which, handler) {

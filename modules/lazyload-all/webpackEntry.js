@@ -9,7 +9,7 @@ import lazyloadVimeo from '../lazyload-vimeo/lazyloadVimeo';
 import lazyloadYoutube from '../lazyload-youtube/lazyloadYoutube';
 
 onReady(() => {
-  jQueryBindFirst(window.jQuery);
+  jQueryBindFirst();
   lazyloadVimeo(lazyload_video_settings.vimeo);
   lazyloadYoutube(lazyload_video_settings.youtube);
 });
