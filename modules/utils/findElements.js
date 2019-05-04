@@ -1,1 +1,3 @@
-export default domSelector => [].slice.call(document.querySelectorAll(domSelector));
+export default (domSelector, rootNode = document) => [].slice.call(
+  rootNode.querySelectorAll(domSelector),
+);

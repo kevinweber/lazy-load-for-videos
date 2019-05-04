@@ -101,8 +101,8 @@ function getVideoIdPreroll(preroll, defaultParams) {
 }
 
 function load() {
-  findElements('a.lazy-load-youtube').forEach((item, index) => {
-    const videoLinkElement = item;
+  findElements('a.lazy-load-youtube').forEach((domItem, index) => {
+    const videoLinkElement = domItem;
     const href = videoLinkElement.getAttribute('href');
     let embedparms = getEmbedParams(href);
     const preroll = '';

@@ -7,14 +7,12 @@ import findElements from '../utils/findElements';
  * by Kevin Weber (www.kweber.com)
  */
 
-const $ = window.jQuery || window.$;
-
 window.showThumb = (data) => {
   const relevantData = data[0];
 
   if (lazyload_video_settings.vimeo.loadthumbnail) {
-    findElements(`[id="${relevantData.id}"]`).forEach((element) => {
-      setBackgroundImage(element, relevantData.thumbnail_large);
+    findElements(`[id="${relevantData.id}"]`).forEach((domItem) => {
+      setBackgroundImage(domItem, relevantData.thumbnail_large);
     });
   }
 };
@@ -101,10 +99,10 @@ function vimeoCreatePlayer(videoLinkElement) {
 }
 
 function load() {
-  findElements(`.${classPreviewVimeo}`).forEach((item) => {
-    vimeoCreateThumbProcess(item);
+  findElements(`.${classPreviewVimeo}`).forEach((domItem) => {
+    vimeoCreateThumbProcess(domItem);
     // Replace thumbnail with iframe
-    vimeoCreatePlayer(item);
+    vimeoCreatePlayer(domItem);
   });
 }
 

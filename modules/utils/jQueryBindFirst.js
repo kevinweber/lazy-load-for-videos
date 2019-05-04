@@ -25,3 +25,13 @@ export default function () {
     };
   }
 }
+
+export function onBindFirstLoad(callback) {
+  const $ = window.jQuery || window.$;
+
+  if ($ && $.fn) {
+    // Use bindFirst() to ensure that other plugins like Inline Comments
+    // work correctly (in case they depend on the video heights)
+    $(window).bindFirst('load', callback);
+  }
+}
