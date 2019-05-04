@@ -1,4 +1,4 @@
-import { init, setBackgroundImage, resizeResponsiveVideos } from '../shared/video';
+import { init, resizeResponsiveVideos, setBackgroundImage } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
 
