@@ -1,4 +1,4 @@
-import { init, resizeResponsiveVideos, videoratio } from '../shared/video';
+import { init, resizeResponsiveVideos } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
 import getJson from '../utils/getJson';
@@ -140,25 +140,6 @@ function load() {
       return `https://www.youtube.com/watch?v=${id}`;
     }
 
-    /*
-     * Helpers to calculate dimensions
-     */
-    function getWidth(element) {
-      const calc = (parseInt(element.width, 10) - 4);
-      return calc;
-    }
-
-    function getHeight(element) {
-      let calc = 0;
-      if (pluginOptions.responsive === false) {
-        calc = (parseInt(element.height, 10) - 4);
-      } else {
-        const width = getWidth(element);
-        calc = Math.round(width * videoratio);
-      }
-      return calc;
-    }
-
     let start = 0;
     const timeFactors = [3600, 60, 1]; // h, m, s
     let startMatch = embedparms.match(/[#&?]t=(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/);
@@ -195,7 +176,7 @@ function load() {
       videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube"${itempropName}>${videoTitle()}</span></div>`;
     }
 
-    const lazyloadDiv = createElements(`<div aria-hidden="true" style="height:${getHeight(videoLinkElement)}px;width:${getWidth(videoLinkElement)}px;" class="lazy-load-div"></div>`);
+    const lazyloadDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
     videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
     videoLinkElement.classList.add(pluginOptions.buttonstyle);
 
@@ -226,7 +207,7 @@ function load() {
       img.addEventListener('load', () => {
         // If the max resolution thumbnail is not available, fall back to smaller size.
         // But note that we'll still see an 404 error in the console in this case.
-        if (img.width === 120) {
+        if (img.clientWidth === 120) {
           src = src.replace('maxresdefault', '0');
         }
 
@@ -283,7 +264,7 @@ function load() {
        * Generate iFrame
        */
       const videoUrl = getVideoUrl(preroll, videoId, emu, embedstart);
-      const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.width, 10)}" height="${parseInt(videoLinkElement.height, 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+      const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.clientWidth, 10)}" height="${parseInt(videoLinkElement.clientHeight, 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 
       eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
 

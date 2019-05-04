@@ -100,7 +100,7 @@ function vimeoLoadingThumb($container, id) {
 
   $container
     .prepend(info)
-    .prepend(`<div aria-hidden="true" style="height:${parseInt($(`#${id}`).css('height'), 10)}px;width:${parseInt($(`#${id}`).css('width'), 10)}px;" class="lazy-load-div"></div>`)
+    .prepend('<div aria-hidden="true" class="lazy-load-div"></div>')
     .addClass(pluginOptions.buttonstyle);
 
   vimeoVideoSeo(id);

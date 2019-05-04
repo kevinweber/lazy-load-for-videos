@@ -21,8 +21,10 @@ $z-index-base: 2;
 
 .preview-lazyload {
   opacity: 1;
+  position: relative;
   transition: opacity 0.25s;
 }
+
 .js-lazyload--not-loaded .preview-lazyload {
     opacity: 0;
 }
@@ -48,7 +50,9 @@ a.lazy-load-vimeo {
 
 .lazy-load-div {
 	display: table;
+	height: 100%;
 	pointer-events: none;
+	width: 100%;
 
 	&::before {
 		content: "\25B6";

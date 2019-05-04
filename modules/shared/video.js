@@ -1,8 +1,7 @@
 import jQueryAjaxStop from '../utils/jQueryAjaxStop';
 
 const $ = window.jQuery || window.$;
-
-export const videoratio = 0.5625;
+const videoratio = 0.5625;
 
 /*
  * The following code bases on "Responsive Video Embeds" by Kevin Leary
