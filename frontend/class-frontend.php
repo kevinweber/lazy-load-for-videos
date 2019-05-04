@@ -8,8 +8,6 @@ class Lazyload_Videos_Frontend {
 		if ( $this->test_if_scripts_should_be_loaded() ) {
 			$this->load_lazyload_style();
 			add_action( 'wp_head', array( $this, 'load_lazyload_css') );
-			add_filter( 'lly_change_options', array( $this, 'set_options' ) );
-			add_filter( 'llv_change_options', array( $this, 'set_options' ) );
 
 			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
 				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', array( 'jquery' ), LL_VERSION, true );
@@ -178,25 +176,6 @@ class Lazyload_Videos_Frontend {
 			//|| ( !is_singular() )	// Everything else (except for pages/posts without oembedded media)
 		? true : false;
 	}
-
-	/**
-	 * Set options to extend setOptionsYoutube() and setOptionsVimeo() that are used in JS files
-	 */
-	function set_options( $options ) {
-		return $this->set_option_video_seo( $options );
-	}
-
-	/**
-	 * Set option "videoseo" for setOptionsYoutube() and setOptionsVimeo()
-	 */
-	function set_option_video_seo( $options ) {
-		if ( get_option( 'll_opt_video_seo' ) == '1' ) {
-			$options[ 'videoseo' ] = true;
-		}
-
-		return $options;
-	}
-
 }
 
 function initialize_lazyload_frontend() {

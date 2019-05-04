@@ -1,7 +1,6 @@
 import { init, resizeResponsiveVideos } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
-import getJson from '../utils/getJson';
 
 /*
  * Lazy Load Youtube
@@ -26,7 +25,6 @@ const defaultPluginOptions = {
   buttonstyle: '',
   preroll: '',
   postroll: '',
-  videoseo: false,
   responsive: true,
   thumbnailquality: '0',
   loadthumbnail: true,
@@ -165,15 +163,10 @@ function load() {
       embedstart = `${(embedparms.indexOf('?') === -1) ? '?' : '&'}start=${start}`;
     }
 
-    let itempropName = '';
-    if (pluginOptions.videoseo === true) {
-      itempropName = ' itemprop="name"';
-    }
-
     if (embedparms.indexOf('showinfo=0') !== -1) {
       videoLinkElement.innerHTML = '';
     } else {
-      videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube"${itempropName}>${videoTitle()}</span></div>`;
+      videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube" itemprop="name">${videoTitle()}</span></div>`;
     }
 
     const lazyloadDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
@@ -225,27 +218,6 @@ function load() {
 
     if (pluginOptions.loadthumbnail) {
       setBackgroundImg(videoLinkElement);
-    }
-
-    if (pluginOptions.videoseo === true) {
-      const metaElements = createElements(`
-        <meta itemprop="contentLocation" content="${youtubeUrl(videoId)}" />
-        <meta itemprop="embedUrl" content="${emu}" />
-        <meta itemprop="thumbnail" content="${getThumbnailUrl()}" />
-      `);
-      videoLinkElement.appendChild(metaElements);
-
-      getJson(`https://gdata.youtube.com/feeds/api/videos/${videoId}?v=2&alt=jsonc&callback=?`, (data) => {
-        const moreMetaElements = createElements(`
-        <meta itemprop="datePublished" content="${data.data.uploaded}" />
-        <meta itemprop="duration" content="${data.data.duration}" />
-        <meta itemprop="aggregateRating" content="${data.data.rating}" />
-      `);
-        videoLinkElement.appendChild(moreMetaElements);
-        // TODO: Retrieve and use even more data for Video SEO.
-        // Get possible response data with //www.jsoneditoronline.org/ and
-        // gdata.youtube.com/feeds/api/videos/pk99sSGF0YE?v=2&alt=jsonc
-      });
     }
 
     videoLinkElement.getAttribute('id', videoId + index);

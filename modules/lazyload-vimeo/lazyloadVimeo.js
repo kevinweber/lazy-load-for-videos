@@ -1,4 +1,6 @@
 import { init, resizeResponsiveVideos } from '../shared/video';
+import createElements from '../utils/createElements';
+import findElements from '../utils/findElements';
 
 /*
  * Lazy Load Vimeo
@@ -33,7 +35,6 @@ let pluginOptions;
 const defaultPluginOptions = {
   buttonstyle: '',
   playercolour: '',
-  videoseo: false,
   responsive: true,
   loadthumbnail: true,
   callback: null,
@@ -57,25 +58,6 @@ function vimeoCallbackUrl(thumbnailId) {
   return `https://vimeo.com/api/v2/video/${thumbnailId}.json`;
 }
 
-function vimeoVideoSeo(id) {
-  if (pluginOptions.videoseo === true) {
-    $.getJSON(`${vimeoCallbackUrl(id)}?callback=?`, {
-      format: 'json',
-    }, (data) => {
-      const relevantData = data[0];
-
-      $(`#${id}`)
-        .append(`<meta itemprop="contentLocation" content="${relevantData.url}" />`)
-        .append(`<meta itemprop="embedUrl" content="${vimeoUrl(id)}" />`)
-        .append(`<meta itemprop="thumbnail" content="${relevantData.thumbnail_large}" />`)
-        .append(`<meta itemprop="datePublished" content="${relevantData.upload_date}" />`)
-        .append(`<meta itemprop="duration" content="${relevantData.duration}" />`)
-        .append(`<meta itemprop="aggregateRating" content="${data.data.rating}" />`);
-      // TODO: Retrieve and use even more data for Video SEO. Possible data: https://developer.vimeo.com/apis/simple#response-data
-    });
-  }
-}
-
 function vimeoLoadingThumb($container, id) {
   let script;
 
@@ -87,23 +69,16 @@ function vimeoLoadingThumb($container, id) {
     $container.after(script);
   }
 
-  let itempropName = '';
-  if (pluginOptions.videoseo === true) {
-    itempropName = ' itemprop="name"';
-  }
-
   let info = '';
   if (lazyload_video_settings.vimeo.show_title) {
     const videoTitle = $container.attr('data-video-title');
-    info = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo"${itempropName} >${videoTitle}</span></div>`;
+    info = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo" itemprop="name">${videoTitle}</span></div>`;
   }
 
   $container
     .prepend(info)
     .prepend('<div aria-hidden="true" class="lazy-load-div"></div>')
     .addClass(pluginOptions.buttonstyle);
-
-  vimeoVideoSeo(id);
 }
 
 function vimeoCreateThumbProcess() {

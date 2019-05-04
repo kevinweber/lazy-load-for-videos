@@ -4,11 +4,7 @@
  * @package Admin
  */
 class Lazyload_Videos_Admin {
-
-	private $schema_prop_video = '';
-
 	function __construct() {
-		$this->set_schema_prop_video();
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		// The 'oembed_dataparse' filter should be called on backend AND on frontend, not only on backend [is_admin()]. Otherwise, on some websites occur errors.
 		add_filter( 'oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3 );
@@ -45,18 +41,6 @@ class Lazyload_Videos_Admin {
 	  return $links;
 	}
 
-	/**
-	 * Handle schema for Video SEO
-	 */
-	function set_schema_prop_video() {
-		if ( get_option('ll_opt_video_seo') == true ) {
-			$this->schema_prop_video = ' itemprop="video" itemscope itemtype="https://schema.org/VideoObject"';
-		}
-	}
-	function get_schema_prop_video() {
-		return $this->schema_prop_video;
-	}
-
     function text__no_script_fallback($title, $url) {
         $no_script_fallback = "<noscript>Video can't be loaded: {$title} ({$url})</noscript>";
 
@@ -91,10 +75,10 @@ class Lazyload_Videos_Admin {
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded"'
-                . $this->get_schema_prop_video() .'>'
-                . $preview_url
-                . $this->text__no_script_fallback($data->title, $url)
-                . '</div>';
+					.' itemprop="video" itemscope itemtype="https://schema.org/VideoObject">'
+					. $preview_url
+					. $this->text__no_script_fallback($data->title, $url)
+					. '</div>';
 
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
@@ -123,11 +107,11 @@ class Lazyload_Videos_Admin {
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded"'
-                    . $this->get_schema_prop_video()
-                    .'>'
+                    . ' itemprop="video" itemscope itemtype="https://schema.org/VideoObject">'
                     . $preview_url
                     . $this->text__no_script_fallback($data->title, $url)
-                    . '</div>';
+					. '</div>';
+
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
 	    }
 
@@ -146,7 +130,6 @@ class Lazyload_Videos_Admin {
 			'll_opt_button_style',
 			'll_opt_thumbnail_size',
 			'll_opt_customcss',
-			'll_opt_video_seo', // Google: "Make sure that your video and schema.org markup are visible without executing any JavaScript or Flash." --> Video is not working with Lazy Load
 			'll_opt_support_for_tablepress',
 			'll_attribute',
 
@@ -252,19 +235,6 @@ class Lazyload_Videos_Admin {
 					        	<td>
 					        		<textarea rows="14" cols="70" type="text" name="ll_opt_customcss"><?php echo get_option('ll_opt_customcss'); ?></textarea>
 					        	</td>
-					        </tr>
-					        <tr valign="top">
-						        <th scope="row"><label><?php esc_html_e( 'Schema.org Markup', LL_TD ); ?> <span class="newred">Beta</span></label></th>
-						        <td>
-									<input name="ll_opt_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_video_seo' ) ); ?> />
-									<label>
-										<?php printf( esc_html__( 'Add schema.org markup to your Youtube and Vimeo videos. Those changes don\'t seem to affect your search ranking because videos and schema.org markup %1$sshould be visible%2$s without JavaScript (but that cannot be the case when videos are lazy loaded).', LL_TD ),
-											'<a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">',
-											'</a>'
-										); ?>
-									</label>
-									<label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.', LL_TD ); ?></label>
-						        </td>
 					        </tr>
 					        <tr valign="top">
 						        <th scope="row"><label><?php esc_html_e( 'Support for TablePress', LL_TD ); ?></label></th>
