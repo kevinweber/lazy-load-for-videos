@@ -141,7 +141,6 @@ class Lazyload_Videos_Admin {
 			'lly_opt_support_for_widgets',
 			'lly_opt_thumbnail_quality',
 			'lly_opt_player_colour_progress',
-			'lly_opt_player_showinfo',
 			'lly_opt_player_relations',
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
@@ -329,12 +328,6 @@ class Lazyload_Videos_Admin {
 					        	<th scope="row"><label><?php esc_html_e( 'Hide annotations', LL_TD ); ?> <span class="newred grey">Tip</span></label></th>
 						        <td>
 									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_loadpolicy' ) ); ?> /> <label><?php esc_html_e( 'If checked, video annotations (like "subscribe to channel") will not be shown.', LL_TD ); ?></label>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Hide title/uploader', LL_TD ); ?></label></th>
-						        <td>
-									<input name="lly_opt_player_showinfo" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_showinfo' ) ); ?> /> <label><?php esc_html_e( 'If checked, information like the video title and uploader will not be displayed when the video starts playing. This option only affects the playing video, not the video thumbnail.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">

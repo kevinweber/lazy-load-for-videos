@@ -13,7 +13,7 @@ Speed up your site by replacing embedded Youtube and Vimeo videos with a clickab
 == Description ==
 
 This plugin improves page load times and increases your Google PageSpeed Score. It replaces embedded Youtube and Vimeo videos with a clickable preview image.
-By loading the videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy.
+By loading videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy.
 
 Demo on the developer’s website: [www.kweber.com/lazy-load-videos/](https://www.kweber.com/lazy-load-videos/)
 
@@ -22,18 +22,18 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 = Some additional features: =
 * Display video titles on preview images
 * Pre-roll and post-roll advertisements: Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement to every video. (Great for branding and video ads!)
-* Hide annotations like "subscribe to channel" to avoid distractions
-* Add Custom CSS via plugin’s options panel
+* Hide annotations such as "subscribe to channel" to avoid distractions
+* Add custom CSS via the plugin’s admin panel
 * Choose custom colour for your Vimeo player
 * Hide controls from Youtube player
 * Hide Youtube logo from control bar (modest branding)
 * Hide information like the video title and uploader when the video starts playing
-* Support for videos in text widget (Youtube only)
-* Choose thumbnail size (standard or cover)
-* Choose from several "Play" buttons
-* Choose between two colours for Youtube player’s video progress bar to highlight the amount of the video that the viewer has already seen (red or white)
-* Don't display related videos at the end of your videos
-* Works with WordPress Multisite
+* Even lazy load videos in text widgets (Youtube only)
+* Choose between thumbnail sizes (standard or cover)
+* Choose from several play button styles
+* Choose the traditional red or the alternative white progress bar for the Youtube video player
+* Don't show related videos at the end of your videos
+* Works with WordPress Multisite and many plugins such as TablePress
 
 = Future features: =
 * Track how often the videos have been loaded with Google Analytics
@@ -83,8 +83,8 @@ Yes. The plugin works on single posts and pages as well as on archive pages with
 Yes!
 
 = Why? =
-* If you want to speed your site up, this plugin is for you. Especially on sites with many embedded videos this plugin is helpful. There are multiple reasons why you should make your site faster, see next question.
-* The plugin is really lightweight and does neither blow your performance nor your database up.
+* If you want to speed your site up, this plugin is for you. Especially on sites with many embedded videos this plugin is gold. There are manz reasons why you should make your site faster, see next question.
+* The plugin is really lightweight, has no dependencies and does neither blow your performance nor your database up.
 * By loading the videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. You may know this issue: (Defer) Parsing of JavaScript. "In order to load a page, the browser must parse the contents of all <script> tags, which adds additional time to the page load. By minimizing the amount of JavaScript needed to render the page, and deferring parsing of unneeded JavaScript until it needs to be executed, you can reduce the initial load time of your page." (Source: https://developers.google.com/speed/docs/best-practices/mobile#DeferParsingJS)
 * Video preview and play button are scalable and optimized for mobile devices.
 * Finally, Lazy Load for Videos is really easy to use. Simply upload and activate the plugin.
@@ -93,7 +93,8 @@ Yes!
 * Search engines, especially Google, love speedy sites! So you will be higher ranked in search results.
 * Consequently, you get more visitors.
 * Fast sites lead to higher visitor engagement and returning visitors.
-* Moreover, faster sites increase conversions.
+* Faster sites increase conversions.
+* Potentially more $$ for your business!
 
 = How can I calculate my Google PageSpeed Score? =
 PageSpeed Insights is a service by Google to help you optimize your site's performance. You can analyse your site using a browser extension or online, more information: https://developers.google.com/speed/pagespeed/
@@ -146,9 +147,10 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 * ️️⚡ Performance: Independence from jQuery! The user-facing part of this plugin no longer requires jQuery.
 * Rewrite large parts of the JavaScript to make maintenance and open source contributions easier and less risky.
 * Improve Ajax support, including support for Ajax Page Loader plugin. Thanks to @devattendant's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/19).
-* ⚡ Performance: Remove feature "Schema.org Markup" (has been in beta)
-* ⚡ Performance: Remove Youtube feature "Player colour" (has been deprecated for a while)
-* ⚡ Performance: Remove option to display a credit link in the top right corner of each video. This further reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
+* Remove option to display a credit link in the top right corner of each video. This further reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
+* Remove feature "Schema.org Markup" (has been in beta)
+* Remove Youtube feature "Player colour" (has been deprecated for a while)
+* Remove Youtube feature "Hide title/uploader" (no longer supported by Youtube)
 
 = 2.6.0 =
 * New feature: Hide Youtube logo from control bar by using Youtube's modest branding feature.
