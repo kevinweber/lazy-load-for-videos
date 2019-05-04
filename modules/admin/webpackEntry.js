@@ -1,7 +1,7 @@
 import './styles.scss';
 import './tooltips.scss';
 
-const $ = window.jQuery;
+const $ = window.jQuery || window.$;
 
 /*
  * Change URL when tab is clicked

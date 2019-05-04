@@ -10,9 +10,9 @@ class Lazyload_Videos_Frontend {
 			add_action( 'wp_head', array( $this, 'load_lazyload_css') );
 
 			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', array( 'jquery' ), LL_VERSION, true );
+				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', null, LL_VERSION, true );
 			} else if ( (get_option('lly_opt') !== '1') && (get_option('llv_opt') !== '1') ) {
-				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', array( 'jquery' ), LL_VERSION, true );
+				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', null, LL_VERSION, true );
 			}
 
             $settings = array();

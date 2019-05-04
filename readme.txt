@@ -13,7 +13,7 @@ Speed up your site by replacing embedded Youtube and Vimeo videos with a clickab
 == Description ==
 
 This plugin improves page load times and increases your Google PageSpeed Score. It replaces embedded Youtube and Vimeo videos with a clickable preview image.
-By loading the videos only when the user clicks on the preview image – using jQuery –, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy.
+By loading the videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy.
 
 Demo on the developer’s website: [www.kweber.com/lazy-load-videos/](https://www.kweber.com/lazy-load-videos/)
 
@@ -143,11 +143,12 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 == Changelog ==
 
 = 2.7.0 =
-* Rewrite large portions of the JavaScript code to make maintenance and open source contributions easier and less risky.
+* ️️⚡ Performance: Independence from jQuery! The user-facing part of this plugin no longer requires jQuery.
+* Rewrite large parts of the JavaScript to make maintenance and open source contributions easier and less risky.
 * Improve Ajax support, including support for Ajax Page Loader plugin. Thanks to @devattendant's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/19).
-* Remove feature "Schema.org Markup" (was in beta)
-* Remove Youtube feature "Player colour" (was deprecated for a while)
-* Remove option to display a credit link in the top right corner of each video. This further reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
+* ⚡ Performance: Remove feature "Schema.org Markup" (has been in beta)
+* ⚡ Performance: Remove Youtube feature "Player colour" (has been deprecated for a while)
+* ⚡ Performance: Remove option to display a credit link in the top right corner of each video. This further reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
 
 = 2.6.0 =
 * New feature: Hide Youtube logo from control bar by using Youtube's modest branding feature.
