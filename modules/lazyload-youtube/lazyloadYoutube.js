@@ -1,4 +1,5 @@
 import { init, resizeResponsiveVideos, videoratio } from '../shared/video';
+import createElements from '../utils/createElements';
 
 /*
  * Lazy Load Youtube
@@ -7,9 +8,9 @@ import { init, resizeResponsiveVideos, videoratio } from '../shared/video';
 
 const $ = window.jQuery || window.$;
 // Select one element
-const $Test = domSelector => document.querySelector(domSelector);
+const $Todo = domSelector => document.querySelector(domSelector);
 // Select multiple elements
-const $$Test = domSelector => [].slice.call(document.querySelectorAll(domSelector));
+const $$Todo = domSelector => [].slice.call(document.querySelectorAll(domSelector));
 
 // Classes
 const classPreviewYoutube = 'preview-youtube';
@@ -38,7 +39,7 @@ const defaultPluginOptions = {
 };
 
 function markInitialized() {
-  $$Test(classPreviewYoutubeDot).forEach((item) => {
+  $$Todo(classPreviewYoutubeDot).forEach((item) => {
     item.parentNode.classList.remove('js-lazyload--not-loaded');
   });
 }
@@ -118,7 +119,7 @@ function getVideoIdPreroll(preroll, defaultParams) {
 }
 
 function load() {
-  $$Test('a.lazy-load-youtube').forEach((item, index) => {
+  $$Todo('a.lazy-load-youtube').forEach((item, index) => {
     const $that = $(item);
     const $thatHref = $that.attr('href');
     let embedparms = getEmbedParams($thatHref);
@@ -220,9 +221,7 @@ function load() {
 
       // Create a temporary image. Once it is loaded, we can update the video element
       // using the src of this temporary image, then remove this temporary image.
-      const img = document.createElement('img');
-      img.setAttribute('style', 'display:none');
-      img.setAttribute('src', src);
+      const img = createElements(`<img style="display:none" src="${src}">`).firstChild;
 
       img.addEventListener('load', () => {
         // If the max resolution thumbnail is not available, fall back to smaller size.
@@ -232,10 +231,9 @@ function load() {
         }
 
         if (!element.style.backgroundImage) {
-          element.style.backgroundImage = `url(${src})`;
-          element.style.backgroundColor = '#000';
-          element.style.backgroundPosition = 'center';
-          element.style.backgroundRepeat = 'no-repeat';
+          // Don't simply set "background:url(...)..." because this prop would override
+          // custom styling such as "background-size: cover".
+          element.setAttribute('style', `background-image:url(${src});background-color:#000;background-position:center center;background-repeat:no-repeat;`);
         }
 
         img.parentNode.removeChild(img);
@@ -267,12 +265,6 @@ function load() {
     $that.attr('href', youtubeUrl(videoId) + (start ? `#t=${start}s` : ''));
 
     /*
-     * Generate iFrame
-     */
-    const videoUrl = getVideoUrl(preroll, videoId, emu, embedstart);
-    const videoFrame = `<iframe width="${parseInt($that.css('width'), 10)}" height="${parseInt($that.css('height'), 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-
-    /*
      * Register "onclick" event handler
      */
     $that.on('click', (event) => {
@@ -281,7 +273,14 @@ function load() {
       const eventTarget = event.target;
       removePlayerControls(eventTarget);
 
-      $(`#${videoId}${index}`).replaceWith(videoFrame);
+      /*
+       * Generate iFrame
+       */
+      const videoUrl = getVideoUrl(preroll, videoId, emu, embedstart);
+      const videoIFrame = createElements(`<iframe width="${parseInt($that.css('width'), 10)}" height="${parseInt($that.css('height'), 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+
+      const videoElement = $Todo(`#${videoId}${index}`);
+      videoElement.parentNode.replaceChild(videoIFrame, videoElement);
       if (pluginOptions.responsive === true) {
         resizeResponsiveVideos();
       }
