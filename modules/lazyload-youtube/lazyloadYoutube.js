@@ -1,20 +1,15 @@
 import { init, resizeResponsiveVideos, videoratio } from '../shared/video';
 import createElements from '../utils/createElements';
+import findElements from '../utils/findElements';
+import getJson from '../utils/getJson';
 
 /*
  * Lazy Load Youtube
  * by Kevin Weber (www.kweber.com)
  */
 
-const $ = window.jQuery || window.$;
-// Select one element
-const $Todo = domSelector => document.querySelector(domSelector);
-// Select multiple elements
-const $$Todo = domSelector => [].slice.call(document.querySelectorAll(domSelector));
-
 // Classes
 const classPreviewYoutube = 'preview-youtube';
-const classPreviewYoutubeDot = `.${classPreviewYoutube}`;
 
 // Helpers
 let thumbnailurl = '';
@@ -39,7 +34,7 @@ const defaultPluginOptions = {
 };
 
 function markInitialized() {
-  $$Todo(classPreviewYoutubeDot).forEach((item) => {
+  findElements(`.${classPreviewYoutube}`).forEach((item) => {
     item.parentNode.classList.remove('js-lazyload--not-loaded');
   });
 }
@@ -119,10 +114,10 @@ function getVideoIdPreroll(preroll, defaultParams) {
 }
 
 function load() {
-  $$Todo('a.lazy-load-youtube').forEach((item, index) => {
-    const $that = $(item);
-    const $thatHref = $that.attr('href');
-    let embedparms = getEmbedParams($thatHref);
+  findElements('a.lazy-load-youtube').forEach((item, index) => {
+    const videoLinkElement = item;
+    const href = videoLinkElement.getAttribute('href');
+    let embedparms = getEmbedParams(href);
     const preroll = '';
 
     /*
@@ -133,10 +128,10 @@ function load() {
     const emu = `https://www.youtube.com/embed/${getVideoIdPreroll(preroll, embedparms)}`;
 
     function videoTitle() {
-      if ($that.attr('data-video-title') !== undefined) {
-        return $that.attr('data-video-title');
-      } if ($that.html() !== undefined && $that.html() !== '') {
-        return $that.html();
+      if (videoLinkElement.getAttribute('data-video-title') !== undefined) {
+        return videoLinkElement.getAttribute('data-video-title');
+      } if (videoLinkElement.innerHTML) {
+        return videoLinkElement.innerHTML;
       }
       return '';
     }
@@ -149,13 +144,14 @@ function load() {
      * Helpers to calculate dimensions
      */
     function getWidth(element) {
-      const calc = (parseInt(element.css('width'), 10) - 4);
+      const calc = (parseInt(element.width, 10) - 4);
       return calc;
     }
+
     function getHeight(element) {
       let calc = 0;
       if (pluginOptions.responsive === false) {
-        calc = (parseInt(element.css('height'), 10) - 4);
+        calc = (parseInt(element.height, 10) - 4);
       } else {
         const width = getWidth(element);
         calc = Math.round(width * videoratio);
@@ -166,6 +162,7 @@ function load() {
     let start = 0;
     const timeFactors = [3600, 60, 1]; // h, m, s
     let startMatch = embedparms.match(/[#&?]t=(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/);
+
     if (startMatch) {
       for (let s = 1; s < startMatch.length; s += 1) {
         if (typeof startMatch[s] !== 'undefined') {
@@ -173,6 +170,7 @@ function load() {
         }
       }
     }
+
     if (start === 0) {
       startMatch = embedparms.match(/[#&?](?:t|start)=(\d+)/);
       if (startMatch) {
@@ -192,12 +190,14 @@ function load() {
     }
 
     if (embedparms.indexOf('showinfo=0') !== -1) {
-      $that.html('');
+      videoLinkElement.innerHTML = '';
     } else {
-      $that.html(`<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube"${itempropName}>${videoTitle()}</span></div>`);
+      videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube"${itempropName}>${videoTitle()}</span></div>`;
     }
 
-    $that.prepend(`<div aria-hidden="true" style="height:${getHeight($that)}px;width:${getWidth($that)}px;" class="lazy-load-div"></div>`).addClass(pluginOptions.buttonstyle);
+    const lazyloadDiv = createElements(`<div aria-hidden="true" style="height:${getHeight(videoLinkElement)}px;width:${getWidth(videoLinkElement)}px;" class="lazy-load-div"></div>`);
+    videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
+    videoLinkElement.classList.add(pluginOptions.buttonstyle);
 
     /*
      * Set thumbnail URL
@@ -243,31 +243,37 @@ function load() {
     }
 
     if (pluginOptions.loadthumbnail) {
-      setBackgroundImg($that[0]);
+      setBackgroundImg(videoLinkElement);
     }
 
     if (pluginOptions.videoseo === true) {
-      $that.append(`<meta itemprop="contentLocation" content="${youtubeUrl(videoId)}" />`);
-      $that.append(`<meta itemprop="embedUrl" content="${emu}" />`);
-      $that.append(`<meta itemprop="thumbnail" content="${getThumbnailUrl()}" />`);
+      const metaElements = createElements(`
+        <meta itemprop="contentLocation" content="${youtubeUrl(videoId)}" />
+        <meta itemprop="embedUrl" content="${emu}" />
+        <meta itemprop="thumbnail" content="${getThumbnailUrl()}" />
+      `);
+      videoLinkElement.appendChild(metaElements);
 
-      $.getJSON(`https://gdata.youtube.com/feeds/api/videos/${videoId}?v=2&alt=jsonc&callback=?`, (data) => {
-        $that.append(`<meta itemprop="datePublished" content="${data.data.uploaded}" />`);
-        $that.append(`<meta itemprop="duration" content="${data.data.duration}" />`);
-        $that.append(`<meta itemprop="aggregateRating" content="${data.data.rating}" />`);
+      getJson(`https://gdata.youtube.com/feeds/api/videos/${videoId}?v=2&alt=jsonc&callback=?`, (data) => {
+        const moreMetaElements = createElements(`
+        <meta itemprop="datePublished" content="${data.data.uploaded}" />
+        <meta itemprop="duration" content="${data.data.duration}" />
+        <meta itemprop="aggregateRating" content="${data.data.rating}" />
+      `);
+        videoLinkElement.appendChild(moreMetaElements);
         // TODO: Retrieve and use even more data for Video SEO.
         // Get possible response data with //www.jsoneditoronline.org/ and
         // gdata.youtube.com/feeds/api/videos/pk99sSGF0YE?v=2&alt=jsonc
       });
     }
 
-    $that.attr('id', videoId + index);
-    $that.attr('href', youtubeUrl(videoId) + (start ? `#t=${start}s` : ''));
+    videoLinkElement.getAttribute('id', videoId + index);
+    videoLinkElement.getAttribute('href', youtubeUrl(videoId) + (start ? `#t=${start}s` : ''));
 
     /*
      * Register "onclick" event handler
      */
-    $that.on('click', (event) => {
+    videoLinkElement.addEventListener('click', (event) => {
       event.preventDefault();
 
       const eventTarget = event.target;
@@ -277,14 +283,13 @@ function load() {
        * Generate iFrame
        */
       const videoUrl = getVideoUrl(preroll, videoId, emu, embedstart);
-      const videoIFrame = createElements(`<iframe width="${parseInt($that.css('width'), 10)}" height="${parseInt($that.css('height'), 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+      const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.width, 10)}" height="${parseInt(videoLinkElement.height, 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 
-      const videoElement = $Todo(`#${videoId}${index}`);
-      videoElement.parentNode.replaceChild(videoIFrame, videoElement);
+      eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
+
       if (pluginOptions.responsive === true) {
         resizeResponsiveVideos();
       }
-      return false;
     });
   });
 }

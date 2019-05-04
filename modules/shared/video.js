@@ -1,5 +1,7 @@
 import jQueryAjaxStop from '../utils/jQueryAjaxStop';
 
+const $ = window.jQuery || window.$;
+
 export const videoratio = 0.5625;
 
 /*
