@@ -16,7 +16,7 @@ let thumbnailurl = '';
 
 let pluginOptions;
 export const defaultPluginOptions = {
-  colour: 'red', // possible: red, white
+  colour: 'red', // supported colours: red, white
   controls: true,
   loadpolicy: true,
   modestbranding: false,
@@ -27,7 +27,7 @@ export const defaultPluginOptions = {
   responsive: true,
   thumbnailquality: '0',
   loadthumbnail: true,
-  callback: null,
+  // callback: null, // <- Currently not supported
 };
 
 function removePlayerControls(element) {
@@ -51,16 +51,17 @@ export function convertToSeconds(timestring) {
 }
 
 export function getVideoUrl({
-  pluginOptions: pluginOpts, videoId, urlSpecificParams,
+  pluginOptions: pluginOpts, videoId, urlOptions,
 }) {
   const query = {
-    autoplay: 1, // Always autoplay video!
+    autoplay: 1, // Always autoplay video once we load the iframe
   };
 
   if (pluginOpts.relations) query.rel = 0;
   if (pluginOpts.controls === false) query.controls = 0;
   if (pluginOpts.loadpolicy) query.iv_load_policy = 3;
   if (pluginOpts.modestbranding) query.modestbranding = 1;
+  if (pluginOpts.colour) query.color = pluginOpts.colour;
 
   const preroll = pluginOpts.preroll !== videoId && pluginOpts.preroll;
   const postroll = pluginOpts.postroll !== videoId && pluginOpts.postroll;
@@ -71,32 +72,19 @@ export function getVideoUrl({
     query.playlist = playlistArray.join(',');
   }
 
-  // TODO
-  let colour = '';
-
-  /*
-   * Configure URL parameters
-   */
-  if (pluginOpts.colour !== undefined && pluginOpts.colour !== colour && pluginOpts.colour !== 'red') {
-    colour = `&color=${pluginOpts.colour}`;
-  }
-
-  const queryWithUrlSpecificParams = {
+  const queryWithUrlOptions = {
     ...query,
-    ...urlSpecificParams,
+    ...urlOptions,
   };
 
-  if (queryWithUrlSpecificParams.t) {
-    queryWithUrlSpecificParams.start = convertToSeconds(queryWithUrlSpecificParams.t);
+  if (queryWithUrlOptions.t) {
+    queryWithUrlOptions.start = convertToSeconds(queryWithUrlOptions.t);
   }
 
   /*
    * Generate URL
    */
-  // TODO: Verify all params: `${embedUrl}${(embedUrl.indexOf('?') === -1) ?
-  // '?' : '&'}autoplay=1${colour}${controls}${loadpolicy}
-  // ${modestbranding}${relations}${playlist}${embedstart}`;
-  return `https://www.youtube.com/embed/${videoId}?${queryHashToString(queryWithUrlSpecificParams)}`;
+  return `https://www.youtube.com/embed/${videoId}?${queryHashToString(queryWithUrlOptions)}`;
 }
 
 function getVideoIdAndAfter(href) {
@@ -137,7 +125,7 @@ function load() {
     /*
      * Load Youtube ID
      */
-    const { videoId, queryParams: urlSpecificParams } = parsedUrl;
+    const { videoId, queryParams: urlOptions } = parsedUrl;
 
     function videoTitle() {
       if (videoLinkElement.getAttribute('data-video-title') !== undefined) {
@@ -205,7 +193,7 @@ function load() {
 
     videoLinkElement.getAttribute('id', videoId + index);
     videoLinkElement.getAttribute('href',
-      youtubeUrl(videoId) + (queryHashToString(urlSpecificParams)));
+      youtubeUrl(videoId) + (queryHashToString(urlOptions)));
 
     /*
      * Register "onclick" event handler
@@ -220,7 +208,7 @@ function load() {
        * Generate iFrame
        */
       const videoUrl = getVideoUrl({
-        pluginOptions, videoId, urlSpecificParams,
+        pluginOptions, videoId, urlOptions,
       });
 
       const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.clientWidth, 10)}" height="${parseInt(videoLinkElement.clientHeight, 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);

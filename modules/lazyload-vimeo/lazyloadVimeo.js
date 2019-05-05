@@ -26,7 +26,7 @@ const defaultPluginOptions = {
   playercolour: '',
   responsive: true,
   loadthumbnail: true,
-  callback: null,
+  // callback: null, // <- Currently not supported
 };
 
 function removePlayerControls(element) {
