@@ -34,15 +34,31 @@ function removePlayerControls(element) {
   element.classList.remove(classPreviewYoutube);
 }
 
+export function convertToSeconds(timestring) {
+  let startTime = 0;
+  const timeFactors = [3600, 60, 1]; // h, m, s
+  const startMatch = timestring.match(/(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/);
+
+  if (startMatch) {
+    for (let s = 1; s < startMatch.length; s += 1) {
+      if (typeof startMatch[s] !== 'undefined') {
+        startTime += parseInt(startMatch[s], 10) * timeFactors[s - 1];
+      }
+    }
+  }
+
+  return startTime;
+}
+
 export function getVideoUrl({
-  pluginOptions: pluginOpts, videoId, startTime,
+  pluginOptions: pluginOpts, videoId, urlSpecificParams,
 }) {
   const query = {
     autoplay: 1, // Always autoplay video!
   };
 
   if (pluginOpts.relations) query.rel = 0;
-  if (pluginOpts.controls) query.controls = 0;
+  if (pluginOpts.controls === false) query.controls = 0;
   if (pluginOpts.loadpolicy) query.iv_load_policy = 3;
   if (pluginOpts.modestbranding) query.modestbranding = 1;
 
@@ -55,10 +71,6 @@ export function getVideoUrl({
     query.playlist = playlistArray.join(',');
   }
 
-  if (startTime && startTime !== 0) {
-    query.start = startTime;
-  }
-
   // TODO
   let colour = '';
 
@@ -69,42 +81,63 @@ export function getVideoUrl({
     colour = `&color=${pluginOpts.colour}`;
   }
 
+  const queryWithUrlSpecificParams = {
+    ...query,
+    ...urlSpecificParams,
+  };
+
+  if (queryWithUrlSpecificParams.t) {
+    queryWithUrlSpecificParams.start = convertToSeconds(queryWithUrlSpecificParams.t);
+  }
+
   /*
    * Generate URL
    */
   // TODO: Verify all params: `${embedUrl}${(embedUrl.indexOf('?') === -1) ?
   // '?' : '&'}autoplay=1${colour}${controls}${loadpolicy}
   // ${modestbranding}${relations}${playlist}${embedstart}`;
-  return `https://www.youtube.com/embed/${videoId}?${queryHashToString(query)}`;
+  return `https://www.youtube.com/embed/${videoId}?${queryHashToString(queryWithUrlSpecificParams)}`;
+}
+
+function getVideoIdAndAfter(href) {
+  const splitBy = ['v=', '/embed/', '://youtu.be/'];
+  const splitUsingRegex = new RegExp(splitBy.join('|'), 'i');
+
+  return href.split(splitUsingRegex)[1];
 }
 
 /*
  * Load parameters from user's original Youtube URL
  */
-function getEmbedParams(href) {
-  let params = '';
+export function parseOriginalUrl(href) {
+  const videoIdAndAfter = getVideoIdAndAfter(href);
 
-  [, params] = href.split('/embed/');
-  if (!params) {
-    [, params] = href.split('://youtu.be/');
-  }
-  if (!params) {
-    params = href.split('v=')[1].replace(/&/, '?');
-  }
+  const [videoId, ...params] = videoIdAndAfter.split(/[&#?]/);
 
-  return params;
+  const queryParams = params.reduce((combined, nextParam) => {
+    // Example nextParam: random=string
+    const [name, value] = nextParam.split('=');
+    // eslint-disable-next-line no-param-reassign
+    combined[name] = value;
+    return combined;
+  }, {});
+
+  return {
+    videoId,
+    queryParams,
+  };
 }
 
 function load() {
   findElements('a.lazy-load-youtube').forEach((domItem, index) => {
     const videoLinkElement = domItem;
     const href = videoLinkElement.getAttribute('href');
-    const embedparms = getEmbedParams(href);
+    const parsedUrl = parseOriginalUrl(href);
 
     /*
      * Load Youtube ID
      */
-    const videoId = embedparms.split('?')[0].split('#')[0];
+    const { videoId, queryParams: urlSpecificParams } = parsedUrl;
 
     function videoTitle() {
       if (videoLinkElement.getAttribute('data-video-title') !== undefined) {
@@ -117,25 +150,6 @@ function load() {
 
     function youtubeUrl(id) {
       return `https://www.youtube.com/watch?v=${id}`;
-    }
-
-    let startTime = 0;
-    const timeFactors = [3600, 60, 1]; // h, m, s
-    let startMatch = embedparms.match(/[#&?]t=(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/);
-
-    if (startMatch) {
-      for (let s = 1; s < startMatch.length; s += 1) {
-        if (typeof startMatch[s] !== 'undefined') {
-          startTime += parseInt(startMatch[s], 10) * timeFactors[s - 1];
-        }
-      }
-    }
-
-    if (startTime === 0) {
-      startMatch = embedparms.match(/[#&?](?:t|start)=(\d+)/);
-      if (startMatch) {
-        [, startTime] = startMatch;
-      }
     }
 
     videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube" itemprop="name">${videoTitle()}</span></div>`;
@@ -190,7 +204,8 @@ function load() {
     }
 
     videoLinkElement.getAttribute('id', videoId + index);
-    videoLinkElement.getAttribute('href', youtubeUrl(videoId) + (startTime ? `#t=${startTime}s` : ''));
+    videoLinkElement.getAttribute('href',
+      youtubeUrl(videoId) + (queryHashToString(urlSpecificParams)));
 
     /*
      * Register "onclick" event handler
@@ -205,9 +220,9 @@ function load() {
        * Generate iFrame
        */
       const videoUrl = getVideoUrl({
-        pluginOptions, videoId, embedparms, startTime,
+        pluginOptions, videoId, urlSpecificParams,
       });
-      console.log(videoUrl);
+
       const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.clientWidth, 10)}" height="${parseInt(videoLinkElement.clientHeight, 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 
       eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
