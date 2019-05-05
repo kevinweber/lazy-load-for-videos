@@ -9,11 +9,13 @@ import lazyloadYoutube, { convertToSeconds, defaultPluginOptions, getVideoUrl, p
  * pluginOption.loadthumbnail
  */
 
-const validVideoId = 'ABC123def4g';
+const fakeValidVideoId = 'ABC123def4g';
+const fakePrerollVideoId = 'DEF567def8g';
+const fakePostrollVideoId = 'GHI901def2g';
 
 function mockVideoUrlInput(override = {}) {
   const videoUrl = getVideoUrl({
-    videoId: validVideoId,
+    videoId: fakeValidVideoId,
     ...override,
     pluginOptions: {
       ...defaultPluginOptions,
@@ -24,6 +26,7 @@ function mockVideoUrlInput(override = {}) {
   return {
     url: videoUrl,
     queryParams: new URLSearchParams(videoUrl),
+    videoId: parseOriginalUrl(videoUrl).videoId,
   };
 }
 
@@ -32,8 +35,8 @@ describe('convertToSeconds', () => {
     expect(convertToSeconds('0')).toBe(0);
   });
 
-  it('correctly parses 0m20s', () => {
-    expect(convertToSeconds('0m20s')).toBe(20);
+  it('correctly parses 20s', () => {
+    expect(convertToSeconds('20s')).toBe(20);
   });
 
   it('correctly parses 1m20s', () => {
@@ -86,18 +89,12 @@ describe('parseOriginalUrl', () => {
 
 describe('getVideoUrl', () => {
   it('returns default URL with expected query', () => {
-    // https://www.youtube.com/watch?v=${validVideoId}
+    // https://www.youtube.com/watch?v=${fakeValidVideoId}
     const mockVideo = mockVideoUrlInput();
-    expect(mockVideo.url).toBe(`https://www.youtube.com/embed/${validVideoId}?autoplay=1&rel=0&iv_load_policy=3&color=red`);
+    expect(mockVideo.url).toBe(`https://www.youtube.com/embed/${fakeValidVideoId}?autoplay=1&rel=0&iv_load_policy=3&color=red`);
   });
 
-  it('supports modestbranding plugin option (default)', () => {
-    const mockVideo = mockVideoUrlInput();
-
-    expect(mockVideo.queryParams.get('modestbranding')).toBe(null);
-  });
-
-  it('supports modestbranding plugin option (override)', () => {
+  it('supports modestbranding plugin option', () => {
     const mockVideo = mockVideoUrlInput({
       pluginOptions: {
         modestbranding: true,
@@ -143,12 +140,7 @@ describe('getVideoUrl', () => {
     expect(mockVideo.queryParams.get('color')).toBe('red');
   });
 
-  it('supports controls plugin option (default)', () => {
-    const mockVideo = mockVideoUrlInput();
-    expect(mockVideo.queryParams.get('controls')).toBe(null);
-  });
-
-  it('supports controls plugin option (override)', () => {
+  it('supports controls plugin option', () => {
     const mockVideo = mockVideoUrlInput({
       pluginOptions: {
         controls: false,
@@ -158,12 +150,7 @@ describe('getVideoUrl', () => {
     expect(mockVideo.queryParams.get('controls')).toBe('0');
   });
 
-  it('supports relations plugin option (default)', () => {
-    const mockVideo = mockVideoUrlInput();
-    expect(mockVideo.queryParams.get('rel')).toBe('0');
-  });
-
-  it('supports relations plugin option (override)', () => {
+  it('supports relations plugin option', () => {
     const mockVideo = mockVideoUrlInput({
       pluginOptions: {
         relations: false,
@@ -186,12 +173,7 @@ describe('getVideoUrl', () => {
     expect(mockVideo.queryParams.get('rel')).toBe('0');
   });
 
-  it('supports loadpolicy plugin option (default)', () => {
-    const mockVideo = mockVideoUrlInput();
-    expect(mockVideo.queryParams.get('iv_load_policy')).toBe('3');
-  });
-
-  it('supports loadpolicy plugin option (override)', () => {
+  it('supports loadpolicy plugin option', () => {
     const mockVideo = mockVideoUrlInput({
       pluginOptions: {
         loadpolicy: false,
@@ -199,5 +181,39 @@ describe('getVideoUrl', () => {
     });
 
     expect(mockVideo.queryParams.get('iv_load_policy')).toBe(null);
+  });
+
+  it('supports preroll plugin option', () => {
+    const mockVideo = mockVideoUrlInput({
+      pluginOptions: {
+        preroll: fakePrerollVideoId,
+      },
+    });
+
+    expect(mockVideo.videoId).toBe(fakePrerollVideoId);
+    expect(mockVideo.queryParams.get('playlist')).toBe(fakeValidVideoId);
+  });
+
+  it('supports postroll plugin option', () => {
+    const mockVideo = mockVideoUrlInput({
+      pluginOptions: {
+        postroll: fakePostrollVideoId,
+      },
+    });
+
+    expect(mockVideo.videoId).toBe(fakeValidVideoId);
+    expect(mockVideo.queryParams.get('playlist')).toBe(fakePostrollVideoId);
+  });
+
+  it('supports preroll combined with postroll plugin option', () => {
+    const mockVideo = mockVideoUrlInput({
+      pluginOptions: {
+        preroll: fakePrerollVideoId,
+        postroll: fakePostrollVideoId,
+      },
+    });
+
+    expect(mockVideo.videoId).toBe(fakePrerollVideoId);
+    expect(mockVideo.queryParams.get('playlist')).toBe(`${fakeValidVideoId},${fakePostrollVideoId}`);
   });
 });

@@ -53,6 +53,8 @@ export function convertToSeconds(timestring) {
 export function getVideoUrl({
   pluginOptions: pluginOpts, videoId, urlOptions,
 }) {
+  // First video changes if the preroll feature is used
+  let firstVideoToPlay = videoId;
   const query = {
     autoplay: 1, // Always autoplay video once we load the iframe
   };
@@ -66,7 +68,10 @@ export function getVideoUrl({
   const preroll = pluginOpts.preroll !== videoId && pluginOpts.preroll;
   const postroll = pluginOpts.postroll !== videoId && pluginOpts.postroll;
   const playlistArray = [];
-  if (preroll) playlistArray.push(preroll);
+  if (preroll) {
+    firstVideoToPlay = preroll;
+    playlistArray.push(videoId);
+  }
   if (postroll) playlistArray.push(postroll);
   if (playlistArray.length > 0) {
     query.playlist = playlistArray.join(',');
@@ -84,7 +89,7 @@ export function getVideoUrl({
   /*
    * Generate URL
    */
-  return `https://www.youtube.com/embed/${videoId}?${queryHashToString(queryWithUrlOptions)}`;
+  return `https://www.youtube.com/embed/${firstVideoToPlay}?${queryHashToString(queryWithUrlOptions)}`;
 }
 
 function getVideoIdAndAfter(href) {
