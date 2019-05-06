@@ -1,15 +1,15 @@
 workflow "NPM Install && Test" {
   on = "push"
-  resolves = ["Build"]
+  resolves = ["Test"]
 }
 
-action "Build" {
+action "Install" {
   uses = "actions/npm@master"
   args = "install"
 }
 
 action "Test" {
-  needs = "Build"
+  needs = "Install"
   uses = "actions/npm@master"
   args = "test"
 }
