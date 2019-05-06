@@ -1,6 +1,6 @@
 workflow "NPM Install && Test" {
   resolves = ["Test"]
-  on = "push"
+  on = "pull_request"
 }
 
 action "Install" {
