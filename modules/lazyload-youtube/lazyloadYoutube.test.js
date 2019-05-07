@@ -102,30 +102,7 @@ describe('getVideoUrl', () => {
   it('returns default URL with expected query', () => {
     // https://www.youtube-nocookie.com/watch?v=${fakeValidVideoId}
     const mockVideo = mockVideoUrlInput();
-    expect(mockVideo.url).toBe(`https://www.youtube-nocookie.com/embed/${fakeValidVideoId}?autoplay=1&rel=0&iv_load_policy=3&color=red`);
-  });
-
-  it('supports modestbranding plugin option', () => {
-    const mockVideo = mockVideoUrlInput({
-      pluginOptions: {
-        modestbranding: true,
-      },
-    });
-
-    expect(mockVideo.queryParams.get('modestbranding')).toBe('1');
-  });
-
-  it('supports modestbranding for URL option', () => {
-    const mockVideo = mockVideoUrlInput({
-      pluginOptions: {
-        modestbranding: false,
-      },
-      urlOptions: {
-        modestbranding: '1',
-      },
-    });
-
-    expect(mockVideo.queryParams.get('modestbranding')).toBe('1');
+    expect(mockVideo.url).toBe(`https://www.youtube-nocookie.com/embed/${fakeValidVideoId}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&color=red`);
   });
 
   it('supports colour plugin option', () => {
@@ -159,29 +136,6 @@ describe('getVideoUrl', () => {
     });
 
     expect(mockVideo.queryParams.get('controls')).toBe('0');
-  });
-
-  it('supports relations plugin option', () => {
-    const mockVideo = mockVideoUrlInput({
-      pluginOptions: {
-        relations: false,
-      },
-    });
-
-    expect(mockVideo.queryParams.get('rel')).toBe(null);
-  });
-
-  it('supports rel URL option', () => {
-    const mockVideo = mockVideoUrlInput({
-      pluginOptions: {
-        relations: false,
-      },
-      urlOptions: {
-        rel: '0',
-      },
-    });
-
-    expect(mockVideo.queryParams.get('rel')).toBe('0');
   });
 
   it('supports loadpolicy plugin option', () => {

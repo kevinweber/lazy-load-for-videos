@@ -19,8 +19,6 @@ export const defaultPluginOptions = {
   colour: 'red', // supported colours: red, white
   controls: true,
   loadpolicy: true,
-  modestbranding: false,
-  relations: true,
   buttonstyle: '',
   preroll: '',
   postroll: '',
@@ -57,12 +55,12 @@ export function getVideoUrl({
   let firstVideoToPlay = videoId;
   const query = {
     autoplay: 1, // Always autoplay video once we load the iframe
+    modestbranding: 1,
+    rel: 0, // "0" means: Show related videos from the same channel
   };
 
-  if (pluginOpts.relations) query.rel = 0;
   if (pluginOpts.controls === false) query.controls = 0;
   if (pluginOpts.loadpolicy) query.iv_load_policy = 3;
-  if (pluginOpts.modestbranding) query.modestbranding = 1;
   if (pluginOpts.colour) query.color = pluginOpts.colour;
 
   const preroll = pluginOpts.preroll !== videoId && pluginOpts.preroll;

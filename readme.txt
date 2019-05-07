@@ -1,7 +1,7 @@
 === Lazy Load for Videos ===
 Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
-Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load
+Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
 Tested up to: 5.2.0
 Stable tag: 2.6.0
@@ -13,7 +13,7 @@ Speed up your site by replacing embedded Youtube and Vimeo videos with a clickab
 == Description ==
 
 This plugin improves page load times and increases your Google PageSpeed Score. It replaces embedded Youtube and Vimeo videos with a clickable preview image.
-By loading videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy.
+By loading videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy. Additionally, all Youtube videos are loaded in a privacy-enhanced mode using the "https://www.youtube-nocookie.com" embed URL.
 
 Demo on the developer’s website: [www.kweber.com/lazy-load-videos/](https://www.kweber.com/lazy-load-videos/)
 
@@ -22,12 +22,10 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 = Some additional features: =
 * Display video titles on preview images
 * Pre-roll and post-roll advertisements: Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement to every video. (Great for branding and video ads!)
-* Load Youtube videos in privacy-enhanced mode ("https://www.youtube-nocookie.com")
 * Hide annotations such as "subscribe to channel" to avoid distractions
 * Add custom CSS via the plugin’s admin panel
 * Choose custom colour for your Vimeo player
 * Hide controls from Youtube player
-* Hide Youtube logo from control bar (modest branding)
 * Hide information like the video title and uploader when the video starts playing
 * Even lazy load videos in text widgets (Youtube only)
 * Choose between thumbnail sizes (standard or cover)
@@ -149,9 +147,12 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 * Privacy: Load all Youtube videos in privacy-enhanced mode using the https://www.youtube-nocookie.com URL
 * Rewrite large parts of the JavaScript to make maintenance and open source contributions easier and less risky.
 * Improve Ajax support, including support for Ajax Page Loader plugin. Thanks to @devattendant's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/19).
+* Show a link to the video if the browser doesn't support JavaScript
 * Remove option to display a credit link in the top right corner of each video. This further reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
 * Remove feature "Schema.org Markup" (has been in beta)
+* Remove Youtube feature "Hide Youtube logo"
 * Remove Youtube feature "Player colour" (has been deprecated for a while)
+* Remove Youtube feature "Relations" (Youtube no longer supports hiding related videos)
 * Remove Youtube feature "Hide title/uploader" (no longer supported by Youtube)
 
 = 2.6.0 =
