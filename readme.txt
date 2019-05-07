@@ -4,7 +4,7 @@ Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
 Tested up to: 5.2.0
-Stable tag: 2.6.0
+Stable tag: 2.7.0
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -149,7 +149,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 * Improve Ajax support, including support for Ajax Page Loader plugin. Thanks to @devattendant's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/19).
 * Show a link to the video if the browser doesn't support JavaScript
 * Remove option to display a credit link in the top right corner of each video. This further reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
-* Remove feature "Schema.org Markup" (has been in beta)
+* Remove Youtube feature "Schema.org Markup"
 * Remove Youtube feature "Hide Youtube logo"
 * Remove Youtube feature "Player colour" (has been deprecated for a while)
 * Remove Youtube feature "Relations" (Youtube no longer supports hiding related videos)
