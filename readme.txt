@@ -154,6 +154,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 * Remove Youtube feature "Player colour" (has been deprecated for a while)
 * Remove Youtube feature "Relations" (Youtube no longer supports hiding related videos)
 * Remove Youtube feature "Hide title/uploader" (no longer supported by Youtube)
+* Reduce risk of conflicting class names with other plugins, see [issue](https://github.com/kevinweber/lazy-load-for-videos/issues/18).
 
 = 2.6.0 =
 * New feature: Hide Youtube logo from control bar by using Youtube's modest branding feature.

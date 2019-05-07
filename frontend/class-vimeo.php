@@ -2,7 +2,7 @@
 /**
  * @package Lazyload Vimeo
  */
-class Lazyload_Video_Vimeo {
+class Lazy_Load_For_Videos_Vimeo {
 
 	public function init() {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {

@@ -3,7 +3,7 @@
  * Create options panel (https://codex.wordpress.org/Creating_Options_Pages)
  * @package Admin
  */
-class Lazyload_Videos_Admin {
+class Lazy_Load_For_Videos_Admin {
 	function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		// The 'oembed_dataparse' filter should be called on backend AND on frontend, not only on backend [is_admin()]. Otherwise, on some websites occur errors.
@@ -436,6 +436,6 @@ class Lazyload_Videos_Admin {
 }
 
 function initialize_lazyloadvideos_admin() {
-	new Lazyload_Videos_Admin();
+	new Lazy_Load_For_Videos_Admin();
 }
 add_action( 'init', 'initialize_lazyloadvideos_admin' );

@@ -1,5 +1,5 @@
 <?php
-class Lazyload_Videos_Theme_Check {
+class Lazy_Load_For_Videos_Theme_Check {
 
 	/**
 	 * Test if wp_footer function exists in user's theme

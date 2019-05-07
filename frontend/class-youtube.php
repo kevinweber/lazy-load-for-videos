@@ -2,7 +2,7 @@
 /**
  * @package Lazyload Youtube
  */
-class Lazyload_Videos_Youtube {
+class Lazy_Load_For_Videos_Youtube {
 
 	public function init() {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {

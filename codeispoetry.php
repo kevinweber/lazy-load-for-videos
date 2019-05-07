@@ -100,7 +100,7 @@ else {
 
 function lazyload_theme_check() {
 	include_once( LL_PATH . 'inc/class-theme-check.php');
-	$lazyload_theme_check = new Lazyload_Videos_Theme_Check();
+	$lazyload_theme_check = new Lazy_Load_For_Videos_Theme_Check();
 	$lazyload_theme_check->theme_check_init('lazyload.php');
 }
 add_action( 'init', 'lazyload_theme_check' );
