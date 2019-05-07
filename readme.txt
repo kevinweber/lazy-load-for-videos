@@ -22,6 +22,7 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 = Some additional features: =
 * Display video titles on preview images
 * Pre-roll and post-roll advertisements: Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement to every video. (Great for branding and video ads!)
+* Load Youtube videos in privacy-enhanced mode ("https://www.youtube-nocookie.com")
 * Hide annotations such as "subscribe to channel" to avoid distractions
 * Add custom CSS via the plugin’s admin panel
 * Choose custom colour for your Vimeo player
@@ -147,6 +148,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 * ️️⚡ Performance: Independence from jQuery! The user-facing part of this plugin no longer requires jQuery.
 * Rewrite large parts of the JavaScript to make maintenance and open source contributions easier and less risky.
 * Improve Ajax support, including support for Ajax Page Loader plugin. Thanks to @devattendant's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/19).
+* Load all Youtube videos in privacy-enhanced mode using the https://www.youtube-nocookie.com URL
 * Remove option to display a credit link in the top right corner of each video. This further reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
 * Remove feature "Schema.org Markup" (has been in beta)
 * Remove Youtube feature "Player colour" (has been deprecated for a while)

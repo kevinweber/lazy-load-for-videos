@@ -89,7 +89,7 @@ export function getVideoUrl({
   /*
    * Generate URL
    */
-  return `https://www.youtube.com/embed/${firstVideoToPlay}?${queryHashToString(queryWithUrlOptions)}`;
+  return `https://www.youtube-nocookie.com/embed/${firstVideoToPlay}?${queryHashToString(queryWithUrlOptions)}`;
 }
 
 function getVideoIdAndAfter(href) {

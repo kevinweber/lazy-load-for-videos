@@ -75,6 +75,17 @@ describe('parseOriginalUrl', () => {
     });
   });
 
+  it('correctly parses https://www.youtube-nocookie.com/embed/aaa', () => {
+    const url = 'https://www.youtube-nocookie.com/embed/IJNR2EpS0jw?modestbranding=1&random=string';
+    const parsedUrl = parseOriginalUrl(url);
+
+    expect(parsedUrl.videoId).toBe('IJNR2EpS0jw');
+    expect(parsedUrl.queryParams).toEqual({
+      modestbranding: '1',
+      random: 'string',
+    });
+  });
+
   it('correctly parses http://youtu.be/aaa', () => {
     const url = 'http://youtu.be/IJNR2EpS0jw?modestbranding=1&random=string';
     const parsedUrl = parseOriginalUrl(url);
@@ -89,9 +100,9 @@ describe('parseOriginalUrl', () => {
 
 describe('getVideoUrl', () => {
   it('returns default URL with expected query', () => {
-    // https://www.youtube.com/watch?v=${fakeValidVideoId}
+    // https://www.youtube-nocookie.com/watch?v=${fakeValidVideoId}
     const mockVideo = mockVideoUrlInput();
-    expect(mockVideo.url).toBe(`https://www.youtube.com/embed/${fakeValidVideoId}?autoplay=1&rel=0&iv_load_policy=3&color=red`);
+    expect(mockVideo.url).toBe(`https://www.youtube-nocookie.com/embed/${fakeValidVideoId}?autoplay=1&rel=0&iv_load_policy=3&color=red`);
   });
 
   it('supports modestbranding plugin option', () => {
