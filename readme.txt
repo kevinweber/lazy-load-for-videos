@@ -146,9 +146,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 = 2.7.0 =
 * ️️⚡ Performance: Independence from jQuery! The user-facing part of this plugin no longer requires jQuery.
+* Privacy: Load all Youtube videos in privacy-enhanced mode using the https://www.youtube-nocookie.com URL
 * Rewrite large parts of the JavaScript to make maintenance and open source contributions easier and less risky.
 * Improve Ajax support, including support for Ajax Page Loader plugin. Thanks to @devattendant's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/19).
-* Load all Youtube videos in privacy-enhanced mode using the https://www.youtube-nocookie.com URL
 * Remove option to display a credit link in the top right corner of each video. This further reduces CSS and JS file sizes. Please consider donating instead: https://www.kweber.com/donate/LazyLoadVideos/.
 * Remove feature "Schema.org Markup" (has been in beta)
 * Remove Youtube feature "Player colour" (has been deprecated for a while)

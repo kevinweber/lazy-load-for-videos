@@ -287,8 +287,8 @@ class Lazyload_Videos_Admin {
 					        <tr valign="top">
 					        	<th scope="row"><label><?php esc_html_e( 'Pre-roll/post-roll ads', LL_TD ); ?><span class="description thin"><br>Sell advertising space!</span></label></th>
 					        	<td>
-					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Pre-roll', LL_TD ); ?></strong> <input type="text" name="lly_opt_player_preroll" placeholder="" value="<?php echo get_option('lly_opt_player_preroll'); ?>" /><br>
-					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Post-roll', LL_TD ); ?></strong> <input type="text" name="lly_opt_player_postroll" placeholder="" value="<?php echo get_option('lly_opt_player_postroll'); ?>" /> <?php esc_html_e( '(multiple IDs allowed)', LL_TD ); ?><br>
+					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Pre-roll', LL_TD ); ?></strong> <input pattern="[\w\d]*" type="text" name="lly_opt_player_preroll" placeholder="" value="<?php echo get_option('lly_opt_player_preroll'); ?>" /><br>
+					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Post-roll', LL_TD ); ?></strong> <input pattern="^(?!,)[\w\d,]*[\w\d]$" type="text" name="lly_opt_player_postroll" placeholder="" value="<?php echo get_option('lly_opt_player_postroll'); ?>" /> <?php esc_html_e( '(multiple IDs allowed)', LL_TD ); ?><br>
 					        		<br>
 					        		<label>
 										<?php printf( esc_html__( 'Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement. You have to insert the plain Youtube %1$s, like %2$s or a comma-separated list of video IDs (%3$s).', LL_TD ),
