@@ -202,9 +202,13 @@ function load() {
      * Register "onclick" event handler
      */
     videoLinkElement.addEventListener('click', (event) => {
+      const eventTarget = event.currentTarget;
       event.preventDefault();
 
-      const eventTarget = event.target;
+      if (eventTarget.tagName.toLowerCase() !== 'a') {
+        return;
+      }
+
       removePlayerControls(eventTarget);
 
       /*

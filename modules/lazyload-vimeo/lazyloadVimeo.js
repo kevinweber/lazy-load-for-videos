@@ -77,11 +77,16 @@ function vimeoCreateThumbProcess(videoLinkElement) {
 
 function vimeoCreatePlayer(videoLinkElement) {
   videoLinkElement.addEventListener('click', (event) => {
+    const eventTarget = event.currentTarget;
     event.preventDefault();
-    const item = event.target;
-    const vid = item.getAttribute('id');
 
-    removePlayerControls(item);
+    if (eventTarget.tagName.toLowerCase() !== 'a') {
+      return;
+    }
+
+    const vid = eventTarget.getAttribute('id');
+
+    removePlayerControls(eventTarget);
 
     let playercolour = '';
     if (pluginOptions.playercolour !== playercolour) {
@@ -89,8 +94,8 @@ function vimeoCreatePlayer(videoLinkElement) {
       playercolour = `&color=${pluginOptions.playercolour}`;
     }
 
-    const videoIFrame = createElements(`<iframe src="${vimeoUrl(vid)}?autoplay=1${playercolour}" style="height:${parseInt(item.clientHeight, 10)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>`);
-    item.parentNode.replaceChild(videoIFrame, item);
+    const videoIFrame = createElements(`<iframe src="${vimeoUrl(vid)}?autoplay=1${playercolour}" style="height:${parseInt(eventTarget.clientHeight, 10)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen></iframe>`);
+    eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
 
     if (pluginOptions.responsive === true) {
       resizeResponsiveVideos();

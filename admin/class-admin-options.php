@@ -141,10 +141,8 @@ class Lazyload_Videos_Admin {
 			'lly_opt_support_for_widgets',
 			'lly_opt_thumbnail_quality',
 			'lly_opt_player_colour_progress',
-			'lly_opt_player_relations',
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
-			'lly_opt_player_modestbranding',
 
 			// Vimeo
 			'llv_opt',
@@ -171,7 +169,7 @@ class Lazyload_Videos_Admin {
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
-		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><!--<span class="newred_dot">&bull;</span>--></a></li>
 		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
@@ -318,22 +316,10 @@ class Lazyload_Videos_Admin {
 									</select>
 						        </td>
 					        </tr>
-							<tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Hide Youtube logo', LL_TD ); ?> <span class="newred">New</span></label></th>
-						        <td>
-									<input name="lly_opt_player_modestbranding" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_modestbranding' ) ); ?> /> <label><?php esc_html_e( 'If checked, the YouTube logo will not be shown in the control bar using Youtube\'s modest branding feature.', LL_TD ); ?></label>
-						        </td>
-					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><label><?php esc_html_e( 'Hide annotations', LL_TD ); ?> <span class="newred grey">Tip</span></label></th>
 						        <td>
 									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_loadpolicy' ) ); ?> /> <label><?php esc_html_e( 'If checked, video annotations (like "subscribe to channel") will not be shown.', LL_TD ); ?></label>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Hide related videos', LL_TD ); ?></label></th>
-						        <td>
-									<input name="lly_opt_player_relations" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_relations' ) ); ?> /> <label><?php esc_html_e( 'If checked, related videos at the end of your videos will not be displayed.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
