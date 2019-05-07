@@ -42,7 +42,7 @@ class Lazyload_Videos_Admin {
 	}
 
     function text__no_script_fallback($title, $url) {
-        $no_script_fallback = "<noscript>Video can't be loaded: {$title} ({$url})</noscript>";
+        $no_script_fallback = "<noscript>Video can't be loaded because JavaScript is disabled: <a href=\"{$url}\" title=\"{$title}\">{$title} ({$url})</a></noscript>";
 
         return $no_script_fallback;
     }

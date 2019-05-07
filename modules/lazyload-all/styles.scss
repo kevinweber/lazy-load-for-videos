@@ -12,10 +12,12 @@ $z-index-base: 2;
 .container-vimeo {
 	font-size: 0;
 	line-height: 0;
-    noscript {
-        display: block;
-        font-size: 1rem;
-        text-align: left;
+	
+	noscript {
+		display: block;
+		font-size: 1rem;
+		line-height: 1.2em;
+		text-align: left;
     }
 }
 
