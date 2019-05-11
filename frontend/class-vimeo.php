@@ -2,14 +2,14 @@
 /**
  * @package Lazyload Vimeo
  */
-class Lazyload_Video_Vimeo {
+class Lazy_Load_For_Videos_Vimeo {
 
 	public function init() {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			wp_enqueue_script( 'lazyload_vimeo_js', LL_URL . 'assets/js/lazyload-vimeo.js', array( 'jquery' ), LL_VERSION, true );
+			wp_enqueue_script( 'lazyload_vimeo_js', LL_URL . 'assets/js/lazyload-vimeo.js', null, LL_VERSION, true );
 		} else if ( get_option('llv_opt') !== '1' ) {
-    	wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-vimeo.js', array( 'jquery' ), LL_VERSION, true );
-    }
+			wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-vimeo.js', null, LL_VERSION, true );
+		}
 	}
 
 	/**
@@ -28,7 +28,6 @@ class Lazyload_Video_Vimeo {
 			'preroll'      => get_option( 'llv_opt_player_preroll', ''),
 			'postroll'     => get_option( 'llv_opt_player_postroll', '' ),
 			'show_title'   => get_option( 'llv_opt_title', false ) == true,
-			'displaybranding'  => ! (get_option( 'll_display_branding', false ) == false),
 			'loadthumbnail'	 => $this->should_load_thumbnail(),
 			'callback'     => '<!--VIMEO_CALLBACK-->'
 		) );

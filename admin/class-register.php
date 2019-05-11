@@ -41,11 +41,11 @@ function lazyloadvideos_plugin_deactivation() {
 
 function lazyloadvideos_update_posts_with_embed() {
 	require_once( LL_PATH . 'admin/inc/class-update-posts.php' );
-	$lazyload_admin = new Lazyload_Videos_Update_Posts();
+	$lazyload_admin = new Lazy_Load_For_Videos_Update_Posts();
 	$lazyload_admin->delete_oembed_caches();
 }
 
-class Lazyload_Videos_Register {
+class Lazy_Load_For_Videos_Register {
 
 	function __construct() {
 		add_action( 'admin_notices', array( $this, 'plugin_notice_activation' ) );
@@ -71,7 +71,7 @@ class Lazyload_Videos_Register {
 	 */
 	function delete_oembed_cache( $post_id ) {
 		require_once( LL_PATH . 'admin/inc/class-update-posts.php' );
-		$lazyload_admin = new Lazyload_Videos_Update_Posts();
+		$lazyload_admin = new Lazy_Load_For_Videos_Update_Posts();
 		$lazyload_admin->delete_oembed_cache( $post_id );
 	}
 
@@ -105,6 +105,6 @@ class Lazyload_Videos_Register {
 }
 
 function initialize_lazyloadvideos_register() {
-	new Lazyload_Videos_Register();
+	new Lazy_Load_For_Videos_Register();
 }
 add_action( 'init', 'initialize_lazyloadvideos_register' );

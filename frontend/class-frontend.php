@@ -2,26 +2,24 @@
 /**
  * @package Frontend
  */
-class Lazyload_Videos_Frontend {
+class Lazy_Load_For_Videos_Frontend {
 
 	function init() {
 		if ( $this->test_if_scripts_should_be_loaded() ) {
 			$this->load_lazyload_style();
 			add_action( 'wp_head', array( $this, 'load_lazyload_css') );
-			add_filter( 'lly_change_options', array( $this, 'set_options' ) );
-			add_filter( 'llv_change_options', array( $this, 'set_options' ) );
 
 			if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', array( 'jquery' ), LL_VERSION, true );
+				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', null, LL_VERSION, true );
 			} else if ( (get_option('lly_opt') !== '1') && (get_option('llv_opt') !== '1') ) {
-				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', array( 'jquery' ), LL_VERSION, true );
+				wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-all.js', null, LL_VERSION, true );
 			}
 
             $settings = array();
 
             if (get_option('lly_opt') !== '1') {
                 require( LL_PATH . 'frontend/class-youtube.php' );
-                $youtube = new Lazyload_Videos_Youtube();
+                $youtube = new Lazy_Load_For_Videos_Youtube();
                 $youtube->init();
 
                 $settings_youtube = array(
@@ -32,7 +30,7 @@ class Lazyload_Videos_Frontend {
             }
             if (get_option('llv_opt') !== '1') {
                 require( LL_PATH . 'frontend/class-vimeo.php' );
-                $vimeo = new Lazyload_Video_Vimeo();
+                $vimeo = new Lazy_Load_For_Videos_Vimeo();
                 $vimeo->init();
 
                 $settings_vimeo = array(
@@ -178,29 +176,10 @@ class Lazyload_Videos_Frontend {
 			//|| ( !is_singular() )	// Everything else (except for pages/posts without oembedded media)
 		? true : false;
 	}
-
-	/**
-	 * Set options to extend setOptionsYoutube() and setOptionsVimeo() that are used in JS files
-	 */
-	function set_options( $options ) {
-		return $this->set_option_video_seo( $options );
-	}
-
-	/**
-	 * Set option "videoseo" for setOptionsYoutube() and setOptionsVimeo()
-	 */
-	function set_option_video_seo( $options ) {
-		if ( get_option( 'll_opt_video_seo' ) == '1' ) {
-			$options[ 'videoseo' ] = true;
-		}
-
-		return $options;
-	}
-
 }
 
 function initialize_lazyload_frontend() {
-	$frontend = new Lazyload_Videos_Frontend();
+	$frontend = new Lazy_Load_For_Videos_Frontend();
 	$frontend->init();
 }
 add_action( 'wp_enqueue_scripts', 'initialize_lazyload_frontend' );

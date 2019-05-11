@@ -2,7 +2,7 @@
 /**
  * @package General (needed for both: admin and frontend)
  */
-class Lazyload_Videos_General {
+class Lazy_Load_For_Videos_General {
 
 	// Don't change those strings since exactly those strings are needed by the Youtube JavaScript file
 	private $thumbnailquality_default = '0';
@@ -93,4 +93,4 @@ class Lazyload_Videos_General {
 
 }
 
-$lazyload_videos_general = new Lazyload_Videos_General();
+$lazyload_videos_general = new Lazy_Load_For_Videos_General();

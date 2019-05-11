@@ -1,5 +1,6 @@
 {
-  "extends": "eslint:recommended",
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "es6": true,
@@ -10,7 +11,6 @@
     "sourceType": "module"
   },
   "globals": {
-    "jQuery": true,
     "lazyload_video_settings": true
   },
   "rules": {

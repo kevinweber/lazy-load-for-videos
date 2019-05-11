@@ -3,12 +3,8 @@
  * Create options panel (https://codex.wordpress.org/Creating_Options_Pages)
  * @package Admin
  */
-class Lazyload_Videos_Admin {
-
-	private $schema_prop_video = '';
-
+class Lazy_Load_For_Videos_Admin {
 	function __construct() {
-		$this->set_schema_prop_video();
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		// The 'oembed_dataparse' filter should be called on backend AND on frontend, not only on backend [is_admin()]. Otherwise, on some websites occur errors.
 		add_filter( 'oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3 );
@@ -45,20 +41,8 @@ class Lazyload_Videos_Admin {
 	  return $links;
 	}
 
-	/**
-	 * Handle schema for Video SEO
-	 */
-	function set_schema_prop_video() {
-		if ( get_option('ll_opt_video_seo') == true ) {
-			$this->schema_prop_video = ' itemprop="video" itemscope itemtype="https://schema.org/VideoObject"';
-		}
-	}
-	function get_schema_prop_video() {
-		return $this->schema_prop_video;
-	}
-
     function text__no_script_fallback($title, $url) {
-        $no_script_fallback = "<noscript>Video can't be loaded: {$title} ({$url})</noscript>";
+        $no_script_fallback = "<noscript>Video can't be loaded because JavaScript is disabled: <a href=\"{$url}\" title=\"{$title}\">{$title} ({$url})</a></noscript>";
 
         return $no_script_fallback;
     }
@@ -91,10 +75,10 @@ class Lazyload_Videos_Admin {
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded"'
-                . $this->get_schema_prop_video() .'>'
-                . $preview_url
-                . $this->text__no_script_fallback($data->title, $url)
-                . '</div>';
+					.' itemprop="video" itemscope itemtype="https://schema.org/VideoObject">'
+					. $preview_url
+					. $this->text__no_script_fallback($data->title, $url)
+					. '</div>';
 
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
 	    }
@@ -123,11 +107,11 @@ class Lazyload_Videos_Admin {
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded"'
-                    . $this->get_schema_prop_video()
-                    .'>'
+                    . ' itemprop="video" itemscope itemtype="https://schema.org/VideoObject">'
                     . $preview_url
                     . $this->text__no_script_fallback($data->title, $url)
-                    . '</div>';
+					. '</div>';
+
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
 	    }
 
@@ -146,7 +130,6 @@ class Lazyload_Videos_Admin {
 			'll_opt_button_style',
 			'll_opt_thumbnail_size',
 			'll_opt_customcss',
-			'll_opt_video_seo', // Google: "Make sure that your video and schema.org markup are visible without executing any JavaScript or Flash." --> Video is not working with Lazy Load
 			'll_opt_support_for_tablepress',
 			'll_attribute',
 
@@ -157,13 +140,9 @@ class Lazyload_Videos_Admin {
 			'lly_opt_player_postroll',
 			'lly_opt_support_for_widgets',
 			'lly_opt_thumbnail_quality',
-			'lly_opt_player_colour',
 			'lly_opt_player_colour_progress',
-			'lly_opt_player_showinfo',
-			'lly_opt_player_relations',
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
-			'lly_opt_player_modestbranding',
 
 			// Vimeo
 			'llv_opt',
@@ -190,7 +169,7 @@ class Lazyload_Videos_Admin {
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
-		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><!--<span class="newred_dot">&bull;</span>--></a></li>
 		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
@@ -254,30 +233,16 @@ class Lazyload_Videos_Admin {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><label><?php esc_html_e( 'Schema.org Markup', LL_TD ); ?> <span class="newred">Beta</span></label></th>
-						        <td>
-									<input name="ll_opt_video_seo" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_video_seo' ) ); ?> />
-									<label>
-										<?php printf( esc_html__( 'Add schema.org markup to your Youtube and Vimeo videos. Those changes don\'t seem to affect your search ranking because videos and schema.org markup %1$sshould be visible%2$s without JavaScript (but that cannot be the case when videos are lazy loaded).', LL_TD ),
-											'<a href="https://developers.google.com/webmasters/videosearch/schema" target="_blank">',
-											'</a>'
-										); ?>
-									</label>
-									<label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.', LL_TD ); ?></label>
-						        </td>
-					        </tr>
-					        <tr valign="top">
 						        <th scope="row"><label><?php esc_html_e( 'Support for TablePress', LL_TD ); ?></label></th>
 						        <td>
 									<input name="ll_opt_support_for_tablepress" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_support_for_tablepress' ) ); ?> /> <label><?php esc_html_e( 'Only check this box if you actually use this feature (for reason of performance). If checked, you can paste a Youtube or Vimeo URL into tables that are created with TablePress and it will be lazy loaded.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-						        <th scope="row"><?php esc_html_e( 'Attribution', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'give appropriate credit for my time-consuming efforts', LL_TD ); ?></span></th>
+						        <th scope="row"><?php esc_html_e( 'Attribution', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( "Are you thankful for this plugin? I've invested months and months of work. This plugin is 100% free and open source.", LL_TD ); ?></span></th>
 						        <td>
 									<?php $options = get_option( 'll_attribute' ); ?>
 									<input class="radio" type="radio" name="ll_attribute" value="none"<?php checked( 'none' == $options || empty($options) ); ?> /> <label for="none"><?php esc_html_e( 'No attribution: "I can not afford to give appropriate credit for this free plugin."', LL_TD ); ?></label><br><br>
-									<input class="radio" type="radio" name="ll_attribute" value="link"<?php checked( 'link' == $options ); ?> /> <label for="link"><?php esc_html_e( 'Link attribution: Display a subtle "i" (information link) that is placed in the top right of every video and helps that the plugin gets spread.', LL_TD ); ?></label><br><br>
 									<input class="radio" type="radio" name="ll_attribute" value="donate"<?php checked( 'donate' == $options ); ?> />
 									<label for="donate">
 										<?php esc_html_e( 'Donation: "I have donated already or will do so soon."', LL_TD ); ?>
@@ -320,8 +285,8 @@ class Lazyload_Videos_Admin {
 					        <tr valign="top">
 					        	<th scope="row"><label><?php esc_html_e( 'Pre-roll/post-roll ads', LL_TD ); ?><span class="description thin"><br>Sell advertising space!</span></label></th>
 					        	<td>
-					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Pre-roll', LL_TD ); ?></strong> <input type="text" name="lly_opt_player_preroll" placeholder="" value="<?php echo get_option('lly_opt_player_preroll'); ?>" /><br>
-					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Post-roll', LL_TD ); ?></strong> <input type="text" name="lly_opt_player_postroll" placeholder="" value="<?php echo get_option('lly_opt_player_postroll'); ?>" /> <?php esc_html_e( '(multiple IDs allowed)', LL_TD ); ?><br>
+					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Pre-roll', LL_TD ); ?></strong> <input pattern="[\w\d]*" type="text" name="lly_opt_player_preroll" placeholder="" value="<?php echo get_option('lly_opt_player_preroll'); ?>" /><br>
+					        		<strong style="width:80px;display:inline-block"><?php esc_html_e( 'Post-roll', LL_TD ); ?></strong> <input pattern="^(?!,)[\w\d,]*[\w\d]$" type="text" name="lly_opt_player_postroll" placeholder="" value="<?php echo get_option('lly_opt_player_postroll'); ?>" /> <?php esc_html_e( '(multiple IDs allowed)', LL_TD ); ?><br>
 					        		<br>
 					        		<label>
 										<?php printf( esc_html__( 'Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement. You have to insert the plain Youtube %1$s, like %2$s or a comma-separated list of video IDs (%3$s).', LL_TD ),
@@ -351,28 +316,10 @@ class Lazyload_Videos_Admin {
 									</select>
 						        </td>
 					        </tr>
-							<tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Hide Youtube logo', LL_TD ); ?> <span class="newred">New</span></label></th>
-						        <td>
-									<input name="lly_opt_player_modestbranding" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_modestbranding' ) ); ?> /> <label><?php esc_html_e( 'If checked, the YouTube logo will not be shown in the control bar using Youtube\'s modest branding feature.', LL_TD ); ?></label>
-						        </td>
-					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><label><?php esc_html_e( 'Hide annotations', LL_TD ); ?> <span class="newred grey">Tip</span></label></th>
 						        <td>
 									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_loadpolicy' ) ); ?> /> <label><?php esc_html_e( 'If checked, video annotations (like "subscribe to channel") will not be shown.', LL_TD ); ?></label>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Hide title/uploader', LL_TD ); ?></label></th>
-						        <td>
-									<input name="lly_opt_player_showinfo" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_showinfo' ) ); ?> /> <label><?php esc_html_e( 'If checked, information like the video title and uploader will not be displayed when the video starts playing. This option only affects the playing video, not the video thumbnail.', LL_TD ); ?></label>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Hide related videos', LL_TD ); ?></label></th>
-						        <td>
-									<input name="lly_opt_player_relations" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_relations' ) ); ?> /> <label><?php esc_html_e( 'If checked, related videos at the end of your videos will not be displayed.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -385,16 +332,6 @@ class Lazyload_Videos_Admin {
 						        <th scope="row"><label><?php esc_html_e( 'Support for widgets', LL_TD ); ?></label></th>
 						        <td>
 									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_support_for_widgets' ) ); ?> /> <label><?php esc_html_e( 'Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.', LL_TD ); ?></label>
-						        </td>
-					        </tr>
-							<tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Player colour', LL_TD ); ?> <span class="newred grey">DEPRECATED</span></label></th>
-						        <td>
-									<select class="select" typle="select" name="lly_opt_player_colour">
-										<option value="dark"<?php if (get_option('lly_opt_player_colour') === 'dark') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Dark (default)', LL_TD ); ?></option>
-										<option value="light"<?php if (get_option('lly_opt_player_colour') === 'light') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Light', LL_TD ); ?></option>
-									</select>
-                                    <p><?php esc_html_e( 'Note from Youtube: This parameter has been deprecated for HTML5 players, which always use the dark theme.', LL_TD ); ?></p>
 						        </td>
 					        </tr>
 			        	</tbody>
@@ -499,6 +436,6 @@ class Lazyload_Videos_Admin {
 }
 
 function initialize_lazyloadvideos_admin() {
-	new Lazyload_Videos_Admin();
+	new Lazy_Load_For_Videos_Admin();
 }
 add_action( 'init', 'initialize_lazyloadvideos_admin' );

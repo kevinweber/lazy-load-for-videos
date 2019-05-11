@@ -12,17 +12,21 @@ $z-index-base: 2;
 .container-vimeo {
 	font-size: 0;
 	line-height: 0;
-    noscript {
-        display: block;
-        font-size: 1rem;
-        text-align: left;
+	
+	noscript {
+		display: block;
+		font-size: 1rem;
+		line-height: 1.2em;
+		text-align: left;
     }
 }
 
 .preview-lazyload {
   opacity: 1;
+  position: relative;
   transition: opacity 0.25s;
 }
+
 .js-lazyload--not-loaded .preview-lazyload {
     opacity: 0;
 }
@@ -48,6 +52,8 @@ a.lazy-load-vimeo {
 
 .lazy-load-div {
 	display: table;
+	height: 100%;
+	width: 100%;
 
 	&::before {
 		content: "\25B6";
@@ -108,37 +114,6 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	float: left;
 	text-transform: none;
 	font-weight: normal;
-}
-
-.entry-content a.lazyload-info-icon, p a.lazyload-info-icon, a.lazyload-info-icon, .lazyload-info-icon,
-.entry-content a.lazyload-info-icon:visited, p a.lazyload-info-icon:visited, a.lazyload-info-icon:visited, .lazyload-info-icon:visited {
-    width: 19px;
-    height: 0;
-    line-height: 0;
-    display: block;
-    text-align: center;
-    opacity: 0.8;
-    margin: 1px 8px 1px auto;
-    color: $white;
-    font-family: Times, 'Times New Roman', Arial, sans-serif;
-    font-weight: bold;
-    font-size: 14px;
-    text-decoration: none;
-    z-index: $z-index-base + 2;
-    text-shadow: none;
-    position: relative;
-    top: 19px;
-    text-transform: none;
-	border: 0;
-	vertical-align: baseline;
-	word-break: break-word;
-	background: transparent;
-    &:hover {
-    	opacity: 1;
-    	color: $white;
-    	text-decoration: none;
-		border-bottom-width: 0;
-    }
 }
 
 .container-youtube embed, .container-youtube iframe, .container-youtube object, .container-youtube video,

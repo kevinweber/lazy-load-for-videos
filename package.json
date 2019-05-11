@@ -1,12 +1,14 @@
 {
   "private": true,
   "name": "lazy-load-for-videos",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)",
   "scripts": {
-    "production": "NODE_ENV=production webpack --progress --colors --config ./webpack.config.js -p",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npm run production -- --watch"
+    "production": "NODE_ENV=production webpack --config ./webpack.config.js -p",
+    "development": "NODE_ENV=development webpack --progress --colors --config ./webpack.config.js",
+    "test": "jest",
+    "watch:test": "npm run test -- --watch",
+    "watch": "npm run development -- --watch"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,6 @@
     "content",
     "video",
     "page",
-    "jquery",
     "mobile",
     "lazy load"
   ],
@@ -33,20 +34,23 @@
   },
   "homepage": "https://github.com/kevinweber/lazy-load-for-videos#readme",
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "autoprefixer": "^8.6.5",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
-    "eslint": "^5.16.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.17.2",
     "file-loader": "^1.1.11",
+    "jest": "^24.8.0",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.12.0",
     "postcss-loader": "^2.1.6",
     "sass-loader": "^7.1.0",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.1"
-  },
-  "dependencies": {}
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  }
 }

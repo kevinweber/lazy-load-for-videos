@@ -3,15 +3,15 @@ const extractCSS = new MiniCssExtractPlugin({
   filename: 'css/[name].css',
 });
 
-const IS_PROD = (process.env.NODE_ENV === 'production');
+const IS_DEV = (process.env.NODE_ENV === 'development');
 
-module.exports = {
-  mode: IS_PROD ? 'production' : 'development',
+const config = {
+  mode: IS_DEV ? 'development' : 'production',
   entry: {
-    admin: './modules/admin/index.js',
-    'lazyload-all': './modules/lazyload-all/index.js',
-    'lazyload-vimeo': './modules/lazyload-vimeo/index.js',
-    'lazyload-youtube': './modules/lazyload-youtube/index.js',
+    admin: './modules/admin/webpackEntry.js',
+    'lazyload-all': './modules/lazyload-all/webpackEntry.js',
+    'lazyload-vimeo': './modules/lazyload-vimeo/webpackEntry.js',
+    'lazyload-youtube': './modules/lazyload-youtube/webpackEntry.js',
   },
   module: {
     rules: [{
@@ -66,5 +66,10 @@ module.exports = {
   plugins: [
     extractCSS,
   ],
-  devtool: "#cheap-source-map",
 };
+
+if (IS_DEV) {
+  config.devtool = 'eval-source-map';
+}
+
+module.exports = config;
