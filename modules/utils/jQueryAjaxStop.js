@@ -3,7 +3,6 @@ export default function (callback) {
 
   if ($) {
     $(document).ajaxStop(() => {
-      console.log('yep');
       callback();
     });
   }
