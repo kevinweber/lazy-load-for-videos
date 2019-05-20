@@ -1,13 +1,13 @@
-Lazy Load for Videos by [Kevin Weber](//www.kweber.com)
+Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)
 ====================
 
 This plugin improves page load times and increases your Google PageSpeed Score. It replaces embedded Youtube and Vimeo videos with a clickable preview image.
 By loading the videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy.
 
-[Download link and more information on the developer's website](//www.kweber.com/lazy-load-videos/)
+[Download link and more information on the developer's website](https://www.kweber.com/lazy-load-videos/)
 
-## Who can contribute?
-Everyone. You! I'm looking forward to merge your contribution. Here are a few steps to help you get started:
+## How to contribute?
+This is open source. Everyone can contribute, including you! I'm looking forward to review and merge your contribution. Here are a few steps to help you get started:
 
 1. Fork/clone this repository to your computer.
 1. Navigate to your downloaded folder in your terminal.
@@ -16,3 +16,21 @@ Everyone. You! I'm looking forward to merge your contribution. Here are a few st
 1. Ideally, write tests related to your changes. Make sure that all test cases are succeeding (run: `npm run test`).
 1. When you're done, run `npm run production`.
 1. Create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
+
+## Integration with other themes and plugins
+
+### Filter: `lazyload_videos_should_scripts_be_loaded`
+
+You can override when the JS and CSS of this plugin should be loaded. If you always return `true` as shown in the example below, the scripts will always be loaded, no matter if the page has a video embed or not.
+
+```
+function custom_theme_plugin__should_scripts_be_loaded($value) {
+	// return $value;
+	return true; // <- Always load scripts, no matter what page you're on
+}
+add_filter( 'lazyload_videos_should_scripts_be_loaded', 'custom_theme_plugin__should_scripts_be_loaded');
+```
+
+### Filter: `lazyload_videos_post_types`
+
+The default set of post types where videos should be lazy-loaded comes from [get_post_types()](https://codex.wordpress.org/Function_Reference/get_post_types). Use this filter to extend/override the default.

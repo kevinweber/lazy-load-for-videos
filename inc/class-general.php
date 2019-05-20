@@ -8,17 +8,8 @@ class Lazy_Load_For_Videos_General {
 	private $thumbnailquality_default = '0';
 	private $thumbnailquality_maxresdefault = 'maxresdefault';
 
-	/**
-	 * Thanks to http://t31os.wordpress.com/2010/05/24/post-has-embed/ for a nicer solution than mine
-	 */
-	function test_if_post_or_page_has_embed( $post_id = false ) {
-	    if( !$post_id )
-	        $post_id = get_the_ID();
-	    else
-	        $post_id = absint( $post_id );
-	    if( !$post_id )
-	        return false;
-
+	function has_post_or_page_embed( $post_id ) {
+		
 	 	// Get meta keys for current post
 	    $post_meta = get_post_custom_keys( $post_id );
 	 

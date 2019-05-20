@@ -4,7 +4,7 @@ Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
 Tested up to: 5.2.0
-Stable tag: 2.7.1
+Stable tag: 2.7.2
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -122,15 +122,19 @@ add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
 
 = How to use a custom play button? =
 For now, you can choose the "Youtube button image" from the play button drop-down list, then add the following custom CSS that includes a link to your custom CSS play button image:
-`.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div {
+
+```
+.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div {
 	background-image: url(INSERT-YOUR-URL-HERE.../images/play.png);
-}`
+}
+```
+
 Feature versions might include an option to change the colour of your CSS-only buttons using a colour picker and might also include an option to directly upload the desired button image.
 
 = How to lazy load playlists? =
 Similar to a single video, insert the playlist URL in the following format:
 `https://www.youtube.com/watch?v=dkfQFih23Ak&list=PLRQFBJ3mkjnxaPhAVOzjxxv_0yr8XE0Ja` (the other format - `https://www.youtube.com/playlist?list=...` - is not supported currently).
-Note that playlists are not working when you're using the pre-/post-roll feature yet.
+Note that playlists are not working when you're using the pre-/post-roll feature.
 
 = Known bugs - this plugin may not work correctly when one of the following plugins is activated... =
 * "YouTube" (https://wordpress.org/extend/plugins/youtube-embed-plus/)
@@ -141,6 +145,11 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.7.2 =
+* Improve "Only load CSS/JS when needed" feature by scanning for embeds on pages with multiple posts (e.g. homepage, archive).
+* Add filter: lazyload_videos_should_scripts_be_loaded
+* No longer support "SCRIPT_DEBUG" variable for development
 
 = 2.7.0 =
 * ️️⚡ Performance: Independence from jQuery! The user-facing part of this plugin no longer requires jQuery.

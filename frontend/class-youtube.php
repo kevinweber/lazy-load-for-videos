@@ -3,13 +3,9 @@
  * @package Lazyload Youtube
  */
 class Lazy_Load_For_Videos_Youtube {
-
-	public function init() {
-		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			wp_enqueue_script( 'lazyload_youtube_js', LL_URL . 'assets/js/lazyload-youtube.js', null, LL_VERSION, true );
-		} else if ( get_option('lly_opt') !== '1' ) {
-			wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-youtube.js', null, LL_VERSION, true );
-		}
+	
+	function enqueue() {
+		wp_enqueue_script( 'lazyload-youtube-js');
 	}
 
 	/**

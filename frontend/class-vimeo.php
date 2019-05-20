@@ -4,12 +4,8 @@
  */
 class Lazy_Load_For_Videos_Vimeo {
 
-	public function init() {
-		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			wp_enqueue_script( 'lazyload_vimeo_js', LL_URL . 'assets/js/lazyload-vimeo.js', null, LL_VERSION, true );
-		} else if ( get_option('llv_opt') !== '1' ) {
-			wp_enqueue_script( 'lazyload-video-js', LL_URL . 'assets/js/lazyload-vimeo.js', null, LL_VERSION, true );
-		}
+	function enqueue() {
+		wp_enqueue_script( 'lazyload-vimeo-js');
 	}
 
 	/**

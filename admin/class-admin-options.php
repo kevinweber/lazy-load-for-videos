@@ -56,7 +56,7 @@ class Lazy_Load_For_Videos_Admin {
 
 		// If URL contains "lazyload=0", we don't want to lazyload it.
 		if (strpos($url, 'lazyload=0') !== false) {
-	    return $return;
+	    	return $return;
 		}
 
 		// Youtube support
@@ -190,7 +190,7 @@ class Lazy_Load_For_Videos_Admin {
 					        <tr valign="top">
 						        <th scope="row"><label><?php esc_html_e( 'Only load CSS/JS when needed', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'to improve performance', LL_TD ); ?></span></label></th>
 						        <td>
-									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label><?php esc_html_e( 'It can happen that &ndash; when this option is checked &ndash; videos on pages do not lazy load although they should. It works on most sites. Simply test it.', LL_TD ); ?></label>
+									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label><?php esc_html_e( 'When this option is checked, some videos might not lazy load if posts with videos are loaded using Ajax.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 				        	<tr valign="top">
@@ -347,7 +347,13 @@ class Lazy_Load_For_Videos_Admin {
 					        <tr valign="top">
 						        <th scope="row"><label><?php esc_html_e( 'Disable Lazy Load for Vimeo', LL_TD ); ?></label></th>
 						        <td>
-									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> <label><?php esc_html_e( 'If checked, Lazy Load will not be used for <b>Vimeo</b> videos.', LL_TD ); ?></label> <label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.', LL_TD ); ?></label>
+									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> 
+									<label>
+										<?php printf( esc_html__( 'If checked, Lazy Load will not be used for %1$s videos.', LL_TD ),
+											'<b>Vimeo</b>'
+										); ?>
+									</label>
+									<label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'Updates on this option will only affect new posts and posts you update afterwards with the "Update Posts" button at the bottom of this form.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -417,11 +423,7 @@ class Lazy_Load_For_Videos_Admin {
 	}
 
 	function lazyload_admin_js() {
-		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			wp_enqueue_script( 'lazyload_admin_js', LL_URL . 'assets/js/admin.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
-		} else {
-			wp_enqueue_script( 'lazyload_admin_js', LL_URL . 'assets/js/admin.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
-		}
+		wp_enqueue_script( 'lazyload_admin_js', LL_URL . 'assets/js/admin.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), LL_VERSION );
 	}
 
 	function lazyload_admin_css() {
