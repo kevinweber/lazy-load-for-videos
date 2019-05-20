@@ -122,15 +122,19 @@ add_action( 'lazyload_videos_post_types', 'lazyload_videos_set_post_types' );`
 
 = How to use a custom play button? =
 For now, you can choose the "Youtube button image" from the play button drop-down list, then add the following custom CSS that includes a link to your custom CSS play button image:
-`.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div {
+
+```
+.preview-youtube .lazy-load-youtube-div, .lazy-load-vimeo-div {
 	background-image: url(INSERT-YOUR-URL-HERE.../images/play.png);
-}`
+}
+```
+
 Feature versions might include an option to change the colour of your CSS-only buttons using a colour picker and might also include an option to directly upload the desired button image.
 
 = How to lazy load playlists? =
 Similar to a single video, insert the playlist URL in the following format:
 `https://www.youtube.com/watch?v=dkfQFih23Ak&list=PLRQFBJ3mkjnxaPhAVOzjxxv_0yr8XE0Ja` (the other format - `https://www.youtube.com/playlist?list=...` - is not supported currently).
-Note that playlists are not working when you're using the pre-/post-roll feature yet.
+Note that playlists are not working when you're using the pre-/post-roll feature.
 
 = Known bugs - this plugin may not work correctly when one of the following plugins is activated... =
 * "YouTube" (https://wordpress.org/extend/plugins/youtube-embed-plus/)

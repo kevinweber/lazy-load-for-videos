@@ -45,8 +45,9 @@ class Lazy_Load_For_Videos_Frontend {
 
 function lazyload_videos_frontend() {
 	$frontend = new Lazy_Load_For_Videos_Frontend();
+	$should_load_scripts = apply_filters( 'lazyload_videos_should_scripts_be_loaded', $frontend->should_scripts_be_loaded());
 
-	if ($frontend->should_scripts_be_loaded()) {
+	if ($should_load_scripts) {
 		$frontend->registerAll();
 
 		$styles = new Lazy_Load_For_Videos_Init_Styles();
