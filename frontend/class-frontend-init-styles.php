@@ -1,12 +1,12 @@
 <?php
 /**
- * @package Frontend CSS
+ * @package Frontend – Init Styles
  */
-class Lazy_Load_For_Videos_Init_CSS {
+class Lazy_Load_For_Videos_Init_Styles {
 	/**
 	 * Add CSS
 	 */
-	function enqueue() {
+	function init() {
 		wp_enqueue_style( 'lazyload-video-css' );
 		
 		echo '<style type="text/css">';
