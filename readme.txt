@@ -4,7 +4,7 @@ Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
 Tested up to: 5.2.0
-Stable tag: 2.7.2
+Stable tag: 2.7.3
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
