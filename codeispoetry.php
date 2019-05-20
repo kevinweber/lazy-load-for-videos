@@ -4,7 +4,7 @@
  * Plugin URI: https://www.kweber.com/lazy-load-videos/
  * Description: Lazy Load for Videos speeds up your site by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
  * Author: Kevin Weber
- * Version: 2.7.1
+ * Version: 2.7.2
  * Author URI: https://www.kweber.com/
  * License: GPL v3
  * Text Domain: lazy-load-for-videos
@@ -33,7 +33,7 @@ if ( !defined( 'LL_OPTION_KEY' ) ) {
 }
 
 if (!defined('LL_VERSION'))
-    define('LL_VERSION', '2.7.1');
+    define('LL_VERSION', '2.7.2');
 if (!defined('LL_VERSION_KEY'))
     define('LL_VERSION_KEY', LL_OPTION_KEY.'_version');
 
@@ -72,6 +72,7 @@ function lazyload_videos_init_plugins_loaded() {
 	require_once( LL_PATH . 'admin/class-admin-options.php' );
 	require_once( LL_PATH . 'frontend/class-frontend.php' );
 }
+
 add_action( 'plugins_loaded', 'lazyload_videos_init_plugins_loaded', 15 );
 
 
@@ -79,11 +80,13 @@ add_action( 'plugins_loaded', 'lazyload_videos_init_plugins_loaded', 15 );
 function lazyload_videos_admin_init() {
 	require_once( LL_PATH . 'admin/class-meta.php' );
 }
+
 function lazyload_videos_frontend_init() {
 	// Feature: Support for Widgets (Youtube only)
 	if ( (get_option('lly_opt_support_for_widgets') == true) ) {
 		require_once( LL_PATH . 'frontend/inc/support_for_widgets.php');
 	}
+
 	// Feature: Support for Plugin "TablePress"
 	if ( (get_option('ll_opt_support_for_tablepress') == true) ) {
 		require_once( LL_PATH . 'frontend/inc/support_for_tablepress.php');
@@ -92,8 +95,7 @@ function lazyload_videos_frontend_init() {
 
 if ( is_admin() ) {
 	add_action( 'plugins_loaded', 'lazyload_videos_admin_init', 16 );
-}
-else {
+} else {
 	add_action( 'plugins_loaded', 'lazyload_videos_frontend_init', 16 );
 }
 

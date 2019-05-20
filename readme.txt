@@ -4,7 +4,7 @@ Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
 Tested up to: 5.2.0
-Stable tag: 2.7.1
+Stable tag: 2.7.2
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -141,6 +141,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.7.2 =
+* Improve "Only load CSS/JS when needed" feature by checking for embeds on pages with multiple posts (e.g. homepage, archive).
 
 = 2.7.0 =
 * ️️⚡ Performance: Independence from jQuery! The user-facing part of this plugin no longer requires jQuery.
