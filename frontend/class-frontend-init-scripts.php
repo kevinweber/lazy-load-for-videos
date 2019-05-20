@@ -3,6 +3,9 @@
  * @package Frontend – Init Scripts
  */
 class Lazy_Load_For_Videos_Init_Scripts {
+	private $enqueued_vimeo = false;
+	private $enqueued_youtube = false;
+
 	function init() {
 		$isDebugging = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
 		$areBothVideosEnabled = (get_option('lly_opt') !== '1') && (get_option('llv_opt') !== '1');
@@ -48,7 +51,7 @@ class Lazy_Load_For_Videos_Init_Scripts {
 		}
 
 		wp_localize_script( 'lazyload-video-js', 'lazyload_video_settings', $settings );
-		wp_localize_script( 'lazyload_vimeo_js', 'lazyload_video_settings', $settings );
-		wp_localize_script( 'lazyload_youtube_js', 'lazyload_video_settings', $settings );
+		wp_localize_script( 'lazyload-vimeo-js', 'lazyload_video_settings', $settings );
+		wp_localize_script( 'lazyload-youtube-js', 'lazyload_video_settings', $settings );
 	}
 }

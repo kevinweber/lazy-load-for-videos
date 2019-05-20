@@ -5,7 +5,7 @@
 class Lazy_Load_For_Videos_Vimeo {
 
 	function enqueue() {
-		wp_enqueue_script( 'lazyload_vimeo_js');
+		wp_enqueue_script( 'lazyload-vimeo-js');
 	}
 
 	/**

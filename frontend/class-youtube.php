@@ -5,7 +5,7 @@
 class Lazy_Load_For_Videos_Youtube {
 	
 	function enqueue() {
-		wp_enqueue_script( 'lazyload_youtube_js');
+		wp_enqueue_script( 'lazyload-youtube-js');
 	}
 
 	/**
