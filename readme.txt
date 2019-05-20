@@ -147,7 +147,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 == Changelog ==
 
 = 2.7.2 =
-* Improve "Only load CSS/JS when needed" feature by checking for embeds on pages with multiple posts (e.g. homepage, archive).
+* Improve "Only load CSS/JS when needed" feature by scanning for embeds on pages with multiple posts (e.g. homepage, archive).
+* Add filter: lazyload_videos_should_scripts_be_loaded
+* No longer support "SCRIPT_DEBUG" variable for development
 
 = 2.7.0 =
 * ️️⚡ Performance: Independence from jQuery! The user-facing part of this plugin no longer requires jQuery.

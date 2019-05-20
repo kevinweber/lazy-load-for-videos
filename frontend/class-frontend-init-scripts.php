@@ -7,10 +7,10 @@ class Lazy_Load_For_Videos_Init_Scripts {
 	private $enqueued_youtube = false;
 
 	function init() {
-		$isDebugging = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
-		$areBothVideosEnabled = (get_option('lly_opt') !== '1') && (get_option('llv_opt') !== '1');
-
-		if ($isDebugging || $areBothVideosEnabled) {
+		$isYoutubeEnabled = get_option('lly_opt') !== '1';
+		$isVimeoEnabled = get_option('llv_opt') !== '1';
+		
+		if ($isYoutubeEnabled && $isVimeoEnabled) {
 			// "lazyload-video-js" is a script combining Vimeo and Youtube
 			wp_enqueue_script( 'lazyload-video-js');
 			$this->enqueued_vimeo = true;
@@ -19,7 +19,7 @@ class Lazy_Load_For_Videos_Init_Scripts {
 
 		$settings = array();
 
-		if (get_option('lly_opt') !== '1') {
+		if ($isYoutubeEnabled) {
 			require( LL_PATH . 'frontend/class-youtube.php' );
 			$youtube = new Lazy_Load_For_Videos_Youtube();
 			
@@ -35,7 +35,7 @@ class Lazy_Load_For_Videos_Init_Scripts {
 
 		}
 		
-		if (get_option('llv_opt') !== '1') {
+		if ($isVimeoEnabled) {
 			require( LL_PATH . 'frontend/class-vimeo.php' );
 			$vimeo = new Lazy_Load_For_Videos_Vimeo();
 
