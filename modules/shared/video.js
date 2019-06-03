@@ -22,7 +22,10 @@ function determineVideoRatio(element) {
     );
     const ratioraw = ratioclass.replace('wp-embed-aspect-', '');
     const splitratio = ratioraw.split('-');
-    return Number(splitratio[1]) / Number(splitratio[0]);
+    const result = Number(splitratio[1]) / Number(splitratio[0]);
+    const countDec = result.toString().split('.')[1].length;
+    if (countDec > 4) { return (Math.round(result * 10000) / 10000); }
+    return result;
   }
   return 0.5625; // <-- default
 }
