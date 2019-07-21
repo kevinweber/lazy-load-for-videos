@@ -14,17 +14,22 @@ export function setBackgroundImage(element, imageUrl) {
 function determineVideoRatio(element) {
   const parent = element && element.parentNode && element.parentNode.parentNode;
   const hasAspectRatioClass = parent && parent.classList.contains('wp-has-aspect-ratio');
-  if (hasAspectRatioClass) {
-    const classes = String(parent.classList);
-    const ratioclass = classes.substring(
-      classes.lastIndexOf('wp-embed-aspect-'),
-      classes.lastIndexOf(' '),
-    );
+  const classes = String(parent.classList);
+  const ratioclass = classes.substring(
+    classes.lastIndexOf('wp-embed-aspect-'),
+    classes.lastIndexOf(' '),
+  ).trim();
+
+  if (hasAspectRatioClass && ratioclass) {
     const ratioraw = ratioclass.replace('wp-embed-aspect-', '');
     const splitratio = ratioraw.split('-');
     const result = Number(splitratio[1]) / Number(splitratio[0]);
     const countDec = result.toString().split('.')[1].length;
-    if (countDec > 4) { return (Math.round(result * 10000) / 10000); }
+
+    if (countDec > 4) {
+      return Math.round(result * 10000) / 10000;
+    }
+
     return result;
   }
   return 0.5625; // <-- default
