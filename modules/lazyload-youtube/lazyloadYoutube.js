@@ -147,7 +147,9 @@ function load() {
 
     const lazyloadDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
     videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
-    videoLinkElement.classList.add(pluginOptions.buttonstyle);
+    if (pluginOptions.buttonstyle) {
+      videoLinkElement.classList.add(pluginOptions.buttonstyle);
+    }
 
     /*
      * Set thumbnail URL

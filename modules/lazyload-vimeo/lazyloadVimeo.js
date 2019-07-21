@@ -62,7 +62,9 @@ function vimeoLoadingThumb(videoLinkElement, id) {
 
   const lazyloadDiv = createElements(`${info}<div aria-hidden="true" class="lazy-load-div"></div>`);
   videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
-  videoLinkElement.classList.add(pluginOptions.buttonstyle);
+  if (pluginOptions.buttonstyle) {
+    videoLinkElement.classList.add(pluginOptions.buttonstyle);
+  }
 }
 
 function vimeoCreateThumbProcess(videoLinkElement) {
