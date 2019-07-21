@@ -3,8 +3,6 @@ import jQueryAjaxStop from '../utils/jQueryAjaxStop';
 import findElements from '../utils/findElements';
 import debounce from '../utils/debounce';
 
-const videoratio = 0.5625;
-
 export function setBackgroundImage(element, imageUrl) {
   // Don't simply set "background:url(...)..." because this prop would override
   // custom styling such as "background-size: cover".
@@ -32,7 +30,8 @@ function determineVideoRatio(element) {
 
     return result;
   }
-  return 0.5625; // <-- default
+
+  return 0.5625; // <-- default video ratio
 }
 
 const debouncedResize = debounce(() => {
