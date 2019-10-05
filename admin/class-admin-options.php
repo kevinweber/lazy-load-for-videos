@@ -87,14 +87,15 @@ class Lazy_Load_For_Videos_Admin {
 	    elseif ( (! is_feed()) && ($data->provider_name == 'Vimeo')
 				&& (get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
 	    	) {
+			$url_path = parse_url($url, PHP_URL_PATH);
 
-			$spliturl = explode("/", $url);
-			foreach($spliturl as $key=>$value)
+			$url_split_path = explode("/", $url_path);
+			foreach($url_split_path as $key=>$value)
 			{
 			    if ( empty( $value ) )
-			        unset($spliturl[$key]);
+			        unset($url_split_path[$key]);
 			};
-			$vimeoid = end($spliturl);
+			$vimeoid = end($url_split_path);
 
 	    	$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
