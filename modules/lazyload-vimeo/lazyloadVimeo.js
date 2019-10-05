@@ -43,14 +43,14 @@ function filterDotHash(variable) {
   return filterdothash;
 }
 
-function vimeoCallbackUrl(thumbnailId) {
+function generateVimeoCallbackUrl(thumbnailId) {
   return `https://vimeo.com/api/v2/video/${thumbnailId}.json`;
 }
 
 function vimeoLoadingThumb(videoLinkElement, id) {
   if (lazyload_video_settings.vimeo.loadthumbnail) {
     const script = document.createElement('script');
-    script.src = `${vimeoCallbackUrl(id)}.json?callback=showThumb`;
+    script.src = `${generateVimeoCallbackUrl(id)}.json?callback=showThumb`;
     videoLinkElement.parentNode.insertBefore(script, videoLinkElement.firstChild);
   }
 
@@ -71,10 +71,16 @@ function vimeoCreateThumbProcess(videoLinkElement) {
   const previewItem = videoLinkElement;
   const vid = previewItem.getAttribute('id');
 
+  // There was a bug for Vimeo URLs with a query param in it that wasn't filtered out by
+  // the PHP code. This filtering ensures we only pick the video ID without any query params.
+  // Note to future self: If you see this filter still in June 2020, feel free to remove it.
+  // By now it should be fine to rely only on the server-side filtering.
+  const [filteredVideoId] = vid.match(/[\w]+/);
+  previewItem.setAttribute('id', filteredVideoId);
+
   // Remove no longer needed title (title is necessary for preview in text editor)
   previewItem.innerHTML = '';
-
-  vimeoLoadingThumb(previewItem, vid);
+  vimeoLoadingThumb(previewItem, filteredVideoId);
 }
 
 function vimeoCreatePlayer(videoLinkElement) {
