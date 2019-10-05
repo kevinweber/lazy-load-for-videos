@@ -4,7 +4,7 @@ Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
 Tested up to: 5.2.4
-Stable tag: 2.7.5
+Stable tag: 2.7.6
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -145,6 +145,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.7.6 =
+* Remove "VideoObject" video attributes because some mandatory descriptors are missing
 
 = 2.7.5 =
 * Fix to allow autoplay Vimeo player on Chrome. PR from @po5i on Github: https://github.com/kevinweber/lazy-load-for-videos/pull/33

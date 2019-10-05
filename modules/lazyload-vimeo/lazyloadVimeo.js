@@ -57,7 +57,7 @@ function vimeoLoadingThumb(videoLinkElement, id) {
   let info = '';
   if (lazyload_video_settings.vimeo.show_title) {
     const videoTitle = videoLinkElement.getAttribute('data-video-title');
-    info = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo" itemprop="name">${videoTitle}</span></div>`;
+    info = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo">${videoTitle}</span></div>`;
   }
 
   const lazyloadDiv = createElements(`${info}<div aria-hidden="true" class="lazy-load-div"></div>`);
