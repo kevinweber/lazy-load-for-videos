@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "lazy-load-for-videos",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)",
   "scripts": {
     "production": "NODE_ENV=production webpack --config ./webpack.config.js -p",
