@@ -143,7 +143,7 @@ function load() {
       return `https://www.youtube.com/watch?v=${id}`;
     }
 
-    videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube" itemprop="name">${videoTitle()}</span></div>`;
+    videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube">${videoTitle()}</span></div>`;
 
     const lazyloadDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
     videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);

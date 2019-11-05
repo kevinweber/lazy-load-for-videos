@@ -34,10 +34,12 @@ class Lazy_Load_For_Videos_Frontend {
 		// For pages with multiple posts (e.g. homepage and archives),
 		// iterate over all posts to see if any of them includes an embed.
 		global $posts;
-		foreach($posts as $post) {
-			$has_post_embed = $lazyload_videos_general->has_post_or_page_embed($post->ID);
-			if ($has_post_embed) return true;
-		};
+		if (is_array($posts)) {
+			foreach($posts as $post) {
+				$has_post_embed = $lazyload_videos_general->has_post_or_page_embed($post->ID);
+				if ($has_post_embed) return true;
+			};
+		}
 
 		return false;
 	}

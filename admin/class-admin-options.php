@@ -74,8 +74,7 @@ class Lazy_Load_For_Videos_Admin {
        		$preview_url = "<a class=\"{$a_class}\" href=\"{$url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
 
  			// Wrap container around $preview_url
-       		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded"'
-					.' itemprop="video" itemscope itemtype="https://schema.org/VideoObject">'
+       		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded">'
 					. $preview_url
 					. $this->text__no_script_fallback($data->title, $url)
 					. '</div>';
@@ -87,14 +86,15 @@ class Lazy_Load_For_Videos_Admin {
 	    elseif ( (! is_feed()) && ($data->provider_name == 'Vimeo')
 				&& (get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
 	    	) {
+			$url_path = parse_url($url, PHP_URL_PATH);
 
-			$spliturl = explode("/", $url);
-			foreach($spliturl as $key=>$value)
+			$url_split_path = explode("/", $url_path);
+			foreach($url_split_path as $key=>$value)
 			{
 			    if ( empty( $value ) )
-			        unset($spliturl[$key]);
+			        unset($url_split_path[$key]);
 			};
-			$vimeoid = end($spliturl);
+			$vimeoid = end($url_split_path);
 
 	    	$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 	    	$a_class = apply_filters( 'lazyload_preview_url_a_class_youtube', $a_class );
@@ -106,8 +106,7 @@ class Lazy_Load_For_Videos_Admin {
 			$preview_url = "<a href=\"{$url}\" id=\"{$vimeoid}\" class=\"{$a_class}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
 
 			// Wrap container around $preview_url
-			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded"'
-                    . ' itemprop="video" itemscope itemtype="https://schema.org/VideoObject">'
+			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded">'
                     . $preview_url
                     . $this->text__no_script_fallback($data->title, $url)
 					. '</div>';
