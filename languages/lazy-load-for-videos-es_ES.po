@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: Carlos Villavicencio <carlos.po5i@gmail.com>\n"
 "X-Generator: Poedit 2.2.4\n"
 "Language-Team: \n"
-"Language: es_MX\n"
+"Language: es_ES\n"
 
 #: admin/class-admin-options.php:43
 msgid "Settings"

@@ -41,7 +41,7 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 
 = Translators =
 * Serbian (sr_RS) - [Ogi Djuraskovic](//firstsiteguide.com/)
-* Latin American Spanish (es_MX) - [Carlos Villavicencio](http://po5i.github.io/)
+* Spanish (es_ES) - [Carlos Villavicencio](http://po5i.github.io/)
 
 If you have created your own language pack, or have an update of an existing one, you can [send me](https://www.kweber.com/contact/) your gettext PO and MO so that I can bundle it into my plugin. You can download the latest POT file [from here](https://plugins.svn.wordpress.org/lazy-load-for-videos/trunk/languages/lazy-load-for-videos.pot).
 
