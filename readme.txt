@@ -3,8 +3,8 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
-Tested up to: 5.2.4
-Stable tag: 2.7.7
+Tested up to: 5.2.5
+Stable tag: 2.7.8
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -146,6 +146,10 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.7.8 =
+* Load thumbnails for domain-restricted Vimeos (and possibly some other Vimeo cases)
+* Change language "es_MX" to "es_ES"
 
 = 2.7.7 =
 * Add Spanish translation. PR from @po5i on Github: https://github.com/kevinweber/lazy-load-for-videos/pull/34
