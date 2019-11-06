@@ -49,16 +49,17 @@ function generateVimeoCallbackUrl(thumbnailId) {
 }
 
 function vimeoLoadingThumb(videoLinkElement, id) {
-  const videoThumbnail = videoLinkElement.getAttribute('data-video-thumbnail');
-
-  if (videoThumbnail) {
-    findElements(`[id="${id}"]`).forEach((domItem) => {
-      setBackgroundImage(domItem, videoThumbnail);
-    });
-  } else if (lazyload_video_settings.vimeo.loadthumbnail) {
-    const script = document.createElement('script');
-    script.src = `${generateVimeoCallbackUrl(id)}.json?callback=showThumb`;
-    videoLinkElement.parentNode.insertBefore(script, videoLinkElement.firstChild);
+  if (lazyload_video_settings.vimeo.loadthumbnail) {
+    const videoThumbnail = videoLinkElement.getAttribute('data-video-thumbnail');
+    if (videoThumbnail) {
+      findElements(`[id="${id}"]`).forEach((domItem) => {
+        setBackgroundImage(domItem, videoThumbnail);
+      });
+    } else {
+      const script = document.createElement('script');
+      script.src = `${generateVimeoCallbackUrl(id)}.json?callback=showThumb`;
+      videoLinkElement.parentNode.insertBefore(script, videoLinkElement.firstChild);
+    }
   }
 
   let info = '';
