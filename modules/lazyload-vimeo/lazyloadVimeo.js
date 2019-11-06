@@ -7,6 +7,7 @@ import findElements from '../utils/findElements';
  * by Kevin Weber (www.kweber.com)
  */
 
+/** Deprecated. Will rework in next major release. */
 window.showThumb = (data) => {
   const relevantData = data[0];
 
@@ -48,7 +49,13 @@ function generateVimeoCallbackUrl(thumbnailId) {
 }
 
 function vimeoLoadingThumb(videoLinkElement, id) {
-  if (lazyload_video_settings.vimeo.loadthumbnail) {
+  const videoThumbnail = videoLinkElement.getAttribute('data-video-thumbnail');
+
+  if (videoThumbnail) {
+    findElements(`[id="${id}"]`).forEach((domItem) => {
+      setBackgroundImage(domItem, videoThumbnail);
+    });
+  } else if (lazyload_video_settings.vimeo.loadthumbnail) {
     const script = document.createElement('script');
     script.src = `${generateVimeoCallbackUrl(id)}.json?callback=showThumb`;
     videoLinkElement.parentNode.insertBefore(script, videoLinkElement.firstChild);
