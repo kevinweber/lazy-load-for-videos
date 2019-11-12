@@ -21,20 +21,14 @@ $z-index-base: 2;
     }
 }
 
-.js-lazyload--not-loaded .preview-lazyload {
-	opacity: 0;
+.preview-lazyload {
+	opacity: 1;
+	position: relative;
+	transition: opacity 0.25s;
 }
 
-.preview-lazyload {
-  opacity: 1;
-  position: relative;
-  transition: opacity 0.25s;
-
-  img {
-	object-fit: cover;
-	height: 100%;
-	width: 100%;
-  }
+.js-lazyload--not-loaded .preview-lazyload {
+	opacity: 0;
 }
 
 .entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo {
