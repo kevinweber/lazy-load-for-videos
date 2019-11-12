@@ -147,7 +147,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
-= 2.7.9 =
+= 2.8.0 =
+* Lazy load video preview images, not just the video 🎉
+* Make "responsive mode" the default and only option
 * No longer support video thumbnail option "background-size: contain"
 
 = 2.7.8 =
