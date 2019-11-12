@@ -209,6 +209,7 @@ class Lazy_Load_For_Videos_Admin {
 						        <td>
 									<select class="select" typle="select" name="ll_opt_thumbnail_size">
 										<option value="cover"<?php if (get_option('ll_opt_thumbnail_size') === 'cover') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Thumbnail covering the video element', LL_TD ); ?></option>
+										<option value="standard"<?php if (get_option('ll_opt_thumbnail_size') === 'standard') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Thumbnail contained within the video element', LL_TD ); ?></option>
 										<option value="pattern-carbon"<?php if (get_option('ll_opt_thumbnail_size') === 'pattern-carbon') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Pattern: Carbon', LL_TD ); ?></option>
 										<option value="pattern-dots"<?php if (get_option('ll_opt_thumbnail_size') === 'pattern-dots') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Pattern: Dots', LL_TD ); ?></option>
 										<option value="pattern-light-s"<?php if (get_option('ll_opt_thumbnail_size') === 'pattern-light-s') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Pattern: Light Seigaiha', LL_TD ); ?></option>
