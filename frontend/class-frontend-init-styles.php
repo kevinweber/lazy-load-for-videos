@@ -35,9 +35,7 @@ class Lazy_Load_For_Videos_Init_Styles {
 		$thumbnail = get_option('ll_opt_thumbnail_size');
 		$classlist = '.entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo';
 
-    	if ($thumbnail == 'standard') {
-    		echo $classlist . '{ background-size: contain; }';
-    	} else if ($thumbnail == 'pattern-dots') {
+    	if ($thumbnail == 'pattern-dots') {
 				echo $classlist . '{
 					background-color: #000;
 					background-image: radial-gradient(#333 15%, transparent 16%),
