@@ -1,4 +1,6 @@
-import { init, resizeResponsiveVideos, setBackgroundImage } from '../shared/video';
+import {
+  init, resizeResponsiveVideos, setBackgroundImage, inViewOnce,
+} from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
 import queryHashToString from '../utils/queryHashToString';
@@ -193,7 +195,7 @@ function load() {
     }
 
     if (pluginOptions.loadthumbnail) {
-      setBackgroundImg(videoLinkElement);
+      inViewOnce([videoLinkElement], element => setBackgroundImg(element));
     }
 
     videoLinkElement.getAttribute('id', videoId + index);

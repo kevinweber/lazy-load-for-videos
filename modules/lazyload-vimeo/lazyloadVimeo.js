@@ -1,4 +1,6 @@
-import { init, resizeResponsiveVideos, setBackgroundImage } from '../shared/video';
+import {
+  init, resizeResponsiveVideos, setBackgroundImage, inViewOnce,
+} from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
 
@@ -25,7 +27,6 @@ let pluginOptions;
 const defaultPluginOptions = {
   buttonstyle: '',
   playercolour: '',
-  responsive: true,
   loadthumbnail: true,
   // callback: null, // <- Currently not supported
 };
@@ -49,12 +50,13 @@ function generateVimeoCallbackUrl(thumbnailId) {
 }
 
 function vimeoLoadingThumb(videoLinkElement, id) {
+  const playButtonDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
+  videoLinkElement.appendChild(playButtonDiv);
+
   if (lazyload_video_settings.vimeo.loadthumbnail) {
     const videoThumbnail = videoLinkElement.getAttribute('data-video-thumbnail');
     if (videoThumbnail) {
-      findElements(`[id="${id}"]`).forEach((domItem) => {
-        setBackgroundImage(domItem, videoThumbnail);
-      });
+      inViewOnce(findElements(`[id="${id}"]`), element => setBackgroundImage(element, videoThumbnail));
     } else {
       const script = document.createElement('script');
       script.src = `${generateVimeoCallbackUrl(id)}.json?callback=showThumb`;
@@ -62,14 +64,12 @@ function vimeoLoadingThumb(videoLinkElement, id) {
     }
   }
 
-  let info = '';
   if (lazyload_video_settings.vimeo.show_title) {
     const videoTitle = videoLinkElement.getAttribute('data-video-title');
-    info = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo">${videoTitle}</span></div>`;
+    const info = createElements(`<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo">${videoTitle}</span></div>`);
+    videoLinkElement.appendChild(info);
   }
 
-  const lazyloadDiv = createElements(`${info}<div aria-hidden="true" class="lazy-load-div"></div>`);
-  videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
   if (pluginOptions.buttonstyle) {
     videoLinkElement.classList.add(pluginOptions.buttonstyle);
   }
@@ -113,9 +113,7 @@ function vimeoCreatePlayer(videoLinkElement) {
     const videoIFrame = createElements(`<iframe src="${vimeoUrl(vid)}?autoplay=1${playercolour}" style="height:${parseInt(eventTarget.clientHeight, 10)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen allow=autoplay></iframe>`);
     eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
 
-    if (pluginOptions.responsive === true) {
-      resizeResponsiveVideos();
-    }
+    resizeResponsiveVideos();
   });
 }
 

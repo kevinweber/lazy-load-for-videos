@@ -4,7 +4,6 @@ import lazyloadYoutube, { convertToSeconds, defaultPluginOptions, getVideoUrl, p
  * Missing tests for at least:
  * 
  * pluginOption.buttonstyle
- * pluginOption.responsive
  * pluginOption.thumbnailquality
  * pluginOption.loadthumbnail
  */

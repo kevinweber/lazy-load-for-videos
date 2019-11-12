@@ -34,39 +34,34 @@ function determineVideoRatio(element) {
   return 0.5625; // <-- default video ratio
 }
 
-const debouncedResize = debounce(() => {
-  findElements('.container-lazyload').forEach((domContainerItem) => {
-    const videoRatio = determineVideoRatio(domContainerItem);
-    findElements('object, embed, iframe, .preview-lazyload, .lazy-load-div', domContainerItem)
-      .forEach((domItem) => {
-        const element = domItem;
-        const width = element.parentNode.clientWidth;
-        const height = Math.round(width * videoRatio);
+function resizeVideo(domContainerItem) {
+  const videoRatio = determineVideoRatio(domContainerItem);
+  findElements('object, embed, iframe, .preview-lazyload, .lazy-load-div', domContainerItem)
+    .forEach((domItem) => {
+      const element = domItem;
+      const width = element.parentNode.clientWidth;
+      const height = Math.round(width * videoRatio);
 
-        element.setAttribute('height', `${height}px`);
-        element.setAttribute('width', `${width}px`);
-        element.style.height = `${height}px`;
-        element.style.width = `${width}px`;
-      });
-  });
+      element.setAttribute('height', `${height}px`);
+      element.setAttribute('width', `${width}px`);
+      element.style.height = `${height}px`;
+      element.style.width = `${width}px`;
+    });
+}
+
+const debouncedResize = debounce(() => {
+  findElements('.container-lazyload').forEach(resizeVideo);
 }, 100);
 
 export function resizeResponsiveVideos() {
   debouncedResize();
 }
 
-function markInitialized(domSelector) {
-  findElements(domSelector).forEach((domItem) => {
-    domItem.parentNode.classList.remove('js-lazyload--not-loaded');
-  });
-}
-
-function initResponsiveVideos(previewVideoSelector) {
+function initResponsiveVideos() {
   onBindFirstLoad(resizeResponsiveVideos);
   window.addEventListener('resize', resizeResponsiveVideos);
   window.addEventListener('load', () => {
     resizeResponsiveVideos();
-    markInitialized(previewVideoSelector);
   });
 }
 
@@ -80,19 +75,50 @@ export function init({
    */
   jQueryAjaxStop(() => {
     load();
-    if (pluginOptions.responsive === true) {
-      resizeResponsiveVideos();
-    }
-    markInitialized(previewVideoSelector);
+    resizeResponsiveVideos();
   });
 
-  if (pluginOptions.responsive === true) {
-    initResponsiveVideos(previewVideoSelector);
-  } else {
-    markInitialized(previewVideoSelector);
-  }
+  initResponsiveVideos(previewVideoSelector);
 
   if (typeof pluginOptions.callback === 'function') {
     pluginOptions.callback();
   }
+}
+
+export function inViewOnce(elements, onIntersect) {
+  let observer;
+
+  const options = {
+    root: null,
+    rootMargin: '100px',
+  };
+
+  function handleIntersectElement(element) {
+    onIntersect(element);
+    element.parentNode.classList.remove('js-lazyload--not-loaded');
+    resizeVideo(element.parentNode);
+  }
+
+  if (!('IntersectionObserver' in window)
+    && !('IntersectionObserverEntry' in window)
+    && !('intersectionRatio' in window.IntersectionObserverEntry.prototype)) {
+    // Fallback for browsers without IntersectionObserver
+    elements.forEach(handleIntersectElement);
+    return;
+  }
+
+  const handleIntersect = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        observer.unobserve(entry.target);
+        handleIntersectElement(entry.target);
+      }
+    });
+  };
+
+  // Note: It would be better to have only one IntersectionObserver and then append all items into
+  observer = new IntersectionObserver(handleIntersect, options);
+  elements.forEach((element) => {
+    observer.observe(element);
+  });
 }

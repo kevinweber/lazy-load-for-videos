@@ -20,7 +20,6 @@ class Lazy_Load_For_Videos_Vimeo {
 		return apply_filters( 'llv_change_options', array(
 			'buttonstyle'  => get_option( 'll_opt_button_style', '' ),
 			'playercolour' => get_option( 'llv_opt_player_colour', '' ),
-			'responsive'   => get_option( 'll_opt_load_responsive' ) == '1',
 			'preroll'      => get_option( 'llv_opt_player_preroll', ''),
 			'postroll'     => get_option( 'llv_opt_player_postroll', '' ),
 			'show_title'   => get_option( 'llv_opt_title', false ) == true,

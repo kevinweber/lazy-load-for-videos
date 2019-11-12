@@ -125,7 +125,6 @@ class Lazy_Load_For_Videos_Admin {
 		$arr = array(
 			//General/Styling
 			'll_opt_load_scripts',
-			'll_opt_load_responsive',
 			'll_opt_button_style',
 			'll_opt_thumbnail_size',
 			'll_opt_customcss',
@@ -190,12 +189,6 @@ class Lazy_Load_For_Videos_Admin {
 						        <th scope="row"><label><?php esc_html_e( 'Only load CSS/JS when needed', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'to improve performance', LL_TD ); ?></span></label></th>
 						        <td>
 									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label><?php esc_html_e( 'When this option is checked, some videos might not lazy load if posts with videos are loaded using Ajax.', LL_TD ); ?></label>
-						        </td>
-					        </tr>
-				        	<tr valign="top">
-						        <th scope="row"><label><?php esc_html_e( 'Responsive Mode', LL_TD ); ?> <span class="newred grey"><?php esc_html_e( 'Tip', LL_TD ); ?></span></label></th>
-						        <td>
-									<input name="ll_opt_load_responsive" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_responsive' ) ); ?> /> <label><?php esc_html_e( 'Check this to improve responsiveness. Video aspect ratio will be 16:9.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
