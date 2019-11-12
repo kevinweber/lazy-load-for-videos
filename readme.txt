@@ -147,6 +147,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
+= 2.7.9 =
+* No longer support video thumbnail option "background-size: contain"
+
 = 2.7.8 =
 * Load thumbnails for domain-restricted Vimeos (and possibly some other Vimeo cases)
 * Change language "es_MX" to "es_ES"
