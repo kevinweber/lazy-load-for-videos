@@ -57,7 +57,7 @@ export function resizeResponsiveVideos() {
   debouncedResize();
 }
 
-function initResponsiveVideos(previewVideoSelector) {
+function initResponsiveVideos() {
   onBindFirstLoad(resizeResponsiveVideos);
   window.addEventListener('resize', resizeResponsiveVideos);
   window.addEventListener('load', () => {
