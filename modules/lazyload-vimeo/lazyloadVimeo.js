@@ -44,32 +44,23 @@ function filterDotHash(variable) {
   return filterdothash;
 }
 
-function generateVimeoCallbackUrl(thumbnailId) {
-  return `https://vimeo.com/api/v2/video/${thumbnailId}.json`;
-}
-
 function vimeoLoadingThumb(videoLinkElement, id) {
+  const playButtonDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
+  videoLinkElement.appendChild(playButtonDiv);
+
   if (lazyload_video_settings.vimeo.loadthumbnail) {
     const videoThumbnail = videoLinkElement.getAttribute('data-video-thumbnail');
-    if (videoThumbnail) {
-      findElements(`[id="${id}"]`).forEach((domItem) => {
-        setBackgroundImage(domItem, videoThumbnail);
-      });
-    } else {
-      const script = document.createElement('script');
-      script.src = `${generateVimeoCallbackUrl(id)}.json?callback=showThumb`;
-      videoLinkElement.parentNode.insertBefore(script, videoLinkElement.firstChild);
-    }
+    findElements(`[id="${id}"]`).forEach((domItem) => {
+      setBackgroundImage(domItem, videoThumbnail);
+    });
   }
 
-  let info = '';
   if (lazyload_video_settings.vimeo.show_title) {
     const videoTitle = videoLinkElement.getAttribute('data-video-title');
-    info = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo">${videoTitle}</span></div>`;
+    const info = createElements(`<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo">${videoTitle}</span></div>`);
+    videoLinkElement.appendChild(info);
   }
 
-  const lazyloadDiv = createElements(`${info}<div aria-hidden="true" class="lazy-load-div"></div>`);
-  videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
   if (pluginOptions.buttonstyle) {
     videoLinkElement.classList.add(pluginOptions.buttonstyle);
   }

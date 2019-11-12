@@ -71,7 +71,8 @@ class Lazy_Load_For_Videos_Admin {
 				$data->title
 			);
 
-       		$preview_url = "<a class=\"{$a_class}\" href=\"{$url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
+       		$preview_img = "<img loading=\"lazy\" src=\"{$data->thumbnail_url}\" alt=\"\">";
+			$preview_url = "<a class=\"{$a_class}\" href=\"{$url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$preview_img}</a>";
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded">'
@@ -103,7 +104,8 @@ class Lazy_Load_For_Videos_Admin {
 				$data->title
 			);
 
-			$preview_url = "<a href=\"{$url}\" id=\"{$vimeoid}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data->thumbnail_url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
+			$preview_img = "<img loading=\"lazy\" src=\"{$data->thumbnail_url}\" alt=\"\">";
+			$preview_url = "<a href=\"{$url}\" id=\"{$vimeoid}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data->thumbnail_url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$preview_img}</a>";
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded">'
