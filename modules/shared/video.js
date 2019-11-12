@@ -34,21 +34,23 @@ function determineVideoRatio(element) {
   return 0.5625; // <-- default video ratio
 }
 
-const debouncedResize = debounce(() => {
-  findElements('.container-lazyload').forEach((domContainerItem) => {
-    const videoRatio = determineVideoRatio(domContainerItem);
-    findElements('object, embed, iframe, .preview-lazyload, .lazy-load-div', domContainerItem)
-      .forEach((domItem) => {
-        const element = domItem;
-        const width = element.parentNode.clientWidth;
-        const height = Math.round(width * videoRatio);
+function resizeVideo(domContainerItem) {
+  const videoRatio = determineVideoRatio(domContainerItem);
+  findElements('object, embed, iframe, .preview-lazyload, .lazy-load-div', domContainerItem)
+    .forEach((domItem) => {
+      const element = domItem;
+      const width = element.parentNode.clientWidth;
+      const height = Math.round(width * videoRatio);
 
-        element.setAttribute('height', `${height}px`);
-        element.setAttribute('width', `${width}px`);
-        element.style.height = `${height}px`;
-        element.style.width = `${width}px`;
-      });
-  });
+      element.setAttribute('height', `${height}px`);
+      element.setAttribute('width', `${width}px`);
+      element.style.height = `${height}px`;
+      element.style.width = `${width}px`;
+    });
+}
+
+const debouncedResize = debounce(() => {
+  findElements('.container-lazyload').forEach(resizeVideo);
 }, 100);
 
 export function resizeResponsiveVideos() {
@@ -98,7 +100,7 @@ export function inViewOnce(elements, onIntersect) {
   function handleIntersectElement(element) {
     onIntersect(element);
     element.parentNode.classList.remove('js-lazyload--not-loaded');
-    resizeResponsiveVideos();
+    resizeVideo(element.parentNode);
   }
 
   if (!('IntersectionObserver' in window)
