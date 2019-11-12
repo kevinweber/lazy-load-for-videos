@@ -1,6 +1,9 @@
 {
   "extends": "airbnb-base",
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "env": {
     "browser": true,
     "es6": true,

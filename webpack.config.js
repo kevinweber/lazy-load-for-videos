@@ -36,6 +36,15 @@ const config = {
         },
       }]
     }, {
+      test: /\.ts$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'babel-loader'
+      }, {
+        loader: 'ts-loader',
+      }]
+    }, 
+      {
       test: /\.s?css$/,
       use: [
         MiniCssExtractPlugin.loader,
@@ -57,7 +66,7 @@ const config = {
     }]
   },
   resolve: {
-    extensions: ['*', '.js', '.scss']
+    extensions: ['*', '.ts', '.js', '.scss']
   },
   output: {
     path: __dirname + '/assets/',

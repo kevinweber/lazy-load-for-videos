@@ -3,7 +3,7 @@
 import './styles.scss';
 
 import jQueryBindFirst from '../utils/jQueryBindFirst';
-import onReady from '../utils/onReady';
+import onReady from '../utils/onReady.ts';
 
 import lazyloadVimeo from '../lazyload-vimeo/lazyloadVimeo';
 import lazyloadYoutube from '../lazyload-youtube/lazyloadYoutube';

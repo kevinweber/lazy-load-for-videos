@@ -2,7 +2,7 @@
 // INFO: "lazyload_video_settings" is added inline into the page using PHP
 import jQueryBindFirst from '../utils/jQueryBindFirst';
 
-import onReady from '../utils/onReady';
+import onReady from '../utils/onReady.ts';
 import lazyloadYoutube from './lazyloadYoutube';
 
 onReady(() => {
