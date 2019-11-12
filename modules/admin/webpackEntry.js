@@ -19,26 +19,11 @@ const handleTabsUrl = () => {
 };
 
 /*
- * When user calls a URL that contains a hash, scroll to top
- */
-const handleTabsUrlScrollTop = () => {
-  setTimeout(() => {
-    if (window.location.hash) {
-      $('html, body').animate({
-        scrollTop: 0,
-      }, 1000);
-    }
-  }, 1);
-};
-
-/*
  * Handle jQuery tabs
  */
 const handleTabs = () => {
   $('#tabs').tabs();
-
   handleTabsUrl();
-  handleTabsUrlScrollTop();
 };
 
 const toggle = () => {
