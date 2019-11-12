@@ -27,7 +27,6 @@ let pluginOptions;
 const defaultPluginOptions = {
   buttonstyle: '',
   playercolour: '',
-  responsive: true,
   loadthumbnail: true,
   // callback: null, // <- Currently not supported
 };
@@ -114,9 +113,7 @@ function vimeoCreatePlayer(videoLinkElement) {
     const videoIFrame = createElements(`<iframe src="${vimeoUrl(vid)}?autoplay=1${playercolour}" style="height:${parseInt(eventTarget.clientHeight, 10)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen allow=autoplay></iframe>`);
     eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
 
-    if (pluginOptions.responsive === true) {
-      resizeResponsiveVideos();
-    }
+    resizeResponsiveVideos();
   });
 }
 

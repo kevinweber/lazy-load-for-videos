@@ -18,7 +18,6 @@ class Lazy_Load_For_Videos_Youtube {
 			'buttonstyle'      => get_option( 'll_opt_button_style', '' ),
 			'controls'         => ! ( get_option( 'lly_opt_player_controls' ) == '1' ),
 			'loadpolicy'       => ! ( get_option( 'lly_opt_player_loadpolicy' ) == '1' ),
-			'responsive'       => get_option( 'll_opt_load_responsive' ) == '1',
 			'thumbnailquality' => $this->thumbnailquality(),
 			'preroll'          => get_option( 'lly_opt_player_preroll', '' ),
 			'postroll'         => get_option( 'lly_opt_player_postroll', '' ),

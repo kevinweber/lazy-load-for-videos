@@ -75,14 +75,10 @@ export function init({
    */
   jQueryAjaxStop(() => {
     load();
-    if (pluginOptions.responsive === true) {
-      resizeResponsiveVideos();
-    }
+    resizeResponsiveVideos();
   });
 
-  if (pluginOptions.responsive === true) {
-    initResponsiveVideos(previewVideoSelector);
-  }
+  initResponsiveVideos(previewVideoSelector);
 
   if (typeof pluginOptions.callback === 'function') {
     pluginOptions.callback();
