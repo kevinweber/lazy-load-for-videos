@@ -1,4 +1,6 @@
-import { init, resizeResponsiveVideos, setBackgroundImage } from '../shared/video';
+import {
+  init, resizeResponsiveVideos, setBackgroundImage, inViewOnce,
+} from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
 
@@ -44,15 +46,23 @@ function filterDotHash(variable) {
   return filterdothash;
 }
 
+function generateVimeoCallbackUrl(thumbnailId) {
+  return `https://vimeo.com/api/v2/video/${thumbnailId}.json`;
+}
+
 function vimeoLoadingThumb(videoLinkElement, id) {
   const playButtonDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
   videoLinkElement.appendChild(playButtonDiv);
 
   if (lazyload_video_settings.vimeo.loadthumbnail) {
     const videoThumbnail = videoLinkElement.getAttribute('data-video-thumbnail');
-    findElements(`[id="${id}"]`).forEach((domItem) => {
-      setBackgroundImage(domItem, videoThumbnail);
-    });
+    if (videoThumbnail) {
+      inViewOnce(findElements(`[id="${id}"]`), element => setBackgroundImage(element, videoThumbnail));
+    } else {
+      const script = document.createElement('script');
+      script.src = `${generateVimeoCallbackUrl(id)}.json?callback=showThumb`;
+      videoLinkElement.parentNode.insertBefore(script, videoLinkElement.firstChild);
+    }
   }
 
   if (lazyload_video_settings.vimeo.show_title) {

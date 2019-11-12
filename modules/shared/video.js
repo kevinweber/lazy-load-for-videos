@@ -96,3 +96,38 @@ export function init({
     pluginOptions.callback();
   }
 }
+
+export function inViewOnce(elements, onIntersect) {
+  let observer;
+
+  const options = {
+    root: null,
+    rootMargin: '100px',
+  };
+
+  if (!('IntersectionObserver' in window)
+    && !('IntersectionObserverEntry' in window)
+    && !('intersectionRatio' in window.IntersectionObserverEntry.prototype)) {
+    // Fallback for browsers without IntersectionObserver
+    elements.forEach((element) => {
+      onIntersect(element);
+    });
+    return;
+  }
+
+  const handleIntersect = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        observer.unobserve(entry.target);
+        onIntersect(entry.target);
+        resizeResponsiveVideos();
+      }
+    });
+  };
+
+  // Note: It would be better to have only one IntersectionObserver and then append all items into
+  observer = new IntersectionObserver(handleIntersect, options);
+  elements.forEach((element) => {
+    observer.observe(element);
+  });
+}
