@@ -55,18 +55,11 @@ export function resizeResponsiveVideos() {
   debouncedResize();
 }
 
-function markInitialized(domSelector) {
-  findElements(domSelector).forEach((domItem) => {
-    domItem.parentNode.classList.remove('js-lazyload--not-loaded');
-  });
-}
-
 function initResponsiveVideos(previewVideoSelector) {
   onBindFirstLoad(resizeResponsiveVideos);
   window.addEventListener('resize', resizeResponsiveVideos);
   window.addEventListener('load', () => {
     resizeResponsiveVideos();
-    markInitialized(previewVideoSelector);
   });
 }
 
@@ -83,13 +76,10 @@ export function init({
     if (pluginOptions.responsive === true) {
       resizeResponsiveVideos();
     }
-    markInitialized(previewVideoSelector);
   });
 
   if (pluginOptions.responsive === true) {
     initResponsiveVideos(previewVideoSelector);
-  } else {
-    markInitialized(previewVideoSelector);
   }
 
   if (typeof pluginOptions.callback === 'function') {
@@ -105,13 +95,17 @@ export function inViewOnce(elements, onIntersect) {
     rootMargin: '100px',
   };
 
+  function handleIntersectElement(element) {
+    onIntersect(element);
+    element.parentNode.classList.remove('js-lazyload--not-loaded');
+    resizeResponsiveVideos();
+  }
+
   if (!('IntersectionObserver' in window)
     && !('IntersectionObserverEntry' in window)
     && !('intersectionRatio' in window.IntersectionObserverEntry.prototype)) {
     // Fallback for browsers without IntersectionObserver
-    elements.forEach((element) => {
-      onIntersect(element);
-    });
+    elements.forEach(handleIntersectElement);
     return;
   }
 
@@ -119,8 +113,7 @@ export function inViewOnce(elements, onIntersect) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         observer.unobserve(entry.target);
-        onIntersect(entry.target);
-        resizeResponsiveVideos();
+        handleIntersectElement(entry.target);
       }
     });
   };
