@@ -3,8 +3,8 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
-Tested up to: 5.2.5
-Stable tag: 2.8.0
+Tested up to: 5.3.1
+Stable tag: 2.8.1
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -146,6 +146,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.8.1 =
+* Fix: Show correct thumbnails if multiple Youtube videos are on the same page
 
 = 2.8.0 =
 * Lazy load video preview images, not just the video 🎉
