@@ -1,5 +1,5 @@
 import {
-  init, resizeResponsiveVideos, setBackgroundImage, inViewOnce,
+  init, setBackgroundImage, inViewOnce,
 } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
@@ -21,7 +21,6 @@ export const defaultPluginOptions = {
   buttonstyle: '',
   preroll: '',
   postroll: '',
-  responsive: true,
   thumbnailquality: '0',
   loadthumbnail: true,
   // callback: null, // <- Currently not supported
@@ -201,10 +200,6 @@ function loadVideo(domNode) {
     const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.clientWidth, 10)}" height="${parseInt(videoLinkElement.clientHeight, 10)}" style="vertical-align:top;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 
     eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
-
-    if (pluginOptions.responsive === true) {
-      resizeResponsiveVideos();
-    }
   });
 }
 

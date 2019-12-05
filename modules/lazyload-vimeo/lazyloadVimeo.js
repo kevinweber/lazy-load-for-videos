@@ -1,5 +1,5 @@
 import {
-  init, resizeResponsiveVideos, setBackgroundImage, inViewOnce,
+  init, setBackgroundImage, inViewOnce,
 } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
@@ -112,8 +112,6 @@ function vimeoCreatePlayer(videoLinkElement) {
 
     const videoIFrame = createElements(`<iframe src="${vimeoUrl(vid)}?autoplay=1${playercolour}" style="height:${parseInt(eventTarget.clientHeight, 10)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen allow=autoplay></iframe>`);
     eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
-
-    resizeResponsiveVideos();
   });
 }
 
