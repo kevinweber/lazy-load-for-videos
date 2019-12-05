@@ -6,7 +6,10 @@ import debounce from '../utils/debounce';
 export function setBackgroundImage(element, imageUrl) {
   // Don't simply set "background:url(...)..." because this prop would override
   // custom styling such as "background-size: cover".
-  element.setAttribute('style', `background-image:url(${imageUrl});background-color:#000;background-position:center center;background-repeat:no-repeat;`);
+  element.style.backgroundImage = `url(${imageUrl})`;
+  element.style.backgroundColor = '#000';
+  element.style.backgroundPosition = 'center center';
+  element.style.backgroundRepeat = 'no-repeat';
 }
 
 function determineVideoRatio(element) {
@@ -34,7 +37,7 @@ function determineVideoRatio(element) {
   return 0.5625; // <-- default video ratio
 }
 
-function resizeVideo(domContainerItem) {
+export function resizeVideo(domContainerItem) {
   const videoRatio = determineVideoRatio(domContainerItem);
   findElements('object, embed, iframe, .preview-lazyload, .lazy-load-div', domContainerItem)
     .forEach((domItem) => {

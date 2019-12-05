@@ -149,6 +149,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 = 2.8.1 =
 * Fix: Show correct thumbnails if multiple Youtube videos are on the same page
+* Speed up resizing of thumbnails on load
 
 = 2.8.0 =
 * Lazy load video preview images, not just the video 🎉

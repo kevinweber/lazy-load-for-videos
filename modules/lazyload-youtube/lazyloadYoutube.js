@@ -1,5 +1,5 @@
 import {
-  init, setBackgroundImage, inViewOnce,
+  init, resizeVideo, setBackgroundImage, inViewOnce,
 } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
@@ -176,6 +176,8 @@ function loadVideo(domNode) {
   if (pluginOptions.buttonstyle) {
     videoLinkElement.classList.add(pluginOptions.buttonstyle);
   }
+
+  resizeVideo(videoLinkElement.parentNode);
 
   /*
    * Register "onclick" event handler

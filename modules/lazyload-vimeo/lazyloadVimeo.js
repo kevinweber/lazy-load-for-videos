@@ -1,5 +1,5 @@
 import {
-  init, setBackgroundImage, inViewOnce,
+  init, resizeVideo, setBackgroundImage, inViewOnce,
 } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
@@ -91,7 +91,7 @@ function vimeoCreateThumbProcess(videoLinkElement) {
   vimeoLoadingThumb(previewItem, filteredVideoId);
 }
 
-function vimeoCreatePlayer(videoLinkElement) {
+function vimeoThumbnailEventListeners(videoLinkElement) {
   videoLinkElement.addEventListener('click', (event) => {
     const eventTarget = event.currentTarget;
     event.preventDefault();
@@ -118,8 +118,8 @@ function vimeoCreatePlayer(videoLinkElement) {
 function load() {
   findElements(`.${classPreviewVimeo}`).forEach((domItem) => {
     vimeoCreateThumbProcess(domItem);
-    // Replace thumbnail with iframe
-    vimeoCreatePlayer(domItem);
+    resizeVideo(domItem.parentNode);
+    vimeoThumbnailEventListeners(domItem);
   });
 }
 
