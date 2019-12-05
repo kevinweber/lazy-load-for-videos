@@ -201,16 +201,16 @@ function loadVideo(domNode) {
     const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.clientWidth, 10)}" height="${parseInt(videoLinkElement.clientHeight, 10)}" style="vertical-align:top;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 
     eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
+
+    if (pluginOptions.responsive === true) {
+      resizeResponsiveVideos();
+    }
   });
 }
 
 function load() {
   const videoLinkElements = findElements('a.lazy-load-youtube');
   videoLinkElements.forEach(loadVideo);
-
-  if (pluginOptions.responsive === true) {
-    resizeResponsiveVideos();
-  }
 
   if (pluginOptions.loadthumbnail) {
     inViewOnce(videoLinkElements, element => setBackgroundImg(element));
