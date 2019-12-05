@@ -13,9 +13,6 @@ import queryHashToString from '../utils/queryHashToString';
 // Classes
 const classPreviewYoutube = 'preview-youtube';
 
-// Helpers
-let thumbnailurl = '';
-
 let pluginOptions;
 export const defaultPluginOptions = {
   colour: 'red', // supported colours: red, white
@@ -121,8 +118,42 @@ export function parseOriginalUrl(href) {
   };
 }
 
+/*
+ * Generate thumbnail URL from ID
+ */
+function getThumbnailUrl(thumbnailId) {
+  return `https://i2.ytimg.com/vi/${thumbnailId}/${pluginOptions.thumbnailquality}.jpg`;
+}
+
+function setBackgroundImg(element) {
+  const href = element.getAttribute('href');
+  const { videoId } = parseOriginalUrl(href);
+  let src = getThumbnailUrl(videoId);
+
+  // Create a temporary image. Once it is loaded, we can update the video element
+  // using the src of this temporary image, then remove this temporary image.
+  const img = createElements(`<img style="display:none" src="${src}">`).firstChild;
+
+  img.addEventListener('load', () => {
+    // If the max resolution thumbnail is not available, fall back to smaller size.
+    // But note that we'll still see an 404 error in the console in this case.
+    if (img.clientWidth === 120) {
+      src = src.replace('maxresdefault', '0');
+    }
+
+    if (!element.style.backgroundImage) {
+      setBackgroundImage(element, src);
+    }
+
+    img.parentNode.removeChild(img);
+  });
+
+  document.body.appendChild(img);
+}
+
 function load() {
-  findElements('a.lazy-load-youtube').forEach((domItem, index) => {
+  const videoLinkElements = findElements('a.lazy-load-youtube');
+  videoLinkElements.forEach((domItem, index) => {
     const videoLinkElement = domItem;
     const href = videoLinkElement.getAttribute('href');
     const parsedUrl = parseOriginalUrl(href);
@@ -151,51 +182,6 @@ function load() {
     videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
     if (pluginOptions.buttonstyle) {
       videoLinkElement.classList.add(pluginOptions.buttonstyle);
-    }
-
-    /*
-     * Set thumbnail URL
-     */
-    function setThumbnailUrl(thumbnailId) {
-      const $url = `https://i2.ytimg.com/vi/${thumbnailId}/${pluginOptions.thumbnailquality}.jpg`;
-
-      thumbnailurl = $url;
-    }
-    setThumbnailUrl(videoId);
-
-    /*
-     * Get thumbnail URL
-     */
-    function getThumbnailUrl() {
-      return thumbnailurl;
-    }
-
-    function setBackgroundImg(element) {
-      let src = getThumbnailUrl();
-
-      // Create a temporary image. Once it is loaded, we can update the video element
-      // using the src of this temporary image, then remove this temporary image.
-      const img = createElements(`<img style="display:none" src="${src}">`).firstChild;
-
-      img.addEventListener('load', () => {
-        // If the max resolution thumbnail is not available, fall back to smaller size.
-        // But note that we'll still see an 404 error in the console in this case.
-        if (img.clientWidth === 120) {
-          src = src.replace('maxresdefault', '0');
-        }
-
-        if (!element.style.backgroundImage) {
-          setBackgroundImage(element, src);
-        }
-
-        img.parentNode.removeChild(img);
-      });
-
-      document.body.appendChild(img);
-    }
-
-    if (pluginOptions.loadthumbnail) {
-      inViewOnce([videoLinkElement], element => setBackgroundImg(element));
     }
 
     videoLinkElement.getAttribute('id', videoId + index);
@@ -231,6 +217,10 @@ function load() {
       }
     });
   });
+
+  if (pluginOptions.loadthumbnail) {
+    inViewOnce(videoLinkElements, element => setBackgroundImg(element));
+  }
 }
 
 function lazyloadYoutube(options) {
