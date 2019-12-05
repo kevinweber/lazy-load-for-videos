@@ -3,7 +3,8 @@ import jQueryAjaxStop from '../utils/jQueryAjaxStop';
 import findElements from '../utils/findElements';
 import debounce from '../utils/debounce';
 
-export function setBackgroundImage(element, imageUrl) {
+export function setBackgroundImage(domNode, imageUrl) {
+  const element = domNode;
   // Don't simply set "background:url(...)..." because this prop would override
   // custom styling such as "background-size: cover".
   element.style.backgroundImage = `url(${imageUrl})`;
