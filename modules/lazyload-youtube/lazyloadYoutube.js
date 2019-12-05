@@ -47,7 +47,7 @@ export function convertToSeconds(timestring) {
   return startTime;
 }
 
-export function getVideoUrl({
+export function getEmbedUrl({
   pluginOptions: pluginOpts, videoId, urlOptions,
 }) {
   // First video changes if the preroll feature is used
@@ -151,72 +151,66 @@ function setBackgroundImg(element) {
   document.body.appendChild(img);
 }
 
+function loadVideo(domNode) {
+  const videoLinkElement = domNode;
+  const href = videoLinkElement.getAttribute('href');
+  const parsedUrl = parseOriginalUrl(href);
+
+  /*
+   * Load Youtube ID
+   */
+  const { videoId, queryParams: urlOptions } = parsedUrl;
+
+  function videoTitle() {
+    if (videoLinkElement.getAttribute('data-video-title') !== undefined) {
+      return videoLinkElement.getAttribute('data-video-title');
+    } if (videoLinkElement.innerHTML) {
+      return videoLinkElement.innerHTML;
+    }
+    return '';
+  }
+
+  videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube">${videoTitle()}</span></div>`;
+
+  const lazyloadDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
+  videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
+  if (pluginOptions.buttonstyle) {
+    videoLinkElement.classList.add(pluginOptions.buttonstyle);
+  }
+
+  /*
+   * Register "onclick" event handler
+   */
+  videoLinkElement.addEventListener('click', (event) => {
+    const eventTarget = event.currentTarget;
+    event.preventDefault();
+
+    if (eventTarget.tagName.toLowerCase() !== 'a') {
+      return;
+    }
+
+    removePlayerControls(eventTarget);
+
+    /*
+     * Generate iFrame/embed URL
+     */
+    const embedUrl = getEmbedUrl({
+      pluginOptions, videoId, urlOptions,
+    });
+
+    const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.clientWidth, 10)}" height="${parseInt(videoLinkElement.clientHeight, 10)}" style="vertical-align:top;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+
+    eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
+  });
+}
+
 function load() {
   const videoLinkElements = findElements('a.lazy-load-youtube');
-  videoLinkElements.forEach((domItem, index) => {
-    const videoLinkElement = domItem;
-    const href = videoLinkElement.getAttribute('href');
-    const parsedUrl = parseOriginalUrl(href);
+  videoLinkElements.forEach(loadVideo);
 
-    /*
-     * Load Youtube ID
-     */
-    const { videoId, queryParams: urlOptions } = parsedUrl;
-
-    function videoTitle() {
-      if (videoLinkElement.getAttribute('data-video-title') !== undefined) {
-        return videoLinkElement.getAttribute('data-video-title');
-      } if (videoLinkElement.innerHTML) {
-        return videoLinkElement.innerHTML;
-      }
-      return '';
-    }
-
-    function youtubeUrl(id) {
-      return `https://www.youtube.com/watch?v=${id}`;
-    }
-
-    videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube">${videoTitle()}</span></div>`;
-
-    const lazyloadDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
-    videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
-    if (pluginOptions.buttonstyle) {
-      videoLinkElement.classList.add(pluginOptions.buttonstyle);
-    }
-
-    videoLinkElement.getAttribute('id', videoId + index);
-    videoLinkElement.getAttribute('href',
-      youtubeUrl(videoId) + (queryHashToString(urlOptions)));
-
-    /*
-     * Register "onclick" event handler
-     */
-    videoLinkElement.addEventListener('click', (event) => {
-      const eventTarget = event.currentTarget;
-      event.preventDefault();
-
-      if (eventTarget.tagName.toLowerCase() !== 'a') {
-        return;
-      }
-
-      removePlayerControls(eventTarget);
-
-      /*
-       * Generate iFrame
-       */
-      const videoUrl = getVideoUrl({
-        pluginOptions, videoId, urlOptions,
-      });
-
-      const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.clientWidth, 10)}" height="${parseInt(videoLinkElement.clientHeight, 10)}" style="vertical-align:top;" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
-
-      eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
-
-      if (pluginOptions.responsive === true) {
-        resizeResponsiveVideos();
-      }
-    });
-  });
+  if (pluginOptions.responsive === true) {
+    resizeResponsiveVideos();
+  }
 
   if (pluginOptions.loadthumbnail) {
     inViewOnce(videoLinkElements, element => setBackgroundImg(element));
