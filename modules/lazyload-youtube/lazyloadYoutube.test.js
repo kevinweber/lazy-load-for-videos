@@ -1,8 +1,13 @@
-import lazyloadYoutube, { convertToSeconds, defaultPluginOptions, getVideoUrl, parseOriginalUrl } from './lazyloadYoutube';
+import {
+  convertToSeconds,
+  defaultPluginOptions,
+  getEmbedUrl,
+  parseOriginalUrl,
+} from './lazyloadYoutube';
 
 /**
  * Missing tests for at least:
- * 
+ *
  * pluginOption.buttonstyle
  * pluginOption.thumbnailquality
  * pluginOption.loadthumbnail
@@ -13,7 +18,7 @@ const fakePrerollVideoId = 'DEF567def8g';
 const fakePostrollVideoId = 'GHI901def2g';
 
 function mockVideoUrlInput(override = {}) {
-  const videoUrl = getVideoUrl({
+  const videoUrl = getEmbedUrl({
     videoId: fakeValidVideoId,
     ...override,
     pluginOptions: {
@@ -53,9 +58,9 @@ describe('convertToSeconds', () => {
 
 describe('parseOriginalUrl', () => {
   it('correctly parses https://www.youtube.com/watch?v=aaa', () => {
-    const url = 'https://www.youtube.com/watch?v=IJNR2EpS0jw&modestbranding=1&random=string';  
+    const url = 'https://www.youtube.com/watch?v=IJNR2EpS0jw&modestbranding=1&random=string';
     const parsedUrl = parseOriginalUrl(url);
-    
+
     expect(parsedUrl.videoId).toBe('IJNR2EpS0jw');
     expect(parsedUrl.queryParams).toEqual({
       modestbranding: '1',
@@ -66,7 +71,7 @@ describe('parseOriginalUrl', () => {
   it('correctly parses https://www.youtube.com/embed/aaa', () => {
     const url = 'https://www.youtube.com/embed/IJNR2EpS0jw?modestbranding=1&random=string';
     const parsedUrl = parseOriginalUrl(url);
-      
+
     expect(parsedUrl.videoId).toBe('IJNR2EpS0jw');
     expect(parsedUrl.queryParams).toEqual({
       modestbranding: '1',
@@ -88,7 +93,7 @@ describe('parseOriginalUrl', () => {
   it('correctly parses http://youtu.be/aaa', () => {
     const url = 'http://youtu.be/IJNR2EpS0jw?modestbranding=1&random=string';
     const parsedUrl = parseOriginalUrl(url);
-    
+
     expect(parsedUrl.videoId).toBe('IJNR2EpS0jw');
     expect(parsedUrl.queryParams).toEqual({
       modestbranding: '1',
@@ -97,11 +102,13 @@ describe('parseOriginalUrl', () => {
   });
 });
 
-describe('getVideoUrl', () => {
+describe('getEmbedUrl', () => {
   it('returns default URL with expected query', () => {
     // https://www.youtube-nocookie.com/watch?v=${fakeValidVideoId}
     const mockVideo = mockVideoUrlInput();
-    expect(mockVideo.url).toBe(`https://www.youtube-nocookie.com/embed/${fakeValidVideoId}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&color=red`);
+    expect(mockVideo.url).toBe(
+      `https://www.youtube-nocookie.com/embed/${fakeValidVideoId}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&color=red`,
+    );
   });
 
   it('supports colour plugin option', () => {
@@ -178,6 +185,8 @@ describe('getVideoUrl', () => {
     });
 
     expect(mockVideo.videoId).toBe(fakePrerollVideoId);
-    expect(mockVideo.queryParams.get('playlist')).toBe(`${fakeValidVideoId},${fakePostrollVideoId}`);
+    expect(mockVideo.queryParams.get('playlist')).toBe(
+      `${fakeValidVideoId},${fakePostrollVideoId}`,
+    );
   });
 });
