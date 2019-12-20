@@ -27,8 +27,8 @@ $z-index-base: 2;
   transition: opacity 0.25s;
   top: 0;
   left: 0;
-  height: 0;
-  width: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .js-lazyload--not-loaded .preview-lazyload {
