@@ -39,6 +39,10 @@ describe('convertToSeconds', () => {
     expect(convertToSeconds('0')).toBe(0);
   });
 
+  it('correctly parses 200 (without "s")', () => {
+    expect(convertToSeconds('200')).toBe(200);
+  });
+
   it('correctly parses 20s', () => {
     expect(convertToSeconds('20s')).toBe(20);
   });
