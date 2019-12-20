@@ -31,6 +31,8 @@ function removePlayerControls(element) {
 }
 
 export function convertToSeconds(timestring) {
+  if (Number(timestring)) return Number(timestring);
+
   let startTime = 0;
   const timeFactors = [3600, 60, 1]; // h, m, s
   const startMatch = timestring.match(/(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/);
