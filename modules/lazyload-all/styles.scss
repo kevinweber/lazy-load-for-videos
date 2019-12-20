@@ -12,7 +12,7 @@ $z-index-base: 2;
 .container-vimeo {
 	font-size: 0;
 	line-height: 0;
-	
+
 	noscript {
 		display: block;
 		font-size: 1rem;
@@ -22,9 +22,13 @@ $z-index-base: 2;
 }
 
 .preview-lazyload {
-	opacity: 1;
-	position: relative;
-	transition: opacity 0.25s;
+  opacity: 1;
+  position: relative;
+  transition: opacity 0.25s;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
 }
 
 .js-lazyload--not-loaded .preview-lazyload {
