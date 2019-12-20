@@ -1,10 +1,6 @@
-import lazyloadVimeo from './lazyloadVimeo';
-
-const mockSettings = {
-  vimeo: {},
-};
+// import lazyloadVimeo from './lazyloadVimeo';
 
 // TODO
-test('TODO', () => {
+describe('TODO', () => {
   expect(typeof expect.anything()).toBe('object');
 });
