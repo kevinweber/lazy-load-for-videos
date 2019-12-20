@@ -4,7 +4,7 @@ Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
 Tested up to: 5.3.2
-Stable tag: 2.8.4
+Stable tag: 2.8.5
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -146,6 +146,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.8.5 =
+* Undo 2.8.4
 
 = 2.8.4 =
 * Fix: Videos disappeared in some themes when the block editor is used

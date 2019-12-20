@@ -22,13 +22,9 @@ $z-index-base: 2;
 }
 
 .preview-lazyload {
-  opacity: 1;
-  position: relative;
-  transition: opacity 0.25s;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+	  opacity: 1;
+	  position: relative;
+	  transition: opacity 0.25s;
 }
 
 .js-lazyload--not-loaded .preview-lazyload {
