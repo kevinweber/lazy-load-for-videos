@@ -1,10 +1,11 @@
 {
   "private": true,
   "name": "lazy-load-for-videos",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)",
   "scripts": {
-    "production": "NODE_ENV=production webpack --config ./webpack.config.js -p",
+    "eslint": "eslint --ext .js modules --fix",
+    "production": "NODE_ENV=production npm run eslint && webpack --config ./webpack.config.js -p",
     "development": "NODE_ENV=development webpack --progress --colors --config ./webpack.config.js",
     "test": "jest",
     "watch:test": "npm run test -- --watch",

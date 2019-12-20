@@ -1,9 +1,7 @@
 {
   "extends": "airbnb-base",
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "env": {
     "browser": true,
     "es6": true,
@@ -14,7 +12,11 @@
     "sourceType": "module"
   },
   "globals": {
-    "lazyload_video_settings": true
+    "lazyload_video_settings": true,
+    // Jest globals
+    "describe": true,
+    "it": true,
+    "expect": true
   },
   "rules": {
     "no-console": "off",
