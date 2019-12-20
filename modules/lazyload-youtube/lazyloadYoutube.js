@@ -1,5 +1,8 @@
 import {
-  init, resizeVideo, setBackgroundImage, inViewOnce,
+  init,
+  resizeVideo,
+  setBackgroundImage,
+  inViewOnce,
 } from '../shared/video';
 import createElements from '../utils/createElements';
 import findElements from '../utils/findElements';
@@ -35,12 +38,14 @@ export function convertToSeconds(timestring) {
 
   let startTime = 0;
   const timeFactors = [3600, 60, 1]; // h, m, s
-  const startMatch = timestring.match(/(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/);
+  const startMatch = timestring.match(
+    /(?:(\d+)(?:h))?(?:(\d+)(?:m))?(?:(\d+)(?:s))?/,
+  );
 
   if (startMatch) {
     for (let s = 1; s < startMatch.length; s += 1) {
       if (typeof startMatch[s] !== 'undefined') {
-        startTime += parseInt(startMatch[s], 10) * timeFactors[s - 1];
+        startTime += Number(startMatch[s]) * timeFactors[s - 1];
       }
     }
   }
@@ -49,7 +54,9 @@ export function convertToSeconds(timestring) {
 }
 
 export function getEmbedUrl({
-  pluginOptions: pluginOpts, videoId, urlOptions,
+  pluginOptions: pluginOpts,
+  videoId,
+  urlOptions,
 }) {
   // First video changes if the preroll feature is used
   let firstVideoToPlay = videoId;
@@ -87,7 +94,9 @@ export function getEmbedUrl({
   /*
    * Generate URL
    */
-  return `https://www.youtube-nocookie.com/embed/${firstVideoToPlay}?${queryHashToString(queryWithUrlOptions)}`;
+  return `https://www.youtube-nocookie.com/embed/${firstVideoToPlay}?${queryHashToString(
+    queryWithUrlOptions,
+  )}`;
 }
 
 function getVideoIdAndAfter(href) {
@@ -133,7 +142,8 @@ function setBackgroundImg(element) {
 
   // Create a temporary image. Once it is loaded, we can update the video element
   // using the src of this temporary image, then remove this temporary image.
-  const img = createElements(`<img style="display:none" src="${src}">`).firstChild;
+  const img = createElements(`<img style="display:none" src="${src}">`)
+    .firstChild;
 
   img.addEventListener('load', () => {
     // If the max resolution thumbnail is not available, fall back to smaller size.
@@ -165,7 +175,8 @@ function loadVideo(domNode) {
   function videoTitle() {
     if (videoLinkElement.getAttribute('data-video-title') !== undefined) {
       return videoLinkElement.getAttribute('data-video-title');
-    } if (videoLinkElement.innerHTML) {
+    }
+    if (videoLinkElement.innerHTML) {
       return videoLinkElement.innerHTML;
     }
     return '';
@@ -173,7 +184,9 @@ function loadVideo(domNode) {
 
   videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube">${videoTitle()}</span></div>`;
 
-  const lazyloadDiv = createElements('<div aria-hidden="true" class="lazy-load-div"></div>');
+  const lazyloadDiv = createElements(
+    '<div aria-hidden="true" class="lazy-load-div"></div>',
+  );
   videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
   if (pluginOptions.buttonstyle) {
     videoLinkElement.classList.add(pluginOptions.buttonstyle);
@@ -198,10 +211,20 @@ function loadVideo(domNode) {
      * Generate iFrame/embed URL
      */
     const embedUrl = getEmbedUrl({
-      pluginOptions, videoId, urlOptions,
+      pluginOptions,
+      videoId,
+      urlOptions,
     });
 
-    const videoIFrame = createElements(`<iframe width="${parseInt(videoLinkElement.clientWidth, 10)}" height="${parseInt(videoLinkElement.clientHeight, 10)}" style="vertical-align:top;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+    const videoIFrame = createElements(
+      `<iframe width="${parseInt(
+        videoLinkElement.clientWidth,
+        10,
+      )}" height="${parseInt(
+        videoLinkElement.clientHeight,
+        10,
+      )}" style="vertical-align:top;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+    );
 
     eventTarget.parentNode.replaceChild(videoIFrame, eventTarget);
   });
@@ -223,7 +246,9 @@ function lazyloadYoutube(options) {
   };
 
   init({
-    load, pluginOptions, previewVideoSelector: `.${classPreviewYoutube}`,
+    load,
+    pluginOptions,
+    previewVideoSelector: `.${classPreviewYoutube}`,
   });
 }
 

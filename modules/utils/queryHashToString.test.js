@@ -1,4 +1,4 @@
-import queryHashToString from './queryHashToString'
+import queryHashToString from './queryHashToString';
 
 describe('queryHashToString', () => {
   it('converts object into string', () => {
@@ -7,6 +7,6 @@ describe('queryHashToString', () => {
       'something-else': 'it totally works',
     };
 
-    expect(queryHashToString(queryObject)).toBe('autoplay=1&something-else=it totally works')
+    expect(queryHashToString(queryObject)).toBe('autoplay=1&something-else=it totally works');
   });
 });
