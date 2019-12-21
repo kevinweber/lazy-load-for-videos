@@ -31,8 +31,9 @@ $z-index-base: 2;
 	opacity: 0;
 }
 
-.entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo {
+.entry-content a.preview-lazyload {
 	background-color: transparent;
+	border: 0;
 	height: 315px;
 	width: 100%;
 	max-width: 100%;
@@ -130,4 +131,17 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 a.lazy-load-youtube {
     // Prevent plugins such as BBPress from making this link "inline"
     display: block !important;
+}
+
+/** Fix styling issue caused by block editor in certain themes. We're manually calculating the ratio in JS instead of relying on the WordPress "padding-top" hack. */
+.wp-embed-responsive .wp-block-embed[class*="wp-embed-aspect-"] {
+    position: relative;
+
+    .container-lazyload {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
 }
