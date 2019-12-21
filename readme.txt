@@ -4,7 +4,7 @@ Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 3.5
 Tested up to: 5.3.2
-Stable tag: 2.8.5
+Stable tag: 2.8.6
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -147,6 +147,10 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
+= 2.8.6 =
+* Fix: On some sites videos had large whitespace above and disappeared on play
+* Fix: Video jumped for on hover by one pixel in some themes and in theme preview
+
 = 2.8.5 =
 * Undo 2.8.4
 
@@ -210,7 +214,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 * Display background correctly if same Vimeo video is placed on the same page repeatedly.
 
 = 2.5 =
-* NOTE: The HTML and CSS for videos has been adjusted, mostly affecting the Vimeo embed. If you've added any custom CSS, be warned. Otherwise, no need to worry. 
+* NOTE: The HTML and CSS for videos has been adjusted, mostly affecting the Vimeo embed. If you've added any custom CSS, be warned. Otherwise, no need to worry.
 * NOTE 2: If video titles aren't showing as expected, click on the "Update Posts" button on the admin page for this plugin.
 * A11y: Make it easier for screen readers to select both video types, Youtube and Vimeo.
 * I18n: Make "Play video" text translatable.
