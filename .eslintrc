@@ -12,6 +12,7 @@
     "sourceType": "module"
   },
   "globals": {
+    "wp": true,
     "lazyload_video_settings": true,
     // Jest globals
     "describe": true,

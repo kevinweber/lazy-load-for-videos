@@ -6,17 +6,21 @@
 class Lazy_Load_For_Videos_Admin {
 	function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		// The 'oembed_dataparse' filter should be called on backend AND on frontend, not only on backend [is_admin()]. Otherwise, on some websites occur errors.
 		add_filter( 'oembed_dataparse', array( $this, 'lazyload_replace_video' ), 10, 3 );
 		add_action( 'admin_menu', array( $this, 'lazyload_create_menu' ) );
 		$this->lazyloadvideos_update_posts_with_embed();
 	}
 
-	function admin_init() {
+	function admin_enqueue_scripts() {
 		if ( isset( $_GET['page'] ) && ( $_GET['page'] == LL_ADMIN_URL ) ) {
 			$this->lazyload_admin_css();
 			$this->lazyload_admin_js();
 		}
+	}
+
+	function admin_init() {
 		$plugin = plugin_basename( LL_FILE );
 		add_filter("plugin_action_links_$plugin", array( $this, 'lazyload_settings_link' ) );
 		$this->register_lazyload_settings();

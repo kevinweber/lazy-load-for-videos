@@ -5,7 +5,8 @@
   "description": "Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)",
   "scripts": {
     "eslint": "eslint --ext .js modules --fix",
-    "production": "NODE_ENV=production npm run eslint && webpack --config ./webpack.config.js -p",
+    "production": "NODE_ENV=production npm run eslint && npm run production:webpack",
+    "production:webpack": "webpack --config ./webpack.config.js -p",
     "development": "NODE_ENV=development webpack --progress --colors --config ./webpack.config.js",
     "test": "jest",
     "watch:test": "npm run test -- --watch",
