@@ -6,7 +6,7 @@
 class Lazy_Load_For_Videos_Editor {
 
 	function __construct() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'load_js' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'load_js' ) );
 	}
 
 	function load_js() {
