@@ -36,7 +36,7 @@ const config = {
         },
       }]
     }, {
-      test: /\.ts$/,
+      test: /\.tsx?$/,
       exclude: /node_modules/,
       use: [{
         loader: 'babel-loader'
@@ -66,7 +66,7 @@ const config = {
     }]
   },
   resolve: {
-    extensions: ['*', '.ts', '.js', '.scss']
+    extensions: ['*', '.ts', '.tsx', '.js', '.scss']
   },
   output: {
     path: __dirname + '/assets/',
