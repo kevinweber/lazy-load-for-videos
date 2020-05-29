@@ -16,9 +16,10 @@ const config = {
   module: {
     rules: [{
       test: /\.(png|svg|jpg|gif)$/,
+      exclude: /node_modules/,
       use: [{
         loader: 'file-loader',
-        query: {
+        options: {
           name: 'media/[name].[ext]',
           publicPath: '../',
         },
@@ -30,7 +31,8 @@ const config = {
         loader: 'babel-loader'
       }, {
         loader: 'eslint-loader',
-        query: {
+        options: {
+          cache: true,
           // This option makes ESLint automatically fix minor issues
           fix: true,
         },
@@ -42,17 +44,23 @@ const config = {
         loader: 'babel-loader'
       }, {
         loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+          experimentalWatchApi: true,
+          happyPackMode: IS_DEV,
+        },
       }]
     }, 
       {
       test: /\.s?css$/,
+      exclude: /node_modules/,
       use: [
         MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader'
         }, {
           loader: 'postcss-loader',
-          query: {
+          options: {
             plugins: (loader) => {
               const plugins = [];
               plugins.push(require('autoprefixer'));
@@ -75,10 +83,14 @@ const config = {
   plugins: [
     extractCSS,
   ],
+
+  output: {
+    pathinfo: false,
+  },
 };
 
 if (IS_DEV) {
-  config.devtool = 'eval-source-map';
+  config.devtool = 'eval-cheap-module-source-map';
 }
 
 module.exports = config;
