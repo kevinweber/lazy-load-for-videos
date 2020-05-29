@@ -79,14 +79,11 @@ const config = {
   output: {
     path: __dirname + '/assets/',
     filename: 'js/[name].js',
+    pathinfo: false,
   },
   plugins: [
     extractCSS,
   ],
-
-  output: {
-    pathinfo: false,
-  },
 };
 
 if (IS_DEV) {
