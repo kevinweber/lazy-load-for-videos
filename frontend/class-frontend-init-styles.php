@@ -92,28 +92,20 @@ class Lazy_Load_For_Videos_Init_Styles {
     	if ( get_option('ll_opt_button_style') == 'youtube_button_image' ) {
     		// Display youtube button image
     		echo '.lazy-load-div { background: url('.plugin_dir_url( __FILE__ ).'../assets/play-youtube.png) center center no-repeat; }';
-    		// ... and remove CSS-only content
-    		echo $this->load_css_button_selectors() . ' { content: ""; }';
     	}
     	else if ( get_option('ll_opt_button_style') == 'youtube_button_image_red' ) {
     		// Display RED youtube button image
     		echo '.lazy-load-div { background: url('.plugin_dir_url( __FILE__ ).'../assets/play-y-red.png) center center no-repeat; }';
-    		// ... and remove CSS-only content
-    		echo $this->load_css_button_selectors() . ' { content: ""; }';
     	}
     	else if (
     			get_option('ll_opt_button_style') == 'css_black'
     			|| get_option('ll_opt_button_style') == 'css_black_pulse'
     		) {
-    		echo $this->load_css_button_selectors() . ' { color: #000; text-shadow: none; }';
-    		echo $this->load_css_button_selectors(':hover') . ' { text-shadow: none; }';
+			// Display black CSS-only play button
+    		echo '.lazy-load-div:before { content: "\25B6"; color: #000 }';
+    	} else {
+			// Display white CSS-only play button
+    		echo '.lazy-load-div:before { content: "\25B6"; text-shadow: 0px 0px 60px rgba(0,0,0,0.8); }';
     	}
-	}
-
-	/**
-	 * Little helper funtion to return the needed selectors for the play buttons
-	 */
-	private function load_css_button_selectors( $add = '' ) {
-		return ".lazy-load-div{$add}:before";
 	}
 }
