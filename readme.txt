@@ -2,9 +2,9 @@
 Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
-Requires at least: 3.5
-Tested up to: 5.3.2
-Stable tag: 2.8.7
+Requires at least: 4.5
+Tested up to: 5.5.1
+Stable tag: 2.9.0
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -14,6 +14,8 @@ Speed up your site by replacing embedded Youtube and Vimeo videos with a clickab
 
 This plugin improves page load times and increases your Google PageSpeed Score. It replaces embedded Youtube and Vimeo videos with a clickable preview image.
 By loading videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy. Additionally, all Youtube videos are loaded in a privacy-enhanced mode using the "https://www.youtube-nocookie.com" embed URL.
+
+This plugin works for your existing YouTube and Vimeo blocks. No vendor lock-in and no custom shortcodes: Easily turn the plugin on and off anytime.
 
 Demo on the developer’s website: [www.kweber.com/lazy-load-videos/](https://www.kweber.com/lazy-load-videos/)
 
@@ -146,6 +148,24 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.9.0 =
+* New feature: Properly preview and play videos in the (Gutenberg) block editor with the same thumbnails and styles that your readers will see
+* Increased minimum browser support from IE10 to IE11
+* Smarter code splitting: Now Webpack splits shared code into separate bundles so that developers don't need to manually maintain an extra Webpack entry. WordPress will load up three JS files if both Youtube and Vimeo are supported on your blog: lazyload-shared.js, lazyload-youtube.js, lazyload-vimeo.js, instead of one big lazyload-all.js
+* Allow filtering Vimeo-specific CSS classes using "lazyload_preview_url_css_vimeo" filter
+* Rename folder "assets" to "public"
+* Rename filter lazyload_preview_url_a_class_youtube to lazyload_preview_url_class_youtube
+* Use "wp_add_inline_script" (requires WordPress 4.5 or higher) instead of "wp_localize_script" and improve how scripts are being loaded
+* Increase minimum WordPress version to 4.5
+* The Youtube and Video configs are now stored in window.llvConfig instead of window.lazyload_video_settings
+* Remove RTL-specific CSS used for admin panel because it wasn't properly maintained
+* Delete oembed caches when uninstalling plugin, not just when deactivating it
+* Delete transient oembed caches whenever oembed caches get deleted
+* No longer run $.bindFirst
+* Database: Rename value associated with standard thumbnail quality from "0" to "basic". This value is stored in the "lazyload_thumbnail_quality" post meta row
+* Database: No longer add a "lazyload_thumbnail_quality" field to the DB if the value is "default"
+* Database: Remove "lazyload_thumbnail_quality" post meta when uninstalling the plugin
 
 = 2.8.7 =
 * Fix: White arrow was overlaying the red Youtube play button

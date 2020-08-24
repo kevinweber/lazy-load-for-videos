@@ -1,5 +1,8 @@
-# Browsers that we support
-
+# Supported browsers
+[production]
 > 1%
-last 2 versions
-IE 10
+ie 11
+
+# Not used by this plugin yet
+[modern]
+supports es6-module

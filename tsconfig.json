@@ -1,17 +1,18 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "outDir": "./assets/",
-        "noImplicitAny": true,
-        "module": "es6",
-        "target": "es5",
-        "allowJs": true,
-        "jsx": "preserve",
-        "paths": {
-            "*": [
-                "node_modules/*",
-                "types/*"
-            ]
-        },
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./public/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true,
+    "sourceMap": true,
+    "jsx": "preserve",
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "types/*"
+      ]
     }
+  }
 }
