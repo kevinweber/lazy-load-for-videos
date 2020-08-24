@@ -85,11 +85,11 @@ class Lazy_Load_For_Videos_Styles {
 	static function load_lazyload_css_button_style() {
 		if ( get_option('ll_opt_button_style') == 'youtube_button_image' ) {
 			// Display youtube button image
-			return '.lazy-load-div { background: url('.plugin_dir_url( __FILE__ ).'../public/play-youtube.png) center center no-repeat; }';
+			return '.lazy-load-div { background: url('.LL_URL.'/public/play-youtube.png) center center no-repeat; }';
 		}
 		else if ( get_option('ll_opt_button_style') == 'youtube_button_image_red' ) {
 			// Display RED youtube button image
-			return '.lazy-load-div { background: url('.plugin_dir_url( __FILE__ ).'../public/play-y-red.png) center center no-repeat; }';
+			return '.lazy-load-div { background: url('.LL_URL.'/public/play-y-red.png) center center no-repeat; }';
 		}
 		else if (
 				get_option('ll_opt_button_style') == 'css_black'
