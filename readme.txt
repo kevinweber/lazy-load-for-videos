@@ -150,7 +150,8 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 == Changelog ==
 
 = 2.9.0 =
-* Change minimum browser support from IE10 to IE11
+* New feature: Properly preview and play videos in the (Gutenberg) block editor with the same thumbnails and styles that your readers will see
+* Increased minimum browser support from IE10 to IE11
 * Smarter code splitting: Now Webpack splits shared code into separate bundles so that developers don't need to manually maintain an extra Webpack entry. WordPress will load up three JS files if both Youtube and Vimeo are supported on your blog: lazyload-shared.js, lazyload-youtube.js, lazyload-vimeo.js, instead of one big lazyload-all.js
 * Allow filtering Vimeo-specific CSS classes using "lazyload_preview_url_css_vimeo" filter
 * Rename folder "assets" to "public"
