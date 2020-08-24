@@ -1,27 +1,66 @@
 {
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base",
+    "plugin:react-hooks/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "env": {
     "browser": true,
-    "es6": true,
+    "es6": false,
     "node": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 8,
-    "sourceType": "module"
   },
   "globals": {
     "wp": true,
-    "lazyload_video_settings": true,
+    "llvConfig": true,
     // Jest globals
     "describe": true,
     "it": true,
     "expect": true
   },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    },
+  },
   "rules": {
-    "no-console": "off",
-    "no-unused-vars": ["warn"],
-    "semi": 2
+    "@typescript-eslint/camelcase": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "indent": "off",
+    "@typescript-eslint/indent": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "import/extensions": [
+      "error",
+      {
+        "js": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "react/jsx-props-no-spreading": [
+      "off"
+    ],
+    "operator-linebreak": [
+      2,
+      "after"
+    ]
   }
 }
