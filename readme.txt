@@ -1,7 +1,7 @@
 === Lazy Load for Videos ===
 Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
-Tags: youtube, vimeo, performance, seo, admin, plugin, content, video, mobile, lazy load, privacy
+Tags: youtube, vimeo, performance, oembed, seo, media, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 4.5
 Tested up to: 5.5.1
 Requires PHP: 7.2
@@ -9,11 +9,11 @@ Stable tag: 2.9.1
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
-Speed up your site by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
+Improve page speed by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
 
 == Description ==
 
-This plugin improves page load times and increases your Google PageSpeed Score. It replaces embedded Youtube and Vimeo videos with a clickable preview image.
+This plugin improves page load time and increases your Google PageSpeed Score. It works with oEmbed and replaces embedded Youtube and Vimeo videos with a clickable preview image.
 By loading videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy. Additionally, all Youtube videos are loaded in a privacy-enhanced mode using the "https://www.youtube-nocookie.com" embed URL.
 
 This plugin works for your existing YouTube and Vimeo blocks. No vendor lock-in and no custom shortcodes: Easily turn the plugin on and off anytime.
@@ -38,6 +38,7 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 * Works with WordPress Multisite and many plugins such as TablePress
 
 = Future features: =
+* Set a custom preview image per video
 * Track how often the videos have been loaded with Google Analytics
 * ... YOU want a new feature RIGHT NOW? Please implement it yourself and [contribute on Github](https://github.com/kevinweber/lazy-load-for-videos), and I'll publish your enhancements to the official WordPress directory.
 
