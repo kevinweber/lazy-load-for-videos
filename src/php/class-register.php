@@ -101,7 +101,6 @@ class Lazy_Load_For_Videos_Register {
 
 }
 
-function initialize_lazyloadvideos_register() {
+add_action( 'init', function() {
 	new Lazy_Load_For_Videos_Register();
-}
-add_action( 'init', 'initialize_lazyloadvideos_register' );
+} );
