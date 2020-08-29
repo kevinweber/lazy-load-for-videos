@@ -2,8 +2,8 @@
 class Lazy_Load_For_Videos_General {
 
 	// Don't change those strings since exactly those strings are needed by the Youtube JavaScript file
-	private $thumbnailquality_default = '0';
-	private $thumbnailquality_maxresdefault = 'maxresdefault';
+	private $js_thumbnailquality_default = '0';
+	private $js_thumbnailquality_maxresdefault = 'maxresdefault';
 
 	function has_post_or_page_embed( $post_id ) {
 		
@@ -56,7 +56,6 @@ class Lazy_Load_For_Videos_General {
  	 */
  	function get_thumbnail_quality() {
 		global $post;
-		$thumbnailquality = $this->thumbnailquality_default;
 
 		if (!isset($post->ID)) {
 			$id = null;
@@ -66,22 +65,19 @@ class Lazy_Load_For_Videos_General {
 		}
 
 		// When the individual status for a page/post is '0', all the other settings don't matter.
-		$thumbnail_quality = get_post_meta( $id, 'lazyload_thumbnail_quality', true );
+		$post_thumbnail_quality = get_post_meta( $id, 'lazyload_thumbnail_quality', true );
 		if (
-			$thumbnail_quality === 'max'
-			|| ( empty($thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
+			$post_thumbnail_quality === 'max'
+			|| ( empty($post_thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
+			// Need to check for "default" value for backward compatibility because this plugin used to store "default" in the DB,
+			// and now we're not storing any value in the default case anymore.
+			// See: https://github.com/kevinweber/lazy-load-for-videos/pull/48/files#diff-a7050d7d07c23aab4907f6e32ef248cdR101
+			|| ( $post_thumbnail_quality === 'default' && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
 			) {
-			return $this->thumbnailquality_maxresdefault;
+			return $this->js_thumbnailquality_maxresdefault;
 		}
 
-		if (
-			$thumbnail_quality === 'basic'
-			|| ( empty($thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'basic' ) )
-			) {
-			return $this->thumbnailquality_maxresdefault;
-		}
-
-		return $this->thumbnailquality_default;
+		return $this->js_thumbnailquality_default;
  	}
 
 }
