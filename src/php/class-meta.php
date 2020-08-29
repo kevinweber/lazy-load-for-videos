@@ -23,7 +23,7 @@ class Lazy_Load_For_Videos_Meta {
 		foreach ( $screens as $screen ) {
 			add_meta_box(
 				'meta-box-lazyload-for-videos',
-				'Lazyload for Videos',
+				'Lazy Load for Videos',
 				array( $this, 'meta_box' ),
 				$screen,
 				'side',	// position
@@ -41,7 +41,7 @@ class Lazy_Load_For_Videos_Meta {
 		$select_thumbnail_quality = $this->select_thumbnail_quality;
 			$selected = isset( $values[$select_thumbnail_quality] ) ? esc_attr( $values[$select_thumbnail_quality][0] ) : '';
 
-		wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
+		wp_nonce_field( 'lazyloadvideos_meta_box_nonce', 'meta_box_nonce' );
 
 		?>
 
@@ -76,7 +76,7 @@ class Lazy_Load_For_Videos_Meta {
 		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 		
 		// If our nonce isn't there, or we can't verify it, bail
-		if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
+		if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'lazyloadvideos_meta_box_nonce' ) ) return;
 		
 		// Now we can actually save the data
 		$allowed = array( 
