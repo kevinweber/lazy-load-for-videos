@@ -5,7 +5,7 @@ Tags: youtube, vimeo, performance, oembed, seo, media, admin, plugin, content, v
 Requires at least: 4.5
 Tested up to: 5.5.1
 Requires PHP: 7.2
-Stable tag: 2.9.1
+Stable tag: 2.9.2
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -150,6 +150,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.9.2 =
+* Fix: Show correct video thumbnail quality and ensure backward compatibility
 
 = 2.9.0 =
 * New feature: Properly preview and play videos in the (Gutenberg) block editor with the same thumbnails and styles that your readers will see
