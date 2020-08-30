@@ -33,7 +33,7 @@ if ( !defined( 'LL_OPTION_KEY' ) ) {
 }
 
 if (!defined('LL_VERSION'))
-    define('LL_VERSION', '2.9.2');
+    define('LL_VERSION', '2.9.3');
 if (!defined('LL_VERSION_KEY'))
     define('LL_VERSION_KEY', LL_OPTION_KEY.'_version');
 
