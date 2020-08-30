@@ -170,7 +170,7 @@ class Lazy_Load_For_Videos_Admin {
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
-		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><!--<span class="newred_dot">&bull;</span>--></a></li>
+		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
@@ -293,10 +293,11 @@ class Lazy_Load_For_Videos_Admin {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?> <span class="newred">Updated</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
-										<option value="standard"<?php if (get_option('lly_opt_thumbnail_quality') === 'standard') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
+										<option value="basic"<?php if (get_option('lly_opt_thumbnail_quality') === 'basic') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
+										<option value="medium"<?php if (get_option('lly_opt_thumbnail_quality') === 'medium') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Higher quality', LL_TD ); ?></option>
 										<option value="max"<?php if (get_option('lly_opt_thumbnail_quality') === 'max') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Max resolution', LL_TD ); ?></option>
 									</select>
 									<p><?php esc_html_e( 'Define which thumbnail quality should be used by default. When a maximum resolution thumbnail is not available, the standard thumbnail will be loaded. This setting can be overridden on every individual page/post.', LL_TD ); ?></p>

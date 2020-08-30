@@ -3,6 +3,7 @@ class Lazy_Load_For_Videos_General {
 
 	// Don't change those strings since exactly those strings are needed by the Youtube JavaScript file
 	private $js_thumbnailquality_default = '0';
+	private $js_thumbnailquality_sddefault = 'sddefault';
 	private $js_thumbnailquality_maxresdefault = 'maxresdefault';
 
 	function has_post_or_page_embed( $post_id ) {
@@ -66,6 +67,7 @@ class Lazy_Load_For_Videos_General {
 
 		// When the individual status for a page/post is '0', all the other settings don't matter.
 		$post_thumbnail_quality = get_post_meta( $id, 'lazyload_thumbnail_quality', true );
+
 		if (
 			$post_thumbnail_quality === 'max'
 			|| ( empty($post_thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
@@ -75,6 +77,13 @@ class Lazy_Load_For_Videos_General {
 			|| ( $post_thumbnail_quality === 'default' && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
 			) {
 			return $this->js_thumbnailquality_maxresdefault;
+		}
+
+		if (
+			$post_thumbnail_quality === 'medium'
+			|| ( empty($post_thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'medium' ) )
+			) {
+			return $this->js_thumbnailquality_sddefault;
 		}
 
 		return $this->js_thumbnailquality_default;

@@ -60,6 +60,7 @@ class Lazy_Load_For_Videos_Meta {
 			<?php $meta_element_class = get_post_meta($post->ID, $select_thumbnail_quality, true);	?>
 		      <option value="default" <?php selected( $meta_element_class, 'default' ); ?>><?php esc_html_e( 'Default', LL_TD ); ?></option>
 		      <option value="basic" <?php selected( $meta_element_class, 'basic' ); ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
+		      <option value="medium" <?php selected( $meta_element_class, 'medium' ); ?>><?php esc_html_e( 'Higher quality', LL_TD ); ?></option>
 		      <option value="max" <?php selected( $meta_element_class, 'max' ); ?>><?php esc_html_e( 'Max resolution', LL_TD ); ?></option>
 			</select>
 		</p>
