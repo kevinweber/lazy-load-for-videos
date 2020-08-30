@@ -29,7 +29,7 @@ class Lazy_Load_For_Videos_Update_Posts {
 		$meta_key_1 = "|_oembed|_%%";
 		$meta_key_2 = "|_oembed|_time|_%%";
 		$wpdb->query(
-	        $query = $wpdb->prepare( 
+	        $wpdb->prepare( 
                 "DELETE FROM `".$wpdb->postmeta."`
                     WHERE `meta_key` LIKE %s ESCAPE '|'
 					OR `meta_key` LIKE %s ESCAPE '|'",
@@ -43,7 +43,7 @@ class Lazy_Load_For_Videos_Update_Posts {
 		$option_name_1 = "|_transient|_oembed|_%%";
 		$option_name_2 = "|_transient|_timeout|_oembed|_%%";
 		$wpdb->query(
-	        $query = $wpdb->prepare( 
+	        $wpdb->prepare( 
                 "DELETE FROM `".$wpdb->options."`
                     WHERE `option_name` LIKE %s ESCAPE '|'
 					OR `option_name` LIKE %s ESCAPE '|'",
@@ -62,7 +62,7 @@ class Lazy_Load_For_Videos_Update_Posts {
 		$meta_key_1 = "|_oembed|_%%";
 		$meta_key_2 = "|_oembed|_time|_%%";
 		$wpdb->query(
-	        $query = $wpdb->prepare( 
+	        $wpdb->prepare( 
                 "DELETE FROM `".$wpdb->postmeta."`
                     WHERE post_id = %d
 					AND (

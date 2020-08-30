@@ -1,5 +1,10 @@
 <?php
 class Lazy_Load_For_Videos_Youtube {
+	// Don't change those strings since exactly those strings are needed by the Youtube JavaScript file
+	static $js_thumbnailquality_default = '0';
+	static $js_thumbnailquality_sddefault = 'sddefault';
+	static $js_thumbnailquality_maxresdefault = 'maxresdefault';
+	
 	
 	static function enqueue() {
 		wp_enqueue_script( 'lazyload-youtube-js', LL_URL . 'public/js/lazyload-youtube.js', null, SCRIPT_DEBUG ? null : LL_VERSION, true );
@@ -41,8 +46,37 @@ class Lazy_Load_For_Videos_Youtube {
  	 * Test which thumbnail quality should be used
  	 */
  	static function thumbnailquality() {
-		global $lazyload_videos_general;
-		return $lazyload_videos_general->get_thumbnail_quality();
+		global $post;
+
+		if (!isset($post->ID)) {
+			$id = null;
+		}
+		else {
+			$id = $post->ID;
+		}
+
+		// When the individual status for a page/post is '0', all the other settings don't matter.
+		$post_thumbnail_quality = get_post_meta( $id, 'lazyload_thumbnail_quality', true );
+
+		if (
+			$post_thumbnail_quality === 'max'
+			|| ( empty($post_thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
+			// Need to check for "default" value for backward compatibility because this plugin used to store "default" in the DB,
+			// and now we're not storing any value in the default case anymore.
+			// See: https://github.com/kevinweber/lazy-load-for-videos/pull/48/files#diff-a7050d7d07c23aab4907f6e32ef248cdR101
+			|| ( $post_thumbnail_quality === 'default' && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
+			) {
+			return Lazy_Load_For_Videos_Youtube::$js_thumbnailquality_maxresdefault;
+		}
+
+		if (
+			$post_thumbnail_quality === 'medium'
+			|| ( empty($post_thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'medium' ) )
+			) {
+			return Lazy_Load_For_Videos_Youtube::$js_thumbnailquality_sddefault;
+		}
+
+		return Lazy_Load_For_Videos_Youtube::$js_thumbnailquality_default;
  	}
 
  	/**
@@ -52,5 +86,6 @@ class Lazy_Load_For_Videos_Youtube {
  	static function callback() {
  		$js = apply_filters( 'lly_set_callback', '' );
  		return $js;
- 	}
+	 }
+
 }

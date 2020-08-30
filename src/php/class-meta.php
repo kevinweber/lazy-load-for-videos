@@ -12,9 +12,17 @@ class Lazy_Load_For_Videos_Meta {
 		add_action( 'save_post', array( $this, 'save' ) );
 	}
 
+	/**
+	 * Get post types that support lazy-loading of videos
+	 * @return array()
+	 * @since 2.0.4
+	 */
+	function get_post_types() {
+		return apply_filters( 'lazyload_videos_post_types' , get_post_types() );
+	}
+
 	function add_meta_box() {
-		global $lazyload_videos_general;
-		$screens = $lazyload_videos_general->get_post_types();
+		$screens = $this->get_post_types();
 
 		foreach ( $screens as $screen ) {
 			add_meta_box(
