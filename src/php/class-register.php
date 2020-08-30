@@ -44,11 +44,14 @@ function lazyloadvideos_plugin_uninstall() {
 	Lazy_Load_For_Videos_Update_Posts::delete_postmeta();
 }
 
+add_action( 'save_post', function( $post_id ) {
+	Lazy_Load_For_Videos_Update_Posts::delete_oembed_cache( $post_id );
+} );
+
 class Lazy_Load_For_Videos_Register {
 
 	function __construct() {
 		add_action( 'admin_notices', array( $this, 'plugin_notice_activation' ) );
-		add_action( 'save_post', array( $this, 'delete_oembed_cache' ) );
         $this->check_for_plugin_version();
 	}
 
@@ -62,14 +65,6 @@ class Lazy_Load_For_Videos_Register {
 	    }
 	    delete_option( 'lazyloadvideos_deferred_admin_notices' );
 	  }
-	}
-
-	/**
-	 * Ensure that the oembed cache for an updated post is going to be deleted
-	 * @since 2.0.3
-	 */
-	function delete_oembed_cache( $post_id ) {
-		Lazy_Load_For_Videos_Update_Posts::delete_oembed_cache( $post_id );
 	}
 
 	/**
