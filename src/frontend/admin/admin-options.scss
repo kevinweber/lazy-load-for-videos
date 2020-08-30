@@ -238,10 +238,8 @@ input.regular-text {
 
 .newred {
 	color: red;
-	float: right;
-}
-.newred.grey {
-	color: #999;
+	display: block;
+	margin-top: 3px;
 }
 .newred_dot{
 	color: red;

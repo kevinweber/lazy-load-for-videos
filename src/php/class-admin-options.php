@@ -169,7 +169,7 @@ class Lazy_Load_For_Videos_Admin {
 			</h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
+		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
@@ -189,9 +189,9 @@ class Lazy_Load_For_Videos_Admin {
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label><?php esc_html_e( 'Only load CSS/JS when needed', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'to improve performance', LL_TD ); ?></span></label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Only load CSS/JS when needed', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'to improve performance', LL_TD ); ?></span><span class="newred">v2.11.0: Smarter detection when to load which scripts</span></label></th>
 						        <td>
-									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label><?php esc_html_e( 'When this option is checked, some videos might not lazy load if posts with videos are loaded using Ajax.', LL_TD ); ?></label>
+									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'When this option is checked, some videos might not lazy load if posts with videos are loaded using Ajax.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -293,7 +293,7 @@ class Lazy_Load_For_Videos_Admin {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?> <span class="newred">Updated</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?><span class="newred">v2.10.0: New option "Higher quality"</span></label></th>
 						        <td>
 									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
 										<option value="basic"<?php if (get_option('lly_opt_thumbnail_quality') === 'basic') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
@@ -313,7 +313,7 @@ class Lazy_Load_For_Videos_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Hide annotations', LL_TD ); ?> <span class="newred grey">Tip</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Hide annotations', LL_TD ); ?></label></th>
 						        <td>
 									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_loadpolicy' ) ); ?> /> <label><?php esc_html_e( 'If checked, video annotations (like "subscribe to channel") will not be shown.', LL_TD ); ?></label>
 						        </td>
