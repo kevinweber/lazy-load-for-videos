@@ -55,8 +55,6 @@ if ( !defined( 'LL_URL' ) )
 
 require_once( LL_PATH . 'src/php/inc/define.php' );
 require_once( LL_PATH . 'src/php/class-register.php' );
-require_once( LL_PATH . 'src/php/class-general.php' );
-
 
 /**
  * Load plugin textdomain.
