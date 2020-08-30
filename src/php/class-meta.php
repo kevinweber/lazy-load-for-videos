@@ -3,15 +3,11 @@ class Lazy_Load_For_Videos_Meta {
 
 	private $select_thumbnail_quality = 'lazyload_thumbnail_quality';
 
-	function __construct() {
-		$this->init_meta_boxes();
-	}
-
 	/**
 	 * Add additonal fields to the page where you create your posts and pages
 	 * (Based on http://wp.tutsplus.com/tutorials/plugins/how-to-create-custom-wordpress-writemeta-boxes/)
 	 */
-	function init_meta_boxes() {
+	function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
 	}

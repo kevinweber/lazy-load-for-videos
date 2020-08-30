@@ -428,6 +428,4 @@ class Lazy_Load_For_Videos_Admin {
 
 }
 
-add_action( 'init', function() {
-	new Lazy_Load_For_Videos_Admin();
-} );
+new Lazy_Load_For_Videos_Admin();
