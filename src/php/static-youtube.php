@@ -72,6 +72,10 @@ class Lazy_Load_For_Videos_Youtube {
 		if (
 			$post_thumbnail_quality === 'medium'
 			|| ( empty($post_thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'medium' ) )
+			// Need to check for "default" value for backward compatibility because this plugin used to store "default" in the DB,
+			// and now we're not storing any value in the default case anymore.
+			// See: https://github.com/kevinweber/lazy-load-for-videos/pull/48/files#diff-a7050d7d07c23aab4907f6e32ef248cdR101
+			|| ( $post_thumbnail_quality === 'default' && ( get_option('lly_opt_thumbnail_quality') === 'medium' ) )
 			) {
 			return Lazy_Load_For_Videos_Youtube::$js_thumbnailquality_sddefault;
 		}

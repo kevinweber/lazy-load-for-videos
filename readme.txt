@@ -153,6 +153,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 = 2.11.0 =
 * Make the "Only load CSS/JS when needed" feature smarter! Now instead of always loading all the lazy-loading JS whenever a post has any oembed (e.g. SoundCloud player), ensure that Youtube-specific and/or Vimeo-specific JS is only loaded based on if a Youtube and/or Vimeo embed is present.
+* Make "Higher quality" backward compatible
 
 = 2.10.0 =
 * Add "Higher quality" option for Youtube preview images, a quality between "Standard quality" and "Max resolution"
