@@ -189,7 +189,7 @@ class Lazy_Load_For_Videos_Admin {
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label><?php esc_html_e( 'Only load CSS/JS when needed', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'to improve performance', LL_TD ); ?></span><span class="newred">v2.11.0: Smarter detection when to load which scripts</span></label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Only load CSS/JS when needed', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'to improve performance', LL_TD ); ?></span><span class="newred">v2.11.0: Improved</span></label></th>
 						        <td>
 									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'When this option is checked, some videos might not lazy load if posts with videos are loaded using Ajax.', LL_TD ); ?></label>
 						        </td>
