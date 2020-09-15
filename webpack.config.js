@@ -33,7 +33,10 @@ const config = {
       },
       {
         test: /\.jsx?$/,
-        exclude: /node_modules\/(?!@wordpress\/block-library)/,
+        // Exclude all node modules except:
+        // @wordpress/block-library
+        // @wordpress/block-editor
+        exclude: /node_modules\/(?!(@wordpress\/block-library|@wordpress\/block-editor))/,
         use: [
           {
             loader: 'babel-loader',

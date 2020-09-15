@@ -71,6 +71,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "@wordpress/block-editor": "^4.4.0",
     "@wordpress/block-library": "^2.22.6",
     "classnames": "^2.2.6"
   }
