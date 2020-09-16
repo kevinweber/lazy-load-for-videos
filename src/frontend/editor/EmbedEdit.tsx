@@ -4,11 +4,11 @@ import {
   getClassNames,
   fallback,
   getAttributesFromPreview,
-} from '@wordpress/block-library/src/embed/util';
-import EmbedControls from '@wordpress/block-library/src/embed/embed-controls';
-import EmbedPreview from '@wordpress/block-library/src/embed/embed-preview';
-import EmbedLoading from '@wordpress/block-library/src/embed/embed-loading';
-import EmbedPlaceholder from '@wordpress/block-library/src/embed/embed-placeholder';
+} from '@wordpress/block-library/build-module/embed/util';
+import EmbedControls from '@wordpress/block-library/build-module/embed/embed-controls';
+import EmbedPreview from '@wordpress/block-library/build-module/embed/embed-preview';
+import EmbedLoading from '@wordpress/block-library/build-module/embed/embed-loading';
+import EmbedPlaceholder from '@wordpress/block-library/build-module/embed/embed-placeholder';
 // @ts-expect-error
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { __, sprintf } from '@wordpress/i18n';

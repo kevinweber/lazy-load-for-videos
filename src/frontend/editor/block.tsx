@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { addFilter } from '@wordpress/hooks';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { withToolbarControls } from '@wordpress/block-editor/src/hooks/align';
+import { withToolbarControls } from '@wordpress/block-editor/build-module/hooks/align';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createHigherOrderComponent } from '@wordpress/compose';
 import EmbedEdit, { EmbedEditProps } from './EmbedEdit';
