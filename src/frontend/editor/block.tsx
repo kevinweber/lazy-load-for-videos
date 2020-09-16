@@ -1,8 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { addFilter } from '@wordpress/hooks';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { withToolbarControls } from '@wordpress/block-editor/build-module/hooks/align';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { createHigherOrderComponent } from '@wordpress/compose';
 import EmbedEdit, { EmbedEditProps } from './EmbedEdit';
 import EmbedEditControls from './EmbedEditControls';
@@ -27,9 +25,7 @@ const lazyLoadVideosBlockEdit = createHigherOrderComponent(
   'lazyLoadVideos',
 );
 
-addFilter('editor.BlockEdit', 'kw/lazy-load-videos', lazyLoadVideosBlockEdit);
-addFilter(
-  'editor.BlockEdit',
-  'kw/lazy-load-videos',
-  withToolbarControls,
-);
+// Priority must be above 10 so that this filter runs before the
+// "core/editor/align/with-toolbar-controls" filter
+// https://github.com/WordPress/gutenberg/blob/10871217bc48c4f5ded3e13a9088f6ff91da3518/packages/block-editor/src/hooks/align.js#L241
+addFilter('editor.BlockEdit', 'kw/lazy-load-videos', lazyLoadVideosBlockEdit, 5);
