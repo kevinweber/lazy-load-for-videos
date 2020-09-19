@@ -8,6 +8,12 @@ $z-index-base: 2;
 	 100% { transform: scale(1); }
  }
 
+// Editor
+[data-type="core-embed/youtube"],
+[data-type="core-embed/vimeo"] {
+	clear: both;
+ }
+
 .container-youtube,
 .container-vimeo {
 	font-size: 0;
