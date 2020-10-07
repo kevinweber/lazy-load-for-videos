@@ -3,9 +3,9 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, oembed, seo, media, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 4.5
-Tested up to: 5.5.1
+Tested up to: 5.5.2
 Requires PHP: 7.2
-Stable tag: 2.11.2
+Stable tag: 2.11.3
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -150,6 +150,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.11.3 =
+* No longer verify if wp_footer is available in theme
 
 = 2.11.2 =
 * Add option to align videos
