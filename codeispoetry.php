@@ -97,13 +97,5 @@ if ( is_admin() ) {
 	add_action( 'plugins_loaded', 'lazyload_videos_frontend_init', 16 );
 }
 
-
-function lazyload_theme_check() {
-	include_once( LL_PATH . 'src/php/class-theme-check.php');
-	$lazyload_theme_check = new Lazy_Load_For_Videos_Theme_Check();
-	$lazyload_theme_check->theme_check_init('lazyload.php');
-}
-add_action( 'init', 'lazyload_theme_check' );
-
 /***** Plugin by Kevin Weber || www.kweber.com *****/
 ?>
