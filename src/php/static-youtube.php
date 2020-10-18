@@ -32,6 +32,7 @@ class Lazy_Load_For_Videos_Youtube {
 			'thumbnailquality' => Lazy_Load_For_Videos_Youtube::thumbnailquality(),
 			'preroll'          => get_option( 'lly_opt_player_preroll', '' ),
 			'postroll'         => get_option( 'lly_opt_player_postroll', '' ),
+			'overlaytext' => esc_textarea(trim(get_option( 'lly_opt_overlay_text', ''))),
 			'loadthumbnail'	 => Lazy_Load_For_Videos_Youtube::should_load_thumbnail(),
 			'callback'         => '<!--YOUTUBE_CALLBACK-->'
 		) );

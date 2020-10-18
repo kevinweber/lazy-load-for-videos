@@ -182,7 +182,13 @@ function loadVideo(domNode) {
     return '';
   }
 
-  videoLinkElement.innerHTML = `<div aria-hidden="true" class="lazy-load-info"><span class="titletext youtube">${videoTitle()}</span></div>`;
+  const title = videoTitle();
+  const showOverlayText = pluginOptions.overlaytext.length > 0;
+  videoLinkElement.innerHTML = (title.length > 0 || showOverlayText) && `
+    <div aria-hidden="true" class="lazy-load-info">
+      ${title ? `<div class="titletext youtube">${title}</div>` : ''}
+      ${showOverlayText ? `<div class="overlaytext">${pluginOptions.overlaytext}</div>` : ''}
+    </div>`;
 
   const lazyloadDiv = createElements(
     '<div aria-hidden="true" class="lazy-load-div"></div>',

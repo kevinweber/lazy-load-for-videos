@@ -104,21 +104,19 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 }
 .lazy-load-info {
 	position: relative;
+	padding: 7px 15px;
+	display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
+.overlaytext {
+	margin-top: auto;
+}
+
 .lazy-load-div:hover,
 .lazy-load-youtube:hover > div, .lazy-load-vimeo:hover > div {
 	opacity: 1;
-}
-
-.titletext {
-	padding-left: 15px;
-	padding-right: 15px;
-	position: relative;
-	top: 7px;
-	text-shadow: none;
-	float: left;
-	text-transform: none;
-	font-weight: normal;
 }
 
 .container-youtube embed, .container-youtube iframe, .container-youtube object, .container-youtube video,

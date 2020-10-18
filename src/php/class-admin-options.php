@@ -133,10 +133,11 @@ class Lazy_Load_For_Videos_Admin {
 			'll_opt_customcss',
 			'll_opt_support_for_tablepress',
 			'll_attribute',
-
+			
 			// Youtube
 			'lly_opt',
 			'lly_opt_title',
+			'lly_opt_overlay_text',
 			'lly_opt_player_preroll',
 			'lly_opt_player_postroll',
 			'lly_opt_support_for_widgets',
@@ -144,10 +145,11 @@ class Lazy_Load_For_Videos_Admin {
 			'lly_opt_player_colour_progress',
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
-
+			
 			// Vimeo
 			'llv_opt',
 			'llv_opt_title',
+			'llv_opt_overlay_text',
 			'llv_opt_player_colour',
 		);
 
@@ -171,7 +173,7 @@ class Lazy_Load_For_Videos_Admin {
 			<ul class="ui-tabs-nav">
 		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
-		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
+		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -276,6 +278,14 @@ class Lazy_Load_For_Videos_Admin {
 						        <td>
 									<input name="lly_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_title' ) ); ?> /> <label><?php esc_html_e( 'If checked, the Youtube video title will be displayed on preview image.', LL_TD ); ?></label>
 						        </td>
+							</tr>
+							<tr valign="top">
+					        	<th scope="row"><label><?php esc_html_e( 'Text Overlay', LL_TD ); ?><span class="newred">v2.12.0: New feature</span></label></th>
+					        	<td>
+					        		<textarea rows="4" cols="70" type="text" name="lly_opt_overlay_text"><?php echo get_option('lly_opt_overlay_text'); ?></textarea>
+					        		<br>
+									<p><?php esc_html_e( 'Enter text to be displayed on top of all video thumbnails, for example a privacy disclaimer. No HTML.', LL_TD ); ?></p>
+					        	</td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><label><?php esc_html_e( 'Pre-roll/post-roll ads', LL_TD ); ?><span class="description thin"><br>Sell advertising space!</span></label></th>
@@ -357,6 +367,14 @@ class Lazy_Load_For_Videos_Admin {
 						        <td>
 									<input name="llv_opt_title" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_title' ) ); ?> /> <label><?php esc_html_e( 'If checked, the Vimeo video title will be displayed on preview image.', LL_TD ); ?> <span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> Titles won't be displayed if you've chosen to not load a thumbnail in the general tab of this settings page.</label>
 						        </td>
+							</tr>
+							<tr valign="top">
+					        	<th scope="row"><label><?php esc_html_e( 'Text Overlay', LL_TD ); ?><span class="newred">v2.12.0: New feature</span></label></th>
+					        	<td>
+					        		<textarea rows="4" cols="70" type="text" name="llv_opt_overlay_text"><?php echo get_option('llv_opt_overlay_text'); ?></textarea>
+					        		<br>
+									<p><?php esc_html_e( 'Enter text to be displayed on top of all video thumbnails, for example a privacy disclaimer. No HTML.', LL_TD ); ?></p>
+					        	</td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><label><?php esc_html_e( 'Colour of the vimeo controls', LL_TD ); ?></label></th>

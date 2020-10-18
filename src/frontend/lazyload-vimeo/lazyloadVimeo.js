@@ -76,10 +76,17 @@ function vimeoLoadingThumb(videoLinkElement, id) {
 
   if (window.llvConfig.vimeo.show_title) {
     const videoTitle = videoLinkElement.getAttribute('data-video-title');
+    const showTitle = window.llvConfig.vimeo.show_title && videoTitle.length > 0;
+    const showOverlayText = pluginOptions.overlaytext.length > 0;
     const info = createElements(
-      `<div aria-hidden="true" class="lazy-load-info"><span class="titletext vimeo">${videoTitle}</span></div>`,
+      `<div aria-hidden="true" class="lazy-load-info">
+        ${showTitle ? `<div class="titletext vimeo">${videoTitle}</div>` : ''}
+        ${showOverlayText ? `<div class="overlaytext">${pluginOptions.overlaytext}</div>` : ''}
+      </div>`,
     );
-    videoLinkElement.appendChild(info);
+    if (showTitle || showOverlayText) {
+      videoLinkElement.appendChild(info);
+    }
   }
 
   if (pluginOptions.buttonstyle) {
