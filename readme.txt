@@ -5,7 +5,7 @@ Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, cont
 Requires at least: 4.5
 Tested up to: 5.5.2
 Requires PHP: 7.2
-Stable tag: 2.12.0
+Stable tag: 2.12.1
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -151,6 +151,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.12.1 =
+* Support HTML in text overlay.
 
 = 2.12.0 =
 * New feature: Enter text to be displayed on top of all video thumbnails, for example a privacy disclaimer.
