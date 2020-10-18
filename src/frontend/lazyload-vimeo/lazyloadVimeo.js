@@ -109,7 +109,7 @@ function vimeoCreateThumbProcess(videoLinkElement) {
 
   const showOverlayText = pluginOptions.overlaytext.length > 0;
   const videoInfoExtra = createElements(
-    `<div aria-hidden="true" class="lazy-load-info lazy-load-info-extra">
+    `<div aria-hidden="true" class="lazy-load-info-extra">
       <div class="overlaytext">${pluginOptions.overlaytext}</div>
     </div>`,
   );

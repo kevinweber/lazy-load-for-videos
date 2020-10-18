@@ -79,8 +79,12 @@ a.lazy-load-vimeo {
 		text-align: center;
 	}
 
+	&:hover {
+		opacity: 0.95;
+	}
+
 	&:hover::before {
-		opacity: 1;
+		opacity: 0.9;
 	}
 }
 
@@ -96,7 +100,8 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 }
 
 .lazy-load-div,
-.lazy-load-info {
+.lazy-load-info,
+.lazy-load-info-extra {
 	max-width: 100%;
 	color: #fff;
 }
@@ -112,9 +117,13 @@ a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	top: 0;
 }
 
-.lazy-load-info {
+.lazy-load-info, .lazy-load-info-extra {
 	position: relative;
 	padding: 7px 15px;
+}
+
+.lazy-load-info {
+	pointer-events: none;
 }
 
 .lazy-load-info-extra {

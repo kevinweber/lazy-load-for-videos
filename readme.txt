@@ -5,7 +5,7 @@ Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, cont
 Requires at least: 4.5
 Tested up to: 5.5.2
 Requires PHP: 7.2
-Stable tag: 2.12.1
+Stable tag: 2.12.2
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 

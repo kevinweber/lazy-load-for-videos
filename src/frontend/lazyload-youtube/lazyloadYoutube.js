@@ -197,7 +197,7 @@ function loadVideo(domNode) {
   }
 
   const videoInfoExtra = createElements(
-    `<div aria-hidden="true" class="lazy-load-info lazy-load-info-extra">
+    `<div aria-hidden="true" class="lazy-load-info-extra">
       <div class="overlaytext">${pluginOptions.overlaytext}</div>
     </div>`,
   );
