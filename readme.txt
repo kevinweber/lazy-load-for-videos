@@ -1,11 +1,11 @@
 === Lazy Load for Videos ===
 Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
-Tags: youtube, vimeo, performance, oembed, seo, media, admin, plugin, content, video, mobile, lazy load, privacy
+Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 4.5
 Tested up to: 5.5.2
 Requires PHP: 7.2
-Stable tag: 2.11.3
+Stable tag: 2.12.0
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -24,6 +24,7 @@ You want to enhance this plugin? Please [contribute on Github](https://github.co
 
 = Some additional features: =
 * Display video titles on preview images
+* Display privacy disclaimer on top of preview images (e.g. for GDPR compliance)
 * Pre-roll and post-roll advertisements: Convert all videos into a playlist and automatically add your corporate video, product teaser or another video advertisement to every video. (Great for branding and video ads!)
 * Hide annotations such as "subscribe to channel" to avoid distractions
 * Add custom CSS via the plugin’s admin panel
@@ -150,6 +151,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.12.0 =
+* New feature: Enter text to be displayed on top of all video thumbnails, for example a privacy disclaimer.
 
 = 2.11.3 =
 * No longer verify if wp_footer is available in theme
