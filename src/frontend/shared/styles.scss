@@ -43,14 +43,17 @@ $z-index-base: 2;
 	height: 315px;
 	width: 100%;
 	max-width: 100%;
-	text-decoration: none;
 	display: inline-block;
+	margin-top: 0;
+	box-sizing: border-box;
+}
+
+.entry-content a.preview-lazyload, a.preview-lazyload, .lazy-load-info-extra {
+	text-decoration: none;
 	color: #fff;
 	font-family: Arial, serif;
 	font-size: 14px;
-	margin-top: 0;
 	line-height: 18px;
-	box-sizing: border-box;
 }
 
 a.lazy-load-vimeo {
@@ -77,7 +80,7 @@ a.lazy-load-vimeo {
 	}
 
 	&:hover::before {
-		opacity: 0.9;
+		opacity: 1;
 	}
 }
 
@@ -90,33 +93,38 @@ a.lazy-load-vimeo {
 
 a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
 	text-decoration: none;
-	cursor: pointer;
 }
+
 .lazy-load-div,
 .lazy-load-info {
 	max-width: 100%;
-	opacity: 0.8;
 	color: #fff;
 }
+
+.lazy-load-div,
+.titletext,
+.overlaytext {
+	opacity: 0.8;
+}
+
 .lazy-load-div {
 	position: absolute;
-	z-index: $z-index-base + 1;
+	top: 0;
 }
+
 .lazy-load-info {
 	position: relative;
 	padding: 7px 15px;
-	display: flex;
-    flex-direction: column;
-    height: 100%;
 }
 
-.overlaytext {
-	margin-top: auto;
+.lazy-load-info-extra {
+	display: none;
+	position: absolute;
+	bottom: 0;
 }
 
-.lazy-load-div:hover,
-.lazy-load-youtube:hover > div, .lazy-load-vimeo:hover > div {
-	opacity: 1;
+.preview-lazyload ~ .lazy-load-info-extra {
+	display: block;
 }
 
 .container-youtube embed, .container-youtube iframe, .container-youtube object, .container-youtube video,

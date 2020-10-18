@@ -183,12 +183,10 @@ function loadVideo(domNode) {
   }
 
   const title = videoTitle();
-  const showOverlayText = pluginOptions.overlaytext.length > 0;
-  videoLinkElement.innerHTML = (title.length > 0 || showOverlayText) && `
+  videoLinkElement.innerHTML = title.length > 0 ? `
     <div aria-hidden="true" class="lazy-load-info">
-      ${title ? `<div class="titletext youtube">${title}</div>` : ''}
-      ${showOverlayText ? `<div class="overlaytext">${pluginOptions.overlaytext}</div>` : ''}
-    </div>`;
+      <div class="titletext youtube">${title}</div>
+    </div>` : '';
 
   const lazyloadDiv = createElements(
     '<div aria-hidden="true" class="lazy-load-div"></div>',
@@ -196,6 +194,17 @@ function loadVideo(domNode) {
   videoLinkElement.insertBefore(lazyloadDiv, videoLinkElement.firstChild);
   if (pluginOptions.buttonstyle) {
     videoLinkElement.classList.add(pluginOptions.buttonstyle);
+  }
+
+  const videoInfoExtra = createElements(
+    `<div aria-hidden="true" class="lazy-load-info lazy-load-info-extra">
+      <div class="overlaytext">${pluginOptions.overlaytext}</div>
+    </div>`,
+  );
+
+  const showOverlayText = pluginOptions.overlaytext.length > 0;
+  if (showOverlayText) {
+    videoLinkElement.parentNode.insertBefore(videoInfoExtra, null);
   }
 
   resizeVideo(videoLinkElement.parentNode);

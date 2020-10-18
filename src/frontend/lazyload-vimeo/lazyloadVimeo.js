@@ -77,14 +77,12 @@ function vimeoLoadingThumb(videoLinkElement, id) {
   if (window.llvConfig.vimeo.show_title) {
     const videoTitle = videoLinkElement.getAttribute('data-video-title');
     const showTitle = window.llvConfig.vimeo.show_title && videoTitle.length > 0;
-    const showOverlayText = pluginOptions.overlaytext.length > 0;
     const info = createElements(
       `<div aria-hidden="true" class="lazy-load-info">
-        ${showTitle ? `<div class="titletext vimeo">${videoTitle}</div>` : ''}
-        ${showOverlayText ? `<div class="overlaytext">${pluginOptions.overlaytext}</div>` : ''}
+        <div class="titletext vimeo">${videoTitle}</div>
       </div>`,
     );
-    if (showTitle || showOverlayText) {
+    if (showTitle) {
       videoLinkElement.appendChild(info);
     }
   }
@@ -108,6 +106,16 @@ function vimeoCreateThumbProcess(videoLinkElement) {
   // Remove no longer needed title (title is necessary for preview in text editor)
   previewItem.innerHTML = '';
   vimeoLoadingThumb(previewItem, filteredVideoId);
+
+  const showOverlayText = pluginOptions.overlaytext.length > 0;
+  const videoInfoExtra = createElements(
+    `<div aria-hidden="true" class="lazy-load-info lazy-load-info-extra">
+      <div class="overlaytext">${pluginOptions.overlaytext}</div>
+    </div>`,
+  );
+  if (showOverlayText) {
+    previewItem.parentNode.insertBefore(videoInfoExtra, null);
+  }
 }
 
 function vimeoThumbnailEventListeners(videoLinkElement) {

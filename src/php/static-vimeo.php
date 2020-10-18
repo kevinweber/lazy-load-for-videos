@@ -29,7 +29,7 @@ class Lazy_Load_For_Videos_Vimeo {
 			'preroll'      => get_option( 'llv_opt_player_preroll', ''),
 			'postroll'     => get_option( 'llv_opt_player_postroll', '' ),
 			'show_title'   => get_option( 'llv_opt_title', false ) == true,
-			'overlaytext' => esc_textarea(trim(get_option( 'llv_opt_overlay_text', ''))),
+			'overlaytext' => trim(get_option( 'llv_opt_overlay_text', '')),
 			'loadthumbnail'	 => Lazy_Load_For_Videos_Vimeo::should_load_thumbnail(),
 			'callback'     => '<!--VIMEO_CALLBACK-->'
 		) );

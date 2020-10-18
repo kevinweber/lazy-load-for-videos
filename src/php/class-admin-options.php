@@ -284,7 +284,7 @@ class Lazy_Load_For_Videos_Admin {
 					        	<td>
 					        		<textarea rows="4" cols="70" type="text" name="lly_opt_overlay_text"><?php echo get_option('lly_opt_overlay_text'); ?></textarea>
 					        		<br>
-									<p><?php esc_html_e( 'Enter text to be displayed on top of all video thumbnails, for example a privacy disclaimer. No HTML.', LL_TD ); ?></p>
+									<p><?php esc_html_e( 'Enter text to be displayed on top of all video thumbnails, for example a privacy disclaimer. Supports HTML.', LL_TD ); ?></p>
 					        	</td>
 					        </tr>
 					        <tr valign="top">
