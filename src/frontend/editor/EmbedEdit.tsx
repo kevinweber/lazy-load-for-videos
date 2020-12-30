@@ -19,6 +19,10 @@ import {
 } from '@wordpress/element';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelect } from '@wordpress/data';
+// @ts-expect-error
+// https://developer.wordpress.org/block-editor/packages/packages-block-editor/
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useBlockProps } from '@wordpress/block-editor';
 import getVariation, { ProviderName, RefProps } from './getVariation';
 
 export type EmbedEditProps = {
@@ -38,7 +42,7 @@ export type EmbedEditProps = {
   insertBlocksAfter: Function;
 };
 
-/** Based on https://github.com/WordPress/gutenberg/blob/02590029e7464efafee46141b3549763dbf22cd4/packages/block-library/src/embed/edit.js */
+/** Based on https://github.com/WordPress/gutenberg/blob/0f09f1a38d82709c99292997d1b9decc4c9a9744/packages/block-library/src/embed/edit.js */
 export default function EmbedEdit(props: EmbedEditProps) {
   const {
     attributes,
@@ -167,8 +171,14 @@ export default function EmbedEdit(props: EmbedEditProps) {
     }
   }, [preview, isEditingURL, getMergedAttributes, onReplace, props, setAttributes]);
 
+  const blockProps = useBlockProps();
+
   if (fetching) {
-    return <EmbedLoading />;
+    return (
+      <div {...blockProps}>
+        <EmbedLoading />
+      </div>
+    );
   }
 
   // translators: %s: type of embed e.g: "YouTube", "Twitter", etc. "Embed" is used
@@ -179,26 +189,28 @@ export default function EmbedEdit(props: EmbedEditProps) {
   const showEmbedPlaceholder = !preview || cannotEmbed || isEditingURL;
   if (showEmbedPlaceholder) {
     return (
-      <EmbedPlaceholder
-        icon={icon}
-        label={label}
-        onSubmit={(event: InputEvent) => {
-          if (event) {
-            event.preventDefault();
-          }
+      <div {...blockProps}>
+        <EmbedPlaceholder
+          icon={icon}
+          label={label}
+          onSubmit={(event: InputEvent) => {
+            if (event) {
+              event.preventDefault();
+            }
 
-          setIsEditingURL(false);
-          setAttributes({ url });
-        }}
-        value={url}
-        cannotEmbed={cannotEmbed}
-        onChange={(event: InputEvent) => setURL((event.target as HTMLTextAreaElement).value)
-        }
-        fallback={() => fallback(url, onReplace)}
-        tryAgain={() => {
-          invalidateResolution('core', 'getEmbedPreview', [url]);
-        }}
-      />
+            setIsEditingURL(false);
+            setAttributes({ url });
+          }}
+          value={url}
+          cannotEmbed={cannotEmbed}
+          onChange={(event: InputEvent) => setURL((event.target as HTMLTextAreaElement).value)
+          }
+          fallback={() => fallback(url, onReplace)}
+          tryAgain={() => {
+            invalidateResolution('core', 'getEmbedPreview', [url]);
+          }}
+        />
+      </div>
     );
   }
 
@@ -217,33 +229,37 @@ export default function EmbedEdit(props: EmbedEditProps) {
   const combinedClassName = classnames(classFromPreview, props.className, !isSelected && 'lazy-load-block-play');
 
   return (
-    <div ref={blockRef}>
-      <EmbedControls
-        showEditButton={preview && !cannotEmbed}
-        themeSupportsResponsive={themeSupportsResponsive}
-        blockSupportsResponsive={responsive}
-        allowResponsive={allowResponsiveFromPreview}
-        toggleResponsive={toggleResponsive}
-        switchBackToURLInput={() => setIsEditingURL(true)}
-      />
-      {/* @ts-expect-error */}
-      <EmbedPreview
-        // preview={preview.html && <WpEmbedPreview html={preview.html} />}
-        preview={preview}
-        // This type is important: Setting it to "wp-embed" makes the preview component render
-        // the HTML directly instead of in an iframe
-        type="wp-embed"
-        // Manually set "previewable" because otherwise the value isn't
-        previewable
-        className={combinedClassName}
-        url={url}
-        caption={caption}
-        onCaptionChange={(value: InputEvent) => setAttributes({ caption: value })}
-        isSelected={isSelected}
-        icon={icon}
-        label={label}
-        insertBlocksAfter={insertBlocksAfter}
-      />
+    // The block editor API v2 requires the use of the useBlockProps hook.
+    // It marks the block's wrapper element and inserts necessary attributes and event handlers.
+    // See: https://make.wordpress.org/core/2020/11/18/block-api-version-2/
+    <div {...blockProps}>
+      <div ref={blockRef}>
+        <EmbedControls
+          showEditButton={preview && !cannotEmbed}
+          themeSupportsResponsive={themeSupportsResponsive}
+          blockSupportsResponsive={responsive}
+          allowResponsive={allowResponsiveFromPreview}
+          toggleResponsive={toggleResponsive}
+          switchBackToURLInput={() => setIsEditingURL(true)}
+        />
+        <EmbedPreview
+          // preview={preview.html && <WpEmbedPreview html={preview.html} />}
+          preview={preview}
+          // This type is important: Setting it to "wp-embed" makes the preview component render
+          // the HTML directly instead of in an iframe
+          type="wp-embed"
+          // Manually set "previewable" because otherwise the value isn't
+          previewable
+          className={combinedClassName}
+          url={url}
+          caption={caption}
+          onCaptionChange={(value: InputEvent) => setAttributes({ caption: value })}
+          isSelected={isSelected}
+          icon={icon}
+          label={label}
+          insertBlocksAfter={insertBlocksAfter}
+        />
+      </div>
     </div>
   );
 }

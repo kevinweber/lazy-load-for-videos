@@ -9,16 +9,19 @@ type BlockEdit = (props: EmbedEditProps) => React.ReactElement;
 
 const lazyLoadVideosBlockEdit = createHigherOrderComponent(
   (BlockEdit: BlockEdit) => (props: EmbedEditProps) => {
-    const { name } = props;
-    const loadYoutube = name === 'core-embed/youtube' && window.llvConfig?.youtube;
-    const loadVimeo = name === 'core-embed/vimeo' && window.llvConfig?.vimeo;
-    if (loadYoutube || loadVimeo) {
+    const { attributes, name } = props;
+
+    const loadYoutube = attributes?.providerNameSlug === 'youtube' && window.llvConfig?.youtube;
+    const loadVimeo = attributes?.providerNameSlug === 'vimeo' && window.llvConfig?.vimeo;
+
+    if (name === 'core/embed' && (loadYoutube || loadVimeo)) {
       // Custom styling and loading
       return [
         <EmbedEdit key="edit" {...props} />,
         props.isSelected && <EmbedEditControls key="edit-controls" {...props} />,
       ];
     }
+
     // Default embed handling
     return <BlockEdit {...props} />;
   },
