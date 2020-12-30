@@ -13,7 +13,7 @@ import EmbedPlaceholder from '@wordpress/block-library/build-module/embed/embed-
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { __, sprintf } from '@wordpress/i18n';
 import {
-  useState, useEffect, useRef, useCallback,
+  useState, useEffect, useCallback,
   // @ts-expect-error
   // eslint-disable-next-line import/no-extraneous-dependencies
 } from '@wordpress/element';
