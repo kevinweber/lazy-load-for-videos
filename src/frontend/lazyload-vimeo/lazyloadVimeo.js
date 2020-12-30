@@ -150,7 +150,7 @@ function vimeoThumbnailEventListeners(videoLinkElement) {
     if (parentNode) {
       parentNode.replaceChild(videoIFrame, eventTarget);
     }
-  });
+  }, true);
 }
 
 function load({ rootNode }) {

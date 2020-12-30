@@ -152,6 +152,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
+= 2.12.2 =
+* Fix: Explicitly set useCapture option for click events.
+
 = 2.12.1 =
 * Support HTML in text overlay.
 

@@ -245,7 +245,7 @@ function loadVideo(domNode) {
     if (parentNode) {
       parentNode.replaceChild(videoIFrame, eventTarget);
     }
-  });
+  }, true);
 }
 
 function load({ rootNode, loadthumbnail }) {
