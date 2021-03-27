@@ -31,24 +31,24 @@ function lazyloadvideos_plugin_activation() {
 					</strong>';
 				;
 	update_option( 'lazyloadvideos_deferred_admin_notices', $notices );
-	Lazy_Load_For_Videos_Update_Posts::delete_oembed_caches();
+	KW_LLV_Update_Posts::delete_oembed_caches();
 }
 
 function lazyloadvideos_plugin_deactivation() {
 	delete_option( 'lazyloadvideos_deferred_admin_notices' );
-	Lazy_Load_For_Videos_Update_Posts::delete_oembed_caches();
+	KW_LLV_Update_Posts::delete_oembed_caches();
 }
 
 function lazyloadvideos_plugin_uninstall() {
 	lazyloadvideos_plugin_deactivation();
-	Lazy_Load_For_Videos_Update_Posts::delete_postmeta();
+	KW_LLV_Update_Posts::delete_postmeta();
 }
 
 add_action( 'save_post', function( $post_id ) {
-	Lazy_Load_For_Videos_Update_Posts::delete_oembed_cache( $post_id );
+	KW_LLV_Update_Posts::delete_oembed_cache( $post_id );
 } );
 
-class Lazy_Load_For_Videos_Register {
+class KW_LLV_Register {
 
 	function __construct() {
 		add_action( 'admin_notices', array( $this, 'plugin_notice_activation' ) );
@@ -75,7 +75,7 @@ class Lazy_Load_For_Videos_Register {
       $version = get_option(LL_VERSION_KEY);
       
       if (!$version || version_compare($version, '2.2.3', '<')) {
-        Lazy_Load_For_Videos_Update_Posts::delete_oembed_caches();
+        KW_LLV_Update_Posts::delete_oembed_caches();
       }
       
       if (!$version || version_compare($version, LL_VERSION, '<')) {
@@ -97,5 +97,5 @@ class Lazy_Load_For_Videos_Register {
 }
 
 add_action( 'init', function() {
-	new Lazy_Load_For_Videos_Register();
+	new KW_LLV_Register();
 } );

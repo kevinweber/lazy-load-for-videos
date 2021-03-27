@@ -2,7 +2,7 @@
 /**
  * Create options panel (https://codex.wordpress.org/Creating_Options_Pages)
  */
-class Lazy_Load_For_Videos_Admin {
+class KW_LLV_Admin {
 	function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -31,7 +31,7 @@ class Lazy_Load_For_Videos_Admin {
 	 */
 	function lazyloadvideos_update_posts_with_embed() {
 		if ( isset( $_POST['update_posts'] ) && $_POST['update_posts'] == 'with_oembed' ) {
-			Lazy_Load_For_Videos_Update_Posts::delete_oembed_caches();
+			KW_LLV_Update_Posts::delete_oembed_caches();
 		}
 	}
 
@@ -456,4 +456,4 @@ class Lazy_Load_For_Videos_Admin {
 
 }
 
-new Lazy_Load_For_Videos_Admin();
+new KW_LLV_Admin();

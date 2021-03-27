@@ -1,5 +1,5 @@
 <?php
-class Lazy_Load_For_Videos_Editor {
+class KW_LLV_Editor {
 
 	function __construct() {
 		if (!function_exists('register_block_type')) {
@@ -31,7 +31,7 @@ class Lazy_Load_For_Videos_Editor {
 		);
 
 		require( LL_PATH . 'src/php/static-styles.php' );
-		Lazy_Load_For_Videos_Styles::enqueue();
+		KW_LLV_Styles::enqueue();
 
 		if ($isYoutubeEnabled) {
 			$this->initScriptYoutube();
@@ -45,7 +45,7 @@ class Lazy_Load_For_Videos_Editor {
 		require( LL_PATH . 'src/php/static-youtube.php' );
 		wp_add_inline_script(
 			'lazyload-editor-js',
-			Lazy_Load_For_Videos_Youtube::get_inline_script(),
+			KW_LLV_Youtube::get_inline_script(),
 			'before'
 		);
 	}
@@ -54,10 +54,10 @@ class Lazy_Load_For_Videos_Editor {
 		require( LL_PATH . 'src/php/static-vimeo.php' );
 		wp_add_inline_script(
 			'lazyload-editor-js',
-			Lazy_Load_For_Videos_Vimeo::get_inline_script(),
+			KW_LLV_Vimeo::get_inline_script(),
 			'before'
 		);
 	}
 }
 
-new Lazy_Load_For_Videos_Editor();
+new KW_LLV_Editor();

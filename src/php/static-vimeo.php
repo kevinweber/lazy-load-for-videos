@@ -1,17 +1,17 @@
 <?php
-class Lazy_Load_For_Videos_Vimeo {
+class KW_LLV_Vimeo {
 
 	static function enqueue() {
 		wp_enqueue_script( 'lazyload-vimeo-js', LL_URL . 'public/js/lazyload-vimeo.js', null, SCRIPT_DEBUG ? null : LL_VERSION, true );
 		wp_add_inline_script(
 			'lazyload-vimeo-js',
-			Lazy_Load_For_Videos_Vimeo::get_inline_script(),
+			KW_LLV_Vimeo::get_inline_script(),
 			'before'
 		);
 	}
 
 	static function get_inline_script() {
-		return 'window.llvConfig=window.llvConfig||{};window.llvConfig.vimeo=' . json_encode(Lazy_Load_For_Videos_Vimeo::get_config()) . ';';
+		return 'window.llvConfig=window.llvConfig||{};window.llvConfig.vimeo=' . json_encode(KW_LLV_Vimeo::get_config()) . ';';
 	}
 
 	/**
@@ -30,7 +30,7 @@ class Lazy_Load_For_Videos_Vimeo {
 			'postroll'     => get_option( 'llv_opt_player_postroll', '' ),
 			'show_title'   => get_option( 'llv_opt_title', false ) == true,
 			'overlaytext' => trim(get_option( 'llv_opt_overlay_text', '')),
-			'loadthumbnail'	 => Lazy_Load_For_Videos_Vimeo::should_load_thumbnail(),
+			'loadthumbnail'	 => KW_LLV_Vimeo::should_load_thumbnail(),
 			'callback'     => '<!--VIMEO_CALLBACK-->'
 		) );
 	}

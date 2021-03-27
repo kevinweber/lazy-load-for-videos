@@ -1,5 +1,5 @@
 <?php
-class Lazy_Load_For_Videos_Youtube {
+class KW_LLV_Youtube {
 	// Don't change those strings since exactly those strings are needed by the Youtube JavaScript file
 	static $js_thumbnailquality_default = '0';
 	static $js_thumbnailquality_sddefault = 'sddefault';
@@ -10,13 +10,13 @@ class Lazy_Load_For_Videos_Youtube {
 		wp_enqueue_script( 'lazyload-youtube-js', LL_URL . 'public/js/lazyload-youtube.js', null, SCRIPT_DEBUG ? null : LL_VERSION, true );
 		wp_add_inline_script(
 			'lazyload-youtube-js',
-			Lazy_Load_For_Videos_Youtube::get_inline_script(),
+			KW_LLV_Youtube::get_inline_script(),
 			'before'
 		);
 	}
 
 	static function get_inline_script() {
-		return 'window.llvConfig=window.llvConfig||{};window.llvConfig.youtube=' . json_encode(Lazy_Load_For_Videos_Youtube::get_config()) . ';';
+		return 'window.llvConfig=window.llvConfig||{};window.llvConfig.youtube=' . json_encode(KW_LLV_Youtube::get_config()) . ';';
 	}
 
 	/**
@@ -29,11 +29,11 @@ class Lazy_Load_For_Videos_Youtube {
 			'buttonstyle'      => get_option( 'll_opt_button_style', '' ),
 			'controls'         => ! ( get_option( 'lly_opt_player_controls' ) == '1' ),
 			'loadpolicy'       => ! ( get_option( 'lly_opt_player_loadpolicy' ) == '1' ),
-			'thumbnailquality' => Lazy_Load_For_Videos_Youtube::thumbnailquality(),
+			'thumbnailquality' => KW_LLV_Youtube::thumbnailquality(),
 			'preroll'          => get_option( 'lly_opt_player_preroll', '' ),
 			'postroll'         => get_option( 'lly_opt_player_postroll', '' ),
 			'overlaytext' => trim(get_option( 'lly_opt_overlay_text', '')),
-			'loadthumbnail'	 => Lazy_Load_For_Videos_Youtube::should_load_thumbnail(),
+			'loadthumbnail'	 => KW_LLV_Youtube::should_load_thumbnail(),
 			'callback'         => '<!--YOUTUBE_CALLBACK-->'
 		) );
 	}
@@ -67,7 +67,7 @@ class Lazy_Load_For_Videos_Youtube {
 			// See: https://github.com/kevinweber/lazy-load-for-videos/pull/48/files#diff-a7050d7d07c23aab4907f6e32ef248cdR101
 			|| ( $post_thumbnail_quality === 'default' && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
 			) {
-			return Lazy_Load_For_Videos_Youtube::$js_thumbnailquality_maxresdefault;
+			return KW_LLV_Youtube::$js_thumbnailquality_maxresdefault;
 		}
 
 		if (
@@ -78,10 +78,10 @@ class Lazy_Load_For_Videos_Youtube {
 			// See: https://github.com/kevinweber/lazy-load-for-videos/pull/48/files#diff-a7050d7d07c23aab4907f6e32ef248cdR101
 			|| ( $post_thumbnail_quality === 'default' && ( get_option('lly_opt_thumbnail_quality') === 'medium' ) )
 			) {
-			return Lazy_Load_For_Videos_Youtube::$js_thumbnailquality_sddefault;
+			return KW_LLV_Youtube::$js_thumbnailquality_sddefault;
 		}
 
-		return Lazy_Load_For_Videos_Youtube::$js_thumbnailquality_default;
+		return KW_LLV_Youtube::$js_thumbnailquality_default;
  	}
 
  	/**

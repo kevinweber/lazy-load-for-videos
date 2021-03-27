@@ -1,5 +1,5 @@
 <?php
-class Lazy_Load_For_Videos_Meta {
+class KW_LLV_Meta {
 
 	private $select_thumbnail_quality = 'lazyload_thumbnail_quality';
 
@@ -112,4 +112,4 @@ class Lazy_Load_For_Videos_Meta {
 
 }
 
-new Lazy_Load_For_Videos_Meta();
+new KW_LLV_Meta();

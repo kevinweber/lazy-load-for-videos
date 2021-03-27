@@ -1,6 +1,6 @@
 <?php
 
-class Lazy_Load_For_Videos_Frontend {
+class KW_LLV_Frontend {
 	private $loadYoutube;
 	private $loadVimeo;
 	
@@ -27,7 +27,7 @@ class Lazy_Load_For_Videos_Frontend {
 
 		// Load CSS
 		require( LL_PATH . 'src/php/static-styles.php' );
-		Lazy_Load_For_Videos_Styles::enqueue();
+		KW_LLV_Styles::enqueue();
 
 		// Load shared JS
 		wp_enqueue_script( 'lazyload-video-js', LL_URL . 'public/js/lazyload-shared.js', null, SCRIPT_DEBUG ? null : LL_VERSION, true );
@@ -35,13 +35,13 @@ class Lazy_Load_For_Videos_Frontend {
 		// Load Youtube-specific JS
 		if ($this->loadYoutube) {
 			require( LL_PATH . 'src/php/static-youtube.php' );
-			Lazy_Load_For_Videos_Youtube::enqueue();	
+			KW_LLV_Youtube::enqueue();	
 		}
 		
 		// Load Vimeo-specific JS
 		if ($this->loadVimeo) {
 			require( LL_PATH . 'src/php/static-vimeo.php' );
-			Lazy_Load_For_Videos_Vimeo::enqueue();	
+			KW_LLV_Vimeo::enqueue();	
 		}
 	}
 
@@ -110,5 +110,5 @@ class Lazy_Load_For_Videos_Frontend {
 
 // Fires after enqueuing block assets for both editor and front-end.
 add_action( 'wp_enqueue_scripts', function() {
-	new Lazy_Load_For_Videos_Frontend();
+	new KW_LLV_Frontend();
 } );

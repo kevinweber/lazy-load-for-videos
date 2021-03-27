@@ -1,13 +1,13 @@
 <?php
-class Lazy_Load_For_Videos_Styles {
+class KW_LLV_Styles {
 
 	static function enqueue() {
 		wp_enqueue_style( 'lazyload-video-css', LL_URL . 'public/css/lazyload-shared.css', null, SCRIPT_DEBUG ? null : LL_VERSION );
 		wp_add_inline_style( 'lazyload-video-css', 
-			Lazy_Load_For_Videos_Styles::load_lazyload_css_thumbnail_size()
-			. Lazy_Load_For_Videos_Styles::load_lazyload_css_video_titles()
-			. Lazy_Load_For_Videos_Styles::load_lazyload_css_button_style()
-			. Lazy_Load_For_Videos_Styles::load_lazyload_css_custom()
+			KW_LLV_Styles::load_lazyload_css_thumbnail_size()
+			. KW_LLV_Styles::load_lazyload_css_video_titles()
+			. KW_LLV_Styles::load_lazyload_css_button_style()
+			. KW_LLV_Styles::load_lazyload_css_custom()
 		);
 	}
 

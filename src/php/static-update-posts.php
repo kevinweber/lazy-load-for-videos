@@ -1,5 +1,5 @@
 <?php
-class Lazy_Load_For_Videos_Update_Posts {
+class KW_LLV_Update_Posts {
 
 	/**
 	 * Delete post-specific metadata that was added by this plugin.
