@@ -158,6 +158,18 @@ describe('getEmbedUrl', () => {
     expect(mockVideo.queryParams.get('iv_load_policy')).toBe(null);
   });
 
+  it('supports cookies plugin option', () => {
+    const mockVideo = mockVideoUrlInput({
+      pluginOptions: {
+        cookies: true,
+      },
+    });
+
+    expect(mockVideo.url).toBe(
+      `https://www.youtube.com/embed/${fakeValidVideoId}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&color=red`,
+    );
+  });
+
   it('supports preroll plugin option', () => {
     const mockVideo = mockVideoUrlInput({
       pluginOptions: {

@@ -32,8 +32,9 @@ class KW_LLV_Youtube {
 			'thumbnailquality' => KW_LLV_Youtube::thumbnailquality(),
 			'preroll'          => get_option( 'lly_opt_player_preroll', '' ),
 			'postroll'         => get_option( 'lly_opt_player_postroll', '' ),
-			'overlaytext' => trim(get_option( 'lly_opt_overlay_text', '')),
-			'loadthumbnail'	 => KW_LLV_Youtube::should_load_thumbnail(),
+			'overlaytext'      => trim(get_option( 'lly_opt_overlay_text', '')),
+			'loadthumbnail'	   => KW_LLV_Youtube::should_load_thumbnail(),
+			'cookies'	       => get_option( 'lly_opt_cookies' ) == '1',
 			'callback'         => '<!--YOUTUBE_CALLBACK-->'
 		) );
 	}

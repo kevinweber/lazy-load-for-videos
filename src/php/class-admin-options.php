@@ -154,6 +154,7 @@ class KW_LLV_Admin {
 			'lly_opt_player_colour_progress',
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
+			'lly_opt_cookies',
 			
 			// Vimeo
 			'llv_opt',
@@ -180,7 +181,7 @@ class KW_LLV_Admin {
 			</h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
 		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
@@ -200,7 +201,7 @@ class KW_LLV_Admin {
 					<table class="form-table">
 						<tbody>
 					        <tr valign="top">
-						        <th scope="row"><label><?php esc_html_e( 'Only load CSS/JS when needed', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'to improve performance', LL_TD ); ?></span><span class="newred">v2.11.0: Improved</span></label></th>
+						        <th scope="row"><label><?php esc_html_e( 'Only load CSS/JS when needed', LL_TD ); ?><br><span class="description thin"><?php esc_html_e( 'to improve performance', LL_TD ); ?></span></label></th>
 						        <td>
 									<input name="ll_opt_load_scripts" type="checkbox" value="1" <?php checked( '1', get_option( 'll_opt_load_scripts' ) ); ?> /> <label><span style="color:#f60;"><?php esc_html_e( 'Important:', LL_TD ); ?></span> <?php esc_html_e( 'When this option is checked, some videos might not lazy load if posts with videos are loaded using Ajax.', LL_TD ); ?></label>
 						        </td>
@@ -341,6 +342,12 @@ class KW_LLV_Admin {
 					        	<th scope="row"><label><?php esc_html_e( 'Hide player controls', LL_TD ); ?></label></th>
 						        <td>
 									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_player_controls' ) ); ?> /> <label><?php esc_html_e( 'If checked, Youtube player controls will not be displayed.', LL_TD ); ?></label>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label><?php esc_html_e( 'Enable Youtube cookies', LL_TD ); ?><span class="newred">v2.14.0: New feature</span></label></th>
+						        <td>
+									<input name="lly_opt_cookies" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_cookies' ) ); ?> /> <label><?php esc_html_e( 'If checked, Youtube videos will have a URL with "youtube.com" instead of "youtube-nocookie.com". This means Youtube video creators will get more extensive tracking stats at the expense of the privacy of your users.', LL_TD ); ?></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">

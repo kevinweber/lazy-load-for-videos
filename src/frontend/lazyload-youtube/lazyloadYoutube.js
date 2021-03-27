@@ -26,6 +26,7 @@ export const defaultPluginOptions = {
   postroll: '',
   thumbnailquality: '0',
   loadthumbnail: true,
+  cookies: false,
   // callback: null, // <- Currently not supported
 };
 
@@ -94,7 +95,8 @@ export function getEmbedUrl({
   /*
    * Generate URL
    */
-  return `https://www.youtube-nocookie.com/embed/${firstVideoToPlay}?${queryHashToString(
+  const domain = `www.youtube${pluginOpts.cookies ? '' : '-nocookie'}.com`;
+  return `https://${domain}/embed/${firstVideoToPlay}?${queryHashToString(
     queryWithUrlOptions,
   )}`;
 }
