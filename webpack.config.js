@@ -9,6 +9,8 @@ const extractCSS = new MiniCssExtractPlugin({
 const IS_DEV = process.env.NODE_ENV === 'development';
 
 const config = {
+  // Target is necessary in Webpack 5 to support IE11
+  target: ['web', 'es5'],
   mode: IS_DEV ? 'development' : 'production',
   entry: {
     editor: './src/frontend/editor/webpackEntry.ts',

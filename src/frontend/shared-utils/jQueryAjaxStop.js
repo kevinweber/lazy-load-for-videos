@@ -1,4 +1,4 @@
-export default (callback) => {
+export default function jQueryAjaxStop(callback) {
   const $ = window.jQuery || window.$;
 
   if ($) {
@@ -6,4 +6,4 @@ export default (callback) => {
       callback();
     });
   }
-};
+}
