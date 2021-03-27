@@ -62,8 +62,17 @@ class Lazy_Load_For_Videos_Admin {
 	    	return $return;
 		}
 
+		// replacements don't work on AMP pages (WordPress AMP plugin)
+		if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
+			return $return;
+		}
+		// replacements don't work in feeds
+		if ( is_feed() ) {
+			return $return;
+		}
+
 		// Youtube support
-	    if ( (! is_feed()) && ($data->provider_name == 'YouTube')
+	    if ( ($data->provider_name === 'YouTube')
 				&& (get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated
 	    	) {
 
@@ -86,7 +95,7 @@ class Lazy_Load_For_Videos_Admin {
 	    }
 
 	    // Vimeo support
-	    elseif ( (! is_feed()) && ($data->provider_name == 'Vimeo')
+	    elseif ( $data->provider_name === 'Vimeo'
 				&& (get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
 	    	) {
 			$url_path = parse_url($url, PHP_URL_PATH);
