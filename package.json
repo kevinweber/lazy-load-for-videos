@@ -5,7 +5,7 @@
   "description": "Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)",
   "scripts": {
     "production": "NODE_ENV=production BABEL_ENV=production npm run production:webpack",
-    "production:webpack": "webpack --config ./webpack.config.js -p",
+    "production:webpack": "NODE_ENV=production webpack --config ./webpack.config.js",
     "development": "NODE_ENV=development webpack --progress --config ./webpack.config.js",
     "test": "jest",
     "watch:test": "npm run test -- --watch",
