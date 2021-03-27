@@ -1,4 +1,4 @@
-export default function (callback) {
+export default (callback) => {
   const $ = window.jQuery || window.$;
 
   if ($) {
@@ -6,4 +6,4 @@ export default function (callback) {
       callback();
     });
   }
-}
+};

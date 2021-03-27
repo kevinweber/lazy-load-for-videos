@@ -6,7 +6,7 @@
   "scripts": {
     "production": "NODE_ENV=production BABEL_ENV=production npm run production:webpack",
     "production:webpack": "webpack --config ./webpack.config.js -p",
-    "development": "NODE_ENV=development webpack --progress --colors --config ./webpack.config.js",
+    "development": "NODE_ENV=development webpack --progress --config ./webpack.config.js",
     "test": "jest",
     "watch:test": "npm run test -- --watch",
     "watch": "npm run development -- --watch"
@@ -71,6 +71,7 @@
   },
   "dependencies": {
     "@wordpress/block-library": "^2.29.0",
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "react": "^16.14.0"
   }
 }

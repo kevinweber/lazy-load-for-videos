@@ -84,10 +84,12 @@ const config = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => {
-                const plugins = [];
-                plugins.push(autoprefixer);
-                return plugins;
+              postcssOptions: {
+                plugins: () => {
+                  const plugins = [];
+                  plugins.push(autoprefixer);
+                  return plugins;
+                },
               },
             },
           },

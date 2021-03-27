@@ -1,14 +1,16 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { ReactElement } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { addFilter } from '@wordpress/hooks';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createHigherOrderComponent } from '@wordpress/compose';
 import EmbedEdit, { EmbedEditProps } from './EmbedEdit';
 import EmbedEditControls from './EmbedEditControls';
 
-type BlockEdit = (props: EmbedEditProps) => React.ReactElement;
+type BlockEditType = (props: EmbedEditProps) => ReactElement;
 
 const lazyLoadVideosBlockEdit = createHigherOrderComponent(
-  (BlockEdit: BlockEdit) => (props: EmbedEditProps) => {
+  (BlockEdit: BlockEditType) => (props: EmbedEditProps) => {
     const { attributes, name } = props;
 
     const loadYoutube = attributes?.providerNameSlug === 'youtube' && window.llvConfig?.youtube;
