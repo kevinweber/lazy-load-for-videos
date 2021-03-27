@@ -62,11 +62,12 @@ class KW_LLV_Admin {
 	    	return $return;
 		}
 
-		// replacements don't work on AMP pages (WordPress AMP plugin)
+		// Replacements don't work on AMP pages (WordPress AMP plugin)
 		if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
 			return $return;
 		}
-		// replacements don't work in feeds
+		
+		// Replacements don't work in feeds
 		if ( is_feed() ) {
 			return $return;
 		}

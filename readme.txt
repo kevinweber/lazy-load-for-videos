@@ -5,7 +5,7 @@ Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, cont
 Requires at least: 5.6
 Tested up to: 5.6.1
 Requires PHP: 7.2
-Stable tag: 2.13.0
+Stable tag: 2.14.0
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -151,6 +151,10 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.14.0 =
+* New feature: Enable Youtube cookies. This option causes videos to be loaded using "youtube.com" instead of the default "youtube-nocookie.com"
+* Disable plugin on AMP pages. Thanks to @mjaschen's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/54)
 
 = 2.13.0 =
 * Support block editor API v2
