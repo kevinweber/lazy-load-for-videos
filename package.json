@@ -72,6 +72,7 @@
   "dependencies": {
     "@wordpress/block-library": "^2.29.0",
     "classnames": "^2.2.6",
-    "react": "^16.14.0"
+    "react": "^16.14.0",
+    "terser-webpack-plugin": "^5.1.1"
   }
 }

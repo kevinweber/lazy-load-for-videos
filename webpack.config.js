@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const extractCSS = new MiniCssExtractPlugin({
   filename: 'css/[name].css',
@@ -130,6 +131,11 @@ const config = {
     lodash: 'lodash',
   },
   optimization: {
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+      }),
+    ],
     splitChunks: {
       cacheGroups: {
         // Move shared code into a separate bundle
