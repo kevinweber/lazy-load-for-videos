@@ -59,9 +59,14 @@ function vimeoLoadingThumb(videoLinkElement, id) {
   videoLinkElement.appendChild(playButtonDiv);
 
   if (window.llvConfig.vimeo.loadthumbnail) {
-    const videoThumbnail = videoLinkElement.getAttribute(
+    var videoThumbnail = videoLinkElement.getAttribute(
       'data-video-thumbnail',
     );
+    
+    if (videoThumbnail.indexOf('_') !== -1) { 
+      videoThumbnail = videoThumbnail.split('_')[0] + '.jpg';
+    }
+    
     if (videoThumbnail) {
       inViewOnce(findElements(`[id="${id}"]`), (element) => setBackgroundImage(element, videoThumbnail));
     } else {
