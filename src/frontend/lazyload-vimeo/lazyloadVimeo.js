@@ -107,17 +107,11 @@ function vimeoLoadingThumb(videoLinkElement, id) {
 function vimeoCreateThumbProcess(videoLinkElement) {
   const previewItem = videoLinkElement;
   const vid = previewItem.getAttribute('id');
-
-  // There was a bug for Vimeo URLs with a query param in it that wasn't filtered out by
-  // the PHP code. This filtering ensures we only pick the video ID without any query params.
-  // Note to future self: If you see this filter still in June 2020, feel free to remove it.
-  // By now it should be fine to rely only on the server-side filtering.
-  const [filteredVideoId] = vid.match(/[\w]+/);
-  previewItem.setAttribute('id', filteredVideoId);
+  previewItem.setAttribute('id', vid);
 
   // Remove no longer needed title (title is necessary for preview in text editor)
   previewItem.innerHTML = '';
-  vimeoLoadingThumb(previewItem, filteredVideoId);
+  vimeoLoadingThumb(previewItem, vid);
 
   const showOverlayText = pluginOptions.overlaytext.length > 0;
   const videoInfoExtra = createElements(
