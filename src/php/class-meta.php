@@ -62,7 +62,7 @@ class KW_LLV_Meta {
 			<label for="lazyload_check_custom">If checked: Display ...</label>
 		</p> -->
 
-		<h4><?php esc_html_e( 'Youtube thumbnail quality', LL_TD ); ?></h4>
+		<h4><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?></h4>
 		<p>
 			<select class="select" type="select" name="<?php echo $select_thumbnail_quality; ?>" id="<?php $select_thumbnail_quality; ?>">
 			<?php $meta_element_class = get_post_meta($post->ID, $select_thumbnail_quality, true);	?>

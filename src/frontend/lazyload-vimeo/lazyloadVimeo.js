@@ -12,17 +12,6 @@ import findElements from '../shared-utils/findElements';
  * by Kevin Weber (www.kweber.com)
  */
 
-/** Deprecated. Will rework in next major release. */
-window.showThumb = (data) => {
-  const relevantData = data[0];
-
-  if (window.llvConfig.vimeo.loadthumbnail) {
-    findElements(`[id="${relevantData.id}"]`).forEach((domItem) => {
-      setBackgroundImage(domItem, relevantData.thumbnail_large);
-    });
-  }
-};
-
 // Classes
 const classPreviewVimeo = 'preview-vimeo';
 
@@ -31,6 +20,7 @@ const defaultPluginOptions = {
   buttonstyle: '',
   playercolour: '',
   loadthumbnail: true,
+  thumbnailquality: false,
   // callback: null, // <- Currently not supported
 };
 
@@ -48,8 +38,36 @@ function filterDotHash(variable) {
   return filterdothash;
 }
 
-function generateVimeoCallbackUrl(thumbnailId) {
-  return `https://vimeo.com/api/v2/video/${thumbnailId}.json`;
+function processThumbnail(url) {
+  if (!url) return '';
+
+  // If a URL looks like 'https://i.vimeocdn.com/video/12345_295x166.jpg',
+  // this RegExp returns '_295x166.', otherwise null.
+  const sizeString = url.match(/_\d+x\d+\./);
+  if (sizeString) {
+    const [width, height] = sizeString[0].match(/\d+/g); // => [295, 166]
+
+    // Sizes we support:
+    //  Basic (standard) -> 640
+    //  Medium (higher quality) -> 1280
+    //  Max -> Don't set size in URL
+    //
+    // Based on: https://developer.vimeo.com/api/oembed/videos
+    // "The width of the video's thumbnail image in pixels, settable to the following values:
+    //  100, 200, 295, 640, 960, and 1280. For any other value, we return a thumbnail at the
+    //  next smallest width."
+    const urls = {
+      // Note: The keys in this map ("basic" etc.) need to directly map to the values set
+      // in the settings for "thumbnailquality"
+      basic: url.replace(sizeString, `_${640}x${Math.round(height * (640 / width))}.`),
+      medium: url.replace(sizeString, `_${1280}x${Math.round(height * (1280 / width))}.`),
+      max: url.replace(sizeString, '.'),
+    };
+
+    return urls[pluginOptions.thumbnailquality] || urls.basic;
+  }
+
+  return url;
 }
 
 function vimeoLoadingThumb(videoLinkElement, id) {
@@ -59,18 +77,12 @@ function vimeoLoadingThumb(videoLinkElement, id) {
   videoLinkElement.appendChild(playButtonDiv);
 
   if (window.llvConfig.vimeo.loadthumbnail) {
-    const videoThumbnail = videoLinkElement.getAttribute(
+    const videoThumbnail = processThumbnail(videoLinkElement.getAttribute(
       'data-video-thumbnail',
-    );
+    ));
+
     if (videoThumbnail) {
       inViewOnce(findElements(`[id="${id}"]`), (element) => setBackgroundImage(element, videoThumbnail));
-    } else {
-      const script = document.createElement('script');
-      script.src = `${generateVimeoCallbackUrl(id)}.json?callback=showThumb`;
-      videoLinkElement.parentNode.insertBefore(
-        script,
-        videoLinkElement.firstChild,
-      );
     }
   }
 
@@ -95,17 +107,11 @@ function vimeoLoadingThumb(videoLinkElement, id) {
 function vimeoCreateThumbProcess(videoLinkElement) {
   const previewItem = videoLinkElement;
   const vid = previewItem.getAttribute('id');
-
-  // There was a bug for Vimeo URLs with a query param in it that wasn't filtered out by
-  // the PHP code. This filtering ensures we only pick the video ID without any query params.
-  // Note to future self: If you see this filter still in June 2020, feel free to remove it.
-  // By now it should be fine to rely only on the server-side filtering.
-  const [filteredVideoId] = vid.match(/[\w]+/);
-  previewItem.setAttribute('id', filteredVideoId);
+  previewItem.setAttribute('id', vid);
 
   // Remove no longer needed title (title is necessary for preview in text editor)
   previewItem.innerHTML = '';
-  vimeoLoadingThumb(previewItem, filteredVideoId);
+  vimeoLoadingThumb(previewItem, vid);
 
   const showOverlayText = pluginOptions.overlaytext.length > 0;
   const videoInfoExtra = createElements(

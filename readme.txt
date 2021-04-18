@@ -5,7 +5,7 @@ Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, cont
 Requires at least: 5.6
 Tested up to: 5.7.1
 Requires PHP: 7.2
-Stable tag: 2.14.0
+Stable tag: 2.15.0
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -151,6 +151,11 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.15.0 =
+* New feature: Set Vimeo thumbnail quality. The thumbnail quality option was previously limited to only Youtube and is now used for both Youtube and Vimeo.
+* Increase minimum Vimeo thumbnail width to 640px for a better resolution by default
+* Remove legacy "window.showThumb" Vimeo thumbnail fallback
 
 = 2.14.0 =
 * New feature: Enable Youtube cookies. This option causes videos to be loaded using "youtube.com" instead of the default "youtube-nocookie.com"

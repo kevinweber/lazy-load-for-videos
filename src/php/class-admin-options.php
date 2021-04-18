@@ -140,6 +140,7 @@ class KW_LLV_Admin {
 			'll_opt_load_scripts',
 			'll_opt_button_style',
 			'll_opt_thumbnail_size',
+			'll_opt_thumbnail_quality',
 			'll_opt_customcss',
 			'll_opt_support_for_tablepress',
 			'll_attribute',
@@ -151,7 +152,6 @@ class KW_LLV_Admin {
 			'lly_opt_player_preroll',
 			'lly_opt_player_postroll',
 			'lly_opt_support_for_widgets',
-			'lly_opt_thumbnail_quality',
 			'lly_opt_player_colour_progress',
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
@@ -182,9 +182,9 @@ class KW_LLV_Admin {
 			</h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?></a></li>
+		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
-		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
+		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -232,6 +232,17 @@ class KW_LLV_Admin {
 										<option value="none"<?php if (get_option('ll_opt_thumbnail_size') === 'none') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'None', LL_TD ); ?></option>
 									</select>
 									<p><?php esc_html_e( 'For a thumbnail to be displayed, a request needs to be made to the server of a video platform. You can display one of the available patterns instead, or nothing at all.', LL_TD ); ?></p>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?><span class="newred">v2.15.0: Works for Youtube + Vimeo</span></label></th>
+						        <td>
+									<select class="select" typle="select" name="ll_opt_thumbnail_quality">
+										<option value="basic"<?php if (get_option('ll_opt_thumbnail_quality') === 'basic') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
+										<option value="medium"<?php if (get_option('ll_opt_thumbnail_quality') === 'medium') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Higher quality', LL_TD ); ?></option>
+										<option value="max"<?php if (get_option('ll_opt_thumbnail_quality') === 'max') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Max resolution', LL_TD ); ?></option>
+									</select>
+									<p><?php esc_html_e( 'Define which thumbnail quality should be used by default. When a maximum resolution thumbnail is not available, a lower quality thumbnail will be loaded. This setting can be overridden on every individual page/post.', LL_TD ); ?></p>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -291,7 +302,7 @@ class KW_LLV_Admin {
 						        </td>
 							</tr>
 							<tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Text Overlay', LL_TD ); ?><span class="newred">v2.12.0: New feature</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Text Overlay', LL_TD ); ?></label></th>
 					        	<td>
 					        		<textarea rows="4" cols="70" type="text" name="lly_opt_overlay_text"><?php echo get_option('lly_opt_overlay_text'); ?></textarea>
 					        		<br>
@@ -312,17 +323,6 @@ class KW_LLV_Admin {
 										); ?>
 					        		</label>
 					        	</td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?><span class="newred">v2.10.0: New option "Higher quality"</span></label></th>
-						        <td>
-									<select class="select" typle="select" name="lly_opt_thumbnail_quality">
-										<option value="basic"<?php if (get_option('lly_opt_thumbnail_quality') === 'basic') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
-										<option value="medium"<?php if (get_option('lly_opt_thumbnail_quality') === 'medium') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Higher quality', LL_TD ); ?></option>
-										<option value="max"<?php if (get_option('lly_opt_thumbnail_quality') === 'max') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Max resolution', LL_TD ); ?></option>
-									</select>
-									<p><?php esc_html_e( 'Define which thumbnail quality should be used by default. When a maximum resolution thumbnail is not available, the standard thumbnail will be loaded. This setting can be overridden on every individual page/post.', LL_TD ); ?></p>
-						        </td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><label><?php esc_html_e( 'Colour of progress bar', LL_TD ); ?></label></th>
@@ -386,7 +386,7 @@ class KW_LLV_Admin {
 						        </td>
 							</tr>
 							<tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Text Overlay', LL_TD ); ?><span class="newred">v2.12.0: New feature</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Text Overlay', LL_TD ); ?></label></th>
 					        	<td>
 					        		<textarea rows="4" cols="70" type="text" name="llv_opt_overlay_text"><?php echo get_option('llv_opt_overlay_text'); ?></textarea>
 					        		<br>
