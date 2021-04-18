@@ -62,6 +62,8 @@ class KW_LLV_Youtube {
 
 		if (
 			$post_thumbnail_quality === 'max'
+			|| ( empty($post_thumbnail_quality) && ( get_option('ll_opt_thumbnail_quality') === 'max' ) )
+			// "lly_opt_thumbnail_quality" is deprecated and can no longer be set. It's here for backward compatibility.
 			|| ( empty($post_thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'max' ) )
 			// Need to check for "default" value for backward compatibility because this plugin used to store "default" in the DB,
 			// and now we're not storing any value in the default case anymore.
@@ -73,6 +75,8 @@ class KW_LLV_Youtube {
 
 		if (
 			$post_thumbnail_quality === 'medium'
+			|| ( empty($post_thumbnail_quality) && ( get_option('ll_opt_thumbnail_quality') === 'medium' ) )
+			// "lly_opt_thumbnail_quality" is deprecated and can no longer be set. It's here for backward compatibility.
 			|| ( empty($post_thumbnail_quality) && ( get_option('lly_opt_thumbnail_quality') === 'medium' ) )
 			// Need to check for "default" value for backward compatibility because this plugin used to store "default" in the DB,
 			// and now we're not storing any value in the default case anymore.
