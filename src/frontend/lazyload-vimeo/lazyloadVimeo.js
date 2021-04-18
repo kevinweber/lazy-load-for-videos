@@ -20,6 +20,7 @@ const defaultPluginOptions = {
   buttonstyle: '',
   playercolour: '',
   loadthumbnail: true,
+  thumbnailquality: false,
   // callback: null, // <- Currently not supported
 };
 
@@ -47,20 +48,23 @@ function processThumbnail(url) {
     const [width, height] = sizeString[0].match(/\d+/g); // => [295, 166]
 
     // Sizes we support:
-    //  Standard -> 640
-    //  Higher quality -> 1280
-    //  Max resolution -> Don't set size in URL
+    //  Basic (standard) -> 640
+    //  Medium (higher quality) -> 1280
+    //  Max -> Don't set size in URL
     //
     // Based on: https://developer.vimeo.com/api/oembed/videos
     // "The width of the video's thumbnail image in pixels, settable to the following values:
     //  100, 200, 295, 640, 960, and 1280. For any other value, we return a thumbnail at the
     //  next smallest width."
     const urls = {
-      standard: url.replace(sizeString, `_${640}x${Math.round(height * (640 / width))}.`),
-      high: url.replace(sizeString, `_${1280}x${Math.round(height * (1280 / width))}.`),
+      // Note: The keys in this map ("basic" etc.) need to directly map to the values set
+      // in the settings for "thumbnailquality"
+      basic: url.replace(sizeString, `_${640}x${Math.round(height * (640 / width))}.`),
+      medium: url.replace(sizeString, `_${1280}x${Math.round(height * (1280 / width))}.`),
       max: url.replace(sizeString, '.'),
     };
-    return urls.standard;
+    console.log('hey', pluginOptions.thumbnailquality);
+    return urls[pluginOptions.thumbnailquality] || urls.standard;
   }
 
   return url;

@@ -31,6 +31,7 @@ class KW_LLV_Vimeo {
 			'show_title'   => get_option( 'llv_opt_title', false ) == true,
 			'overlaytext' => trim(get_option( 'llv_opt_overlay_text', '')),
 			'loadthumbnail'	 => KW_LLV_Vimeo::should_load_thumbnail(),
+			'thumbnailquality' => KW_LLV_Vimeo::thumbnailquality(),
 			'callback'     => '<!--VIMEO_CALLBACK-->'
 		) );
 	}
@@ -38,6 +39,22 @@ class KW_LLV_Vimeo {
 	static function should_load_thumbnail() {
 		$thumbnail = get_option('ll_opt_thumbnail_size');
 		return $thumbnail == '' || $thumbnail == 'standard' || $thumbnail == 'cover';
+	}
+
+	static function thumbnailquality() {
+		global $post;
+
+		if (!isset($post->ID)) {
+			$id = null;
+		}
+		else {
+			$id = $post->ID;
+		}
+
+		// Check and prioritize post-specific setting
+		$post_thumbnail_quality = get_post_meta( $id, 'lazyload_thumbnail_quality', true );
+		// Otherwise use general setting
+		return empty($post_thumbnail_quality) ? get_option('ll_opt_thumbnail_quality') : $post_thumbnail_quality;
 	}
 
 	/**
