@@ -12,17 +12,6 @@ import findElements from '../shared-utils/findElements';
  * by Kevin Weber (www.kweber.com)
  */
 
-/** Deprecated. Will rework in next major release. */
-window.showThumb = (data) => {
-  const relevantData = data[0];
-
-  if (window.llvConfig.vimeo.loadthumbnail) {
-    findElements(`[id="${relevantData.id}"]`).forEach((domItem) => {
-      setBackgroundImage(domItem, relevantData.thumbnail_large);
-    });
-  }
-};
-
 // Classes
 const classPreviewVimeo = 'preview-vimeo';
 
@@ -64,13 +53,6 @@ function vimeoLoadingThumb(videoLinkElement, id) {
     );
     if (videoThumbnail) {
       inViewOnce(findElements(`[id="${id}"]`), (element) => setBackgroundImage(element, videoThumbnail));
-    } else {
-      const script = document.createElement('script');
-      script.src = `${generateVimeoCallbackUrl(id)}.json?callback=showThumb`;
-      videoLinkElement.parentNode.insertBefore(
-        script,
-        videoLinkElement.firstChild,
-      );
     }
   }
 
