@@ -37,8 +37,33 @@ function filterDotHash(variable) {
   return filterdothash;
 }
 
-function generateVimeoCallbackUrl(thumbnailId) {
-  return `https://vimeo.com/api/v2/video/${thumbnailId}.json`;
+function processThumbnail(url) {
+  if (!url) return '';
+
+  // If a URL looks like 'https://i.vimeocdn.com/video/12345_295x166.jpg',
+  // this RegExp returns '_295x166.', otherwise null.
+  const sizeString = url.match(/_\d+x\d+\./);
+  if (sizeString) {
+    const [width, height] = sizeString[0].match(/\d+/g); // => [295, 166]
+
+    // Sizes we support:
+    //  Standard -> 640
+    //  Higher quality -> 1280
+    //  Max resolution -> Don't set size in URL
+    //
+    // Based on: https://developer.vimeo.com/api/oembed/videos
+    // "The width of the video's thumbnail image in pixels, settable to the following values:
+    //  100, 200, 295, 640, 960, and 1280. For any other value, we return a thumbnail at the
+    //  next smallest width."
+    const urls = {
+      standard: url.replace(sizeString, `_${640}x${Math.round(height * (640 / width))}.`),
+      high: url.replace(sizeString, `_${1280}x${Math.round(height * (1280 / width))}.`),
+      max: url.replace(sizeString, '.'),
+    };
+    return urls.standard;
+  }
+
+  return url;
 }
 
 function vimeoLoadingThumb(videoLinkElement, id) {
@@ -48,9 +73,10 @@ function vimeoLoadingThumb(videoLinkElement, id) {
   videoLinkElement.appendChild(playButtonDiv);
 
   if (window.llvConfig.vimeo.loadthumbnail) {
-    const videoThumbnail = videoLinkElement.getAttribute(
+    const videoThumbnail = processThumbnail(videoLinkElement.getAttribute(
       'data-video-thumbnail',
-    );
+    ));
+
     if (videoThumbnail) {
       inViewOnce(findElements(`[id="${id}"]`), (element) => setBackgroundImage(element, videoThumbnail));
     }
