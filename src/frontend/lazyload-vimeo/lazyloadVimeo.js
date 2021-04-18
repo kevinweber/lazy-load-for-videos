@@ -63,8 +63,8 @@ function processThumbnail(url) {
       medium: url.replace(sizeString, `_${1280}x${Math.round(height * (1280 / width))}.`),
       max: url.replace(sizeString, '.'),
     };
-    console.log('hey', pluginOptions.thumbnailquality);
-    return urls[pluginOptions.thumbnailquality] || urls.standard;
+
+    return urls[pluginOptions.thumbnailquality] || urls.basic;
   }
 
   return url;
