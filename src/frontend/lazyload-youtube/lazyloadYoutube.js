@@ -6,7 +6,7 @@ import {
 } from '../shared/video';
 import createElements from '../shared-utils/createElements';
 import findElements from '../shared-utils/findElements';
-import queryHashToString from './queryHashToString';
+import queryHashToString from '../shared-utils/queryHashToString';
 
 /*
  * Lazy Load Youtube
