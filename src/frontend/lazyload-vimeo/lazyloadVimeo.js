@@ -6,6 +6,7 @@ import {
 } from '../shared/video';
 import createElements from '../shared-utils/createElements';
 import findElements from '../shared-utils/findElements';
+import queryHashToString from '../shared-utils/queryHashToString';
 
 /*
  * Lazy Load Vimeo
@@ -106,12 +107,11 @@ function vimeoLoadingThumb(videoLinkElement, id) {
 
 function vimeoCreateThumbProcess(videoLinkElement) {
   const previewItem = videoLinkElement;
-  const vid = previewItem.getAttribute('id');
-  previewItem.setAttribute('id', vid);
+  const videoId = previewItem.getAttribute('id');
 
   // Remove no longer needed title (title is necessary for preview in text editor)
   previewItem.innerHTML = '';
-  vimeoLoadingThumb(previewItem, vid);
+  vimeoLoadingThumb(previewItem, videoId);
 
   const showOverlayText = pluginOptions.overlaytext.length > 0;
   const videoInfoExtra = createElements(
@@ -124,6 +124,25 @@ function vimeoCreateThumbProcess(videoLinkElement) {
   }
 }
 
+export function getEmbedUrl({ videoId, queryParams }) {
+  return `${vimeoUrl(
+    videoId,
+  )}?${queryHashToString(queryParams)}`;
+}
+
+export function parseOriginalUrl(url) {
+  const { search } = new URL(url);
+  if (!search) return { queryParams: {} };
+  const queryParams = search.replace('?', '').split('&').reduce((combined, nextParam) => {
+    // Example nextParam: random=string
+    const [name, value] = nextParam.split('=');
+    // eslint-disable-next-line no-param-reassign
+    combined[name] = value;
+    return combined;
+  }, {});
+  return { queryParams };
+}
+
 function vimeoThumbnailEventListeners(videoLinkElement) {
   videoLinkElement.addEventListener('click', (event) => {
     const eventTarget = event.currentTarget;
@@ -133,20 +152,25 @@ function vimeoThumbnailEventListeners(videoLinkElement) {
       return;
     }
 
-    const vid = eventTarget.getAttribute('id');
+    const videoId = eventTarget.getAttribute('id');
+    const videoHref = eventTarget.getAttribute('href');
+    const { queryParams } = parseOriginalUrl(videoHref);
 
     removePlayerControls(eventTarget);
 
-    let playercolour = '';
-    if (pluginOptions.playercolour !== playercolour) {
+    const combinedQueryParams = {
+      ...queryParams,
+      autoplay: 1, // Always autoplay video once we load the iframe
+    };
+
+    console.log(pluginOptions);
+    if (pluginOptions.playercolour) {
       pluginOptions.playercolour = filterDotHash(pluginOptions.playercolour);
-      playercolour = `&color=${pluginOptions.playercolour}`;
+      combinedQueryParams.color = pluginOptions.playercolour;
     }
 
     const videoIFrame = createElements(
-      `<iframe src="${vimeoUrl(
-        vid,
-      )}?autoplay=1${playercolour}" style="height:${parseInt(
+      `<iframe src="${getEmbedUrl({ videoId, queryParams: combinedQueryParams })}" style="height:${parseInt(
         eventTarget.clientHeight,
         10,
       )}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen allow=autoplay></iframe>`,
