@@ -3,9 +3,9 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 5.6
-Tested up to: 5.7.1
+Tested up to: 5.7.2
 Requires PHP: 7.2
-Stable tag: 2.15.0
+Stable tag: 2.15.1
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -151,6 +151,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.15.1 =
+* Pass Vimeo embed URL query params to iframe
 
 = 2.15.0 =
 * New feature: Set Vimeo thumbnail quality. The thumbnail quality option was previously limited to only Youtube and is now used for both Youtube and Vimeo.
