@@ -42,9 +42,9 @@ function filterDotHash(variable) {
 function processThumbnail(url) {
   if (!url) return '';
 
-  // If a URL looks like 'https://i.vimeocdn.com/video/12345_295x166.jpg',
-  // this RegExp returns '_295x166.', otherwise null.
-  const sizeString = url.match(/_\d+x\d+\./);
+  // If a URL looks like 'https://i.vimeocdn.com/video/12345_295x166.jpg' or 'https://i.vimeocdn.com/video/12345_295x166',
+  // this RegExp returns '_295x166', otherwise null.
+  const sizeString = url.match(/_\d+x\d+/);
   if (sizeString) {
     const [width, height] = sizeString[0].match(/\d+/g); // => [295, 166]
 
@@ -60,9 +60,9 @@ function processThumbnail(url) {
     const urls = {
       // Note: The keys in this map ("basic" etc.) need to directly map to the values set
       // in the settings for "thumbnailquality"
-      basic: url.replace(sizeString, `_${640}x${Math.round(height * (640 / width))}.`),
-      medium: url.replace(sizeString, `_${1280}x${Math.round(height * (1280 / width))}.`),
-      max: url.replace(sizeString, '.'),
+      basic: url.replace(sizeString, `_${640}x${Math.round(height * (640 / width))}`),
+      medium: url.replace(sizeString, `_${1280}x${Math.round(height * (1280 / width))}`),
+      max: url.replace(sizeString, ''),
     };
 
     return urls[pluginOptions.thumbnailquality] || urls.basic;
