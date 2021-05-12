@@ -163,7 +163,6 @@ function vimeoThumbnailEventListeners(videoLinkElement) {
       autoplay: 1, // Always autoplay video once we load the iframe
     };
 
-    console.log(pluginOptions);
     if (pluginOptions.playercolour) {
       pluginOptions.playercolour = filterDotHash(pluginOptions.playercolour);
       combinedQueryParams.color = pluginOptions.playercolour;
