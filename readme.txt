@@ -5,7 +5,7 @@ Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, cont
 Requires at least: 5.6
 Tested up to: 5.7.2
 Requires PHP: 7.2
-Stable tag: 2.15.1
+Stable tag: 2.15.2
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -151,6 +151,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.15.2 =
+* Support Vimeo thumbnails without file extension
 
 = 2.15.1 =
 * Pass Vimeo embed URL query params to iframe
