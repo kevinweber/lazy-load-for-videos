@@ -84,7 +84,7 @@ class KW_LLV_Admin {
 				$data->title
 			);
 
-       		$preview_url = "<a class=\"{$a_class}\" href=\"{$url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
+       		$preview_url = "<a href=\"{$url}\" class=\"{$a_class}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded">'
@@ -99,16 +99,6 @@ class KW_LLV_Admin {
 	    elseif ( $data->provider_name === 'Vimeo'
 				&& (get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
 	    	) {
-			$url_path = parse_url($url, PHP_URL_PATH);
-
-			$url_split_path = explode("/", $url_path);
-			foreach($url_split_path as $key=>$value)
-			{
-			    if ( empty( $value ) )
-			        unset($url_split_path[$key]);
-			};
-			$vimeoid = end($url_split_path);
-
 	    	$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 	    	$a_class = apply_filters( 'lazyload_preview_url_css_vimeo', $a_class );
 
@@ -116,7 +106,7 @@ class KW_LLV_Admin {
 				$data->title
 			);
 
-			$preview_url = "<a href=\"{$url}\" id=\"{$vimeoid}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data->thumbnail_url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
+			$preview_url = "<a href=\"{$url}\" id=\"{$data->video_id}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data->thumbnail_url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded">'
