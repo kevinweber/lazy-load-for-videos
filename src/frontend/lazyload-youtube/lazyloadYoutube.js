@@ -232,15 +232,11 @@ function loadVideo(domNode) {
       videoId,
       urlOptions,
     });
+    const height = Number(videoLinkElement.clientHeight);
+    const width = Number(videoLinkElement.clientWidth);
 
     const videoIFrame = createElements(
-      `<iframe width="${parseInt(
-        videoLinkElement.clientWidth,
-        10,
-      )}" height="${parseInt(
-        videoLinkElement.clientHeight,
-        10,
-      )}" style="vertical-align:top;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+      `<iframe width="${width}px" height="${height}px" style="vertical-align:top; height: ${height}px; width: ${width}px" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
     );
 
     const { parentNode } = eventTarget;
