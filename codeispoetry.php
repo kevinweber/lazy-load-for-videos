@@ -40,9 +40,6 @@ if (!defined('LL_VERSION_KEY'))
 if ( !defined( 'LL_FILE' ) )
 	define( 'LL_FILE', __FILE__ );
 
-if ( !defined( 'LL_ESSENTIAL' ) )
-	define( 'LL_ESSENTIAL', true );	// Should be false if this is the 'Premium' version
-
 if ( !defined( 'LL_TD' ) )
 	define( 'LL_TD', 'lazy-load-for-videos' ); // = text domain (used for translations)
 
