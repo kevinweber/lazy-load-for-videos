@@ -12,10 +12,10 @@ import EmbedPlaceholder from '@wordpress/block-library/build-module/embed/embed-
 // @ts-expect-error
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { __, sprintf } from '@wordpress/i18n';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   useState, useEffect, useCallback,
   // @ts-expect-error
-  // eslint-disable-next-line import/no-extraneous-dependencies
 } from '@wordpress/element';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelect } from '@wordpress/data';
