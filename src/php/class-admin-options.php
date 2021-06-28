@@ -172,7 +172,7 @@ class KW_LLV_Admin {
 			</h2>
 
 			<ul class="nav-tab-wrapper">
-				<li class="nav-tab"><a href="#general"><?php esc_html_e('General/Styling', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
+				<li class="nav-tab nav-tab-active"><a href="#general"><?php esc_html_e('General/Styling', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
 				<li class="nav-tab"><a href="#youtube"><?php esc_html_e('YouTube', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
 				<li class="nav-tab"><a href="#vimeo"><?php esc_html_e('Vimeo', LL_TD); ?></a></li>
 				<?php do_action('lazyload_settings_page_tabs_link_after'); ?>
