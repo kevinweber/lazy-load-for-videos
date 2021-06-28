@@ -42,3 +42,10 @@ const init = () => {
 $(document).ready(() => {
   init();
 });
+// EJ add new tabs code
+$(document).ready(() => {
+  $('li').click(function addActive() {
+      $('li.nav-tab.nav-tab-active').removeClass('nav-tab-active');
+      $(this).addClass('nav-tab-active');
+  });
+});
