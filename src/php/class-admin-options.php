@@ -66,7 +66,7 @@ class KW_LLV_Admin {
 		if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
 			return $return;
 		}
-		
+
 		// Replacements don't work in feeds
 		if ( is_feed() ) {
 			return $return;
@@ -134,7 +134,7 @@ class KW_LLV_Admin {
 			'll_opt_customcss',
 			'll_opt_support_for_tablepress',
 			'll_attribute',
-			
+
 			// Youtube
 			'lly_opt',
 			'lly_opt_title',
@@ -146,7 +146,7 @@ class KW_LLV_Admin {
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
 			'lly_opt_cookies',
-			
+
 			// Vimeo
 			'llv_opt',
 			'llv_opt_title',
@@ -173,7 +173,7 @@ class KW_LLV_Admin {
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
-		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#youtube"><?php esc_html_e( 'YouTube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
 		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
 		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
 		    </ul>
@@ -360,7 +360,7 @@ class KW_LLV_Admin {
 					        <tr valign="top">
 						        <th scope="row"><label><?php esc_html_e( 'Disable Lazy Load for Vimeo', LL_TD ); ?></label></th>
 						        <td>
-									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> 
+									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> />
 									<label>
 										<?php printf( esc_html__( 'If checked, Lazy Load will not be used for %1$s videos.', LL_TD ),
 											'<b>Vimeo</b>'
