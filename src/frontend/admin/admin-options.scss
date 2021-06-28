@@ -288,3 +288,8 @@ input.regular-text {
 .clear-both {
 	clear: both;
 }
+
+// Remove bottom margin on "new" tabs
+li.nav-tab {
+  margin-bottom: 0;
+}
