@@ -19,7 +19,13 @@ const handleTabsUrl = () => {
  * Handle jQuery tabs
  */
 const handleTabs = () => {
-  $('#tabs').tabs();
+  // API docs: https://api.jqueryui.com/tabs/
+  $('#tabs').tabs({
+    classes: {
+      'ui-tabs-active': 'nav-tab-active',
+    },
+  });
+
   handleTabsUrl();
 };
 
@@ -41,11 +47,4 @@ const init = () => {
 
 $(document).ready(() => {
   init();
-});
-// EJ add new tabs code
-$(document).ready(() => {
-  $('li').click(function addActive() {
-      $('li.nav-tab.nav-tab-active').removeClass('nav-tab-active');
-      $(this).addClass('nav-tab-active');
-  });
 });
