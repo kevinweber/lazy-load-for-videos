@@ -19,7 +19,13 @@ const handleTabsUrl = () => {
  * Handle jQuery tabs
  */
 const handleTabs = () => {
-  $('#tabs').tabs();
+  // API docs: https://api.jqueryui.com/tabs/
+  $('#tabs').tabs({
+    classes: {
+      'ui-tabs-active': 'nav-tab-active',
+    },
+  });
+
   handleTabsUrl();
 };
 

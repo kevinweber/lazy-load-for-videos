@@ -5,7 +5,7 @@ Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, cont
 Requires at least: 5.6
 Tested up to: 5.7.3
 Requires PHP: 7.2
-Stable tag: 2.16.1
+Stable tag: 2.16.2
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -151,6 +151,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.16.2 =
+* Update styling of tabs on admin page
 
 = 2.16.1 =
 * Bugfix: In rare cases the video only becomes visible when the window resizes. Hopefully this update fixes it…
