@@ -45,7 +45,7 @@ class KW_LLV_Admin {
 	}
 
     function text__no_script_fallback($title, $url) {
-        $no_script_fallback = "<noscript>Video can't be loaded because JavaScript is disabled: <a href=\"{$url}\" title=\"{$title}\">{$title} ({$url})</a></noscript>";
+        $no_script_fallback = "<noscript>Video can't be loaded because JavaScript is disabled: <a href=\"" . esc_url($url) . "\" title=\"" . esc_attr($title) . "\">" . esc_attr($title) . " (" . esc_url($url) . ")</a></noscript>";
 
         return $no_script_fallback;
     }
@@ -84,7 +84,7 @@ class KW_LLV_Admin {
 				$data->title
 			);
 
-       		$preview_url = "<a href=\"{$url}\" class=\"{$a_class}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
+       		$preview_url = "<a href=\"" . esc_url($url) . "\" class=\"{$a_class}\" data-video-title=\"" . esc_attr($data->title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded">'
@@ -106,7 +106,7 @@ class KW_LLV_Admin {
 				$data->title
 			);
 
-			$preview_url = "<a href=\"{$url}\" id=\"{$data->video_id}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data->thumbnail_url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
+			$preview_url = "<a href=\"" . esc_url($url) . "\" id=\"{$data->video_id}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data->thumbnail_url}\" data-video-title=\"" . esc_attr($data->title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded">'

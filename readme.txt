@@ -154,6 +154,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 = 2.16.2 =
 * Update styling of tabs on admin page
+* Escape video title and attribute texts so that they can be rendered when containing quotes
 
 = 2.16.1 =
 * Bugfix: In rare cases the video only becomes visible when the window resizes. Hopefully this update fixes it…
