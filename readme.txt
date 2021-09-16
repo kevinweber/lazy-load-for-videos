@@ -1,5 +1,5 @@
 === Lazy Load for Videos ===
-Contributors: kevinweber
+Contributors: kevinweber, markhowellsmead
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 5.6
