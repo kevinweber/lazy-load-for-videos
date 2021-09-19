@@ -71,6 +71,13 @@ class KW_LLV_Admin {
 		if ( is_feed() ) {
 			return $return;
 		}
+		
+		$data_title = isset($data->title) ? $data->title : '';
+		$data_thumbnail = isset($data->thumbnail) ? $data->thumbnail : '';
+
+		if (empty($data_thumbnail) && isset($data->thumbnail_url) && !empty($data->thumbnail_url)) {
+			$data_thumbnail = $data->thumbnail_url;
+		}
 
 		// Youtube support
 	    if ( ($data->provider_name === 'YouTube')
@@ -81,15 +88,15 @@ class KW_LLV_Admin {
 	    	$a_class = apply_filters( 'lazyload_preview_url_css_youtube', $a_class );
 
 			$play_title_text = sprintf(esc_attr__( 'Play video &quot;%s&quot;', LL_TD ),
-				$data->title
+                $data_title
 			);
 
-       		$preview_url = "<a href=\"" . esc_url($url) . "\" class=\"{$a_class}\" data-video-title=\"" . esc_attr($data->title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
+       		$preview_url = "<a href=\"" . esc_url($url) . "\" class=\"{$a_class}\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded">'
 					. $preview_url
-					. $this->text__no_script_fallback($data->title, $url)
+					. $this->text__no_script_fallback($data_title, $url)
 					. '</div>';
 
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
@@ -103,15 +110,15 @@ class KW_LLV_Admin {
 	    	$a_class = apply_filters( 'lazyload_preview_url_css_vimeo', $a_class );
 
 			$play_title_text = sprintf(esc_attr__( 'Play video &quot;%s&quot;', LL_TD ),
-				$data->title
+                $data_title
 			);
 
-			$preview_url = "<a href=\"" . esc_url($url) . "\" id=\"{$data->video_id}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data->thumbnail_url}\" data-video-title=\"" . esc_attr($data->title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
+			$preview_url = "<a href=\"" . esc_url($url) . "\" id=\"{$data->video_id}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data_thumbnail}\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded">'
                     . $preview_url
-                    . $this->text__no_script_fallback($data->title, $url)
+                    . $this->text__no_script_fallback($data_title, $url)
 					. '</div>';
 
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
