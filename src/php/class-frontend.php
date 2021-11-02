@@ -26,7 +26,7 @@ class KW_LLV_Frontend {
 		}
 
 		// Load CSS
-		require( LL_PATH . 'src/php/static-styles.php' );
+		require_once( LL_PATH . 'src/php/static-styles.php' );
 		KW_LLV_Styles::enqueue();
 
 		// Load shared JS
@@ -34,13 +34,13 @@ class KW_LLV_Frontend {
 
 		// Load Youtube-specific JS
 		if ($this->loadYoutube) {
-			require( LL_PATH . 'src/php/static-youtube.php' );
+			require_once( LL_PATH . 'src/php/static-youtube.php' );
 			KW_LLV_Youtube::enqueue();	
 		}
 		
 		// Load Vimeo-specific JS
 		if ($this->loadVimeo) {
-			require( LL_PATH . 'src/php/static-vimeo.php' );
+			require_once( LL_PATH . 'src/php/static-vimeo.php' );
 			KW_LLV_Vimeo::enqueue();	
 		}
 	}

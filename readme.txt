@@ -153,6 +153,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 == Changelog ==
 
 = 2.16.3 =
+* Bugfix: Prevent "Cannot declare class" errors
+
+= 2.16.3 =
 * Handle missing video title and thumbnail data. PR from @markhowellsmead on Github: https://github.com/kevinweber/lazy-load-for-videos/pull/65  
 
 = 2.16.2 =

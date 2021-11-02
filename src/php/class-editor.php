@@ -30,7 +30,7 @@ class KW_LLV_Editor {
 			SCRIPT_DEBUG ? null : LL_VERSION
 		);
 
-		require( LL_PATH . 'src/php/static-styles.php' );
+		require_once( LL_PATH . 'src/php/static-styles.php' );
 		KW_LLV_Styles::enqueue();
 
 		if ($isYoutubeEnabled) {
@@ -42,7 +42,7 @@ class KW_LLV_Editor {
 	}
 
 	function initScriptYoutube() {
-		require( LL_PATH . 'src/php/static-youtube.php' );
+		require_once( LL_PATH . 'src/php/static-youtube.php' );
 		wp_add_inline_script(
 			'lazyload-editor-js',
 			KW_LLV_Youtube::get_inline_script(),
@@ -51,7 +51,7 @@ class KW_LLV_Editor {
 	}
 
 	function initScriptVimeo() {
-		require( LL_PATH . 'src/php/static-vimeo.php' );
+		require_once( LL_PATH . 'src/php/static-vimeo.php' );
 		wp_add_inline_script(
 			'lazyload-editor-js',
 			KW_LLV_Vimeo::get_inline_script(),
