@@ -1,13 +1,18 @@
-const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const autoprefixer = require('autoprefixer');
 const TerserPlugin = require('terser-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+
+const IS_DEV = process.env.NODE_ENV === 'development';
 
 const extractCSS = new MiniCssExtractPlugin({
   filename: 'css/[name].css',
 });
 
-const IS_DEV = process.env.NODE_ENV === 'development';
+const eslint = new ESLintPlugin({
+  cache: IS_DEV,
+  // This option makes ESLint automatically fix minor issues
+  fix: !IS_DEV,
+});
 
 const config = {
   // Target is necessary in Webpack 5 to support IE11
@@ -41,14 +46,6 @@ const config = {
           {
             loader: 'babel-loader',
           },
-          {
-            loader: 'eslint-loader',
-            options: {
-              cache: IS_DEV,
-              // This option makes ESLint automatically fix minor issues
-              fix: !IS_DEV,
-            },
-          },
         ],
       },
       {
@@ -66,14 +63,6 @@ const config = {
               happyPackMode: IS_DEV,
             },
           },
-          {
-            loader: 'eslint-loader',
-            options: {
-              cache: IS_DEV,
-              // This option makes ESLint automatically fix minor issues
-              fix: !IS_DEV,
-            },
-          },
         ],
       },
       {
@@ -88,11 +77,9 @@ const config = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: () => {
-                  const plugins = [];
-                  plugins.push(autoprefixer);
-                  return plugins;
-                },
+                plugins: [
+                  'autoprefixer',
+                ],
               },
             },
           },
@@ -112,6 +99,7 @@ const config = {
   },
   plugins: [
     extractCSS,
+    eslint,
   ],
   externals: {
     // Manually import used WP packages because if we would use
