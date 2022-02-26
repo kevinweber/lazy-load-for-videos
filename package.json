@@ -4,17 +4,14 @@
   "version": "2.1.2",
   "description": "Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)",
   "scripts": {
-    "production": "NODE_ENV=production BABEL_ENV=production npm run production:webpack",
+    "production": "NODE_ENV=production BABEL_ENV=production yarn production:webpack",
     "production:webpack": "NODE_ENV=production webpack --config ./webpack.config.js",
     "development": "NODE_ENV=development webpack --progress --config ./webpack.config.js",
     "test": "jest",
-    "watch:test": "npm run test -- --watch",
-    "watch": "npm run development -- --watch"
+    "watch:test": "yarn test -- --watch",
+    "watch": "yarn development -- --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kevinweber/lazy-load-for-videos.git"
-  },
+  "repository": "git+https://github.com/kevinweber/lazy-load-for-videos.git",
   "keywords": [
     "wordpress",
     "youtube",
@@ -62,6 +59,7 @@
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.5.3",
     "node-sass": "^7.0.1",
+    "postcss": "^8.4.7",
     "postcss-loader": "^6.2.1",
     "sass-loader": "^12.6.0",
     "terser-webpack-plugin": "^5.3.1",
@@ -71,8 +69,9 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
+    "@wordpress/block-library": "^2.16.1",
     "classnames": "^2.3.1",
-    "react": "^17.0.2",
-    "@wordpress/block-library": "^2.16.1"
-  }
+    "react": "^17.0.2"
+  },
+  "packageManager": "yarn@3.2.0"
 }

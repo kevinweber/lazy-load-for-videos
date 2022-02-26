@@ -13,3 +13,12 @@ wp-content/backups/
 sitemap.xml.gz
 *.DS_Store
 node_modules/
+
+# Opt into Yarn's Zero-Installs feature
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

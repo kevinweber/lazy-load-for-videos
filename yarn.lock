@@ -7294,6 +7294,7 @@ __metadata:
     jest: ^27.5.1
     mini-css-extract-plugin: ^2.5.3
     node-sass: ^7.0.1
+    postcss: ^8.4.7
     postcss-loader: ^6.2.1
     react: ^17.0.2
     sass-loader: ^12.6.0
@@ -8373,7 +8374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.5":
+"postcss@npm:^8.4.5, postcss@npm:^8.4.7":
   version: 8.4.7
   resolution: "postcss@npm:8.4.7"
   dependencies:

@@ -61,6 +61,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:0336407a788cd1f5164c4281e78e7eb2c3f1cae82f0d97fd99373e246c31c6580b72059ecf26007b07a8f6804d64838606aaba1af99a259b5afb3d0453b00947#npm:27.5.1"],\
             ["mini-css-extract-plugin", "virtual:0336407a788cd1f5164c4281e78e7eb2c3f1cae82f0d97fd99373e246c31c6580b72059ecf26007b07a8f6804d64838606aaba1af99a259b5afb3d0453b00947#npm:2.5.3"],\
             ["node-sass", "npm:7.0.1"],\
+            ["postcss", "npm:8.4.7"],\
             ["postcss-loader", "virtual:0336407a788cd1f5164c4281e78e7eb2c3f1cae82f0d97fd99373e246c31c6580b72059ecf26007b07a8f6804d64838606aaba1af99a259b5afb3d0453b00947#npm:6.2.1"],\
             ["react", "npm:17.0.2"],\
             ["sass-loader", "virtual:0336407a788cd1f5164c4281e78e7eb2c3f1cae82f0d97fd99373e246c31c6580b72059ecf26007b07a8f6804d64838606aaba1af99a259b5afb3d0453b00947#npm:12.6.0"],\
@@ -5616,7 +5617,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fraction.js", "npm:4.1.3"],\
             ["normalize-range", "npm:0.1.2"],\
             ["picocolors", "npm:1.0.0"],\
-            ["postcss", null],\
+            ["postcss", "npm:8.4.7"],\
             ["postcss-value-parser", "npm:4.2.0"]\
           ],\
           "packagePeers": [\
@@ -9885,6 +9886,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:0336407a788cd1f5164c4281e78e7eb2c3f1cae82f0d97fd99373e246c31c6580b72059ecf26007b07a8f6804d64838606aaba1af99a259b5afb3d0453b00947#npm:27.5.1"],\
             ["mini-css-extract-plugin", "virtual:0336407a788cd1f5164c4281e78e7eb2c3f1cae82f0d97fd99373e246c31c6580b72059ecf26007b07a8f6804d64838606aaba1af99a259b5afb3d0453b00947#npm:2.5.3"],\
             ["node-sass", "npm:7.0.1"],\
+            ["postcss", "npm:8.4.7"],\
             ["postcss-loader", "virtual:0336407a788cd1f5164c4281e78e7eb2c3f1cae82f0d97fd99373e246c31c6580b72059ecf26007b07a8f6804d64838606aaba1af99a259b5afb3d0453b00947#npm:6.2.1"],\
             ["react", "npm:17.0.2"],\
             ["sass-loader", "virtual:0336407a788cd1f5164c4281e78e7eb2c3f1cae82f0d97fd99373e246c31c6580b72059ecf26007b07a8f6804d64838606aaba1af99a259b5afb3d0453b00947#npm:12.6.0"],\
@@ -11025,7 +11027,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/webpack", null],\
             ["cosmiconfig", "npm:7.0.1"],\
             ["klona", "npm:2.0.5"],\
-            ["postcss", null],\
+            ["postcss", "npm:8.4.7"],\
             ["semver", "npm:7.3.5"],\
             ["webpack", "virtual:0336407a788cd1f5164c4281e78e7eb2c3f1cae82f0d97fd99373e246c31c6580b72059ecf26007b07a8f6804d64838606aaba1af99a259b5afb3d0453b00947#npm:5.69.1"]\
           ],\
