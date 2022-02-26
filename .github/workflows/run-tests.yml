@@ -1,7 +1,7 @@
 name: Run all tests
 on:
   pull_request:
-    types: [opened, reopened, edited]
+    types: [opened, reopened, synchronize]
 jobs:
   build:
     runs-on: ubuntu-latest
