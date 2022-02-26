@@ -169,7 +169,7 @@ function vimeoThumbnailEventListeners(videoLinkElement) {
     }
 
     const videoIFrame = createElements(
-      `<iframe src="${getEmbedUrl({ videoId, queryParams: combinedQueryParams })}" style="height:${Number(eventTarget.clientHeight)}px;width:100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen autoPlay allowFullScreen allow=autoplay></iframe>`,
+      `<iframe src="${getEmbedUrl({ videoId, queryParams: combinedQueryParams })}" style="height:${Number(eventTarget.clientHeight)}px;width:100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`,
     );
 
     const { parentNode } = eventTarget;

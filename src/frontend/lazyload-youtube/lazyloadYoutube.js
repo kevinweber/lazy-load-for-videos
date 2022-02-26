@@ -236,7 +236,7 @@ function loadVideo(domNode) {
     const width = Number(videoLinkElement.clientWidth);
 
     const videoIFrame = createElements(
-      `<iframe width="${width}px" height="${height}px" style="vertical-align:top; height: ${height}px; width: ${width}px" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+      `<iframe width="${width}px" height="${height}px" style="vertical-align:top; height: ${height}px; width: ${width}px" src="${embedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; accelerometer; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>`,
     );
 
     const { parentNode } = eventTarget;
