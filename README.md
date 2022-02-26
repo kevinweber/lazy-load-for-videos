@@ -10,10 +10,9 @@ By loading videos only when the user clicks on the preview image, no unnecessary
 ## How to contribute?
 This is open source. Everyone can contribute, including you! I'm looking forward to review and merge your contribution. Here are a few steps to help you get started:
 
-1. [Install yarn](https://yarnpkg.com/getting-started/install#install-corepack).
+1. [Install Yarn v2](https://yarnpkg.com/getting-started/install#install-corepack).
 1. Fork/clone this repository to your computer.
 1. Navigate to your downloaded folder in your terminal.
-1. Install the project-specific npm dependencies (run: `yarn install`).
 1. Afterwards you can run `yarn watch` to automatically compile all JavaScript and SCSS changes whenever you save a file.
 1. Ideally, write tests related to your changes. Make sure that all test cases are succeeding (run: `yarn test`).
 1. When you're done, run `yarn production`.
