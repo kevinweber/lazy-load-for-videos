@@ -13,6 +13,7 @@
     "node": true
   },
   "globals": {
+    "lodash": true,
     "wp": true,
     "llvConfig": true,
     // Jest globals

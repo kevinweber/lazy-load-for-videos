@@ -58,6 +58,9 @@ export default function EmbedEdit(props: EmbedEditProps) {
     allowResponsive,
     className,
   } = attributes;
+  // Manually set className to make sure it's part of the object
+  // even if undefined for proper deep equality comparison further down
+  attributes.className = attributes.className || undefined;
 
   const { icon, title, init } = getVariation(providerNameSlug);
   const [url, setURL] = useState(attributesUrl);
@@ -149,15 +152,21 @@ export default function EmbedEdit(props: EmbedEditProps) {
   // Handle incoming preview
   useEffect(() => {
     if (preview && !isEditingURL) {
-      // Even though we set attributes that get derived from the preview,
-      // we don't access them directly because for the initial render,
-      // the `setAttributes` call will not have taken effect. If we're
-      // rendering responsive content, setting the responsive classes
-      // after the preview has been rendered can result in unwanted
-      // clipping or scrollbars. The `getAttributesFromPreview` function
-      // that `getMergedAttributes` uses is memoized so that we're not
-      // calculating them on every render.
-      setAttributes(getMergedAttributes());
+      // Only run `setAttributes` when necessary. If not needed and this run, it can cause bugs.
+      // Known bug: User selects multiple rows of text in the editor, then wants to select all
+      // blocks using "cmd+a", all images get replaced with a LLV video for some unknown reason.
+      if (!lodash.isEqual(attributes, getMergedAttributes())) {
+        // Even though we set attributes that get derived from the preview,
+        // we don't access them directly because for the initial render,
+        // the `setAttributes` call will not have taken effect. If we're
+        // rendering responsive content, setting the responsive classes
+        // after the preview has been rendered can result in unwanted
+        // clipping or scrollbars. The `getAttributesFromPreview` function
+        // that `getMergedAttributes` uses is memoized so that we're not
+        // calculating them on every render.
+        setAttributes(getMergedAttributes());
+      }
+
       if (onReplace) {
         const upgradedBlock = createUpgradedEmbedBlock(
           props,
@@ -169,7 +178,7 @@ export default function EmbedEdit(props: EmbedEditProps) {
         }
       }
     }
-  }, [preview, isEditingURL, getMergedAttributes, onReplace, props, setAttributes]);
+  }, [preview, isEditingURL, getMergedAttributes, onReplace, props, attributes, setAttributes]);
 
   const blockProps = useBlockProps();
 
