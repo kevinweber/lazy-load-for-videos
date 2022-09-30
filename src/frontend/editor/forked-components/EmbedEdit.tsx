@@ -6,7 +6,6 @@ import {
   getAttributesFromPreview,
 } from '@wordpress/block-library/build-module/embed/util';
 import EmbedControls from '@wordpress/block-library/build-module/embed/embed-controls';
-import EmbedPreview from '@wordpress/block-library/build-module/embed/embed-preview';
 import EmbedLoading from '@wordpress/block-library/build-module/embed/embed-loading';
 import EmbedPlaceholder from '@wordpress/block-library/build-module/embed/embed-placeholder';
 // @ts-expect-error
@@ -23,7 +22,8 @@ import { useDispatch, useSelect } from '@wordpress/data';
 // https://developer.wordpress.org/block-editor/packages/packages-block-editor/
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useBlockProps } from '@wordpress/block-editor';
-import getVariation, { ProviderName, RefProps } from './getVariation';
+import EmbedPreview from './EmbedPreview';
+import getVariation, { ProviderName, RefProps } from '../getVariation';
 
 export type EmbedEditProps = {
   attributes: {

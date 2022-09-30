@@ -4,8 +4,8 @@ import { ReactElement } from 'react';
 import { addFilter } from '@wordpress/hooks';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createHigherOrderComponent } from '@wordpress/compose';
-import EmbedEdit, { EmbedEditProps } from './EmbedEdit';
-import EmbedEditControls from './EmbedEditControls';
+import EmbedEdit, { EmbedEditProps } from './forked-components/EmbedEdit';
+import EmbedEditControls from './forked-components/EmbedEditControls';
 
 type BlockEditType = (props: EmbedEditProps) => ReactElement;
 
