@@ -2501,15 +2501,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/wordpress__blocks@npm:^9.1.1":
-  version: 9.1.2
-  resolution: "@types/wordpress__blocks@npm:9.1.2"
+"@types/wordpress__blocks@npm:^11.0.7":
+  version: 11.0.7
+  resolution: "@types/wordpress__blocks@npm:11.0.7"
   dependencies:
     "@types/react": "*"
     "@types/wordpress__components": "*"
-    "@types/wordpress__data": "*"
-    "@wordpress/element": ^3.0.0
-  checksum: 29c29d1ce52e867898c6abf2ad6c53ea99565b2dd992a3c1a4480ff103ac8d2d65bafe83f6c5471854b531a02e744d633b84858ce3a4adde671d9b6a9133a5be
+    "@wordpress/element": ^4.0.0
+  checksum: ec6a5b8cc438cb01680ab68cd5bf24fe9e2978630db3bb05651b3d31627ecab6f86a72f639fb16c8a2a568170b5dfdab7615b7e11a4fe255c18350c63d7a7baf
   languageName: node
   linkType: hard
 
@@ -2540,13 +2539,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/wordpress__data@npm:*, @types/wordpress__data@npm:^4.6.10":
-  version: 4.6.11
-  resolution: "@types/wordpress__data@npm:4.6.11"
+"@types/wordpress__data@npm:*, @types/wordpress__data@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@types/wordpress__data@npm:6.0.1"
   dependencies:
     "@types/react": "*"
-    redux: ^4.0.1
-  checksum: d2ac8c87821f73478fe4bea93a6ccc1d14c80cab2bef382c12859524646346504cbe40c7a5f336f7317f7180bc291be515323e948809e4ba7bd5462e8a434dc3
+    redux: ^4.1.0
+  checksum: c515639f523162dd15c8c85ed1f88eb33db436f495e406cf3428a704d69775ceb0fa85c88b9a9f572d7436a3c4bb9c0ee7c1c09909fb614dc637d551c7012f1c
   languageName: node
   linkType: hard
 
@@ -3005,7 +3004,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wordpress/block-library@npm:^7.0.2":
+"@wordpress/block-library@npm:^7.15.0":
   version: 7.15.0
   resolution: "@wordpress/block-library@npm:7.15.0"
   dependencies:
@@ -3233,15 +3232,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wordpress/dependency-extraction-webpack-plugin@npm:^3.3.2":
-  version: 3.7.0
-  resolution: "@wordpress/dependency-extraction-webpack-plugin@npm:3.7.0"
+"@wordpress/dependency-extraction-webpack-plugin@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@wordpress/dependency-extraction-webpack-plugin@npm:4.1.0"
   dependencies:
-    json2php: ^0.0.4
+    json2php: ^0.0.5
     webpack-sources: ^3.2.2
   peerDependencies:
     webpack: ^4.8.3 || ^5.0.0
-  checksum: 8d3edb5c4c6dd8f75d8e82ff81a651daf2818b96ffa117ec5ca096e3650bc1effa77008721575399bc6181556bbf27e166343c7a6dec6807c2224f9f36bcb558
+  checksum: a65263fab189b075a4776e7b14e3b956cef1d8c65b58c61990e9ef37430aee9d34e05531cc07b678454e758d83bf46d5de40bbd2a796248e86f02c73f98d4e93
   languageName: node
   linkType: hard
 
@@ -3289,7 +3288,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wordpress/element@npm:^4.1.0, @wordpress/element@npm:^4.16.0":
+"@wordpress/element@npm:^4.0.0, @wordpress/element@npm:^4.1.0, @wordpress/element@npm:^4.16.0":
   version: 4.16.0
   resolution: "@wordpress/element@npm:4.16.0"
   dependencies:
@@ -7278,10 +7277,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json2php@npm:^0.0.4":
-  version: 0.0.4
-  resolution: "json2php@npm:0.0.4"
-  checksum: e17c8e21dc50e18253a1ef9c4ff5f5a212598444605b2152fba3b2e9945c4689da1c1e76e8e0eae2b00d3ec1c20ec081fca9f0c4c8968d1289a059b82ff88eb5
+"json2php@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "json2php@npm:0.0.5"
+  checksum: 854305b6a164130e0f5c668e13baaeb76ff8a002dea60d26e541a3f2cbd06529fab4214d726647f2549aa89acc109ccdb443fd9f442059df08124cbd0c72e0fa
   languageName: node
   linkType: hard
 
@@ -7349,14 +7348,14 @@ __metadata:
     "@babel/preset-react": ^7.16.7
     "@types/classnames": ^2.3.1
     "@types/wordpress__block-library": ^2.6.1
-    "@types/wordpress__blocks": ^9.1.1
+    "@types/wordpress__blocks": ^11.0.7
     "@types/wordpress__compose": ^4.0.1
-    "@types/wordpress__data": ^4.6.10
+    "@types/wordpress__data": ^6.0.1
     "@types/wordpress__hooks": ^2.11.0
     "@typescript-eslint/eslint-plugin": ^5.12.1
     "@typescript-eslint/parser": ^5.12.1
-    "@wordpress/block-library": ^7.0.2
-    "@wordpress/dependency-extraction-webpack-plugin": ^3.3.2
+    "@wordpress/block-library": ^7.15.0
+    "@wordpress/dependency-extraction-webpack-plugin": ^4.1.0
     autoprefixer: ^10.4.2
     babel-loader: ^8.2.3
     classnames: ^2.3.1
@@ -7373,7 +7372,7 @@ __metadata:
     postcss: ^8.4.7
     postcss-loader: ^6.2.1
     react: ^17.0.2
-    sass-loader: ^12.6.0
+    sass-loader: ^13.0.2
     terser-webpack-plugin: ^5.3.1
     ts-loader: ^9.2.6
     typescript: ^4.5.5
@@ -8842,7 +8841,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redux@npm:^4.0.1, redux@npm:^4.1.2":
+"redux@npm:^4.1.0, redux@npm:^4.1.2":
   version: 4.2.0
   resolution: "redux@npm:4.2.0"
   dependencies:
@@ -9153,9 +9152,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^12.6.0":
-  version: 12.6.0
-  resolution: "sass-loader@npm:12.6.0"
+"sass-loader@npm:^13.0.2":
+  version: 13.0.2
+  resolution: "sass-loader@npm:13.0.2"
   dependencies:
     klona: ^2.0.4
     neo-async: ^2.6.2
@@ -9174,7 +9173,7 @@ __metadata:
       optional: true
     sass-embedded:
       optional: true
-  checksum: 5d73a428588150f704016aa27397941bb9246cecd2ee083b573e95d969fc080ac6a16f2fe1cc64aca08f6e70da6f3c586ee68f0efc9f527fecc360e5f1c299ec
+  checksum: 6306712cc75bd4b4260ce67178778c92110089485f358b5956b6b12aba15a55e5c7287154daaf8b32678891df915b7bcda7356991afe8bf08ca7356ed30eb448
   languageName: node
   linkType: hard
 
