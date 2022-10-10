@@ -3,9 +3,9 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 5.6
-Tested up to: 5.9.1
+Tested up to: 6.0.2
 Requires PHP: 7.2
-Stable tag: 2.16.5
+Stable tag: 2.16.6
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -151,6 +151,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.16.6 =
+* Prevent image blocks from getting converted into videos when selecting all blocks in block editor
 
 = 2.16.5 =
 * Modernize list of permission policies in Youtube and Vimeo iframe

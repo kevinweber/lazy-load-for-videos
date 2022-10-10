@@ -152,7 +152,7 @@ export default function EmbedEdit(props: EmbedEditProps) {
   // Handle incoming preview
   useEffect(() => {
     if (preview && !isEditingURL) {
-      // Only run `setAttributes` when necessary. If not needed and this run, it can cause bugs.
+      // Only run `setAttributes` when necessary. If not needed and this runs, it can cause bugs.
       // Known bug: User selects multiple rows of text in the editor, then wants to select all
       // blocks using "cmd+a", all images get replaced with a LLV video for some unknown reason.
       if (!lodash.isEqual(attributes, getMergedAttributes())) {
