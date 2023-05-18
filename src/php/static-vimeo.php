@@ -32,6 +32,7 @@ class KW_LLV_Vimeo {
 			'overlaytext' => trim(get_option( 'llv_opt_overlay_text', '')),
 			'loadthumbnail'	 => KW_LLV_Vimeo::should_load_thumbnail(),
 			'thumbnailquality' => KW_LLV_Vimeo::thumbnailquality(),
+			'cookies'	       => get_option( 'llv_opt_cookies' ) == '1',
 			'callback'     => '<!--VIMEO_CALLBACK-->'
 		) );
 	}

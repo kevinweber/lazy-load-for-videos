@@ -22,6 +22,7 @@ const defaultPluginOptions = {
   playercolour: '',
   loadthumbnail: true,
   thumbnailquality: false,
+  cookies: false,
   // callback: null, // <- Currently not supported
 };
 
@@ -33,8 +34,8 @@ function vimeoUrl(videoId) {
   return `https://player.vimeo.com/video/${videoId}`;
 }
 
-// Remove dots and hashs from a string
-function filterDotHash(variable) {
+// Remove dots and hashes from a string
+export function filterDotHash(variable) {
   const filterdothash = variable.toString().replace(/[.#]/g, '');
   return filterdothash;
 }
@@ -143,6 +144,20 @@ export function parseOriginalUrl(url) {
   return { queryParams };
 }
 
+export function combineQueryParams({ queryParams, pluginOptions: options = {} }) {
+  const combinedQueryParams = {
+    ...queryParams,
+    autoplay: 1, // Always autoplay video once we load the iframe
+    dnt: options.cookies ? 0 : 1, // dnt=0 encourages tracking, dnt=1 prevents it
+  };
+
+  if (options.playercolour) {
+    combinedQueryParams.color = options.playercolour;
+  }
+
+  return combinedQueryParams;
+}
+
 function vimeoThumbnailEventListeners(videoLinkElement) {
   videoLinkElement.addEventListener('click', (event) => {
     const eventTarget = event.currentTarget;
@@ -157,16 +172,9 @@ function vimeoThumbnailEventListeners(videoLinkElement) {
     const { queryParams } = parseOriginalUrl(videoHref);
 
     removePlayerControls(eventTarget);
+    pluginOptions.playercolour = filterDotHash(pluginOptions.playercolour);
 
-    const combinedQueryParams = {
-      ...queryParams,
-      autoplay: 1, // Always autoplay video once we load the iframe
-    };
-
-    if (pluginOptions.playercolour) {
-      pluginOptions.playercolour = filterDotHash(pluginOptions.playercolour);
-      combinedQueryParams.color = pluginOptions.playercolour;
-    }
+    const combinedQueryParams = combineQueryParams({ queryParams, pluginOptions });
 
     const videoIFrame = createElements(
       `<iframe src="${getEmbedUrl({ videoId, queryParams: combinedQueryParams })}" style="height:${Number(eventTarget.clientHeight)}px;width:100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`,

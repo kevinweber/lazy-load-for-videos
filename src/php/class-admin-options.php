@@ -159,6 +159,7 @@ class KW_LLV_Admin {
 			'llv_opt_title',
 			'llv_opt_overlay_text',
 			'llv_opt_player_colour',
+			'llv_opt_cookies',
 		);
 
 		foreach ( $arr as $i ) {
@@ -178,9 +179,9 @@ class KW_LLV_Admin {
 			<h2 class="claim" style="font-size:15px;font-style:italic;position:relative;top:-10px;"><?php esc_html_e( 'Speed up your site and customise your video player!', LL_TD ); ?></h2>
 
 			<ul class="nav-tab-wrapper">
-				<li class="nav-tab"><a href="#general"><?php esc_html_e('General/Styling', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
-				<li class="nav-tab"><a href="#youtube"><?php esc_html_e('YouTube', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
-				<li class="nav-tab"><a href="#vimeo"><?php esc_html_e('Vimeo', LL_TD); ?></a></li>
+				<li class="nav-tab"><a href="#general"><?php esc_html_e('General/Styling', LL_TD); ?></a></li>
+				<li class="nav-tab"><a href="#youtube"><?php esc_html_e('YouTube', LL_TD); ?></a></li>
+				<li class="nav-tab"><a href="#vimeo"><?php esc_html_e('Vimeo', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
 				<?php do_action('lazyload_settings_page_tabs_link_after'); ?>
 			</ul>
 
@@ -231,7 +232,7 @@ class KW_LLV_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?><span class="newred">v2.15.0: Works for Youtube + Vimeo</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?></label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_thumbnail_quality">
 										<option value="basic"<?php if (get_option('ll_opt_thumbnail_quality') === 'basic') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
@@ -342,7 +343,7 @@ class KW_LLV_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Enable Youtube cookies', LL_TD ); ?><span class="newred">v2.14.0: New feature</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Enable Youtube cookies', LL_TD ); ?></label></th>
 						        <td>
 									<input name="lly_opt_cookies" type="checkbox" value="1" <?php checked( '1', get_option( 'lly_opt_cookies' ) ); ?> /> <label><?php esc_html_e( 'If checked, Youtube videos will have a URL with "youtube.com" instead of "youtube-nocookie.com". This means Youtube video creators will get more extensive tracking stats at the expense of the privacy of your users.', LL_TD ); ?></label>
 						        </td>
@@ -394,6 +395,12 @@ class KW_LLV_Admin {
 					        	<td>
 					        		<input id="llv_picker_input_player_colour" class="ll_picker_player_colour picker-input" type="text" name="llv_opt_player_colour" data-default-color="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo get_option("llv_opt_player_colour"); } ?>" />
 					        	</td>
+					        </tr>
+							<tr valign="top">
+					        	<th scope="row"><label><?php esc_html_e( 'Enable Vimeo cookies', LL_TD ); ?><span class="newred">v2.17.0: New feature</span></label></th>
+						        <td>
+									<input name="llv_opt_cookies" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt_cookies' ) ); ?> /> <label><?php esc_html_e( 'If checked, Vimeo videos will have a URL with "dnt=0" instead of "dnt=1". This means that Vimeo video creators will get more extensive tracking stats at the expense of the privacy of your users.', LL_TD ); ?></label>
+						        </td>
 					        </tr>
 			        	</tbody>
 		        	</table>
