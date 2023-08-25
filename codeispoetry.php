@@ -74,6 +74,7 @@ add_action( 'plugins_loaded', 'lazyload_videos_init_plugins_loaded', 15 );
 
 function lazyload_videos_admin_init() {
 	require_once( LL_PATH . 'src/php/class-meta.php' );
+	require_once( LL_PATH . 'src/php/inc/support_for_woocommerce_csv_export.php');
 }
 
 function lazyload_videos_frontend_init() {

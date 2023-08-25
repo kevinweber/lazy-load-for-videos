@@ -152,6 +152,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
+= 2.17.1 =
+* Exclude oembed metadata from WooCommerce product CSV export
+
 = 2.17.0 =
 * Add "dnt=1" query param to Vimeo URLs. This discourages Vimeo from using cookies and tracking session data.
 * New feature: Use the "Enable Vimeo cookies" admin option to opt into Vimeo tracking by adding "dnt=0" to Vimeo URLs.
