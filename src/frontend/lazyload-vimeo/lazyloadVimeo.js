@@ -163,8 +163,7 @@ export function combineQueryParams({ queryParams, pluginOptions: options = {}, h
     combinedQueryParams.color = options.playercolour;
   }
 
-  // The "h" param is sometimes used, e.g. for unlisted videos with domain-level privacy.
-  // Without it, the video might show a "This video does not exist" error.
+  // The "h" param is sometimes required or the video might show "This video does not exist".
   // Example video: https://player.vimeo.com/video/770699945?h=181f773a93&dnt=1&app_id=122963
   if (!combinedQueryParams.h && hParam) {
     combinedQueryParams.h = hParam;

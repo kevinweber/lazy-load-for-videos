@@ -153,6 +153,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 == Changelog ==
 
 = 2.18.0 =
+* Support Vimeos that require usage of "h" query param
 * Add "No play button" option to not show any play button on top of videos
 * Exclude oembed metadata from WooCommerce product CSV export
 
