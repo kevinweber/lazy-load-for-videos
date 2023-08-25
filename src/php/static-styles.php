@@ -90,8 +90,10 @@ class KW_LLV_Styles {
 		else if ( get_option('ll_opt_button_style') == 'youtube_button_image_red' ) {
 			// Display RED youtube button image
 			return '.lazy-load-div { background: url('.LL_URL.'/public/play-y-red.png) center center no-repeat; }';
-		}
-		else if (
+		} else if ( get_option('ll_opt_button_style') == 'none' ) {
+			// Don't show any play button
+			return '';
+		} else if (
 				get_option('ll_opt_button_style') == 'css_black'
 				|| get_option('ll_opt_button_style') == 'css_black_pulse'
 			) {
