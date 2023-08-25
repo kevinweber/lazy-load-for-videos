@@ -1,5 +1,5 @@
 import {
-  getEmbedUrl, parseOriginalUrl, filterDotHash, combineQueryParams,
+  getEmbedUrl, parseOriginalUrl, parseVideoUri, filterDotHash, combineQueryParams,
 } from './lazyloadVimeo';
 
 describe('parseOriginalUrl', () => {
@@ -36,6 +36,32 @@ describe('parseOriginalUrl', () => {
       queryParams: {
         dnt: '0',
       },
+    });
+  });
+});
+
+describe('parseVideoUri', () => {
+  it('returns value if URI is undefined', () => {
+    expect(parseVideoUri(undefined)).toEqual({
+      hParam: undefined,
+    });
+  });
+
+  it('returns hParam=null for URI without hParam segment, the most common URI structure', () => {
+    expect(parseVideoUri('/videos/123')).toEqual({
+      hParam: null,
+    });
+  });
+
+  it('returns hParam=456 for URI with ":456"', () => {
+    expect(parseVideoUri('/videos/123:456')).toEqual({
+      hParam: '456',
+    });
+  });
+
+  it('supports a mix of letters and digits', () => {
+    expect(parseVideoUri('/videos/123:4a5b6c')).toEqual({
+      hParam: '4a5b6c',
     });
   });
 });

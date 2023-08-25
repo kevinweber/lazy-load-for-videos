@@ -144,7 +144,15 @@ export function parseOriginalUrl(url) {
   return { queryParams };
 }
 
-export function combineQueryParams({ queryParams, pluginOptions: options = {} }) {
+export function parseVideoUri(uri) {
+  const hParamSegment = uri?.match(/:[\d\w]+$/);
+  const hParam = hParamSegment && hParamSegment[0].slice(1);
+  return {
+    hParam,
+  };
+}
+
+export function combineQueryParams({ queryParams, pluginOptions: options = {}, hParam }) {
   const combinedQueryParams = {
     ...queryParams,
     autoplay: 1, // Always autoplay video once we load the iframe
@@ -153,6 +161,13 @@ export function combineQueryParams({ queryParams, pluginOptions: options = {} })
 
   if (options.playercolour) {
     combinedQueryParams.color = options.playercolour;
+  }
+
+  // The "h" param is sometimes used, e.g. for unlisted videos with domain-level privacy.
+  // Without it, the video might show a "This video does not exist" error.
+  // Example video: https://player.vimeo.com/video/770699945?h=181f773a93&dnt=1&app_id=122963
+  if (!combinedQueryParams.h && hParam) {
+    combinedQueryParams.h = hParam;
   }
 
   return combinedQueryParams;
@@ -168,13 +183,15 @@ function vimeoThumbnailEventListeners(videoLinkElement) {
     }
 
     const videoId = eventTarget.getAttribute('id');
+    const videoUri = eventTarget.getAttribute('data-video-uri');
+    const { hParam } = parseVideoUri(videoUri);
     const videoHref = eventTarget.getAttribute('href');
     const { queryParams } = parseOriginalUrl(videoHref);
 
     removePlayerControls(eventTarget);
     pluginOptions.playercolour = filterDotHash(pluginOptions.playercolour);
 
-    const combinedQueryParams = combineQueryParams({ queryParams, pluginOptions });
+    const combinedQueryParams = combineQueryParams({ hParam, queryParams, pluginOptions });
 
     const videoIFrame = createElements(
       `<iframe src="${getEmbedUrl({ videoId, queryParams: combinedQueryParams })}" style="height:${Number(eventTarget.clientHeight)}px;width:100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`,
