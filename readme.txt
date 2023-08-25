@@ -3,9 +3,9 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 5.6
-Tested up to: 6.2.1
+Tested up to: 6.3
 Requires PHP: 7.2
-Stable tag: 2.17.0
+Stable tag: 2.18.0
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
