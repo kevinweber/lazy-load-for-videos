@@ -153,7 +153,7 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 == Changelog ==
 
 = 2.18.1 =
-* Bugfix: Prevent pages from breaking that rely on the JS object `$` (usually used for jQuery) but don't support `$.ajaxStop`
+* Bugfix: Prevent pages from breaking that rely on the JS object `$` (usually used for jQuery) but don't support `$().ajaxStop`
 
 = 2.18.0 =
 * Support Vimeos that require usage of "h" query param
