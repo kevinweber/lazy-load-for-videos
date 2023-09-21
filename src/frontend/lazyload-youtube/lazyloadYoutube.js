@@ -102,7 +102,7 @@ export function getEmbedUrl({
 }
 
 function getVideoIdAndAfter(href) {
-  const splitBy = ['v=', '/embed/', '://youtu.be/'];
+  const splitBy = ['v=', '/embed/', '://youtu.be/', '/shorts/'];
   const splitUsingRegex = new RegExp(splitBy.join('|'), 'i');
 
   return href.split(splitUsingRegex)[1];
