@@ -3,9 +3,9 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 5.6
-Tested up to: 6.3
+Tested up to: 6.3.1
 Requires PHP: 7.2
-Stable tag: 2.18.1
+Stable tag: 2.18.2
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -151,6 +151,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.18.2 =
+* Support Youtube shorts. Thanks to @Borysiuk1's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/78)
 
 = 2.18.1 =
 * Bugfix: Prevent pages from breaking that rely on the JS object `$` (usually used for jQuery) but don't support `$().ajaxStop`
