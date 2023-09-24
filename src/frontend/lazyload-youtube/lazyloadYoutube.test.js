@@ -61,7 +61,7 @@ describe('convertToSeconds', () => {
 });
 
 describe('parseOriginalUrl', () => {
-  it('correctly parses https://www.youtube.com/watch?v=aaa', () => {
+  it('correctly parses regular Youtube URL: https://www.youtube.com/watch?v=aaa', () => {
     const url = 'https://www.youtube.com/watch?v=IJNR2EpS0jw&modestbranding=1&random=string';
     const parsedUrl = parseOriginalUrl(url);
 
@@ -72,7 +72,7 @@ describe('parseOriginalUrl', () => {
     });
   });
 
-  it('correctly parses https://www.youtube.com/embed/aaa', () => {
+  it('correctly parses Youtube URL of type embed: https://www.youtube.com/embed/aaa', () => {
     const url = 'https://www.youtube.com/embed/IJNR2EpS0jw?modestbranding=1&random=string';
     const parsedUrl = parseOriginalUrl(url);
 
@@ -83,7 +83,7 @@ describe('parseOriginalUrl', () => {
     });
   });
 
-  it('correctly parses https://www.youtube-nocookie.com/embed/aaa', () => {
+  it('correctly parses nocookie Youtube URL of type embed: https://www.youtube-nocookie.com/embed/aaa', () => {
     const url = 'https://www.youtube-nocookie.com/embed/IJNR2EpS0jw?modestbranding=1&random=string';
     const parsedUrl = parseOriginalUrl(url);
 
@@ -94,7 +94,29 @@ describe('parseOriginalUrl', () => {
     });
   });
 
-  it('correctly parses http://youtu.be/aaa', () => {
+  it('correctly parses Youtube URL of type short: https://www.youtube.com/shorts/aaa', () => {
+    const url = 'https://www.youtube.com/shorts/IJNR2EpS0jw?modestbranding=1&random=string';
+    const parsedUrl = parseOriginalUrl(url);
+
+    expect(parsedUrl.videoId).toBe('IJNR2EpS0jw');
+    expect(parsedUrl.queryParams).toEqual({
+      modestbranding: '1',
+      random: 'string',
+    });
+  });
+
+  it('correctly parses nocookie Youtube URL of type short: https://www.youtube-nocookie.com/shorts/aaa', () => {
+    const url = 'https://www.youtube-nocookie.com/shorts/IJNR2EpS0jw?modestbranding=1&random=string';
+    const parsedUrl = parseOriginalUrl(url);
+
+    expect(parsedUrl.videoId).toBe('IJNR2EpS0jw');
+    expect(parsedUrl.queryParams).toEqual({
+      modestbranding: '1',
+      random: 'string',
+    });
+  });
+
+  it('correctly parses Youtube short URL: http://youtu.be/aaa', () => {
     const url = 'http://youtu.be/IJNR2EpS0jw?modestbranding=1&random=string';
     const parsedUrl = parseOriginalUrl(url);
 
