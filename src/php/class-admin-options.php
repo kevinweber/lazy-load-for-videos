@@ -25,12 +25,18 @@ class KW_LLV_Admin {
 		$this->register_lazyload_settings();
 	}
 
+	function isset_update_posts() {
+		return isset( $_POST['update_posts'] )
+			&& $_POST['update_posts'] == 'with_oembed'
+			&& wp_verify_nonce( $_POST['with_oembed_nonce'], 'lazyloadvideos_with_oembed_nonce' );
+	}
+
 	/*
 	 * Update posts with embed when user has clicked "Update Posts"
 	 * @info: lazyloadvideos_update_posts_with_embed() is loaded by class-register.php
 	 */
 	function lazyloadvideos_update_posts_with_embed() {
-		if ( isset( $_POST['update_posts'] ) && $_POST['update_posts'] == 'with_oembed' ) {
+		if ( $this->isset_update_posts() ) {
 			KW_LLV_Update_Posts::delete_oembed_caches();
 		}
 	}
@@ -170,7 +176,7 @@ class KW_LLV_Admin {
 
 	function lazyload_settings_page()	{ ?>
 
-		<?php if ( isset( $_POST['update_posts'] ) && $_POST['update_posts'] == 'with_oembed' ) { ?>
+		<?php if ( $this->isset_update_posts() ) { ?>
 			<div class="update-posts updated"><p><?php esc_html_e( 'Your posts have been updated successfully.', LL_TD ); ?></p></div>
 		<?php } ?>
 
@@ -414,6 +420,7 @@ class KW_LLV_Admin {
 
 	 		<div class="update-posts notice">
 				<form action="options-general.php?page=<?php echo LL_ADMIN_URL; ?>" method="post">
+				   <?php wp_nonce_field( 'lazyloadvideos_with_oembed_nonce', 'with_oembed_nonce' ); ?>
 				   <input type="hidden" name="update_posts" value="with_oembed" />
 				   <input class="button update-posts" type="submit" value="Update Posts" />
 				</form>
