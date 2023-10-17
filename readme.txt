@@ -152,6 +152,9 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 == Changelog ==
 
+= 2.18.3 =
+* Security: Patch potential CSRF attack vector
+
 = 2.18.2 =
 * Support Youtube shorts. Thanks to @Borysiuk1's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/78)
 
