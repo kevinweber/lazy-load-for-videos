@@ -59,7 +59,7 @@
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.5.3",
     "node-sass": "^7.0.1",
-    "postcss": "^8.4.7",
+    "postcss": "^8.4.31",
     "postcss-loader": "^6.2.1",
     "sass-loader": "^13.0.2",
     "terser-webpack-plugin": "^5.3.1",
