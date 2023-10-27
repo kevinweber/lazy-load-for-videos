@@ -142,8 +142,8 @@ Similar to a single video, insert the playlist URL in the following format:
 `https://www.youtube.com/watch?v=dkfQFih23Ak&list=PLRQFBJ3mkjnxaPhAVOzjxxv_0yr8XE0Ja` (the other format - `https://www.youtube.com/playlist?list=...` - is not supported currently).
 Note that playlists are not working when you're using the pre-/post-roll feature.
 
-= Where do I report security bugs? =
-You can report any security bugs found in the source code of this plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/site-reviews). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+= How can I report security bugs? =
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/lazy-load-for-videos)
 
 = Known bugs - this plugin may not work correctly when one of the following plugins is activated... =
 * "YouTube" (https://wordpress.org/extend/plugins/youtube-embed-plus/)
