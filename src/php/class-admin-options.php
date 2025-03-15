@@ -422,10 +422,10 @@ class KW_LLV_Admin {
 				<form action="options-general.php?page=<?php echo LL_ADMIN_URL; ?>" method="post">
 				   <?php wp_nonce_field( 'lazyloadvideos_with_oembed_nonce', 'with_oembed_nonce' ); ?>
 				   <input type="hidden" name="update_posts" value="with_oembed" />
-				   <input class="button update-posts" type="submit" value="Update Posts" />
+				   <button class="button update-posts" type="submit" value="Update Posts"><?php esc_html_e( 'Update Posts', LL_TD ); ?></button>
 				</form>
 				<div class="help">
-					<span class="tooltip-right info-icon" data-tooltip="Save changes first.">?</span> <span><?php esc_html_e( 'Update posts to setup your plugin for the first time or when recommended somewhere.', LL_TD ); ?></span>
+					<span class="tooltip-right info-icon" data-tooltip="<?php esc_html_e( 'Save changes first.', LL_TD ); ?>">?</span> <span><?php esc_html_e( 'Update posts to setup your plugin for the first time or when recommended somewhere.', LL_TD ); ?></span>
 				</div>
 			</div>
 
