@@ -1,0 +1,488 @@
+# Copyright (C) 2015-2025 Lazy Load for Videos
+# This file is distributed under the same license as the Lazy Load for Videos package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Lazy Load for Videos 2.18.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lazy-load-for-"
+"videos\n"
+"POT-Creation-Date: 2025-03-15 16:02+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2025-03-16 10:18+0100\n"
+"Last-Translator: Martin Steghöfer <martin@steghoefer.eu>\n"
+"Language-Team: -\n"
+
+#: src/php/class-meta.php:65 src/php/class-admin-options.php:242
+msgid "Thumbnail quality"
+msgstr "Kvalito de antaŭrigardobildoj"
+
+#: src/php/class-meta.php:69
+msgid "Default"
+msgstr "Defaŭlto"
+
+#: src/php/class-meta.php:70 src/php/class-admin-options.php:245
+msgid "Standard quality"
+msgstr "Normala kvalito"
+
+#: src/php/class-meta.php:71 src/php/class-admin-options.php:246
+msgid "Higher quality"
+msgstr "Pli alta kvalito"
+
+#: src/php/class-meta.php:72 src/php/class-admin-options.php:247
+msgid "Max resolution"
+msgstr "Maksimuma distingivo"
+
+#: src/php/inc/define.php:5
+msgid ""
+"To suggest and vote for new features: Let the developer come into contact "
+"with you."
+msgstr ""
+"Por proponi kaj voĉdoni pri novaj funkcioj: Permesu al la disvolvisto kontakti vin."
+
+#: src/php/inc/define.php:6
+msgid "Get contacted"
+msgstr "Estu kontaktota"
+
+#: src/php/inc/define.php:7
+msgid "Enter your email address"
+msgstr "Enigu vian retpoŝtadreson"
+
+#: src/php/inc/define.php:7
+msgid "Signup via Plugin"
+msgstr "Registrado per la kromaĵo"
+
+#: src/php/class-admin-options.php:48
+msgid "Settings"
+msgstr "Agordoj"
+
+#: src/php/class-admin-options.php:137 src/php/class-admin-options.php:184
+msgid "Lazy Load for Videos"
+msgstr "Lazy Load for Videos"
+
+#: src/php/class-admin-options.php:180
+msgid "Your posts have been updated successfully."
+msgstr "Viaj afiŝoj ĝisdatiĝis sukcese."
+
+#: src/php/class-admin-options.php:184
+msgid "by"
+msgstr "de"
+
+#: src/php/class-admin-options.php:184
+msgid "Website by Kevin Weber"
+msgstr "Retejo de Kevin Weber"
+
+#: src/php/class-admin-options.php:184
+msgid "Version"
+msgstr "Versio"
+
+#: src/php/class-admin-options.php:185
+msgid "Speed up your site and customise your video player!"
+msgstr "Rapidigu vian retejon kaj laŭplaĉigu vian videoludilon!"
+
+#: src/php/class-admin-options.php:188 src/php/class-admin-options.php:203
+msgid "General/Styling"
+msgstr "Ĝeneralaj/stilaj agordoj"
+
+#: src/php/class-admin-options.php:189
+msgid "YouTube"
+msgstr "YouTube"
+
+#: src/php/class-admin-options.php:190
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: src/php/class-admin-options.php:208
+msgid "Only load CSS/JS when needed"
+msgstr "Ŝargi CSS/JS-on nur kiam necese"
+
+#: src/php/class-admin-options.php:208
+msgid "to improve performance"
+msgstr "por pligonigi la rendimenton"
+
+#: src/php/class-admin-options.php:210 src/php/class-admin-options.php:299
+#: src/php/class-admin-options.php:383 src/php/class-admin-options.php:389
+msgid "Important:"
+msgstr "Grave:"
+
+#: src/php/class-admin-options.php:210
+msgid ""
+"When this option is checked, some videos might not lazy load if posts with "
+"videos are loaded using Ajax."
+msgstr ""
+"Kiam ĉi tiu opcio estas elektita, eblas ke kelkaj filmetoj estos ŝargataj malfrue, se la ŝargado okazas pere de Ajax."
+
+#: src/php/class-admin-options.php:214
+msgid "Play Button"
+msgstr "Ludbutono"
+
+#: src/php/class-admin-options.php:217
+msgid "White (CSS-only)"
+msgstr "Blanka (nur CSS)"
+
+#: src/php/class-admin-options.php:218
+msgid "White Pulse (CSS-only)"
+msgstr "Blanka Pulso (nur CSS)"
+
+#: src/php/class-admin-options.php:219
+msgid "Black (CSS-only)"
+msgstr "Nigra (nur CSS)"
+
+#: src/php/class-admin-options.php:220
+msgid "Black Pulse (CSS-only)"
+msgstr "Nigra Pulso (nur CSS)"
+
+#: src/php/class-admin-options.php:221
+msgid "Old Youtube button image"
+msgstr "Malnova butono de YouTube (bildo)"
+
+#: src/php/class-admin-options.php:222
+msgid "Red Youtube button image"
+msgstr "Ruĝa butono de YouTube (bildo)"
+
+#: src/php/class-admin-options.php:223
+msgid "No play button"
+msgstr "Neniu ludbutono"
+
+#: src/php/class-admin-options.php:228
+msgid "Thumbnails/Patterns"
+msgstr "Antaŭrigardobildoj/Modeloj"
+
+#: src/php/class-admin-options.php:231
+msgid "Thumbnail covering the video element"
+msgstr "Antaŭrigardobildo kovranta la tutan videoelementon"
+
+#: src/php/class-admin-options.php:232
+msgid "Thumbnail contained within the video element"
+msgstr "Antaŭrigardobildo ene de la videoelemento"
+
+#: src/php/class-admin-options.php:233
+msgid "Pattern: Carbon"
+msgstr "Modelo: Karbono"
+
+#: src/php/class-admin-options.php:234
+msgid "Pattern: Dots"
+msgstr "Modelo: Punktoj"
+
+#: src/php/class-admin-options.php:235
+msgid "Pattern: Light Seigaiha"
+msgstr "Modelo: Hela Seigaiha"
+
+#: src/php/class-admin-options.php:236
+msgid "None"
+msgstr "Neniu"
+
+#: src/php/class-admin-options.php:238
+msgid ""
+"For a thumbnail to be displayed, a request needs to be made to the server of "
+"a video platform. You can display one of the available patterns instead, or "
+"nothing at all."
+msgstr ""
+"Por montri la antaŭrigardobildon necesas sendi peton al la servilo de "
+"videoplatformo. Eblas montri unu el pluraj disponeblaj modeloj anstataŭe, "
+"aŭ nenion entute."
+
+#: src/php/class-admin-options.php:249
+msgid ""
+"Define which thumbnail quality should be used by default. When a maximum "
+"resolution thumbnail is not available, a lower quality thumbnail will be "
+"loaded. This setting can be overridden on every individual page/post."
+msgstr ""
+"Elektu la defaŭltan kvaliton de antaŭrigardobildoj. Kiam ne disponeblas bildeto de maksimuma "
+"distingivo, bildeto de malpli alta kvalito estos ŝargata. Ĉi tiu agordo "
+"povas esti ŝanĝata ĉe ĉiu individua paĝo/afiŝo."
+
+#: src/php/class-admin-options.php:253
+msgid "Custom CSS"
+msgstr "Laŭplaĉigita CSS"
+
+#: src/php/class-admin-options.php:259
+msgid "Support for TablePress"
+msgstr "Subteno por TablePress"
+
+#: src/php/class-admin-options.php:261
+msgid ""
+"Only check this box if you actually use this feature (for reason of "
+"performance). If checked, you can paste a Youtube or Vimeo URL into tables "
+"that are created with TablePress and it will be lazy loaded."
+msgstr ""
+"Elektu ĉi tiun opcion nur se vi fakte uzas la funkcion (pro kialoj de "
+"rendimento). Se la opcio estas elektita, vi povas alglui retadreson de YouTube aŭ Vimeo en tabelojn "
+"kreitaj per TablePress kaj ili estos ŝargataj malfrue."
+
+#: src/php/class-admin-options.php:265
+msgid "Attribution"
+msgstr "Atribuado"
+
+#: src/php/class-admin-options.php:265
+#, php-format
+msgid ""
+"Are you thankful for this plugin? I've invested months and months of work. "
+"This plugin is 100% free and open source."
+msgstr ""
+"Ĉu vi estas dankema pro ĉi tiu kromaĵo? Mi investis plurajn monatojn da laboro. "
+"Ĉi tiu kromaĵo estas 100% senpaga, libera kaj fontmalferma."
+
+#: src/php/class-admin-options.php:268
+msgid ""
+"No attribution: \"I can not afford to give appropriate credit for this free "
+"plugin.\""
+msgstr ""
+"Neniu atribuo: \"Mi ne povas permesi al mi doni konvenan atribuadon "
+"por ĉi tiu libera kaj senpaga kromaĵo.\""
+
+#: src/php/class-admin-options.php:271
+msgid "Donation: \"I have donated already or will do so soon.\""
+msgstr "Donaco: \"Mi faris donacon aŭ faros ĝin baldaŭ.\""
+
+#: src/php/class-admin-options.php:272
+#, php-format
+msgid ""
+"Please %1$sdonate now%2$s so I can keep maintaining and improving this "
+"plugin."
+msgstr ""
+"Bonvolu %1$sdonaci nun%2$s por ke mi povu daŭrigi la prizorgadon kaj plibonigon "
+"de ĉi tiu kromaĵo."
+
+#: src/php/class-admin-options.php:286
+msgid "Lazy Load for Youtube"
+msgstr "Malfrua ŝargado por YouTube"
+
+#: src/php/class-admin-options.php:291
+msgid "Disable Lazy Load for Youtube"
+msgstr "Malaktivigi malfruan ŝargadon por YouTube"
+
+#: src/php/class-admin-options.php:295 src/php/class-admin-options.php:379
+#, php-format
+msgid "If checked, Lazy Load will not be used for %1$s videos."
+msgstr "Se ĉi tiu opcio estas elektita, malfrua ŝargado ne estos uzata por filmetoj de %1$s."
+
+#: src/php/class-admin-options.php:299 src/php/class-admin-options.php:383
+msgid ""
+"Updates on this option will only affect new posts and posts you update "
+"afterwards with the \"Update Posts\" button at the bottom of this form."
+msgstr ""
+"Ŝanĝoj de ĉi tiu opcio efikos nur al novaj afiŝoj kaj tiuj afiŝoj, kiujn vi ĝisdatigos "
+"poste per la butono \"Ĝisdatigi afiŝojn\" ĉe la malsupra parto de ĉi tiu formularo."
+
+#: src/php/class-admin-options.php:303
+msgid "Display Youtube title"
+msgstr "Montru titolon de YouTube"
+
+#: src/php/class-admin-options.php:305
+msgid "If checked, the Youtube video title will be displayed on preview image."
+msgstr "Se ĉi tiu opcio estas elektita, la titolo de la filmeto de YouTube "
+"estos montrata sur la antaŭrigardobildo."
+
+#: src/php/class-admin-options.php:309 src/php/class-admin-options.php:393
+msgid "Text Overlay"
+msgstr "Tekstsupermeto"
+
+#: src/php/class-admin-options.php:313
+msgid ""
+"Enter text to be displayed on top of all video thumbnails, for example a "
+"privacy disclaimer. Supports HTML."
+msgstr ""
+"Enigu la tekston, kiu devas esti montrata sur ĉiuj antaŭrigardobildetoj de "
+"filmetoj, ekzemple disklaro pri privateco. HTML-kodon estas permesata."
+
+#: src/php/class-admin-options.php:317
+msgid "Pre-roll/post-roll ads"
+msgstr "Antaŭa/posta reklamo"
+
+#: src/php/class-admin-options.php:319
+msgid "Pre-roll"
+msgstr "Antaŭa"
+
+#: src/php/class-admin-options.php:320
+msgid "Post-roll"
+msgstr "Posta"
+
+#: src/php/class-admin-options.php:320
+msgid "(multiple IDs allowed)"
+msgstr "(pluraj ID-oj estas permesataj)"
+
+#: src/php/class-admin-options.php:323
+#, php-format
+msgid ""
+"Convert all Youtube videos into a playlist and automatically add your "
+"corporate video, product teaser or another video advertisement. You have to "
+"insert the plain Youtube %1$s, like %2$s or a comma-separated list of video "
+"IDs (%3$s)."
+msgstr ""
+"Konvertigu ĉiujn YouTube-filmetojn en ludliston kaj aŭtomate aldonu vian "
+"kompanian, produkto-antaŭvidan aŭ alian reklaman filmeton. Vi devas "
+"enigi la nudan YouTube-adreson %1$s, ekzemple %2$s aŭ komo-disigitan liston de "
+"ID-oj de la filmetoj (%3$s)."
+
+#: src/php/class-admin-options.php:332
+msgid "Colour of progress bar"
+msgstr "Koloro de la progresindikilo"
+
+#: src/php/class-admin-options.php:335
+msgid "Red (default)"
+msgstr "Ruĝa (defaŭlto)"
+
+#: src/php/class-admin-options.php:336
+msgid "White"
+msgstr "Blanka"
+
+#: src/php/class-admin-options.php:341
+msgid "Hide annotations"
+msgstr "Kaŝu notaĵojn"
+
+#: src/php/class-admin-options.php:343
+msgid ""
+"If checked, video annotations (like \"subscribe to channel\") will not be "
+"shown."
+msgstr ""
+"Se ĉi tiu opcio estas elektita, notaĵoj de la filmetoj (kiel ekzemple \"abonu la kanalon\") "
+"ne estos montrataj."
+
+#: src/php/class-admin-options.php:347
+msgid "Hide player controls"
+msgstr "Kaŝu la kontrolilojn de la ludilo"
+
+#: src/php/class-admin-options.php:349
+msgid "If checked, Youtube player controls will not be displayed."
+msgstr ""
+"Se ĉi tiu opcio estas elektita, la kontroliloj de la ludilo de YouTube "
+"ne estos montrataj."
+
+#: src/php/class-admin-options.php:353
+msgid "Enable Youtube cookies"
+msgstr "Aktivigu kuketojn de YouTube"
+
+#: src/php/class-admin-options.php:355
+msgid ""
+"If checked, Youtube videos will have a URL with \"youtube.com\" instead of "
+"\"youtube-nocookie.com\". This means Youtube video creators will get more "
+"extensive tracking stats at the expense of the privacy of your users."
+msgstr ""
+"Se ĉi tiu opcio estas elektita, filmetoj de YouTube havos adreson kun \"youtube.com\" anstataŭ "
+"\"youtube-nocookie.com\". Tio signifas ke la kreinto de la filmeto de YouTube ricevos pli detalajn "
+"sekvadajn statistikojn je la kosto de la privateco de viaj uzantoj."
+
+
+#: src/php/class-admin-options.php:359
+msgid "Support for widgets"
+msgstr "Subteno por fenestraĵoj"
+
+#: src/php/class-admin-options.php:361
+msgid ""
+"Only check this box if you actually use this feature (for reason of "
+"performance)! If checked, you can paste a Youtube URL into a text widget and "
+"it will be lazy loaded."
+msgstr ""
+"Elektu ĉi tiun opcion nur se vi fakte uzas la funkcion (pro kialoj de "
+"rendimento)! Se ĝi estas elektita, vi povas alglui retadreson de YouTube "
+"en tekstan fenestraĵon kaj ĝi estos malfrue ŝargata."
+
+#: src/php/class-admin-options.php:370
+msgid "Lazy Load for Vimeo"
+msgstr "Malfrua ŝargado por Vimeo"
+
+#: src/php/class-admin-options.php:375
+msgid "Disable Lazy Load for Vimeo"
+msgstr "Malaktivigu la malfruan ŝargadon por Vimeo"
+
+#: src/php/class-admin-options.php:387
+msgid "Display Vimeo title"
+msgstr "Montru titolon de Vimeo"
+
+#: src/php/class-admin-options.php:389
+msgid "If checked, the Vimeo video title will be displayed on preview image."
+msgstr ""
+"Se ĉi tiu opcio estas elektita, la titolo de la filmeto de Vimeo estos montrata "
+"sur la antaŭrigarda bildeto."
+
+#: src/php/class-admin-options.php:397
+msgid ""
+"Enter text to be displayed on top of all video thumbnails, for example a "
+"privacy disclaimer. No HTML."
+msgstr ""
+"Enigu la tekston, kiu estos montrata sur ĉiuj antaŭrigardaj bildetoj de filmetoj, ekzemple "
+"disklaro pri privateco. HTML-kodo ne estas permesata."
+
+#: src/php/class-admin-options.php:401
+msgid "Colour of the vimeo controls"
+msgstr "Koloro de la kontroliloj de Vimeo"
+
+#: src/php/class-admin-options.php:407
+msgid "Enable Vimeo cookies"
+msgstr "Aktivigu kuketojn de Vimeo"
+
+#: src/php/class-admin-options.php:409
+msgid ""
+"If checked, Vimeo videos will have a URL with \"dnt=0\" instead of "
+"\"dnt=1\". This means that Vimeo video creators will get more extensive "
+"tracking stats at the expense of the privacy of your users."
+msgstr ""
+"Se ĉi tiu opcio estas elektita, filmetoj de Vimeo havos adreson kun \"dnt=0\" anstataŭ "
+"\"dnt=1\". Tio signifas ke la kreinto de la Vimeo-filmeto ricevos pli detalajn "
+"sekvadajn statistikojn je la kosto de la privateco de viaj uzantoj."
+
+#: src/php/class-admin-options.php:425
+msgid "Update Posts"
+msgstr "Ĝisdatigi afiŝojn"
+
+#: src/php/class-admin-options.php:428
+msgid "Save changes first."
+msgstr "Konservu la ŝanĝojn antaŭe."
+
+#: src/php/class-admin-options.php:428
+msgid ""
+"Update posts to setup your plugin for the first time or when recommended "
+"somewhere."
+msgstr ""
+"Ĝisdatigu afiŝojn por pretigi la kromaĵon post ĝia instalado aŭ kiam "
+"la kromaĵo rekomendas ĝin."
+
+#: src/php/class-admin-options.php:438
+msgid "that's me."
+msgstr "Tio estas mi."
+
+#: src/php/class-admin-options.php:439
+msgid "I'm the developer of this plugin. Love it!"
+msgstr "Mi estas la disvolvisto de ĉi tiu kromaĵo. Ŝategu ĝin!"
+
+#: src/php/class-admin-options.php:442
+msgid "It's free!"
+msgstr "Ĝi estas senpaga!"
+
+#: src/php/class-admin-options.php:443
+#, php-format
+msgid ""
+"Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star "
+"rating %3$son WordPress.org%4$s."
+msgstr ""
+"Subtenu min per %1$sbongusta tagmanĝo%2$s aŭ donu 5-stelan takson "
+"al ĉi tiu kromaĵo ĉe %3$sWordPress.org%4$s."
+
+#: src/php/class-admin-options.php:453
+msgid "Personal tip: Must use plugins"
+msgstr "Persona konsilo: Nepre havindaj kromaĵoj"
+
+#: src/php/class-admin-options.php:455
+msgid "wBounce"
+msgstr "wBounce"
+
+#: src/php/class-admin-options.php:455
+msgid "(on my part)"
+msgstr "(de mi)"
+
+#: src/php/class-admin-options.php:456
+msgid "WordPress SEO"
+msgstr "Serĉilo-optimumigo de Wordpress"
+
+#: src/php/class-admin-options.php:456
+msgid "(by Yoast)"
+msgstr "(de Yoast)"
+
+#: src/php/class-admin-options.php:457
+msgid "Broken Link Checker"
+msgstr "Kontrolilo por rompitaj ligiloj"
+
+#: src/php/class-admin-options.php:457
+msgid "(by Janis Elsts)"
+msgstr "(de Janis Elsts)"
