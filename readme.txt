@@ -156,6 +156,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 = 2.18.4 =
+* Improve translations and add Catalan/Esperanto. Thanks to @martin-steghoefer's [PR](https://github.com/kevinweber/lazy-load-for-videos/pull/84)
 * Resolve warning about the timing of translation loading
 
 = 2.18.3 =
