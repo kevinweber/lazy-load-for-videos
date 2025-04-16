@@ -185,7 +185,7 @@ class KW_LLV_Admin {
 			<h2 class="claim" style="font-size:15px;font-style:italic;position:relative;top:-10px;"><?php esc_html_e( 'Speed up your site and customise your video player!', LL_TD ); ?></h2>
 
 			<ul class="nav-tab-wrapper">
-				<li class="nav-tab"><a href="#general"><?php esc_html_e('General/Styling', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
+				<li class="nav-tab"><a href="#general"><?php esc_html_e('General/Styling', LL_TD); ?></a></li>
 				<li class="nav-tab"><a href="#youtube"><?php esc_html_e('YouTube', LL_TD); ?></a></li>
 				<li class="nav-tab"><a href="#vimeo"><?php esc_html_e('Vimeo', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
 				<?php do_action('lazyload_settings_page_tabs_link_after'); ?>
@@ -211,7 +211,7 @@ class KW_LLV_Admin {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><label><?php esc_html_e( 'Play Button', LL_TD ); ?><span class="newred">Updated</span></label></th>
+					        	<th scope="row"><label><?php esc_html_e( 'Play Button', LL_TD ); ?></label></th>
 						        <td>
 									<select class="select" typle="select" name="ll_opt_button_style">
 										<option value="default"<?php if (get_option('ll_opt_button_style') === 'default') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'White (CSS-only)', LL_TD ); ?></option>
