@@ -1,15 +1,15 @@
 === Lazy Load for Videos ===
 Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
-Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, content, video, mobile, lazy load, privacy
+Tags: youtube, vimeo, performance, lazy-load, privacy
 Requires at least: 5.6
-Tested up to: 6.5.3
+Tested up to: 6.8.0
 Requires PHP: 7.2
-Stable tag: 2.18.3
+Stable tag: 2.18.4
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
-Improve page speed by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
+Boost page speed by replacing embedded YouTube and Vimeo videos with a clickable preview image. Video scripts only load on click.
 
 == Description ==
 
