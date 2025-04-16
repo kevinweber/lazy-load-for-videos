@@ -1,5 +1,4 @@
-Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)
-====================
+# Lazy Load for Videos by [Kevin Weber](https://www.kweber.com)
 
 This plugin improves page load time and increases your Google PageSpeed Score. It works with oEmbed and replaces embedded Youtube and Vimeo videos with a clickable preview image.
 By loading videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy. Additionally, all Youtube videos are loaded in a privacy-enhanced mode using the "<https://www.youtube-nocookie.com>" embed URL.
@@ -25,7 +24,7 @@ This is open source. Everyone can contribute, including you! I'm looking forward
 
 You can override when the JS and CSS of this plugin should be loaded. If you always return `true` as shown in the example below, the scripts will always be loaded, no matter if the page has a video embed or not.
 
-```
+```php
 function custom_theme_plugin__should_scripts_be_loaded($value) {
  // return $value;
  return true; // <- Always load scripts, no matter what page you're on
