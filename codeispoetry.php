@@ -49,8 +49,12 @@ if ( !defined( 'LL_PATH' ) )
 if ( !defined( 'LL_URL' ) )
 	define( 'LL_URL', plugin_dir_url( __FILE__ ) );
 
+/**
+ * Definitions for admin page
+ */
+if ( !defined( 'LL_ADMIN_URL' ) )
+	define( 'LL_ADMIN_URL', 'lazyload.php' );
 
-require_once( LL_PATH . 'src/php/inc/define.php' );
 require_once( LL_PATH . 'src/php/class-register.php' );
 
 /**
@@ -60,7 +64,8 @@ require_once( LL_PATH . 'src/php/class-register.php' );
 function lazyload_load_textdomain() {
   load_plugin_textdomain( LL_TD, false, dirname( plugin_basename( LL_FILE ) ) . '/languages/' );
 }
-add_action( 'plugins_loaded', 'lazyload_load_textdomain' );
+
+add_action( 'init', 'lazyload_load_textdomain' );
 
 function lazyload_videos_init_plugins_loaded() {
 	require_once( LL_PATH . 'src/php/class-admin-options.php' );
@@ -68,7 +73,7 @@ function lazyload_videos_init_plugins_loaded() {
 	require_once( LL_PATH . 'src/php/class-editor.php' );
 }
 
-add_action( 'plugins_loaded', 'lazyload_videos_init_plugins_loaded', 15 );
+add_action( 'init', 'lazyload_videos_init_plugins_loaded' );
 
 
 
@@ -90,9 +95,9 @@ function lazyload_videos_frontend_init() {
 }
 
 if ( is_admin() ) {
-	add_action( 'plugins_loaded', 'lazyload_videos_admin_init', 16 );
+	add_action( 'init', 'lazyload_videos_admin_init', 16 );
 } else {
-	add_action( 'plugins_loaded', 'lazyload_videos_frontend_init', 16 );
+	add_action( 'init', 'lazyload_videos_frontend_init', 16 );
 }
 
 /***** Plugin by Kevin Weber || www.kweber.com *****/

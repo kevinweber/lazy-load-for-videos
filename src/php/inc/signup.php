@@ -1,3 +1,5 @@
+<?php require_once( LL_PATH . 'src/php/inc/signup-define.php' ); ?>
+
 <div id="mc_embed_signup">
 <form action="<?php echo LL_NEWS_ACTION_URL; ?>" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 	<div class="mc-field-group updated">

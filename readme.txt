@@ -155,6 +155,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
+= 2.18.4 =
+* Resolve warning about the timing of translation loading
+
 = 2.18.3 =
 * Security: Patch potential CSRF attack vector
 
