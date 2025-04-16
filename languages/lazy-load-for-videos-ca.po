@@ -2,173 +2,176 @@
 # This file is distributed under the same license as the Lazy Load for Videos package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Lazy Load for Videos 2.2.1\n"
+"Project-Id-Version: Lazy Load for Videos 2.18.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lazy-load-for-"
 "videos\n"
 "POT-Creation-Date: 2025-03-15 16:02+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2025-03-15 23:53+0100\n"
+"Last-Translator: Martin Steghöfer <martin@steghoefer.eu>\n"
+"Language-Team: -\n"
 
 #: src/php/class-meta.php:65 src/php/class-admin-options.php:242
 msgid "Thumbnail quality"
-msgstr ""
+msgstr "Qualitat de miniatures"
 
 #: src/php/class-meta.php:69
 msgid "Default"
-msgstr ""
+msgstr "Per defecte"
 
 #: src/php/class-meta.php:70 src/php/class-admin-options.php:245
 msgid "Standard quality"
-msgstr ""
+msgstr "Qualitat estàndard"
 
 #: src/php/class-meta.php:71 src/php/class-admin-options.php:246
 msgid "Higher quality"
-msgstr ""
+msgstr "Qualitat alta"
 
 #: src/php/class-meta.php:72 src/php/class-admin-options.php:247
 msgid "Max resolution"
-msgstr ""
+msgstr "Màxima resolució"
 
 #: src/php/inc/define.php:5
 msgid ""
 "To suggest and vote for new features: Let the developer come into contact "
 "with you."
-msgstr ""
+msgstr "Per suggerir i votar noves funcionalitats: Permeteu que "
+"el desenvolupador es posi en contacte amb vosaltres."
 
 #: src/php/inc/define.php:6
 msgid "Get contacted"
-msgstr ""
+msgstr "Sol·licitar informació"
 
 #: src/php/inc/define.php:7
 msgid "Enter your email address"
-msgstr ""
+msgstr "Entreu la vostra adreça de correu"
 
-#: src/php/inc/define.php:8
+#: src/php/inc/define.php:7
 msgid "Signup via Plugin"
-msgstr ""
+msgstr "Registre mitjançant plugin"
 
 #: src/php/class-admin-options.php:48
 msgid "Settings"
-msgstr ""
+msgstr "Configuració"
 
 #: src/php/class-admin-options.php:137 src/php/class-admin-options.php:184
 msgid "Lazy Load for Videos"
-msgstr ""
+msgstr "Lazy Load for Videos"
 
 #: src/php/class-admin-options.php:180
 msgid "Your posts have been updated successfully."
-msgstr ""
+msgstr "Els teus posts s'han actualitzat amb èxit."
 
 #: src/php/class-admin-options.php:184
 msgid "by"
-msgstr ""
+msgstr "de"
 
 #: src/php/class-admin-options.php:184
 msgid "Website by Kevin Weber"
-msgstr ""
+msgstr "Lloc web de Kevin Weber"
 
 #: src/php/class-admin-options.php:184
 msgid "Version"
-msgstr ""
+msgstr "Versió"
 
 #: src/php/class-admin-options.php:185
 msgid "Speed up your site and customise your video player!"
-msgstr ""
+msgstr "Accelera el teu web i personalitza el teu reproductor de vídeos!"
 
 #: src/php/class-admin-options.php:188 src/php/class-admin-options.php:203
 msgid "General/Styling"
-msgstr ""
+msgstr "General/Estil"
 
 #: src/php/class-admin-options.php:189
 msgid "YouTube"
-msgstr ""
+msgstr "YouTube"
 
 #: src/php/class-admin-options.php:190
 msgid "Vimeo"
-msgstr ""
+msgstr "Vimeo"
 
 #: src/php/class-admin-options.php:208
 msgid "Only load CSS/JS when needed"
-msgstr ""
+msgstr "Carregar CSS/JS només quan sigui necessari"
 
 #: src/php/class-admin-options.php:208
 msgid "to improve performance"
-msgstr ""
+msgstr "per millorar el rendiment"
 
 #: src/php/class-admin-options.php:210 src/php/class-admin-options.php:299
 #: src/php/class-admin-options.php:383 src/php/class-admin-options.php:389
 msgid "Important:"
-msgstr ""
+msgstr "Important:"
 
 #: src/php/class-admin-options.php:210
 msgid ""
 "When this option is checked, some videos might not lazy load if posts with "
 "videos are loaded using Ajax."
 msgstr ""
+"Si aquesta opció està marcada, és possible que alguns vídeos no es carreguin "
+"de manera 'lazy', si pàgines amb vídeos es carreguen mitjançant Ajax."
 
 #: src/php/class-admin-options.php:214
 msgid "Play Button"
-msgstr ""
+msgstr "Botó de reproducció"
 
 #: src/php/class-admin-options.php:217
 msgid "White (CSS-only)"
-msgstr ""
+msgstr "Blanc (només CSS)"
 
 #: src/php/class-admin-options.php:218
 msgid "White Pulse (CSS-only)"
-msgstr ""
+msgstr "Blanc Pols (CSS-only)"
 
 #: src/php/class-admin-options.php:219
 msgid "Black (CSS-only)"
-msgstr ""
+msgstr "Negre (CSS-only)"
 
 #: src/php/class-admin-options.php:220
 msgid "Black Pulse (CSS-only)"
-msgstr ""
+msgstr "Negre Pols (CSS-only)"
 
 #: src/php/class-admin-options.php:221
 msgid "Old Youtube button image"
-msgstr ""
+msgstr "Botó antic de YouTube (imatge)"
 
 #: src/php/class-admin-options.php:222
 msgid "Red Youtube button image"
-msgstr ""
+msgstr "Botó vermell de YouTube (imatge)"
 
 #: src/php/class-admin-options.php:223
 msgid "No play button"
-msgstr ""
+msgstr "Sense botó de reproducció"
 
 #: src/php/class-admin-options.php:228
 msgid "Thumbnails/Patterns"
-msgstr ""
+msgstr "Miniatures/patrons"
 
 #: src/php/class-admin-options.php:231
 msgid "Thumbnail covering the video element"
-msgstr ""
+msgstr "Miniatura sobre l'element de vídeo sencer"
 
 #: src/php/class-admin-options.php:232
 msgid "Thumbnail contained within the video element"
-msgstr ""
+msgstr "Miniatura dins de l'element de vídeo"
 
 #: src/php/class-admin-options.php:233
 msgid "Pattern: Carbon"
-msgstr ""
+msgstr "Patró: Carbó"
 
 #: src/php/class-admin-options.php:234
 msgid "Pattern: Dots"
-msgstr ""
+msgstr "Patró: Punts"
 
 #: src/php/class-admin-options.php:235
 msgid "Pattern: Light Seigaiha"
-msgstr ""
+msgstr "Patró: Seigaiha clar"
 
 #: src/php/class-admin-options.php:236
 msgid "None"
-msgstr ""
+msgstr "Cap"
 
 #: src/php/class-admin-options.php:238
 msgid ""
@@ -176,6 +179,9 @@ msgid ""
 "a video platform. You can display one of the available patterns instead, or "
 "nothing at all."
 msgstr ""
+"Per mostrar una miniatura cal que es faci una sol·licitut al servidor de "
+"la plataforma de vídeos. Podeu mostrar un dels patrons disponibles en comptes de la miniatura, o "
+"no mostrar res en absolut."
 
 #: src/php/class-admin-options.php:249
 msgid ""
@@ -183,14 +189,17 @@ msgid ""
 "resolution thumbnail is not available, a lower quality thumbnail will be "
 "loaded. This setting can be overridden on every individual page/post."
 msgstr ""
+"Definiu la qualitat per defecte de les minatures. Si no hi ha cap "
+"imatge de màxima resolució disponible, es farà servir una imatge de qualitat "
+"més baixa. Aquesta opció es pot sobreescriure a cada pàgina/post individual."
 
 #: src/php/class-admin-options.php:253
 msgid "Custom CSS"
-msgstr ""
+msgstr "CSS personalitzat"
 
 #: src/php/class-admin-options.php:259
 msgid "Support for TablePress"
-msgstr ""
+msgstr "Suport per a TablePress"
 
 #: src/php/class-admin-options.php:261
 msgid ""
@@ -198,10 +207,13 @@ msgid ""
 "performance). If checked, you can paste a Youtube or Vimeo URL into tables "
 "that are created with TablePress and it will be lazy loaded."
 msgstr ""
+"Només marqueu aquesta opció si realment esteu fent servir aquesta funcionalitat (per motius de "
+"rendiment). Si està marcada, podeu enganxar una adreça de YouTube o Vimeo a dins de taules "
+"creades amb TablePress i es carregaran de manera 'lazy'."
 
 #: src/php/class-admin-options.php:265
 msgid "Attribution"
-msgstr ""
+msgstr "Atribució"
 
 #: src/php/class-admin-options.php:265
 #, php-format
@@ -209,76 +221,82 @@ msgid ""
 "Are you thankful for this plugin? I've invested months and months of work. "
 "This plugin is 100% free and open source."
 msgstr ""
+"Esteu agraïts per aquest plugin? Hi he invertit mesos i mesos de feina. "
+"Aquest plugin és 100% lliure i de codi obert."
 
 #: src/php/class-admin-options.php:268
 msgid ""
 "No attribution: \"I can not afford to give appropriate credit for this free "
 "plugin.\""
-msgstr ""
+msgstr "Cap atribució: \"No em puc permetre atribuir el mèrit adequat per a aquest plugin gratuït.\""
 
 #: src/php/class-admin-options.php:271
 msgid "Donation: \"I have donated already or will do so soon.\""
-msgstr ""
+msgstr "Donatiu: \"Ja he fet un donatiu o el faré aviat.\""
 
 #: src/php/class-admin-options.php:272
 #, php-format
 msgid ""
 "Please %1$sdonate now%2$s so I can keep maintaining and improving this "
 "plugin."
-msgstr ""
+msgstr "Si us plau, %1$sfeu un donatiu ara%2$s perquè pugui mantenir i millorar aquest plugin."
 
 #: src/php/class-admin-options.php:286
 msgid "Lazy Load for Youtube"
-msgstr ""
+msgstr "Càrrega 'lazy' per a YouTube"
 
 #: src/php/class-admin-options.php:291
 msgid "Disable Lazy Load for Youtube"
-msgstr ""
+msgstr "Desactivar la càrrega 'lazy' per a YouTube"
 
 #: src/php/class-admin-options.php:295 src/php/class-admin-options.php:379
 #, php-format
 msgid "If checked, Lazy Load will not be used for %1$s videos."
-msgstr ""
+msgstr "Si està marcat, no es farà servir càrrega 'lazy' per a %1$s vídeos."
 
 #: src/php/class-admin-options.php:299 src/php/class-admin-options.php:383
 msgid ""
 "Updates on this option will only affect new posts and posts you update "
 "afterwards with the \"Update Posts\" button at the bottom of this form."
-msgstr ""
+msgstr "Els canvis d'aquesta opció afectaran només pàgines noves i pàgines que actualitzeu "
+"després de canviar l'opció mitjançant el butó \"Actualitzar pàgines\" a la part inferior"
+"d'aquest formulari."
 
 #: src/php/class-admin-options.php:303
 msgid "Display Youtube title"
-msgstr ""
+msgstr "Mostrar títols de vídeos YouTube"
 
 #: src/php/class-admin-options.php:305
 msgid "If checked, the Youtube video title will be displayed on preview image."
-msgstr ""
+msgstr "Si està marcat, es mostrarà el títol del vídeo YouTube sobre la miniatura."
 
 #: src/php/class-admin-options.php:309 src/php/class-admin-options.php:393
 msgid "Text Overlay"
-msgstr ""
+msgstr "Superposició de text"
 
 #: src/php/class-admin-options.php:313
 msgid ""
 "Enter text to be displayed on top of all video thumbnails, for example a "
 "privacy disclaimer. Supports HTML."
 msgstr ""
+"Entreu el text que es mostrarà sobre totes les vistes prèvies de vídeos, per exemple "
+"un avís de privacitat. Aquesta funció suporta HTML."
 
 #: src/php/class-admin-options.php:317
 msgid "Pre-roll/post-roll ads"
-msgstr ""
+msgstr "Anuncis pre-roll/post-roll"
 
 #: src/php/class-admin-options.php:319
 msgid "Pre-roll"
-msgstr ""
+msgstr "Abans de reproducció"
 
 #: src/php/class-admin-options.php:320
 msgid "Post-roll"
-msgstr ""
+msgstr "Després de reproducció"
 
 #: src/php/class-admin-options.php:320
 msgid "(multiple IDs allowed)"
-msgstr ""
+msgstr "(es permeten múltiples IDs)"
 
 #: src/php/class-admin-options.php:323
 #, php-format
@@ -288,40 +306,44 @@ msgid ""
 "insert the plain Youtube %1$s, like %2$s or a comma-separated list of video "
 "IDs (%3$s)."
 msgstr ""
+"Convertir tots els vídeos de YouTube en una llista de reproducció i afegir automàticament el vostre "
+"vídeo corporatiu, un vídeo teaser d'un producte o qualsevol altre vídeo. Cal especificar "
+"els %1$s plans de YouTube, com ara %2$s, o una llista separada per comes d'IDs de vídeos (%3$s)."
 
 #: src/php/class-admin-options.php:332
 msgid "Colour of progress bar"
-msgstr ""
+msgstr "Color de la barra de progrés"
 
 #: src/php/class-admin-options.php:335
 msgid "Red (default)"
-msgstr ""
+msgstr "Vermell (per defecte)"
 
 #: src/php/class-admin-options.php:336
 msgid "White"
-msgstr ""
+msgstr "Blanc"
 
 #: src/php/class-admin-options.php:341
 msgid "Hide annotations"
-msgstr ""
+msgstr "Amagar anotacions"
 
 #: src/php/class-admin-options.php:343
 msgid ""
 "If checked, video annotations (like \"subscribe to channel\") will not be "
 "shown."
-msgstr ""
+msgstr "Si està marcat, les anotacions dels vídeos (com ara \"Subscriu-te al canal\") no es "
+"mostraran."
 
 #: src/php/class-admin-options.php:347
 msgid "Hide player controls"
-msgstr ""
+msgstr "Amagar els controls del reproductor"
 
 #: src/php/class-admin-options.php:349
 msgid "If checked, Youtube player controls will not be displayed."
-msgstr ""
+msgstr "Si està marcat, els controls del reproductor de YouTube no es mostraran."
 
 #: src/php/class-admin-options.php:353
 msgid "Enable Youtube cookies"
-msgstr ""
+msgstr "Activar galetes de YouTube"
 
 #: src/php/class-admin-options.php:355
 msgid ""
@@ -329,10 +351,13 @@ msgid ""
 "\"youtube-nocookie.com\". This means Youtube video creators will get more "
 "extensive tracking stats at the expense of the privacy of your users."
 msgstr ""
+"Si està marcat, els vídeos de YouTube tindran una URL amb \"youtube.com\" en comptes de "
+"\"youtube-nocookie.com\". Això significa que els creadors dels vídeos de YouTube tindran "
+"estadístiques de rastreig més exhaustives a cost de la privacitat dels vostres usuaris."
 
 #: src/php/class-admin-options.php:359
 msgid "Support for widgets"
-msgstr ""
+msgstr "Suport per a ginys"
 
 #: src/php/class-admin-options.php:361
 msgid ""
@@ -340,36 +365,41 @@ msgid ""
 "performance)! If checked, you can paste a Youtube URL into a text widget and "
 "it will be lazy loaded."
 msgstr ""
+"Només marqueu aquesta opció si realment esteu fent servir aquesta funcionalitat (per motius de "
+"rendiment)! Si està marcat, podeu enganxar una URL de YouTube a un giny de text i es carregarà "
+"de forma 'lazy'."
 
 #: src/php/class-admin-options.php:370
 msgid "Lazy Load for Vimeo"
-msgstr ""
+msgstr "Càrrega 'lazy' per a Vimeo"
 
 #: src/php/class-admin-options.php:375
 msgid "Disable Lazy Load for Vimeo"
-msgstr ""
+msgstr "Desactivar la càrrega 'lazy' per a Vimeo"
 
 #: src/php/class-admin-options.php:387
 msgid "Display Vimeo title"
-msgstr ""
+msgstr "Mostrar títol de Vimeo"
 
 #: src/php/class-admin-options.php:389
 msgid "If checked, the Vimeo video title will be displayed on preview image."
-msgstr ""
+msgstr "Si està marcat, els títols dels vídeos de Vimeo es mostraran sobre la miniatura."
 
 #: src/php/class-admin-options.php:397
 msgid ""
 "Enter text to be displayed on top of all video thumbnails, for example a "
 "privacy disclaimer. No HTML."
 msgstr ""
+"Entreu el text que es mostrarà sobre totes les vistes prèvies de vídeos, per exemple "
+"un avís de privacitat. Aquesta funció no suporta HTML."
 
 #: src/php/class-admin-options.php:401
 msgid "Colour of the vimeo controls"
-msgstr ""
+msgstr "Color dels controls de Vimeo"
 
 #: src/php/class-admin-options.php:407
 msgid "Enable Vimeo cookies"
-msgstr ""
+msgstr "Activar galetes de Vimeo"
 
 #: src/php/class-admin-options.php:409
 msgid ""
@@ -377,32 +407,36 @@ msgid ""
 "\"dnt=1\". This means that Vimeo video creators will get more extensive "
 "tracking stats at the expense of the privacy of your users."
 msgstr ""
+"Si està marcat, els vídeos de Vimeo tindran una URL amb \"dnt=0\" en comptes de "
+"\"dnt=1\". Això significa que els creadors dels vídeos de Vimeo tindran "
+"estadístiques de rastreig més exhaustives a cost de la privacitat dels vostres usuaris."
 
 #: src/php/class-admin-options.php:425
 msgid "Update Posts"
-msgstr ""
+msgstr "Actualitzar pàgines"
 
 #: src/php/class-admin-options.php:428
 msgid "Save changes first."
-msgstr ""
+msgstr "Deseu els canvis abans."
 
 #: src/php/class-admin-options.php:428
 msgid ""
 "Update posts to setup your plugin for the first time or when recommended "
 "somewhere."
 msgstr ""
+"Actualitzar els posts per configurar el vostre plugin el primer cop (o quan està recomenat)."
 
 #: src/php/class-admin-options.php:438
 msgid "that's me."
-msgstr ""
+msgstr "Aquest sóc jo."
 
 #: src/php/class-admin-options.php:439
 msgid "I'm the developer of this plugin. Love it!"
-msgstr ""
+msgstr "Soc el desenvolupador d'aquest plugin. Us encanta?"
 
 #: src/php/class-admin-options.php:442
 msgid "It's free!"
-msgstr ""
+msgstr "És gratuït!"
 
 #: src/php/class-admin-options.php:443
 #, php-format
@@ -410,31 +444,33 @@ msgid ""
 "Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star "
 "rating %3$son WordPress.org%4$s."
 msgstr ""
+"Doneu suport amb %1$sun dinar deliciós%2$s o doneu una valoració de 5 estrelles "
+"%3$sa WordPress.org%4$s."
 
 #: src/php/class-admin-options.php:453
 msgid "Personal tip: Must use plugins"
-msgstr ""
+msgstr "Consell personal: Plugins imprescindibles"
 
 #: src/php/class-admin-options.php:455
 msgid "wBounce"
-msgstr ""
+msgstr "wBounce"
 
 #: src/php/class-admin-options.php:455
 msgid "(on my part)"
-msgstr ""
+msgstr "(de la meva part)"
 
 #: src/php/class-admin-options.php:456
 msgid "WordPress SEO"
-msgstr ""
+msgstr "Optimització de WordPress per a motors de cerca"
 
 #: src/php/class-admin-options.php:456
 msgid "(by Yoast)"
-msgstr ""
+msgstr "(de Yoast)"
 
 #: src/php/class-admin-options.php:457
 msgid "Broken Link Checker"
-msgstr ""
+msgstr "Comprovació d'enllaços trencats"
 
 #: src/php/class-admin-options.php:457
 msgid "(by Janis Elsts)"
-msgstr ""
+msgstr "(de Janis Elsts)"
