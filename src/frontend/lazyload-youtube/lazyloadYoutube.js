@@ -187,7 +187,7 @@ function loadVideo(domNode) {
   const title = videoTitle();
   videoLinkElement.innerHTML = title.length > 0 ? `
     <div aria-hidden="true" class="lazy-load-info">
-      <div class="titletext youtube">${title}</div>
+      <div class="titletext youtube">${window.wp.sanitize.esc_html(title)}</div>
     </div>` : '';
 
   const lazyloadDiv = createElements(

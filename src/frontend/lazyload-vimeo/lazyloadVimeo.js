@@ -93,7 +93,7 @@ function vimeoLoadingThumb(videoLinkElement, id) {
     const showTitle = window.llvConfig.vimeo.show_title && videoTitle.length > 0;
     const info = createElements(
       `<div aria-hidden="true" class="lazy-load-info">
-        <div class="titletext vimeo">${videoTitle}</div>
+        <div class="titletext vimeo">${window.wp.sanitize.esc_html(videoTitle)}</div>
       </div>`,
     );
     if (showTitle) {
