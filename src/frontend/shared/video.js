@@ -113,3 +113,14 @@ export function inViewOnce(elements, onIntersect) {
     observer.observe(element);
   });
 }
+
+export function escapeHTML(s) {
+  return s.replace(/[&<>"'`]/g, (c) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+    '`': '&#x60;',
+  }[c]));
+}

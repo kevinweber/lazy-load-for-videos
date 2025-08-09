@@ -3,6 +3,7 @@ import {
   resizeVideo,
   setBackgroundImage,
   inViewOnce,
+  escapeHTML,
 } from '../shared/video';
 import createElements from '../shared-utils/createElements';
 import findElements from '../shared-utils/findElements';
@@ -93,7 +94,7 @@ function vimeoLoadingThumb(videoLinkElement, id) {
     const showTitle = window.llvConfig.vimeo.show_title && videoTitle.length > 0;
     const info = createElements(
       `<div aria-hidden="true" class="lazy-load-info">
-        <div class="titletext vimeo">${window.wp.sanitize.esc_html(videoTitle)}</div>
+        <div class="titletext vimeo">${escapeHTML(videoTitle)}</div>
       </div>`,
     );
     if (showTitle) {
