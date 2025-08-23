@@ -5,7 +5,7 @@ Tags: youtube, vimeo, performance, lazy-load, privacy
 Requires at least: 5.6
 Tested up to: 6.8.2
 Requires PHP: 7.2
-Stable tag: 2.18.8
+Stable tag: 2.18.9
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -154,6 +154,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 == Changelog ==
+
+= 2.18.9 =
+* Minor tweaks of texts and links on the admin page
 
 = 2.18.8 =
 * Security: Patch potential XSS attack vector
