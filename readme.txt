@@ -18,9 +18,9 @@ By loading videos only when the user clicks on the preview image, no unnecessary
 
 This plugin works for your existing YouTube and Vimeo blocks. No vendor lock-in and no custom shortcodes: Easily turn the plugin on and off anytime.
 
-Demo on the developer’s website: [www.kweber.com/lazy-load-videos/](https://www.kweber.com/lazy-load-videos/)
-
-You want to enhance this plugin? Please [contribute on Github](https://github.com/kevinweber/lazy-load-for-videos).
+Plugin review with speed test results [on WP Tavern](https://wptavern.com/speed-up-wordpress-with-lazy-load-for-videos).
+Developers can contribute [on Github](https://github.com/kevinweber/lazy-load-for-videos).
+More about the author: [on kweber.com](https://www.kweber.com).
 
 = Some additional features: =
 * Display video titles on preview images

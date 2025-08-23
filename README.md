@@ -3,7 +3,7 @@
 This plugin improves page load time and increases your Google PageSpeed Score. It works with oEmbed and replaces embedded Youtube and Vimeo videos with a clickable preview image.
 By loading videos only when the user clicks on the preview image, no unnecessary JavaScript is loaded. Especially on sites with many embedded videos this will make your visitors happy. Additionally, all Youtube videos are loaded in a privacy-enhanced mode using the "<https://www.youtube-nocookie.com>" embed URL.
 
-[Download link and more information on the developer's website](https://www.kweber.com/lazy-load-videos/)
+[Download from WordPress.org](https://wordpress.org/plugins/lazy-load-for-videos/)
 
 ## How to contribute?
 
