@@ -139,7 +139,7 @@ function getThumbnailUrl(thumbnailId) {
 }
 
 function setBackgroundImg(element) {
-  const href = element.getAttribute('href');
+  const href = escapeHTML(element.getAttribute('href'));
   const { videoId } = parseOriginalUrl(href);
   let src = getThumbnailUrl(videoId);
 
@@ -167,7 +167,7 @@ function setBackgroundImg(element) {
 
 function loadVideo(domNode) {
   const videoLinkElement = domNode;
-  const href = videoLinkElement.getAttribute('href');
+  const href = escapeHTML(videoLinkElement.getAttribute('href'));
   const parsedUrl = parseOriginalUrl(href);
 
   /*
@@ -177,7 +177,7 @@ function loadVideo(domNode) {
 
   function videoTitle() {
     if (videoLinkElement.getAttribute('data-video-title') !== undefined) {
-      return videoLinkElement.getAttribute('data-video-title');
+      return escapeHTML(videoLinkElement.getAttribute('data-video-title'));
     }
     if (videoLinkElement.innerHTML) {
       return videoLinkElement.innerHTML;
@@ -189,7 +189,7 @@ function loadVideo(domNode) {
 
   videoLinkElement.innerHTML = title.length > 0 ? `
     <div aria-hidden="true" class="lazy-load-info">
-      <div class="titletext youtube">${escapeHTML(title)}</div>
+      <div class="titletext youtube">${title}</div>
     </div>` : '';
 
   const lazyloadDiv = createElements(

@@ -80,9 +80,9 @@ function vimeoLoadingThumb(videoLinkElement, id) {
   videoLinkElement.appendChild(playButtonDiv);
 
   if (window.llvConfig.vimeo.loadthumbnail) {
-    const videoThumbnail = processThumbnail(videoLinkElement.getAttribute(
+    const videoThumbnail = processThumbnail(escapeHTML(videoLinkElement.getAttribute(
       'data-video-thumbnail',
-    ));
+    )));
 
     if (videoThumbnail) {
       inViewOnce(findElements(`[id="${id}"]`), (element) => setBackgroundImage(element, videoThumbnail));
@@ -90,11 +90,11 @@ function vimeoLoadingThumb(videoLinkElement, id) {
   }
 
   if (window.llvConfig.vimeo.show_title) {
-    const videoTitle = videoLinkElement.getAttribute('data-video-title');
+    const videoTitle = escapeHTML(videoLinkElement.getAttribute('data-video-title'));
     const showTitle = window.llvConfig.vimeo.show_title && videoTitle.length > 0;
     const info = createElements(
       `<div aria-hidden="true" class="lazy-load-info">
-        <div class="titletext vimeo">${escapeHTML(videoTitle)}</div>
+        <div class="titletext vimeo">${videoTitle}</div>
       </div>`,
     );
     if (showTitle) {
@@ -109,7 +109,7 @@ function vimeoLoadingThumb(videoLinkElement, id) {
 
 function vimeoCreateThumbProcess(videoLinkElement) {
   const previewItem = videoLinkElement;
-  const videoId = previewItem.getAttribute('id');
+  const videoId = escapeHTML(previewItem.getAttribute('id'));
 
   // Remove no longer needed title (title is necessary for preview in text editor)
   previewItem.innerHTML = '';
@@ -182,10 +182,10 @@ function vimeoThumbnailEventListeners(videoLinkElement) {
       return;
     }
 
-    const videoId = eventTarget.getAttribute('id');
-    const videoUri = eventTarget.getAttribute('data-video-uri');
+    const videoId = escapeHTML(eventTarget.getAttribute('id'));
+    const videoUri = escapeHTML(eventTarget.getAttribute('data-video-uri'));
     const { hParam } = parseVideoUri(videoUri);
-    const videoHref = eventTarget.getAttribute('href');
+    const videoHref = escapeHTML(eventTarget.getAttribute('href'));
     const { queryParams } = parseOriginalUrl(videoHref);
 
     removePlayerControls(eventTarget);
