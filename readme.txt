@@ -20,7 +20,7 @@ This plugin works for your existing YouTube and Vimeo blocks. No vendor lock-in 
 
 Plugin review with speed test results [on WP Tavern](https://wptavern.com/speed-up-wordpress-with-lazy-load-for-videos).
 Developers can contribute [on Github](https://github.com/kevinweber/lazy-load-for-videos).
-More about the author: [on kweber.com](https://www.kweber.com).
+More about the author [on kweber.com](https://www.kweber.com).
 
 = Some additional features: =
 * Display video titles on preview images
