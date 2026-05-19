@@ -454,8 +454,8 @@ class KW_LLV_Admin
 									<label for="donate">
 										<?php esc_html_e('Donation: "I have donated already or will do so soon."', 'lazy-load-for-videos'); ?>
 										<?php
-										/* translators: %1$s: opening anchor tag for donation link, %2$s: closing anchor tag */
 										printf(
+											/* translators: %1$s: opening anchor tag for donation link, %2$s: closing anchor tag */
 											esc_html__('Please %1$sdonate now%2$s so I can keep maintaining and improving this plugin.', 'lazy-load-for-videos'),
 											'<a href="https://www.kweber.com/donate/LazyLoadVideos/" target="_blank">',
 											'</a>'
@@ -482,8 +482,8 @@ class KW_LLV_Admin
 									<input name="lly_opt" type="checkbox" value="1" <?php checked('1', get_option('lly_opt')); ?> />
 									<label>
 										<?php
-										/* translators: %1$s: Video provider name (e.g. YouTube) */
 										printf(
+											/* translators: %1$s: Video provider name (e.g. YouTube) */
 											esc_html__('If checked, Lazy Load will not be used for %1$s videos.', 'lazy-load-for-videos'),
 											'<b>Youtube</b>'
 										); ?>
@@ -529,8 +529,8 @@ class KW_LLV_Admin
 									<br>
 									<label>
 										<?php
-										/* translators: %1$s: video ID bold text, %2$s: example video ID bold text, %3$s: example list of video IDs italic text */
 										printf(
+											/* translators: %1$s: video ID bold text, %2$s: example video ID bold text, %3$s: example list of video IDs italic text */
 											esc_html__('Convert all Youtube videos into a playlist and automatically add your corporate video, product teaser or another video advertisement. You have to insert the plain Youtube %1$s, like %2$s or a comma-separated list of video IDs (%3$s).', 'lazy-load-for-videos'),
 											'<b>video ID</b>',
 											'<b>IJNR2EpS0jw</b>',
@@ -605,8 +605,8 @@ class KW_LLV_Admin
 									<input name="llv_opt" type="checkbox" value="1" <?php checked('1', get_option('llv_opt')); ?> />
 									<label>
 										<?php
-										/* translators: %1$s: Video provider name (e.g. Vimeo) */
 										printf(
+											/* translators: %1$s: Video provider name (e.g. Vimeo) */
 											esc_html__('If checked, Lazy Load will not be used for %1$s videos.', 'lazy-load-for-videos'),
 											'<b>Vimeo</b>'
 										); ?>
@@ -701,8 +701,8 @@ class KW_LLV_Admin
 						<p>
 							<b><?php esc_html_e('It\'s free!', 'lazy-load-for-videos'); ?></b>
 							<?php
-							/* translators: %1$s: opening anchor tag for donation link, %2$s: closing anchor tag, %3$s: opening anchor tag for review link, %4$s: closing anchor tag */
 							printf(
+								/* translators: %1$s: opening anchor tag for donation link, %2$s: closing anchor tag, %3$s: opening anchor tag for review link, %4$s: closing anchor tag */
 								esc_html__('Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star rating %3$son WordPress.org%4$s.', 'lazy-load-for-videos'),
 								'<a href="https://www.kweber.com/donate/LazyLoadVideos/" title="Pay me a delicious lunch" target="_blank">',
 								'</a>',
