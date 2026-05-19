@@ -400,7 +400,7 @@ class KW_LLV_Admin {
 					        <tr valign="top">
 					        	<th scope="row"><label><?php esc_html_e( 'Colour of the vimeo controls', LL_TD ); ?></label></th>
 					        	<td>
-					        		<input id="llv_picker_input_player_colour" class="ll_picker_player_colour picker-input" type="text" name="llv_opt_player_colour" data-default-color="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo get_option("llv_opt_player_colour"); } ?>" />
+					        		<input id="llv_picker_input_player_colour" class="ll_picker_player_colour picker-input" type="text" name="llv_opt_player_colour" data-default-color="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") { echo "#00adef"; } else { echo esc_attr(get_option("llv_opt_player_colour")); } ?>" />
 					        	</td>
 					        </tr>
 							<tr valign="top">
