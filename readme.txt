@@ -3,7 +3,7 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, lazy-load, privacy
 Requires at least: 5.6
-Tested up to: 6.9.4
+Tested up to: 6.9
 Requires PHP: 7.2
 Stable tag: 2.18.10
 License: GPL v3
