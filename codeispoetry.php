@@ -101,4 +101,3 @@ if ( is_admin() ) {
 }
 
 /***** Plugin by Kevin Weber || www.kweber.com *****/
-?>
