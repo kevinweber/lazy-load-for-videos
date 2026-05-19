@@ -84,6 +84,9 @@ const config = {
           },
           {
             loader: 'sass-loader',
+            options: {
+              api: 'modern-compiler',
+            },
           },
         ],
       },
