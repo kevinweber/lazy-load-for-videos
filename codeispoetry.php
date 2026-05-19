@@ -4,12 +4,12 @@
  * Plugin URI: https://wordpress.org/plugins/lazy-load-for-videos/
  * Description: Lazy Load for Videos speeds up your site by replacing embedded Youtube and Vimeo videos with a clickable preview image. Visitors simply click on the image to play the video.
  * Author: Kevin Weber
- * Version: 2.18.9
+ * Version: 2.18.10
  * Author URI: https://www.kweber.com/
  * License: GPL v3
  * Text Domain: lazy-load-for-videos
  * Domain Path: /languages/
-*/
+ */
 
 /*
 	Copyright (C) 2025 Kevin Weber
@@ -28,76 +28,80 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-if ( !defined( 'LL_OPTION_KEY' ) ) {
-	define( 'LL_OPTION_KEY', 'lazyloadvideos' );
+if (!defined('LL_OPTION_KEY')) {
+	define('LL_OPTION_KEY', 'lazyloadvideos');
 }
 
 if (!defined('LL_VERSION'))
-    define('LL_VERSION', '2.18.9');
+	define('LL_VERSION', '2.18.10');
 if (!defined('LL_VERSION_KEY'))
-    define('LL_VERSION_KEY', LL_OPTION_KEY.'_version');
+	define('LL_VERSION_KEY', LL_OPTION_KEY . '_version');
 
-if ( !defined( 'LL_FILE' ) )
-	define( 'LL_FILE', __FILE__ );
+if (!defined('LL_FILE'))
+	define('LL_FILE', __FILE__);
 
-if ( !defined( 'LL_TD' ) )
-	define( 'LL_TD', 'lazy-load-for-videos' ); // = text domain (used for translations)
+if (!defined('LL_TD'))
+	define('LL_TD', 'lazy-load-for-videos'); // = text domain (used for translations)
 
-if ( !defined( 'LL_PATH' ) )
-	define( 'LL_PATH', plugin_dir_path( __FILE__ ) );
+if (!defined('LL_PATH'))
+	define('LL_PATH', plugin_dir_path(__FILE__));
 
-if ( !defined( 'LL_URL' ) )
-	define( 'LL_URL', plugin_dir_url( __FILE__ ) );
+if (!defined('LL_URL'))
+	define('LL_URL', plugin_dir_url(__FILE__));
 
 /**
  * Definitions for admin page
  */
-if ( !defined( 'LL_ADMIN_URL' ) )
-	define( 'LL_ADMIN_URL', 'lazyload.php' );
+if (!defined('LL_ADMIN_URL'))
+	define('LL_ADMIN_URL', 'lazyload.php');
 
-require_once( LL_PATH . 'src/php/class-register.php' );
+require_once(LL_PATH . 'src/php/class-register.php');
 
 /**
  * Load plugin textdomain.
  * @since 2.2.0.4
  */
-function lazyload_load_textdomain() {
-  load_plugin_textdomain( LL_TD, false, dirname( plugin_basename( LL_FILE ) ) . '/languages/' );
+function lazyload_load_textdomain()
+{
+	load_plugin_textdomain(LL_TD, false, dirname(plugin_basename(LL_FILE)) . '/languages/');
 }
 
-add_action( 'init', 'lazyload_load_textdomain' );
+add_action('init', 'lazyload_load_textdomain');
 
-function lazyload_videos_init_plugins_loaded() {
-	require_once( LL_PATH . 'src/php/class-admin-options.php' );
-	require_once( LL_PATH . 'src/php/class-frontend.php' );
-	require_once( LL_PATH . 'src/php/class-editor.php' );
+function lazyload_videos_init_plugins_loaded()
+{
+	require_once(LL_PATH . 'src/php/class-admin-options.php');
+	require_once(LL_PATH . 'src/php/class-frontend.php');
+	require_once(LL_PATH . 'src/php/class-editor.php');
 }
 
-add_action( 'init', 'lazyload_videos_init_plugins_loaded' );
+add_action('init', 'lazyload_videos_init_plugins_loaded');
 
 
 
-function lazyload_videos_admin_init() {
-	require_once( LL_PATH . 'src/php/class-meta.php' );
-	require_once( LL_PATH . 'src/php/inc/support_for_woocommerce_csv_export.php');
+function lazyload_videos_admin_init()
+{
+	require_once(LL_PATH . 'src/php/class-meta.php');
+	require_once(LL_PATH . 'src/php/inc/support_for_woocommerce_csv_export.php');
 }
 
-function lazyload_videos_frontend_init() {
+function lazyload_videos_frontend_init()
+{
 	// Feature: Support for Widgets (Youtube only)
-	if ( (get_option('lly_opt_support_for_widgets') == true) ) {
-		require_once( LL_PATH . 'src/php/inc/support_for_widgets.php');
+	if ((get_option('lly_opt_support_for_widgets') == true)) {
+		require_once(LL_PATH . 'src/php/inc/support_for_widgets.php');
 	}
 
 	// Feature: Support for Plugin "TablePress"
-	if ( (get_option('ll_opt_support_for_tablepress') == true) ) {
-		require_once( LL_PATH . 'src/php/inc/support_for_tablepress.php');
+	if ((get_option('ll_opt_support_for_tablepress') == true)) {
+		require_once(LL_PATH . 'src/php/inc/support_for_tablepress.php');
 	}
 }
 
-if ( is_admin() ) {
-	add_action( 'init', 'lazyload_videos_admin_init', 16 );
+if (is_admin()) {
+	add_action('init', 'lazyload_videos_admin_init', 16);
 } else {
-	add_action( 'init', 'lazyload_videos_frontend_init', 16 );
+	add_action('init', 'lazyload_videos_frontend_init', 16);
 }
 
 /***** Plugin by Kevin Weber || www.kweber.com *****/
