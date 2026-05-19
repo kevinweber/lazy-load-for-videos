@@ -298,7 +298,8 @@ class KW_LLV_Admin
 						Weber</a> (<?php esc_html_e('Version', 'lazy-load-for-videos'); ?>
 					<?php echo esc_html(LL_VERSION); ?>)</span></h1>
 			<h2 class="claim" style="font-size:15px;font-style:italic;position:relative;top:-10px;">
-				<?php esc_html_e('Speed up your site and customise your video player!', 'lazy-load-for-videos'); ?></h2>
+				<?php esc_html_e('Speed up your site and customise your video player!', 'lazy-load-for-videos'); ?>
+			</h2>
 
 			<ul class="nav-tab-wrapper">
 				<li class="nav-tab"><a href="#general"><?php esc_html_e('General/Styling', 'lazy-load-for-videos'); ?></a>
@@ -341,37 +342,45 @@ class KW_LLV_Admin
 										<option value="default" <?php if (get_option('ll_opt_button_style') === 'default') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('White (CSS-only)', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('White (CSS-only)', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="css_white_pulse" <?php if (get_option('ll_opt_button_style') === 'css_white_pulse') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('White Pulse (CSS-only)', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('White Pulse (CSS-only)', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="css_black" <?php if (get_option('ll_opt_button_style') === 'css_black') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Black (CSS-only)', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Black (CSS-only)', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="css_black_pulse" <?php if (get_option('ll_opt_button_style') === 'css_black_pulse') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Black Pulse (CSS-only)', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Black Pulse (CSS-only)', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="youtube_button_image" <?php if (get_option('ll_opt_button_style') === 'youtube_button_image') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Old Youtube button image', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Old Youtube button image', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="youtube_button_image_red" <?php if (get_option('ll_opt_button_style') === 'youtube_button_image_red') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Red Youtube button image', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Red Youtube button image', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="none" <?php if (get_option('ll_opt_button_style') === 'none') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('No play button', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('No play button', 'lazy-load-for-videos'); ?>
+										</option>
 									</select>
 								</td>
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Thumbnails/Patterns', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Thumbnails/Patterns', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<select class="select" typle="select" name="ll_opt_thumbnail_size">
 										<option value="cover" <?php if (get_option('ll_opt_thumbnail_size') === 'cover') {
@@ -387,15 +396,18 @@ class KW_LLV_Admin
 										<option value="pattern-carbon" <?php if (get_option('ll_opt_thumbnail_size') === 'pattern-carbon') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Pattern: Carbon', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Pattern: Carbon', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="pattern-dots" <?php if (get_option('ll_opt_thumbnail_size') === 'pattern-dots') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Pattern: Dots', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Pattern: Dots', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="pattern-light-s" <?php if (get_option('ll_opt_thumbnail_size') === 'pattern-light-s') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Pattern: Light Seigaiha', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Pattern: Light Seigaiha', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="none" <?php if (get_option('ll_opt_thumbnail_size') === 'none') {
 											echo ' selected="selected"';
 										} ?>><?php esc_html_e('None', 'lazy-load-for-videos'); ?>
@@ -407,21 +419,25 @@ class KW_LLV_Admin
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Thumbnail quality', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Thumbnail quality', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<select class="select" typle="select" name="ll_opt_thumbnail_quality">
 										<option value="basic" <?php if (get_option('ll_opt_thumbnail_quality') === 'basic') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Standard quality', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Standard quality', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="medium" <?php if (get_option('ll_opt_thumbnail_quality') === 'medium') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Higher quality', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Higher quality', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="max" <?php if (get_option('ll_opt_thumbnail_quality') === 'max') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Max resolution', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Max resolution', 'lazy-load-for-videos'); ?>
+										</option>
 									</select>
 									<p><?php esc_html_e('Define which thumbnail quality should be used by default. When a maximum resolution thumbnail is not available, a lower quality thumbnail will be loaded. This setting can be overridden on every individual page/post.', 'lazy-load-for-videos'); ?>
 									</p>
@@ -436,7 +452,8 @@ class KW_LLV_Admin
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Support for TablePress', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Support for TablePress', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<input name="ll_opt_support_for_tablepress" type="checkbox" value="1" <?php checked('1', get_option('ll_opt_support_for_tablepress')); ?> />
 									<label><?php esc_html_e('Only check this box if you actually use this feature (for reason of performance). If checked, you can paste a Youtube or Vimeo URL into tables that are created with TablePress and it will be lazy loaded.', 'lazy-load-for-videos'); ?></label>
@@ -495,7 +512,8 @@ class KW_LLV_Admin
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Display Youtube title', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Display Youtube title', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<input name="lly_opt_title" type="checkbox" value="1" <?php checked('1', get_option('lly_opt_title')); ?> />
 									<label><?php esc_html_e('If checked, the Youtube video title will be displayed on preview image.', 'lazy-load-for-videos'); ?></label>
@@ -515,7 +533,8 @@ class KW_LLV_Admin
 							<tr valign="top">
 								<th scope="row">
 									<label><?php esc_html_e('Pre-roll/post-roll ads', 'lazy-load-for-videos'); ?><span
-											class="description thin"><br>Sell advertising space!</span></label></th>
+											class="description thin"><br>Sell advertising space!</span></label>
+								</th>
 								<td>
 									<strong
 										style="width:80px;display:inline-block"><?php esc_html_e('Pre-roll', 'lazy-load-for-videos'); ?></strong>
@@ -541,23 +560,27 @@ class KW_LLV_Admin
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Colour of progress bar', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Colour of progress bar', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<select class="select" typle="select" name="lly_opt_player_colour_progress">
 										<option value="red" <?php if (get_option('lly_opt_player_colour_progress') === 'red') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('Red (default)', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('Red (default)', 'lazy-load-for-videos'); ?>
+										</option>
 										<option value="white" <?php if (get_option('lly_opt_player_colour_progress') === 'white') {
 											echo ' selected="selected"';
 										} ?>>
-											<?php esc_html_e('White', 'lazy-load-for-videos'); ?></option>
+											<?php esc_html_e('White', 'lazy-load-for-videos'); ?>
+										</option>
 									</select>
 								</td>
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Hide annotations', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Hide annotations', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<input name="lly_opt_player_loadpolicy" type="checkbox" value="1" <?php checked('1', get_option('lly_opt_player_loadpolicy')); ?> />
 									<label><?php esc_html_e('If checked, video annotations (like "subscribe to channel") will not be shown.', 'lazy-load-for-videos'); ?></label>
@@ -565,7 +588,8 @@ class KW_LLV_Admin
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Hide player controls', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Hide player controls', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<input name="lly_opt_player_controls" type="checkbox" value="1" <?php checked('1', get_option('lly_opt_player_controls')); ?> />
 									<label><?php esc_html_e('If checked, Youtube player controls will not be displayed.', 'lazy-load-for-videos'); ?></label>
@@ -573,7 +597,8 @@ class KW_LLV_Admin
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Enable Youtube cookies', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Enable Youtube cookies', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<input name="lly_opt_cookies" type="checkbox" value="1" <?php checked('1', get_option('lly_opt_cookies')); ?> />
 									<label><?php esc_html_e('If checked, Youtube videos will have a URL with "youtube.com" instead of "youtube-nocookie.com". This means Youtube video creators will get more extensive tracking stats at the expense of the privacy of your users.', 'lazy-load-for-videos'); ?></label>
@@ -581,7 +606,8 @@ class KW_LLV_Admin
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Support for widgets', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Support for widgets', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<input name="lly_opt_support_for_widgets" type="checkbox" value="1" <?php checked('1', get_option('lly_opt_support_for_widgets')); ?> />
 									<label><?php esc_html_e('Only check this box if you actually use this feature (for reason of performance)! If checked, you can paste a Youtube URL into a text widget and it will be lazy loaded.', 'lazy-load-for-videos'); ?></label>
@@ -618,7 +644,8 @@ class KW_LLV_Admin
 							</tr>
 							<tr valign="top">
 								<th scope="row">
-									<label><?php esc_html_e('Display Vimeo title', 'lazy-load-for-videos'); ?></label></th>
+									<label><?php esc_html_e('Display Vimeo title', 'lazy-load-for-videos'); ?></label>
+								</th>
 								<td>
 									<input name="llv_opt_title" type="checkbox" value="1" <?php checked('1', get_option('llv_opt_title')); ?> />
 									<label><?php esc_html_e('If checked, the Vimeo video title will be displayed on preview image.', 'lazy-load-for-videos'); ?>
@@ -645,8 +672,7 @@ class KW_LLV_Admin
 								</th>
 								<td>
 									<input id="llv_picker_input_player_colour" class="ll_picker_player_colour picker-input"
-										type="text" name="llv_opt_player_colour" data-default-color="#00adef"
-										value="<?php if (get_option("llv_opt_player_colour") == "") {
+										type="text" name="llv_opt_player_colour" data-default-color="#00adef" value="<?php if (get_option("llv_opt_player_colour") == "") {
 											echo "#00adef";
 										} else {
 											echo esc_attr(get_option("llv_opt_player_colour"));
@@ -656,7 +682,8 @@ class KW_LLV_Admin
 							<tr valign="top">
 								<th scope="row">
 									<label><?php esc_html_e('Enable Vimeo cookies', 'lazy-load-for-videos'); ?><span
-											class="newred">v2.17.0: New feature</span></label></th>
+											class="newred">v2.17.0: New feature</span></label>
+								</th>
 								<td>
 									<input name="llv_opt_cookies" type="checkbox" value="1" <?php checked('1', get_option('llv_opt_cookies')); ?> />
 									<label><?php esc_html_e('If checked, Vimeo videos will have a URL with "dnt=0" instead of "dnt=1". This means that Vimeo video creators will get more extensive tracking stats at the expense of the privacy of your users.', 'lazy-load-for-videos'); ?></label>
@@ -695,7 +722,8 @@ class KW_LLV_Admin
 					<td style="width:200px;">
 						<p><a href="https://www.kweber.com/" target="_blank">Kevin Weber</a> &ndash;
 							<?php esc_html_e('that\'s me.', 'lazy-load-for-videos'); ?><br>
-							<?php esc_html_e('I\'m the developer of this plugin. Love it!', 'lazy-load-for-videos'); ?></p>
+							<?php esc_html_e('I\'m the developer of this plugin. Love it!', 'lazy-load-for-videos'); ?>
+						</p>
 					</td>
 					<td>
 						<p>
