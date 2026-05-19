@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class KW_LLV_Meta {
 
 	private $select_thumbnail_quality = 'lazyload_thumbnail_quality';
@@ -64,7 +68,7 @@ class KW_LLV_Meta {
 
 		<h4><?php esc_html_e( 'Thumbnail quality', 'lazy-load-for-videos' ); ?></h4>
 		<p>
-			<select class="select" type="select" name="<?php echo $select_thumbnail_quality; ?>" id="<?php $select_thumbnail_quality; ?>">
+			<select class="select" type="select" name="<?php echo esc_attr( $select_thumbnail_quality ); ?>" id="<?php echo esc_attr( $select_thumbnail_quality ); ?>">
 			<?php $meta_element_class = get_post_meta($post->ID, $select_thumbnail_quality, true);	?>
 		      <option value="default" <?php selected( $meta_element_class, 'default' ); ?>><?php esc_html_e( 'Default', 'lazy-load-for-videos' ); ?></option>
 		      <option value="basic" <?php selected( $meta_element_class, 'basic' ); ?>><?php esc_html_e( 'Standard quality', 'lazy-load-for-videos' ); ?></option>
@@ -81,7 +85,7 @@ class KW_LLV_Meta {
 		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 		
 		// If our nonce isn't there, or we can't verify it, bail
-		if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'lazyloadvideos_meta_box_nonce' ) ) return;
+		if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( sanitize_key( wp_unslash( $_POST['meta_box_nonce'] ) ), 'lazyloadvideos_meta_box_nonce' ) ) return;
 		
 		// Now we can actually save the data
 		$allowed = array( 
@@ -102,7 +106,7 @@ class KW_LLV_Meta {
 
 		// SELECT
 		$select_thumbnail_quality = $this->select_thumbnail_quality;
-		$post_thumbnail_quality = isset($_POST[$select_thumbnail_quality]) ? sanitize_text_field($_POST[$select_thumbnail_quality]) : '';
+		$post_thumbnail_quality = isset($_POST[$select_thumbnail_quality]) ? sanitize_text_field(wp_unslash($_POST[$select_thumbnail_quality])) : '';
 		if ( empty($post_thumbnail_quality) || $post_thumbnail_quality == 'default' ) {
 			delete_post_meta( $post_id, $select_thumbnail_quality );
 		} else {

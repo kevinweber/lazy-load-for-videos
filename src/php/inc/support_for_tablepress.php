@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Enable oEmbed dataparse for WordPress plugin "TablePress"
  */

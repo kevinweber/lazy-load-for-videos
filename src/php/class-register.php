@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 require_once( LL_PATH . 'src/php/static-update-posts.php' );
 /**
  * register_activation_hook() and register_deactivation_hook() MUST be called DIRECTLY in the main plugin file, not inside any other hook or function.
@@ -11,18 +15,18 @@ function lazyloadvideos_plugin_activation() {
 	require_once( LL_PATH . 'src/php/inc/signup-define.php' );
 
 	$signup = '<div id="mc_embed_signup">
-			<form action="'.LL_NEWS_ACTION_URL.'" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+			<form action="'.esc_url( LL_NEWS_ACTION_URL ).'" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 				<div class="mc-field-group">
-					<label for="mce-EMAIL" style="line-height:2.5em">'.LL_NEWS_TEXT.'</label><br>
-					<input type="email" value="'.LL_NEWS_MAILADDRESS.'" name="EMAIL" class="required email" id="mce-EMAIL" onclick="this.focus();this.select()" onfocus="if(this.value == \'\') { this.value = this.defaultValue; }" onblur="if(this.value == \'\') { this.value = this.defaultValue; }">
-					<input type="hidden" name="GROUPS" id="GROUPS" value="'.LL_NEWS_GROUP.'" />
-					<input type="submit" value="'.LL_NEWS_BUTTON.'" name="subscribe" id="mc-embedded-subscribe" class="button">
+					<label for="mce-EMAIL" style="line-height:2.5em">'.esc_html( LL_NEWS_TEXT ).'</label><br>
+					<input type="email" value="'.esc_attr( LL_NEWS_MAILADDRESS ).'" name="EMAIL" class="required email" id="mce-EMAIL" onclick="this.focus();this.select()" onfocus="if(this.value == \'\') { this.value = this.defaultValue; }" onblur="if(this.value == \'\') { this.value = this.defaultValue; }">
+					<input type="hidden" name="GROUPS" id="GROUPS" value="'.esc_attr( LL_NEWS_GROUP ).'" />
+					<input type="submit" value="'.esc_attr( LL_NEWS_BUTTON ).'" name="subscribe" id="mc-embedded-subscribe" class="button">
 				</div>
 				<div id="mce-responses" class="clear">
 					<div class="response" id="mce-error-response" style="display:none"></div>
 					<div class="response" id="mce-success-response" style="display:none"></div>
 				</div>
-			    <div style="position: absolute; left: -5000px;"><input type="text" name="'.LL_NEWS_NAME.'" tabindex="-1" value=""></div>
+			    <div style="position: absolute; left: -5000px;"><input type="text" name="'.esc_attr( LL_NEWS_NAME ).'" tabindex="-1" value=""></div>
 			</form>
 			</div>';
 

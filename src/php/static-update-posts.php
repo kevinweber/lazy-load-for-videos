@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class KW_LLV_Update_Posts {
 
 	/**
@@ -10,7 +14,7 @@ class KW_LLV_Update_Posts {
 		global $wpdb;
 		$meta_key_1 = "lazyload_thumbnail_quality";
 		$wpdb->query(
-	        $query = $wpdb->prepare( 
+			$wpdb->prepare( 
                 "DELETE FROM `".$wpdb->postmeta."`
                     WHERE meta_key = %s",
 	          	$meta_key_1

@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * When generating CSV exports for WooCommerce, ignore oEmbed metadata.
  * Otherwise this can result in thousands of useless columns being added.
