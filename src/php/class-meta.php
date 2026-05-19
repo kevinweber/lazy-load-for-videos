@@ -62,14 +62,14 @@ class KW_LLV_Meta {
 			<label for="lazyload_check_custom">If checked: Display ...</label>
 		</p> -->
 
-		<h4><?php esc_html_e( 'Thumbnail quality', LL_TD ); ?></h4>
+		<h4><?php esc_html_e( 'Thumbnail quality', 'lazy-load-for-videos' ); ?></h4>
 		<p>
 			<select class="select" type="select" name="<?php echo $select_thumbnail_quality; ?>" id="<?php $select_thumbnail_quality; ?>">
 			<?php $meta_element_class = get_post_meta($post->ID, $select_thumbnail_quality, true);	?>
-		      <option value="default" <?php selected( $meta_element_class, 'default' ); ?>><?php esc_html_e( 'Default', LL_TD ); ?></option>
-		      <option value="basic" <?php selected( $meta_element_class, 'basic' ); ?>><?php esc_html_e( 'Standard quality', LL_TD ); ?></option>
-		      <option value="medium" <?php selected( $meta_element_class, 'medium' ); ?>><?php esc_html_e( 'Higher quality', LL_TD ); ?></option>
-		      <option value="max" <?php selected( $meta_element_class, 'max' ); ?>><?php esc_html_e( 'Max resolution', LL_TD ); ?></option>
+		      <option value="default" <?php selected( $meta_element_class, 'default' ); ?>><?php esc_html_e( 'Default', 'lazy-load-for-videos' ); ?></option>
+		      <option value="basic" <?php selected( $meta_element_class, 'basic' ); ?>><?php esc_html_e( 'Standard quality', 'lazy-load-for-videos' ); ?></option>
+		      <option value="medium" <?php selected( $meta_element_class, 'medium' ); ?>><?php esc_html_e( 'Higher quality', 'lazy-load-for-videos' ); ?></option>
+		      <option value="max" <?php selected( $meta_element_class, 'max' ); ?>><?php esc_html_e( 'Max resolution', 'lazy-load-for-videos' ); ?></option>
 			</select>
 		</p>
 

@@ -63,7 +63,7 @@ require_once(LL_PATH . 'src/php/class-register.php');
  */
 function lazyload_load_textdomain()
 {
-	load_plugin_textdomain(LL_TD, false, dirname(plugin_basename(LL_FILE)) . '/languages/');
+	load_plugin_textdomain('lazy-load-for-videos', false, dirname(plugin_basename(LL_FILE)) . '/languages/');
 }
 
 add_action('init', 'lazyload_load_textdomain');
