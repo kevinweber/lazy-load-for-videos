@@ -5,7 +5,7 @@ Tags: youtube, vimeo, performance, lazy-load, privacy
 Requires at least: 5.6
 Tested up to: 6.9
 Requires PHP: 7.2
-Stable tag: 2.18.10
+Stable tag: 2.18.11
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -154,6 +154,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 == Changelog ==
+
+= 2.18.11 =
+* Improve internationalization
+* Improve security by checking for ABSPATH
 
 = 2.18.10 =
 * Quality of life improvements, ensure WordPress 7.0+ compatibility
