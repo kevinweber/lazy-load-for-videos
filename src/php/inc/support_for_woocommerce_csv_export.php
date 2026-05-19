@@ -9,7 +9,7 @@ function lazyload_videos_woocommerce_product_export_skip_meta_keys($keys_to_skip
     $meta_data_keys = array_column($meta_data, 'key');
 
     $lazyload_videos_keys_to_skip = array_filter($meta_data_keys, function($key) {
-        return str_starts_with($key, '_oembed') || str_starts_with($key, 'oembed_');
+        return strpos($key, '_oembed') === 0 || strpos($key, 'oembed_') === 0;
     });
 
     $all_keys_to_skip = array_merge($lazyload_videos_keys_to_skip, $keys_to_skip);

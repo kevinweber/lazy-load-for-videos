@@ -63,7 +63,7 @@ class KW_LLV_Register {
 	function plugin_notice_activation() {
 	  if ( $notices = get_option( 'lazyloadvideos_deferred_admin_notices' ) ) {
 	    foreach ($notices as $notice) {
-	      echo "<div class='updated'><p>$notice</p></div>";
+	      echo "<div class='updated'><p>" . wp_kses_post( $notice ) . "</p></div>";
 	    }
 	    delete_option( 'lazyloadvideos_deferred_admin_notices' );
 	  }

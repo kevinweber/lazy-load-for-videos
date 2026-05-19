@@ -102,7 +102,7 @@ class KW_LLV_Meta {
 
 		// SELECT
 		$select_thumbnail_quality = $this->select_thumbnail_quality;
-		$post_thumbnail_quality = $_POST[$select_thumbnail_quality];
+		$post_thumbnail_quality = isset($_POST[$select_thumbnail_quality]) ? sanitize_text_field($_POST[$select_thumbnail_quality]) : '';
 		if ( empty($post_thumbnail_quality) || $post_thumbnail_quality == 'default' ) {
 			delete_post_meta( $post_id, $select_thumbnail_quality );
 		} else {
