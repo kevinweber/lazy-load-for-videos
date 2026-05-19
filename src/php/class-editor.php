@@ -19,7 +19,7 @@ class KW_LLV_Editor {
 		wp_enqueue_script(
 			'lazyload-editor-js',
 			LL_URL . 'public/js/editor.js',
-			[ 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'lodash' ],
+			[ 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components' ],
 			SCRIPT_DEBUG ? null : LL_VERSION
 		);
 

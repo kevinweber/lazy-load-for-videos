@@ -25,6 +25,18 @@ import { useBlockProps } from '@wordpress/block-editor';
 import EmbedPreview from './EmbedPreview';
 import getVariation, { ProviderName, RefProps } from '../getVariation';
 
+function isShallowEqual(objA: any, objB: any) {
+  if (objA === objB) return true;
+  if (!objA || !objB || typeof objA !== 'object' || typeof objB !== 'object') return false;
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+  if (keysA.length !== keysB.length) return false;
+  for (let i = 0; i < keysA.length; i++) {
+    if (objA[keysA[i]] !== objB[keysA[i]]) return false;
+  }
+  return true;
+}
+
 export type EmbedEditProps = {
   attributes: {
     providerNameSlug: ProviderName;
@@ -155,7 +167,7 @@ export default function EmbedEdit(props: EmbedEditProps) {
       // Only run `setAttributes` when necessary. If not needed and this runs, it can cause bugs.
       // Known bug: User selects multiple rows of text in the editor, then wants to select all
       // blocks using "cmd+a", all images get replaced with a LLV video for some unknown reason.
-      if (!lodash.isEqual(attributes, getMergedAttributes())) {
+      if (!isShallowEqual(attributes, getMergedAttributes())) {
         // Even though we set attributes that get derived from the preview,
         // we don't access them directly because for the initial render,
         // the `setAttributes` call will not have taken effect. If we're
