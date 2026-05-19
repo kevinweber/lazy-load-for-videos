@@ -15,8 +15,7 @@ const eslint = new ESLintPlugin({
 });
 
 const config = {
-  // Target is necessary in Webpack 5 to support IE11
-  target: ['web', 'es5'],
+  target: 'web',
   mode: IS_DEV ? 'development' : 'production',
   entry: {
     editor: './src/frontend/editor/webpackEntry.ts',
