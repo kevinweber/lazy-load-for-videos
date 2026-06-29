@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/kevinweber/lazy-load-for-videos#readme",
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.29.6",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
