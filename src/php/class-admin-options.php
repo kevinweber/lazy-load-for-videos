@@ -35,9 +35,11 @@ class KW_LLV_Admin
 
 	function isset_update_posts()
 	{
-		return isset($_POST['update_posts'])
-			&& $_POST['update_posts'] == 'with_oembed'
-			&& wp_verify_nonce($_POST['with_oembed_nonce'], 'lazyloadvideos_with_oembed_nonce');
+		return current_user_can('manage_options')
+			&& isset($_POST['update_posts'])
+			&& $_POST['update_posts'] === 'with_oembed'
+			&& isset($_POST['with_oembed_nonce'])
+			&& wp_verify_nonce(sanitize_key(wp_unslash($_POST['with_oembed_nonce'])), 'lazyloadvideos_with_oembed_nonce');
 	}
 
 	/*
@@ -63,9 +65,14 @@ class KW_LLV_Admin
 
 	function text__no_script_fallback($title, $url)
 	{
-		$no_script_fallback = "<noscript>Video can't be loaded because JavaScript is disabled: <a href=\"" . esc_url($url) . "\" title=\"" . esc_attr($title) . "\">" . esc_attr($title) . " (" . esc_url($url) . ")</a></noscript>";
-
-		return $no_script_fallback;
+		return sprintf(
+			'<noscript>%1$s <a href="%2$s" title="%3$s">%4$s (%5$s)</a></noscript>',
+			esc_html__("Video can't be loaded because JavaScript is disabled:", 'lazy-load-for-videos'),
+			esc_url($url),
+			esc_attr($title),
+			esc_html($title),
+			esc_url($url)
+		);
 	}
 
 	/**
@@ -74,7 +81,10 @@ class KW_LLV_Admin
 	 */
 	function lazyload_replace_video($return, $data, $url)
 	{
-		global $lazyload_videos_general;
+		// Validate data object
+		if (!is_object($data) || empty($data->provider_name)) {
+			return $return;
+		}
 
 		// If URL contains "lazyload=0", we don't want to lazyload it.
 		if (strpos($url, 'lazyload=0') !== false) {
@@ -106,7 +116,7 @@ class KW_LLV_Admin
 		// Youtube support
 		if (
 			($data->provider_name === 'YouTube')
-			&& (get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated
+			&& (get_option('lly_opt') !== '1') // test if Lazy Load for Youtube is deactivated
 			&& $is_youtube_host
 		) {
 
@@ -119,13 +129,21 @@ class KW_LLV_Admin
 				$data_title
 			);
 
-			$preview_url = "<a href=\"" . esc_url($url) . "\" class=\"" . esc_attr($a_class) . "\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">" . esc_html($url) . "</a>";
+			$preview_url = sprintf(
+				'<a href="%1$s" class="%2$s" data-video-title="%3$s" title="%4$s">%5$s</a>',
+				esc_url($url),
+				esc_attr($a_class),
+				esc_attr($data_title),
+				esc_attr($play_title_text),
+				esc_html($url)
+			);
 
 			// Wrap container around $preview_url
-			$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded">'
-				. $preview_url
-				. $this->text__no_script_fallback($data_title, $url)
-				. '</div>';
+			$preview_url = sprintf(
+				'<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded">%1$s%2$s</div>',
+				$preview_url,
+				$this->text__no_script_fallback($data_title, $url)
+			);
 
 			return apply_filters('lazyload_replace_video_preview_url_youtube', $preview_url);
 		}
@@ -133,7 +151,7 @@ class KW_LLV_Admin
 		// Vimeo support
 		elseif (
 			$data->provider_name === 'Vimeo'
-			&& (get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
+			&& (get_option('llv_opt') !== '1') // test if Lazy Load for Vimeo is deactivated
 			&& $is_vimeo_host
 		) {
 			$video_id = isset($data->video_id) && is_numeric($data->video_id) ? (string) $data->video_id : '';
@@ -148,13 +166,24 @@ class KW_LLV_Admin
 				$data_title
 			);
 
-			$preview_url = "<a href=\"" . esc_url($url) . "\" id=\"" . esc_attr($video_id) . "\" class=\"" . esc_attr($a_class) . "\" data-video-uri=\"" . esc_attr($video_uri) . "\" data-video-thumbnail=\"" . esc_url($data_thumbnail) . "\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">" . esc_html($url) . "</a>";
+			$preview_url = sprintf(
+				'<a href="%1$s" id="%2$s" class="%3$s" data-video-uri="%4$s" data-video-thumbnail="%5$s" data-video-title="%6$s" title="%7$s">%8$s</a>',
+				esc_url($url),
+				esc_attr($video_id),
+				esc_attr($a_class),
+				esc_attr($video_uri),
+				esc_url($data_thumbnail),
+				esc_attr($data_title),
+				esc_attr($play_title_text),
+				esc_html($url)
+			);
 
 			// Wrap container around $preview_url
-			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded">'
-				. $preview_url
-				. $this->text__no_script_fallback($data_title, $url)
-				. '</div>';
+			$preview_url = sprintf(
+				'<div class="container-lazyload container-vimeo js-lazyload--not-loaded">%1$s%2$s</div>',
+				$preview_url,
+				$this->text__no_script_fallback($data_title, $url)
+			);
 
 			return apply_filters('lazyload_replace_video_preview_url_vimeo', $preview_url);
 		} else
