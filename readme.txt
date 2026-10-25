@@ -3,9 +3,9 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, lazy-load, privacy
 Requires at least: 5.6
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 2.18.11
+Stable tag: 2.18.12
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -154,6 +154,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 == Changelog ==
+
+= 2.18.12 =
+* Security: Patch potential stored XSS attack vector via oEmbed response and harden host validation
+* Refactor video preview markup generation and improve code quality
 
 = 2.18.11 =
 * Improve internationalization
