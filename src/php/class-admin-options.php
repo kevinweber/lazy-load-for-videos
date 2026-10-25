@@ -98,10 +98,16 @@ class KW_LLV_Admin
 			$data_thumbnail = $data->thumbnail_url;
 		}
 
+		$parsed_host = wp_parse_url($url, PHP_URL_HOST);
+		$url_host = is_string($parsed_host) ? strtolower($parsed_host) : '';
+		$is_youtube_host = (bool) preg_match('/^(?:.+\.)?(youtube(?:-nocookie)?\.com|youtu\.be)$/i', $url_host);
+		$is_vimeo_host = (bool) preg_match('/^(?:.+\.)?vimeo\.com$/i', $url_host);
+
 		// Youtube support
 		if (
 			($data->provider_name === 'YouTube')
 			&& (get_option('lly_opt') == false) // test if Lazy Load for Youtube is deactivated
+			&& $is_youtube_host
 		) {
 
 			$a_class = 'lazy-load-youtube preview-lazyload preview-youtube';
@@ -113,7 +119,7 @@ class KW_LLV_Admin
 				$data_title
 			);
 
-			$preview_url = "<a href=\"" . esc_url($url) . "\" class=\"{$a_class}\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
+			$preview_url = "<a href=\"" . esc_url($url) . "\" class=\"" . esc_attr($a_class) . "\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">" . esc_html($url) . "</a>";
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded">'
@@ -128,7 +134,11 @@ class KW_LLV_Admin
 		elseif (
 			$data->provider_name === 'Vimeo'
 			&& (get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
+			&& $is_vimeo_host
 		) {
+			$video_id = isset($data->video_id) && is_numeric($data->video_id) ? (string) $data->video_id : '';
+			$video_uri = isset($data->uri) && is_string($data->uri) && preg_match('#^/videos/\d+(?::[a-zA-Z0-9]+)?$#', $data->uri) ? $data->uri : '';
+
 			$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 			$a_class = apply_filters('lazyload_preview_url_css_vimeo', $a_class);
 
@@ -138,7 +148,7 @@ class KW_LLV_Admin
 				$data_title
 			);
 
-			$preview_url = "<a href=\"" . esc_url($url) . "\" id=\"{$data->video_id}\" class=\"{$a_class}\" data-video-uri=\"$data->uri\" data-video-thumbnail=\"{$data_thumbnail}\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
+			$preview_url = "<a href=\"" . esc_url($url) . "\" id=\"" . esc_attr($video_id) . "\" class=\"" . esc_attr($a_class) . "\" data-video-uri=\"" . esc_attr($video_uri) . "\" data-video-thumbnail=\"" . esc_url($data_thumbnail) . "\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">" . esc_html($url) . "</a>";
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded">'
